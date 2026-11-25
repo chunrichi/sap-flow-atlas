@@ -139,13 +139,19 @@ pnpm preview            # 预览 dist
 - 命令面板（`⌘K` / `Ctrl+K`）与移动端分组卡片列表；
 - `prefers-reduced-motion`、URL 深链接、`?shot=1` 截图模式；
 - Vitest 内容测试 + GitHub Actions CI；
-- GitHub Pages 部署 workflow（`VITE_BASE` 自动按仓库名设置）。
+- GitHub Pages 部署 workflow（`VITE_BASE` 自动按仓库名设置，默认由 `PAGES_ENABLED` 变量控制）。
 
 下一阶段：SAP 顾问内容复核、GitHub Pages 发布、更多 guided story 与 MiniSearch。108 个步骤的规则/常见问题已补齐，后续按 SAP 版本变化维护。
 
 ## 7. 发布到 GitHub Pages
 
-仓库已包含 [deploy.yml](.github/workflows/deploy.yml)：推送到 `main` 后自动构建并部署 `dist/`。第一次使用时在仓库 **Settings → Pages → Build and deployment** 选择 **GitHub Actions**。
+仓库已包含 [deploy.yml](.github/workflows/deploy.yml)，但默认**不自动发布**：只有仓库变量 `PAGES_ENABLED=true` 时才会运行。准备发布时：
+
+1. 在 **Settings → Pages → Build and deployment** 选择 **GitHub Actions**；
+2. 在 **Settings → Secrets and variables → Actions → Variables** 新增 `PAGES_ENABLED=true`；
+3. 在 **Actions → Deploy GitHub Pages → Run workflow** 手动运行，或再次推送 `main`。
+
+如果仓库是 private，请先确认账户/组织支持私有仓库 Pages；否则可先将仓库设为 public，或使用其他静态托管。
 
 若部署到用户主页（`<user>.github.io`），需要把 workflow 里的 `VITE_BASE` 改成 `/`；如果是项目页，默认的 `/<repo>/` 即可。
 
