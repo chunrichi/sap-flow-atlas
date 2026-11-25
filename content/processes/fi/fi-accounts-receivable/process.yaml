@@ -1,0 +1,55 @@
+id: fi-accounts-receivable
+type: process
+title:
+  zh: 应收账款
+  en: Accounts Receivable
+module: fi
+flow: order-to-cash
+stage: payment
+summary:
+  zh: 客户发票、收款、清账、催款与账龄分析的应收闭环。
+  en: The AR cycle from customer invoice and payment to clearing, dunning and aging.
+steps:
+  - fi-fb70-customer-invoice
+  - fi-f28-post-incoming-payment
+  - fi-f32-clear-customer
+  - fi-f150-dunning
+  - fi-fbl5n-customer-balance
+edges:
+  - from: fi-fb70-customer-invoice
+    to: fi-f28-post-incoming-payment
+    kind: sequence
+    label:
+      zh: 收款
+      en: 收款
+  - from: fi-f28-post-incoming-payment
+    to: fi-f32-clear-customer
+    kind: sequence
+    label:
+      zh: 清账
+      en: 清账
+  - from: fi-f32-clear-customer
+    to: fi-f150-dunning
+    kind: sequence
+    label:
+      zh: 催款
+      en: 催款
+  - from: fi-f150-dunning
+    to: fi-fbl5n-customer-balance
+    kind: sequence
+    label:
+      zh: 客户余额
+      en: 客户余额
+roles:
+  - 应收会计
+  - 出纳
+  - 销售内勤
+outcomes:
+  - 应收凭证
+  - 清账结果
+  - 催款函
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

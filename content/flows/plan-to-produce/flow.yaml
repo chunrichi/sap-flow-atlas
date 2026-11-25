@@ -1,0 +1,50 @@
+id: plan-to-produce
+type: flow
+abbr: P2Pro
+title:
+  zh: 计划到生产
+  en: Plan to Produce
+summary:
+  zh: 从需求计划、MRP、生产执行到检验与成本结算的制造链路。
+  en: From demand planning and MRP through production execution, inspection and settlement.
+modules:
+  - pp
+  - mm
+  - qm
+  - co
+stages:
+  - id: plan
+    title:
+      zh: 计划
+      en: Plan
+    primaryModule: pp
+  - id: procure
+    title:
+      zh: 备料
+      en: Procure
+    primaryModule: mm
+  - id: produce
+    title:
+      zh: 生产
+      en: Produce
+    primaryModule: pp
+  - id: inspect
+    title:
+      zh: 检验
+      en: Inspect
+    primaryModule: qm
+  - id: settle
+    title:
+      zh: 结算
+      en: Settle
+    primaryModule: co
+processes:
+  - pp-mrp
+  - pp-production-order
+  - qm-inspection
+  - co-product-costing
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

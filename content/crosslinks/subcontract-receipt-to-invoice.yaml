@@ -1,0 +1,14 @@
+id: subcontract-receipt-to-invoice
+type: crosslink
+from: "step:mm-migo-subcontract-receipt"
+to: "step:mm-miro-verify-invoice"
+relation: handoff
+label:
+  zh: 委外收货后做发票校验
+  en: Subcontract receipt precedes invoice verification
+note: 委外成品收货与组件消耗完成后，按加工费与服务采购做发票校验。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

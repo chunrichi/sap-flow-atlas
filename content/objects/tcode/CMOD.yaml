@@ -1,0 +1,16 @@
+id: "tcode:CMOD"
+type: tcode
+technicalName: CMOD
+title:
+  zh: 创建增强项目
+  en: Create Enhancement Project
+module: abap
+summary:
+  zh: 在 CMOD 中创建增强项目并挂载需要实现的出口。
+  en: Creates an enhancement project in CMOD and attaches the exits to implement.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

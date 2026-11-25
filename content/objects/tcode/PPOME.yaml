@@ -1,0 +1,16 @@
+id: "tcode:PPOME"
+type: tcode
+technicalName: PPOME
+title:
+  zh: 维护组织与岗位
+  en: Maintain Org Structure
+module: hr
+summary:
+  zh: 维护组织单位、岗位、汇报关系与人员分配。
+  en: Maintains organizational units, positions, reporting lines and assignments.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

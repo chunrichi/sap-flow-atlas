@@ -1,0 +1,41 @@
+id: project-to-profit
+type: flow
+abbr: P2Pft
+title:
+  zh: 项目到利润
+  en: Project to Profit
+summary:
+  zh: 从项目立项、WBS 预算、执行到结算与获利分析的 project 链路。
+  en: From project setup and WBS budget through execution and settlement to profitability.
+modules:
+  - ps
+  - co
+  - fi
+stages:
+  - id: plan
+    title:
+      zh: 立项
+      en: Plan
+    primaryModule: ps
+  - id: budget
+    title:
+      zh: 预算
+      en: Budget
+    primaryModule: ps
+  - id: execute
+    title:
+      zh: 执行
+      en: Execute
+    primaryModule: ps
+  - id: settle
+    title:
+      zh: 结算
+      en: Settle
+    primaryModule: co
+processes:
+  - ps-project-execution
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

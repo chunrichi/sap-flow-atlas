@@ -1,0 +1,37 @@
+id: ps-cj01-project-definition
+type: step
+title:
+  zh: 创建项目定义
+  en: Create Project Definition
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-project-execution
+flows:
+  - project-to-profit
+tcode: CJ01
+summary:
+  zh: 创建项目定义，确定项目类型、公司代码与负责人。
+  en: Creates a project definition with project type, company code and responsible person.
+inputs:
+  - 项目名称
+  - 项目类型
+  - 公司代码
+outputs:
+  - 项目定义
+rules:
+  - "项目类型决定编号范围与结算规则。"
+painPoints:
+  - "项目定义与公司代码不匹配会导致过账失败。"
+objects:
+  - "tcode:CJ01"
+  - "table:PROJ"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

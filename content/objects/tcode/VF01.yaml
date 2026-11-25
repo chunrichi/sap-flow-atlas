@@ -1,0 +1,20 @@
+id: "tcode:VF01"
+type: tcode
+technicalName: VF01
+title:
+  zh: 创建开票凭证
+  en: Create Billing Document
+module: sd
+package: VF
+summary:
+  zh: 根据交货单或销售订单创建发票，形成应收。
+  en: Creates a billing document from a delivery or sales order, generating a receivable.
+relations:
+  - target: "table:VBRK"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-billing-document
+updatedAt: 2026-11-24

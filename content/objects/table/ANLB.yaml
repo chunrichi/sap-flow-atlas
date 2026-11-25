@@ -1,0 +1,16 @@
+id: "table:ANLB"
+type: table
+technicalName: ANLB
+title:
+  zh: 折旧范围
+  en: Depreciation areas
+module: fi
+summary:
+  zh: 折旧范围，SAP 标准数据表，用于 FI 相关流程。
+  en: Depreciation areas, a standard SAP table used in FI processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

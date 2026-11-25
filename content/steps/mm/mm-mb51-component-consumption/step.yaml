@@ -1,0 +1,37 @@
+id: mm-mb51-component-consumption
+type: step
+title:
+  zh: 查询组件消耗
+  en: Analyze Component Consumption
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-subcontracting
+flows:
+  - procure-to-pay
+tcode: MB51
+summary:
+  zh: 按委外订单与移动类型查询组件消耗与成品收货凭证。
+  en: Analyzes component consumption and finished goods receipts by subcontract order and movement type.
+inputs:
+  - 委外订单
+  - 移动类型
+outputs:
+  - 消耗明细
+rules:
+  - "按委外订单与移动类型 541/101/261 过滤。"
+painPoints:
+  - "只看物料凭证不看订单会漏掉组件归属。"
+objects:
+  - "tcode:MB51"
+  - "table:MSEG"
+  - "table:EKBE"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

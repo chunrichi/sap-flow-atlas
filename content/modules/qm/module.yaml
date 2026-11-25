@@ -1,0 +1,23 @@
+id: qm
+type: module
+abbr: QM
+title:
+  zh: 质量管理
+  en: Quality Management
+color: "#06B6D4"
+icon: qm
+summary:
+  zh: 检验计划、检验批与质量通知，覆盖来料、过程与出货检验。
+  en: Inspection plans, inspection lots and quality notifications across incoming, in-process and outgoing inspection.
+scope:
+  - 检验计划
+  - 检验批
+  - 质量通知
+keyFlows:
+  - plan-to-produce
+  - procure-to-pay
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

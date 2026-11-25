@@ -1,0 +1,16 @@
+id: "tcode:FBD1"
+type: tcode
+technicalName: FBD1
+title:
+  zh: 维护周期凭证
+  en: Maintain Recurring Entry
+module: fi
+summary:
+  zh: 定义按月重复的总账凭证模板，按计划自动生成。
+  en: Defines monthly recurring journal entry templates and generates them on schedule.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,40 @@
+id: co-kks1-variance
+type: step
+title:
+  zh: 生产订单差异分析
+  en: Production Variance Analysis
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-product-costing
+flows:
+  - plan-to-produce
+tcode: KKS1
+summary:
+  zh: 计算生产订单的目标成本与实际成本差异，分析价格、数量与效率差异。
+  en: Calculates target vs actual cost variance for production orders, analyzing price, quantity and efficiency.
+inputs:
+  - 生产订单
+  - 期间
+outputs:
+  - 差异分析
+  - 结算基础
+rules:
+  - "差异分析前确认订单已收货并结算。"
+painPoints:
+  - "未收货订单的差异不可比。"
+objects:
+  - "tcode:KKS1"
+  - "table:AUFK"
+  - "table:COEP"
+snippets: []
+crossModule:
+  - module: pp
+    relation: accounting-impact
+    note: 差异来自生产订单的实际发料、确认与收货。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

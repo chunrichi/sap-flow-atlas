@@ -1,0 +1,36 @@
+id: pp-md06-exception-messages
+type: step
+title:
+  zh: 处理 MRP 异常
+  en: Handle MRP Exceptions
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-mrp
+flows:
+  - plan-to-produce
+tcode: MD06
+summary:
+  zh: 集中处理 MRP 例外消息，如提前、延迟、取消或重新计划。
+  en: Processes MRP exception messages such as reschedule in/out, cancel or new order.
+inputs:
+  - 工厂
+  - 物料范围
+outputs:
+  - 调整后的计划
+rules:
+  - "优先处理提前、延迟与取消消息。"
+painPoints:
+  - "批量重排会掩盖真实瓶颈。"
+objects:
+  - "tcode:MD06"
+  - "table:PLAF"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

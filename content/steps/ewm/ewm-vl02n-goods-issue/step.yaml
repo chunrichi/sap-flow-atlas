@@ -1,0 +1,41 @@
+id: ewm-vl02n-goods-issue
+type: step
+title:
+  zh: 发货过账
+  en: Post Goods Issue
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-outbound
+flows:
+  - order-to-cash
+tcode: VL02N
+summary:
+  zh: 对出库交货执行发货过账，减少库存并生成物料与会计凭证。
+  en: Posts goods issue for the outbound delivery, reducing stock and creating material and accounting documents.
+inputs:
+  - 出库交货
+  - 拣配数量
+outputs:
+  - 物料凭证
+  - 会计凭证
+rules:
+  - "发货过账前确认拣配数量与序列号。"
+painPoints:
+  - "过账后冲销会产生反向物料凭证。"
+objects:
+  - "tcode:VL02N"
+  - "table:LIKP"
+  - "table:MSEG"
+snippets:
+  - abap-ewm-delivery-status
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 发货过账生成 COGS 与库存减少的财务凭证。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

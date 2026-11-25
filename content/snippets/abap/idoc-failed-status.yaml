@@ -1,0 +1,29 @@
+id: abap-idoc-failed-status
+type: snippet
+language: abap
+title:
+  zh: 筛选失败或待处理的 IDoc
+  en: Filter Failed or Pending IDocs
+objects:
+  - "tcode:WE02"
+  - "table:EDIDC"
+  - "table:EDID4"
+file: abap/idoc-failed-status.abap
+summary:
+  zh: 按状态码 30/51/64 与创建日期筛选 IDoc，作为接口监控的起点。
+  en: Filters IDocs by status 30/51/64 and creation date as an interface monitoring starting point.
+annotations:
+  - lines: "1-1"
+    note: 按创建日期过滤。
+  - lines: "3-7"
+    note: 筛选待处理/失败状态。
+  - lines: "9-12"
+    note: 无消息时返回。
+  - lines: "14-17"
+    note: 输出 IDoc 编号、消息类型与状态。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

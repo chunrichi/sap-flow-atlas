@@ -1,0 +1,41 @@
+id: pm-iw31-maintenance-order
+type: step
+title:
+  zh: 创建维护订单
+  en: Create Maintenance Order
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-maintenance-order
+flows:
+  - maintain-to-availability
+tcode: IW31
+summary:
+  zh: 把维护通知转为维护订单，确定工序、组件与成本中心。
+  en: Converts a notification into a maintenance order with operations, components and cost center.
+inputs:
+  - 维护通知
+  - 设备
+  - 工序
+  - 成本中心
+outputs:
+  - 维护订单号
+rules:
+  - "订单类型决定结算规则与成本中心。"
+painPoints:
+  - "订单类型选错会导致结算失败。"
+objects:
+  - "tcode:IW31"
+  - "table:AUFK"
+  - "table:AFIH"
+  - "table:EQUI"
+snippets:
+  - abap-pm-order-equipment
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

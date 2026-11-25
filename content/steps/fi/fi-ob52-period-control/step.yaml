@@ -1,0 +1,36 @@
+id: fi-ob52-period-control
+type: step
+title:
+  zh: 打开/关闭期间
+  en: Open or Close Periods
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-general-ledger
+flows:
+  - record-to-report
+tcode: OB52
+summary:
+  zh: 按公司代码与科目类型控制会计期间的打开与关闭。
+  en: Controls open and closed accounting periods by company code and account type.
+inputs:
+  - 公司代码
+  - 期间
+  - 科目类型
+outputs:
+  - 期间状态
+rules:
+  - 关账前必须完成内部对账与差异处理。
+painPoints:
+  - 错误关闭期间会导致补账只能走调整期间。
+objects:
+  - "tcode:OB52"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

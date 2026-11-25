@@ -1,0 +1,39 @@
+id: pm-ko88-settle-order
+type: step
+title:
+  zh: 维护订单结算
+  en: Settle Maintenance Order
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-maintenance-order
+flows:
+  - maintain-to-availability
+tcode: KO88
+summary:
+  zh: 把维护订单成本结算到成本中心或资产。
+  en: Settles maintenance order cost to cost center or asset.
+inputs:
+  - 维护订单
+  - 期间
+outputs:
+  - 结算凭证
+rules:
+  - "结算前确认订单已技术完成。"
+painPoints:
+  - "未完成订单结算会留下余额。"
+objects:
+  - "tcode:KO88"
+  - "table:AUFK"
+  - "table:COEP"
+snippets: []
+crossModule:
+  - module: co
+    relation: accounting-impact
+    note: 维护成本最终进入成本中心或资产价值。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

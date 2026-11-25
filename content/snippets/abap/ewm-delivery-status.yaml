@@ -1,0 +1,30 @@
+id: abap-ewm-delivery-status
+type: snippet
+language: abap
+title:
+  zh: 检查未完成发货的出库交货
+  en: Check Open Outbound Deliveries
+objects:
+  - "tcode:VL02N"
+  - "table:LIKP"
+  - "table:LIPS"
+  - "table:MSEG"
+file: abap/ewm-delivery-status.abap
+summary:
+  zh: 读取未完成发货过账的出库交货，列出物料与数量，供仓库跟进。
+  en: Reads outbound deliveries without goods issue and lists materials and quantities for follow-up.
+annotations:
+  - lines: "1-1"
+    note: 按交货创建日期过滤。
+  - lines: "3-9"
+    note: 连接交货抬头与行项目。
+  - lines: "11-14"
+    note: 无未清交货时返回。
+  - lines: "16-19"
+    note: 输出交货、物料、数量与状态。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

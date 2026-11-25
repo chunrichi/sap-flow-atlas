@@ -1,0 +1,39 @@
+id: pm-iw21-maintenance-notification
+type: step
+title:
+  zh: 创建维护通知
+  en: Create Maintenance Notification
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-maintenance-order
+flows:
+  - maintain-to-availability
+tcode: IW21
+summary:
+  zh: 记录设备故障、点检异常或维护请求，确定优先级。
+  en: Records equipment breakdown, inspection issue or maintenance request and priority.
+inputs:
+  - 设备/功能位置
+  - 故障描述
+  - 优先级
+outputs:
+  - 维护通知
+rules:
+  - "通知优先级与故障类别决定响应时限。"
+painPoints:
+  - "故障描述不清会导致派工错误。"
+objects:
+  - "tcode:IW21"
+  - "table:QMEL"
+  - "table:EQUI"
+  - "table:IFLOT"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

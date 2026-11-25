@@ -1,0 +1,55 @@
+id: pm-maintenance-order
+type: process
+title:
+  zh: 维护订单
+  en: Maintenance Order
+module: pm
+flow: maintain-to-availability
+stage: execute
+summary:
+  zh: 维护通知、维护订单、计划排程、执行确认与结算。
+  en: Maintenance notification, order, scheduling, confirmation and settlement.
+steps:
+  - pm-iw21-maintenance-notification
+  - pm-iw31-maintenance-order
+  - pm-iw32-plan-schedule
+  - pm-iw41-confirm-order
+  - pm-ko88-settle-order
+edges:
+  - from: pm-iw21-maintenance-notification
+    to: pm-iw31-maintenance-order
+    kind: sequence
+    label:
+      zh: 创建订单
+      en: 创建订单
+  - from: pm-iw31-maintenance-order
+    to: pm-iw32-plan-schedule
+    kind: sequence
+    label:
+      zh: 计划排程
+      en: 计划排程
+  - from: pm-iw32-plan-schedule
+    to: pm-iw41-confirm-order
+    kind: sequence
+    label:
+      zh: 执行确认
+      en: 执行确认
+  - from: pm-iw41-confirm-order
+    to: pm-ko88-settle-order
+    kind: sequence
+    label:
+      zh: 订单结算
+      en: 订单结算
+roles:
+  - 维修工程师
+  - 维护计划员
+  - 成本会计
+outcomes:
+  - 维护通知
+  - 维护订单
+  - 结算凭证
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

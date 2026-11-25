@@ -1,0 +1,16 @@
+id: "table:VBRP"
+type: table
+technicalName: VBRP
+title:
+  zh: 开票行项目
+  en: Billing item
+module: sd
+summary:
+  zh: 开票行项目，SAP 标准数据表，用于 SD 相关流程。
+  en: Billing item, a standard SAP table used in SD processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

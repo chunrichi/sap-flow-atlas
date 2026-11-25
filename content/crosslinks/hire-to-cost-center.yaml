@@ -1,0 +1,14 @@
+id: hire-to-cost-center
+type: crosslink
+from: "step:hr-pa40-hire-employee"
+to: "step:co-ks01-cost-center"
+relation: data-flow
+label:
+  zh: 员工组织分配决定成本归集
+  en: Employee org assignment drives cost collection
+note: 入职时的组织单位、岗位与薪酬范围决定后续人工成本归集到哪个成本中心。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

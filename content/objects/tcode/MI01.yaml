@@ -1,0 +1,16 @@
+id: "tcode:MI01"
+type: tcode
+technicalName: MI01
+title:
+  zh: 创建盘点凭证
+  en: Create Physical Inventory Document
+module: mm
+summary:
+  zh: 为指定物料与库存地点创建盘点凭证，冻结账面数量供盘点。
+  en: Creates a physical inventory document for a material and storage location, freezing the book quantity.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

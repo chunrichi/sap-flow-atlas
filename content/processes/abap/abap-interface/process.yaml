@@ -1,0 +1,55 @@
+id: abap-interface
+type: process
+title:
+  zh: ABAP 接口集成
+  en: ABAP Interface Integration
+module: abap
+flow: develop-to-deploy
+stage: integrate
+summary:
+  zh: IDoc 类型、伙伴参数、OData 服务与接口监控。
+  en: IDoc types, partner profiles, OData services and interface monitoring.
+steps:
+  - abap-we30-idoc-type
+  - abap-we20-partner-profile
+  - abap-segw-odata-service
+  - abap-we02-monitor-idoc
+  - abap-sm58-monitor-rfc
+edges:
+  - from: abap-we30-idoc-type
+    to: abap-we20-partner-profile
+    kind: sequence
+    label:
+      zh: 配置伙伴
+      en: 配置伙伴
+  - from: abap-we20-partner-profile
+    to: abap-segw-odata-service
+    kind: sequence
+    label:
+      zh: 实现 OData
+      en: 实现 OData
+  - from: abap-segw-odata-service
+    to: abap-we02-monitor-idoc
+    kind: sequence
+    label:
+      zh: 监控 IDoc
+      en: 监控 IDoc
+  - from: abap-we02-monitor-idoc
+    to: abap-sm58-monitor-rfc
+    kind: sequence
+    label:
+      zh: 监控 RFC
+      en: 监控 RFC
+roles:
+  - ABAP 开发
+  - 集成顾问
+  - Basis
+outcomes:
+  - IDoc 类型
+  - OData 服务
+  - 接口监控
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

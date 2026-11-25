@@ -1,0 +1,14 @@
+id: mm-invoice-to-ap-payment
+type: crosslink
+from: "step:mm-miro-verify-invoice"
+to: "step:fi-f110-payment-run"
+relation: accounting-impact
+label:
+  zh: 发票校验形成应付，付款运行清销
+  en: Invoice verification creates AP, payment run clears it
+note: MIRO 生成 GR/IR 清账与应付；F110 按到期日选择未清项执行付款。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

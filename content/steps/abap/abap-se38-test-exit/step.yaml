@@ -1,0 +1,39 @@
+id: abap-se38-test-exit
+type: step
+title:
+  zh: 测试增强
+  en: Test Enhancement
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-enhancement
+flows:
+  - develop-to-deploy
+tcode: SE38
+summary:
+  zh: 通过测试程序或业务事务验证增强逻辑、异常与回滚行为。
+  en: Verifies enhancement logic, exceptions and rollback behavior via test program or business transaction.
+inputs:
+  - 实现代码
+  - 测试数据
+outputs:
+  - 测试记录
+rules:
+  - "覆盖成功、业务错误与回滚三条路径。"
+  - "测试数据必须包含边界与空值。"
+painPoints:
+  - "只测正常路径会遗漏保存失败后的脏数据。"
+objects:
+  - "tcode:SE38"
+  - "enhancement:MV45AFZZ"
+  - "table:TADIR"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

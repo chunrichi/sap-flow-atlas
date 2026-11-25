@@ -1,0 +1,20 @@
+id: "tcode:SE80"
+type: tcode
+technicalName: SE80
+title:
+  zh: 对象导航器
+  en: Object Navigator
+module: abap
+summary:
+  zh: 浏览包、程序、函数组、类与增强，是 ABAP 开发的主入口。
+  en: Browses packages, programs, function groups, classes and enhancements, the main entry point for ABAP development.
+relations:
+  - target: "enhancement:MV45AFZZ"
+    kind: related
+    note: 可以在对象导航器中打开销售订单用户出口 include。
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets
+updatedAt: 2026-11-25

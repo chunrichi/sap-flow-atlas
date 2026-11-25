@@ -1,0 +1,42 @@
+id: maintain-to-availability
+type: flow
+abbr: M2A
+title:
+  zh: 维护到可用
+  en: Maintain to Availability
+summary:
+  zh: 从维护通知、计划排程、执行确认到结算的资产维护链路。
+  en: The asset maintenance chain from notification and scheduling to execution and settlement.
+modules:
+  - pm
+  - mm
+  - co
+  - fi
+stages:
+  - id: notify
+    title:
+      zh: 通知
+      en: Notify
+    primaryModule: pm
+  - id: plan
+    title:
+      zh: 计划
+      en: Plan
+    primaryModule: pm
+  - id: execute
+    title:
+      zh: 执行
+      en: Execute
+    primaryModule: pm
+  - id: settle
+    title:
+      zh: 结算
+      en: Settle
+    primaryModule: co
+processes:
+  - pm-maintenance-order
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

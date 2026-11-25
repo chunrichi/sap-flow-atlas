@@ -1,0 +1,39 @@
+id: cs-vf01-service-billing
+type: step
+title:
+  zh: 服务开票
+  en: Bill Service
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-service-order
+flows:
+  - service-to-cash
+tcode: VF01
+summary:
+  zh: 基于服务确认或服务订单创建发票，形成应收。
+  en: Creates a billing document from service confirmation or order, generating a receivable.
+inputs:
+  - 服务订单
+  - 确认数据
+  - 开票类型
+outputs:
+  - 服务发票
+rules:
+  - "开票前确认服务确认已释放。"
+painPoints:
+  - "未确认就开票会导致收入与成本不匹配。"
+objects:
+  - "tcode:VF01"
+  - "table:VBRK"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 服务发票生成客户应收与收入。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,16 @@
+id: "tcode:QP01"
+type: tcode
+technicalName: QP01
+title:
+  zh: 创建检验计划
+  en: Create Inspection Plan
+module: qm
+summary:
+  zh: 为物料维护检验特性、检验方法与抽样方案。
+  en: Maintains inspection characteristics, methods and sampling for a material.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,16 @@
+id: "tcode:SE01"
+type: tcode
+technicalName: SE01
+title:
+  zh: 创建传输请求
+  en: Create Transport Request
+module: abap
+summary:
+  zh: 把开发对象放入传输请求，描述变更并释放任务。
+  en: Adds development objects to a transport request, documents changes and releases the task.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

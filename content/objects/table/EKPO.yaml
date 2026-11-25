@@ -1,0 +1,17 @@
+id: "table:EKPO"
+type: table
+technicalName: EKPO
+title:
+  zh: 采购订单行项目
+  en: Purchase Order Item
+module: mm
+tableClass: transparent
+summary:
+  zh: 保存采购订单的行项目，如物料、数量、价格。
+  en: Stores purchase order items such as material, quantity and price.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

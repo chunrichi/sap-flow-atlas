@@ -1,0 +1,16 @@
+id: "tcode:KKS1"
+type: tcode
+technicalName: KKS1
+title:
+  zh: 生产订单差异分析
+  en: Production Variance Analysis
+module: co
+summary:
+  zh: 计算生产订单的目标成本与实际成本差异，分析价格、数量与效率差异。
+  en: Calculates target vs actual cost variance for production orders, analyzing price, quantity and efficiency.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

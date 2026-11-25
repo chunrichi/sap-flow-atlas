@@ -1,0 +1,38 @@
+id: cs-ksb1-service-cost
+type: step
+title:
+  zh: 服务成本分析
+  en: Service Cost Analysis
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-service-order
+flows:
+  - service-to-cash
+tcode: KSB1
+summary:
+  zh: 按服务订单与成本中心查看人工、备件与差旅成本。
+  en: Analyzes labor, spare parts and travel cost by service order and cost center.
+inputs:
+  - 服务订单
+  - 期间
+outputs:
+  - 成本报表
+rules:
+  - "按服务订单与成本中心双维度核对。"
+painPoints:
+  - "备件成本可能落在库存科目而非服务成本。"
+objects:
+  - "tcode:KSB1"
+  - "table:CSKS"
+  - "table:COSP"
+  - "table:COSS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,16 @@
+id: "tcode:CK13N"
+type: tcode
+technicalName: CK13N
+title:
+  zh: 成本构成分析
+  en: Cost Component Analysis
+module: co
+summary:
+  zh: 查看标准成本按材料、人工、制造费用等成本构成的拆分。
+  en: Displays the standard cost split by material, labor and overhead components.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

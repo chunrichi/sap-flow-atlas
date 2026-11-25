@@ -1,0 +1,16 @@
+id: "table:IFLOT"
+type: table
+technicalName: IFLOT
+title:
+  zh: 功能位置
+  en: Functional location
+module: pm
+summary:
+  zh: 功能位置，SAP 标准数据表，用于 PM 相关流程。
+  en: Functional location, a standard SAP table used in PM processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

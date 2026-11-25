@@ -1,0 +1,14 @@
+id: project-settlement-to-cost-report
+type: crosslink
+from: "step:ps-cj88-project-settlement"
+to: "step:co-ksb1-cost-report"
+relation: accounting-impact
+label:
+  zh: 项目结算进入成本报表
+  en: Project settlement feeds cost reporting
+note: WBS 实际成本结算到资产、成本中心或获利段后，可在 CO 报表中追踪。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

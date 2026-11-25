@@ -1,0 +1,47 @@
+id: sd-atp-availability-check
+type: step
+title:
+  zh: 可用性检查
+  en: Availability Check
+primaryModule: sd
+modules:
+  - sd
+  - mm
+  - pp
+processes:
+  - sd-order-management
+flows:
+  - order-to-cash
+tcode: CO09
+summary:
+  zh: 按交货日期检查库存、计划收货与已分配需求，给出可承诺数量。
+  en: Checks stock, planned receipts and assigned demand by delivery date to determine the confirmed quantity.
+inputs:
+  - 物料
+  - 工厂
+  - 交货日期
+  - 订单数量
+outputs:
+  - 确认数量
+  - 确认日期
+  - 缺料提示
+rules:
+  - 检查规则由物料主数据的可用性检查组决定。
+  - 确认结果会影响后续交货与生产计划。
+painPoints:
+  - ATP 结果与库存报表不一致，通常来自未清的预留或计划订单。
+  - 跨工厂调拨的在途库存容易被忽略。
+objects:
+  - "tcode:CO09"
+  - "table:VBEP"
+snippets:
+  []
+crossModule:
+  - module: pp
+    relation: shared-object
+    note: 计划订单与生产订单会占用可用量。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

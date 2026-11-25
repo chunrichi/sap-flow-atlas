@@ -1,0 +1,20 @@
+id: "cds:I_MaterialDocumentItem"
+type: cds
+technicalName: I_MaterialDocumentItem
+title:
+  zh: 物料凭证行项目接口视图
+  en: Material Document Item Interface View
+module: mm
+viewType: interface
+summary:
+  zh: 物料凭证行项目的接口 CDS 视图，供库存与 API 复用。
+  en: Interface CDS view for material document items, reused by inventory and APIs.
+relations:
+  - target: "table:MSEG"
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-material-document
+updatedAt: 2026-11-24

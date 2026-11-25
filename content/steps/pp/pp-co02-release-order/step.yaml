@@ -1,0 +1,37 @@
+id: pp-co02-release-order
+type: step
+title:
+  zh: 下达生产订单
+  en: Release Production Order
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-production-order
+flows:
+  - plan-to-produce
+tcode: CO02
+summary:
+  zh: 检查可用性与组件，正式下达生产订单。
+  en: Checks availability and components and formally releases the production order.
+inputs:
+  - 生产订单
+outputs:
+  - 已下达订单
+rules:
+  - "下达前检查组件可用性与订单日期。"
+  - "下达后不允许随意改 BOM/工艺路线。"
+painPoints:
+  - 组件缺料会导致下达失败或后续发料异常。
+objects:
+  - "tcode:CO02"
+  - "table:AUFK"
+  - "table:AFKO"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

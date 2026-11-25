@@ -1,0 +1,40 @@
+id: co-ksb1-cost-report
+type: step
+title:
+  zh: 成本中心报表
+  en: Cost Center Report
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-cost-center
+flows:
+  - record-to-report
+tcode: KSB1
+summary:
+  zh: 按成本中心、期间与成本要素查看实际、计划和差异。
+  en: Displays actual, plan and variance by cost center, period and cost element.
+inputs:
+  - 成本中心
+  - 期间
+  - 成本要素组
+outputs:
+  - 成本报表
+rules:
+  - "报表前确认期间、成本中心与成本要素组。"
+painPoints:
+  - "成本中心层级变化会影响历史对比。"
+objects:
+  - "tcode:KSB1"
+  - "table:COSP"
+  - "table:COSS"
+  - "table:CSKS"
+snippets:
+  - abap-co-cost-actuals
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,91 @@
+id: flow-order-to-cash
+type: scene
+level: flow
+flow: order-to-cash
+title:
+  zh: 订单到收款
+  en: Order to Cash
+viewport:
+  x: -40
+  y: -80
+  zoom: 0.75
+groups:
+  - id: g-order
+    title:
+      zh: 订单
+      en: Order
+    position: [0, -40]
+    size: [420, 400]
+    module: sd
+  - id: g-ship
+    title:
+      zh: 履约
+      en: Fulfillment
+    position: [440, -40]
+    size: [420, 400]
+    module: sd
+  - id: g-bill
+    title:
+      zh: 开票
+      en: Billing
+    position: [880, -40]
+    size: [420, 400]
+    module: sd
+  - id: g-pay
+    title:
+      zh: 收款
+      en: Payment
+    position: [1320, -40]
+    size: [420, 400]
+    module: fi
+nodes:
+  - id: n-va01
+    kind: step
+    ref: "step:sd-va01-create-sales-order"
+    position: [40, 200]
+    size: [240, 150]
+    emphasis: primary
+  - id: n-vl01n
+    kind: step
+    ref: "step:sd-vl01n-create-delivery"
+    position: [480, 200]
+    size: [240, 150]
+  - id: n-vf01
+    kind: step
+    ref: "step:sd-vf01-create-billing"
+    position: [920, 200]
+    size: [240, 150]
+  - id: n-f28
+    kind: step
+    ref: "step:fi-f28-post-incoming-payment"
+    position: [1360, 200]
+    size: [240, 150]
+  - id: n-note
+    kind: note
+    position: [40, 400]
+    size: [600, 80]
+    label:
+      zh: 定价、信用、退货与 EWM 拣配在各自流程页展开；此处保留 O2C 的四个主干步骤。
+      en: Pricing, credit, returns and EWM picking live in their process pages; this scene keeps the four trunk steps of O2C.
+edges:
+  - id: e-va01-vl01n
+    kind: handoff
+    from: n-va01
+    to: n-vl01n
+    label:
+      zh: 订单转交货
+      en: Order to delivery
+  - id: e-vl01n-vf01
+    kind: handoff
+    from: n-vl01n
+    to: n-vf01
+    label:
+      zh: 发货后开票
+      en: Bill after goods issue
+  - id: e-vf01-f28
+    kind: handoff
+    from: n-vf01
+    to: n-f28
+    label:
+      zh: 应收
+      en: Receivable

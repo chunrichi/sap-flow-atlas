@@ -1,0 +1,16 @@
+id: "table:COSS"
+type: table
+technicalName: COSS
+title:
+  zh: 内部成本总计
+  en: Internal cost totals
+module: co
+summary:
+  zh: 内部成本总计，SAP 标准数据表，用于 CO 相关流程。
+  en: Internal cost totals, a standard SAP table used in CO processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

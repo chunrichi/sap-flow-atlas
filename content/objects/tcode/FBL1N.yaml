@@ -1,0 +1,16 @@
+id: "tcode:FBL1N"
+type: tcode
+technicalName: FBL1N
+title:
+  zh: 供应商余额分析
+  en: Vendor Balance Analysis
+module: fi
+summary:
+  zh: 按供应商查看未清、已清和全部项目，用于对账与账龄分析。
+  en: Displays open, cleared and all items by vendor for reconciliation and aging.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

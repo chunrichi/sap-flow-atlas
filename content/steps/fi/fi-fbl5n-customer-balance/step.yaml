@@ -1,0 +1,39 @@
+id: fi-fbl5n-customer-balance
+type: step
+title:
+  zh: 客户余额分析
+  en: Customer Balance Analysis
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-accounts-receivable
+flows:
+  - order-to-cash
+tcode: FBL5N
+summary:
+  zh: 按客户查看未清、已清项目与账龄。
+  en: Displays open and cleared items with aging by customer.
+inputs:
+  - 客户
+  - 公司代码
+  - 期间
+outputs:
+  - 未清项目
+  - 账龄
+rules:
+  - "账龄口径与催款程序保持一致。"
+painPoints:
+  - "客户合并/拆分会影响历史余额对比。"
+objects:
+  - "tcode:FBL5N"
+  - "table:BSID"
+  - "table:BSAD"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

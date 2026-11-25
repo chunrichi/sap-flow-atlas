@@ -1,0 +1,16 @@
+id: "table:ANLA"
+type: table
+technicalName: ANLA
+title:
+  zh: 资产主数据
+  en: Asset master
+module: fi
+summary:
+  zh: 资产主数据，SAP 标准数据表，用于 FI 相关流程。
+  en: Asset master, a standard SAP table used in FI processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

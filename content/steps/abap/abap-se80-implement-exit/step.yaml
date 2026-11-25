@@ -1,0 +1,43 @@
+id: abap-se80-implement-exit
+type: step
+title:
+  zh: 实现用户出口
+  en: Implement User Exit
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-enhancement
+flows:
+  - develop-to-deploy
+tcode: SE80
+summary:
+  zh: 在对象导航器中打开出口 include，按业务规则实现并加注释。
+  en: Opens the exit include in Object Navigator, implements business logic with comments.
+inputs:
+  - 增强项目
+  - 出口 include
+  - 业务规则
+outputs:
+  - 实现代码
+rules:
+  - "增强逻辑放在出口 include，不修改标准对象。"
+  - "异常必须走标准消息并支持回滚。"
+painPoints:
+  - "直接改标准程序会影响升级与后续支持。"
+objects:
+  - "tcode:SE80"
+  - "enhancement:MV45AFZZ"
+  - "table:TADIR"
+snippets:
+  - abap-user-exit-save-document
+crossModule:
+  - module: sd
+    relation: handoff
+    note: 销售订单增强通常落在 MV45AFZZ 的保存出口。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

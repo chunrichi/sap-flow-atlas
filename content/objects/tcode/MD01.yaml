@@ -1,0 +1,22 @@
+id: "tcode:MD01"
+type: tcode
+technicalName: MD01
+title:
+  zh: 运行 MRP
+  en: Run MRP
+module: pp
+summary:
+  zh: 按工厂与范围运行物料需求计划，生成计划订单、采购申请与例外消息。
+  en: Runs material requirements planning by plant and scope, generating planned orders, requisitions and exceptions.
+relations:
+  - target: "table:PLAF"
+    kind: writes
+    note: 计划订单
+  - target: "table:RESB"
+    kind: writes
+    note: 相关需求
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

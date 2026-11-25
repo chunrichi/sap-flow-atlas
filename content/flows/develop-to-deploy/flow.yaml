@@ -1,0 +1,49 @@
+id: develop-to-deploy
+type: flow
+abbr: D2D
+title:
+  zh: 开发到上线
+  en: Develop to Deploy
+summary:
+  zh: 从定位增强点、实现、接口集成、测试到传输上线的 ABAP 开发链路。
+  en: The ABAP development chain from enhancement discovery and implementation to integration, testing and transport.
+modules:
+  - abap
+  - sd
+  - mm
+  - fi
+stages:
+  - id: analyze
+    title:
+      zh: 分析
+      en: Analyze
+    primaryModule: abap
+  - id: implement
+    title:
+      zh: 实现
+      en: Implement
+    primaryModule: abap
+  - id: integrate
+    title:
+      zh: 集成
+      en: Integrate
+    primaryModule: abap
+  - id: test
+    title:
+      zh: 测试
+      en: Test
+    primaryModule: abap
+  - id: transport
+    title:
+      zh: 传输
+      en: Transport
+    primaryModule: abap
+processes:
+  - abap-enhancement
+  - abap-interface
+  - abap-performance
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

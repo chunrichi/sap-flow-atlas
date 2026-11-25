@@ -1,0 +1,16 @@
+id: "tcode:F-44"
+type: tcode
+technicalName: F-44
+title:
+  zh: 供应商清账
+  en: Clear Vendor Items
+module: fi
+summary:
+  zh: 把付款与发票、贷项凭证进行清账，关闭未清项。
+  en: Clears payments against invoices and credit memos, closing open items.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

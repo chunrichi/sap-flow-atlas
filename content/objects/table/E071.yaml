@@ -1,0 +1,16 @@
+id: "table:E071"
+type: table
+technicalName: E071
+title:
+  zh: 传输对象
+  en: Transport object
+module: abap
+summary:
+  zh: 传输对象，SAP 标准数据表，用于 ABAP 相关流程。
+  en: Transport object, a standard SAP table used in ABAP processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

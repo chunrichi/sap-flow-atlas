@@ -1,0 +1,52 @@
+id: mm-me21n-create-purchase-order
+type: step
+title:
+  zh: 创建采购订单
+  en: Create Purchase Order
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-procurement
+flows:
+  - procure-to-pay
+tcode: ME21N
+summary:
+  zh: 把采购申请转为具有供应商、价格与交期的采购订单。
+  en: Converts a requisition into a purchase order with supplier, price and delivery schedule.
+inputs:
+  - 供应商
+  - 物料
+  - 价格
+  - 交期
+  - 采购组织
+outputs:
+  - 采购订单号
+  - 订单行项目
+  - 承诺
+rules:
+  - 采购订单必须引用有效的供应商与采购信息记录。
+  - 价格条件决定后续发票校验的容差。
+painPoints:
+  - 供应商主数据冻结会导致订单无法保存。
+  - 价格单位不一致会造成金额错误。
+objects:
+  - "tcode:ME21N"
+  - "table:EKKO"
+  - "table:EKPO"
+  - "bapi:BAPI_PO_CREATE1"
+  - "enhancement:ME_PROCESS_PO_CUST"
+  - "cds:I_PurchaseOrder"
+  - "odata:API_PURCHASEORDER_PROCESS_SRV"
+snippets:
+  []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 采购订单形成承诺，收货与发票校验后进入应付。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-purchase-order
+updatedAt: 2026-11-24

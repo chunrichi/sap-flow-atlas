@@ -1,0 +1,38 @@
+id: qm-qm01-quality-notification
+type: step
+title:
+  zh: 创建质量通知
+  en: Create Quality Notification
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-inspection
+flows:
+  - plan-to-produce
+tcode: QM01
+summary:
+  zh: 记录质量异常、缺陷原因、纠正措施与责任部门。
+  en: Records quality issues, defect causes, corrective actions and responsible departments.
+inputs:
+  - 物料/批次
+  - 缺陷描述
+  - 责任部门
+outputs:
+  - 质量通知
+  - 措施任务
+rules:
+  - "质量通知必须关联物料/批次与责任部门。"
+painPoints:
+  - "措施未闭环会导致重复问题。"
+objects:
+  - "tcode:QM01"
+  - "table:QMEL"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

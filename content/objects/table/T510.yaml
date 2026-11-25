@@ -1,0 +1,16 @@
+id: "table:T510"
+type: table
+technicalName: T510
+title:
+  zh: 薪酬等级
+  en: Pay scale
+module: hr
+summary:
+  zh: 薪酬等级，SAP 标准数据表，用于 HR 相关流程。
+  en: Pay scale, a standard SAP table used in HR processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

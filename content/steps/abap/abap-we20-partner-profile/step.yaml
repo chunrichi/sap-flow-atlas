@@ -1,0 +1,39 @@
+id: abap-we20-partner-profile
+type: step
+title:
+  zh: 配置伙伴参数
+  en: Configure Partner Profile
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-interface
+flows:
+  - develop-to-deploy
+tcode: WE20
+summary:
+  zh: 为伙伴配置入站/出站消息类型、处理代码与端口。
+  en: Configures inbound/outbound message types, process codes and ports for a partner.
+inputs:
+  - 伙伴
+  - 消息类型
+  - 方向
+outputs:
+  - 伙伴参数
+rules:
+  - "入站与出站伙伴参数必须成对检查。"
+painPoints:
+  - "端口或处理代码配错会让 IDoc 停在 30/64。"
+objects:
+  - "tcode:WE20"
+  - "table:EDIDC"
+  - "table:EDID4"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

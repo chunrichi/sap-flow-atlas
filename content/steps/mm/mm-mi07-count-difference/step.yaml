@@ -1,0 +1,40 @@
+id: mm-mi07-count-difference
+type: step
+title:
+  zh: 盘点差异过账
+  en: Post Inventory Differences
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-inventory-management
+flows:
+  - procure-to-pay
+tcode: MI07
+summary:
+  zh: 录入实盘数量后过账盘盈盘亏，并生成库存与会计凭证。
+  en: Posts count differences after entering physical quantities, updating stock and accounting.
+inputs:
+  - 盘点凭证
+  - 实盘数量
+outputs:
+  - 差异凭证
+  - 库存调整
+rules:
+  - "差异过账前复核实盘数与原因。"
+painPoints:
+  - "直接过账大额差异会触发审计。"
+objects:
+  - "tcode:MI07"
+  - "table:MSEG"
+  - "table:MKPF"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 盘盈盘亏会生成库存调整的财务凭证。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

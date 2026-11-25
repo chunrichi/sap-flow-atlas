@@ -1,0 +1,25 @@
+id: "tcode:F110"
+type: tcode
+technicalName: F110
+title:
+  zh: 执行付款运行
+  en: Run Payment Program
+module: fi
+summary:
+  zh: 按公司代码与付款条件选择到期未清项，生成付款建议与付款凭证。
+  en: Selects due open items by company code and payment terms, generating a payment proposal and documents.
+relations:
+  - target: "table:BSIK"
+    kind: writes
+    note: 付款清销应付未清项
+  - target: "table:BSAK"
+    kind: writes
+    note: 已清项
+  - target: "table:BKPF"
+    kind: writes
+    note: 付款凭证
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

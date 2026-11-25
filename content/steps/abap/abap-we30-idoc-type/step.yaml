@@ -1,0 +1,38 @@
+id: abap-we30-idoc-type
+type: step
+title:
+  zh: 定义 IDoc 类型
+  en: Define IDoc Type
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-interface
+flows:
+  - develop-to-deploy
+tcode: WE30
+summary:
+  zh: 定义或扩展 IDoc 基本类型与消息类型，作为接口数据结构。
+  en: Defines or extends IDoc basic and message types as the interface data structure.
+inputs:
+  - 业务单据
+  - 字段清单
+outputs:
+  - IDoc 类型
+rules:
+  - "字段长度与段结构变更需评估所有伙伴。"
+painPoints:
+  - "直接改基本类型会影响所有消息类型。"
+objects:
+  - "tcode:WE30"
+  - "table:EDIDC"
+  - "table:TADIR"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

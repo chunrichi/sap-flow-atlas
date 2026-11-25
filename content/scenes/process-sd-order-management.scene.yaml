@@ -1,0 +1,108 @@
+id: process-sd-order-management
+type: scene
+level: process
+module: sd
+process: sd-order-management
+title:
+  zh: 销售订单管理
+  en: Sales Order Management
+viewport:
+  x: -80
+  y: -80
+  zoom: 0.75
+groups:
+  - id: g-order
+    title:
+      zh: 订单
+      en: Order
+    position: [-40, -40]
+    size: [600, 420]
+    module: sd
+  - id: g-ship
+    title:
+      zh: 交货
+      en: Delivery
+    position: [600, -40]
+    size: [380, 420]
+    module: sd
+  - id: g-bill
+    title:
+      zh: 开票与收款
+      en: Billing and payment
+    position: [940, -40]
+    size: [600, 500]
+    module: fi
+nodes:
+  - id: n-va01
+    kind: step
+    ref: "step:sd-va01-create-sales-order"
+    position: [0, 160]
+    size: [240, 150]
+    emphasis: primary
+  - id: n-atp
+    kind: step
+    ref: "step:sd-atp-availability-check"
+    position: [320, 40]
+    size: [220, 140]
+  - id: n-vl01n
+    kind: step
+    ref: "step:sd-vl01n-create-delivery"
+    position: [640, 160]
+    size: [240, 150]
+  - id: n-vf01
+    kind: step
+    ref: "step:sd-vf01-create-billing"
+    position: [960, 40]
+    size: [220, 140]
+  - id: n-f28
+    kind: step
+    ref: "step:fi-f28-post-incoming-payment"
+    position: [1280, 160]
+    size: [240, 150]
+  - id: n-portal-o2c
+    kind: portal
+    module: sd
+    position: [1280, 340]
+    size: [220, 96]
+    label:
+      zh: 查看 O2C 全景
+      en: View O2C
+    target:
+      scene: flow-order-to-cash
+      step: sd-vl01n-create-delivery
+edges:
+  - id: e-va01-atp
+    kind: sequence
+    from: n-va01
+    to: n-atp
+    label:
+      zh: 检查可用量
+      en: Check availability
+  - id: e-atp-vl01n
+    kind: sequence
+    from: n-atp
+    to: n-vl01n
+    label:
+      zh: 确认后交货
+      en: Deliver after confirmation
+  - id: e-vl01n-vf01
+    kind: handoff
+    from: n-vl01n
+    to: n-vf01
+    label:
+      zh: 发货后开票
+      en: Bill after goods issue
+  - id: e-vf01-f28
+    kind: handoff
+    from: n-vf01
+    to: n-f28
+    label:
+      zh: 形成应收
+      en: Create receivable
+  - id: e-f28-portal
+    kind: portal
+    from: n-f28
+    to: n-portal-o2c
+    label:
+      zh: 查看全景
+      en: view

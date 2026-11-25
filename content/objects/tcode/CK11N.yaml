@@ -1,0 +1,16 @@
+id: "tcode:CK11N"
+type: tcode
+technicalName: CK11N
+title:
+  zh: 创建成本估算
+  en: Create Cost Estimate
+module: co
+summary:
+  zh: 基于 BOM、工艺路线与作业价格计算标准成本。
+  en: Calculates standard cost from BOM, routing and activity prices.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

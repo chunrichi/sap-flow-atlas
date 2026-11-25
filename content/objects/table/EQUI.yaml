@@ -1,0 +1,16 @@
+id: "table:EQUI"
+type: table
+technicalName: EQUI
+title:
+  zh: 设备主数据
+  en: Equipment master
+module: cs
+summary:
+  zh: 设备主数据，SAP 标准数据表，用于 CS 相关流程。
+  en: Equipment master, a standard SAP table used in CS processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

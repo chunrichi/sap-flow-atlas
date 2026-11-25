@@ -1,0 +1,22 @@
+id: "bapi:BAPI_ACC_DOCUMENT_POST"
+type: bapi
+technicalName: BAPI_ACC_DOCUMENT_POST
+title:
+  zh: 过账会计凭证 BAPI
+  en: Post Accounting Document BAPI
+module: fi
+summary:
+  zh: 通过 BAPI 录入总账或应收应付会计凭证，需显式提交并检查返回消息。
+  en: Posts GL or AP/AR accounting documents; requires explicit commit and return-message handling.
+relations:
+  - target: "table:BKPF"
+    kind: writes
+    note: 写入会计凭证抬头
+  - target: "table:BSEG"
+    kind: writes
+    note: 写入会计凭证行项目
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

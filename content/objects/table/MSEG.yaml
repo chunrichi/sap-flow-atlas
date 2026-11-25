@@ -1,0 +1,17 @@
+id: "table:MSEG"
+type: table
+technicalName: MSEG
+title:
+  zh: 物料凭证行项目
+  en: Material Document Item
+module: mm
+tableClass: transparent
+summary:
+  zh: 保存物料凭证的行项目，是库存变动的核心明细表。
+  en: Stores material document items, the core detail table for inventory changes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

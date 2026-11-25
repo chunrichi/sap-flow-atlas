@@ -1,0 +1,41 @@
+id: qm-qa11-usage-decision
+type: step
+title:
+  zh: 使用决策
+  en: Usage Decision
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-inspection
+flows:
+  - plan-to-produce
+tcode: QA11
+summary:
+  zh: 根据检验结果做接收、拒收或让步接收决策，触发库存状态变更。
+  en: Makes accept, reject or concession decisions and triggers stock status changes.
+inputs:
+  - 检验批
+  - 决策码
+outputs:
+  - 使用决策
+  - 库存状态
+rules:
+  - "使用决策必须与检验结果一致。"
+painPoints:
+  - "拒收未及时冻结库存会被误发。"
+objects:
+  - "tcode:QA11"
+  - "table:QAVE"
+  - "table:QALS"
+snippets:
+  - abap-qm-inspection-lots
+crossModule:
+  - module: mm
+    relation: handoff
+    note: 使用决策会把库存从质检状态转为非限制或冻结。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,22 @@
+id: "tcode:VKM3"
+type: tcode
+technicalName: VKM3
+title:
+  zh: 执行信用检查
+  en: Run Credit Check
+module: sd
+summary:
+  zh: 在订单保存或交货前检查客户信用敞口，超限时冻结订单。
+  en: Checks customer credit exposure before order save or delivery and blocks the order when exceeded.
+relations:
+  - target: "table:VBAK"
+    kind: reads
+    note: 检查销售订单信用状态
+  - target: "table:KNKK"
+    kind: reads
+    note: 信用额度
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

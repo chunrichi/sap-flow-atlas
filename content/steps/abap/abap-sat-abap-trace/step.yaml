@@ -1,0 +1,38 @@
+id: abap-sat-abap-trace
+type: step
+title:
+  zh: ABAP 运行时跟踪
+  en: ABAP Trace
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-performance
+flows:
+  - develop-to-deploy
+tcode: SAT
+summary:
+  zh: 用 SAT 分析程序内部调用、数据库时间与热点方法。
+  en: Uses SAT to analyze internal calls, database time and hotspot methods.
+inputs:
+  - 程序
+  - 执行场景
+outputs:
+  - 运行时分析
+rules:
+  - "在测试客户端执行 trace，避免影响生产。"
+  - "只保留与问题时间窗口一致的数据。"
+painPoints:
+  - "trace 包含大量无关调用，先过滤再分析。"
+objects:
+  - "tcode:SAT"
+  - "table:TADIR"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

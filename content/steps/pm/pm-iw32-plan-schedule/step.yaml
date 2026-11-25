@@ -1,0 +1,40 @@
+id: pm-iw32-plan-schedule
+type: step
+title:
+  zh: 计划与排程
+  en: Plan and Schedule
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-maintenance-order
+flows:
+  - maintain-to-availability
+tcode: IW32
+summary:
+  zh: 维护工序、能力与日期，检查组件可用性并安排执行。
+  en: Maintains operations, capacity and dates, checks component availability and schedules execution.
+inputs:
+  - 维护订单
+  - 工序
+  - 日期
+outputs:
+  - 排程结果
+  - 组件需求
+rules:
+  - "排程前确认组件与能力可用。"
+painPoints:
+  - "未检查备件会导致停机等待。"
+objects:
+  - "tcode:IW32"
+  - "table:AUFK"
+  - "table:AFIH"
+  - "table:RESB"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

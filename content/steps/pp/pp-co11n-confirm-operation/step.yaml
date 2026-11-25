@@ -1,0 +1,43 @@
+id: pp-co11n-confirm-operation
+type: step
+title:
+  zh: 工序确认
+  en: Confirm Operation
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-production-order
+flows:
+  - plan-to-produce
+tcode: CO11N
+summary:
+  zh: 确认工序的产出、工时与废品，回写订单进度与成本。
+  en: Confirms operation yield, time and scrap, updating order progress and cost.
+inputs:
+  - 生产订单
+  - 工序
+  - 产出数量
+  - 工时
+outputs:
+  - 确认凭证
+  - 订单进度
+rules:
+  - "确认数量不能超过订单数量，废品需单独记录。"
+painPoints:
+  - "工时确认错误会扭曲订单成本。"
+objects:
+  - "tcode:CO11N"
+  - "table:AFKO"
+  - "table:AUFM"
+  - "table:COEP"
+snippets: []
+crossModule:
+  - module: co
+    relation: accounting-impact
+    note: 确认工时与产出会归集人工与制造费用。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

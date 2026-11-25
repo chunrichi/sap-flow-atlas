@@ -1,0 +1,16 @@
+id: "tcode:OB52"
+type: tcode
+technicalName: OB52
+title:
+  zh: 打开/关闭期间
+  en: Open or Close Periods
+module: fi
+summary:
+  zh: 按公司代码与科目类型控制会计期间的打开与关闭。
+  en: Controls open and closed accounting periods by company code and account type.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

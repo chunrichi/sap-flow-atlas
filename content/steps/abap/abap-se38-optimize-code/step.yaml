@@ -1,0 +1,41 @@
+id: abap-se38-optimize-code
+type: step
+title:
+  zh: 优化 ABAP 代码
+  en: Optimize ABAP Code
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-performance
+flows:
+  - develop-to-deploy
+tcode: SE38
+summary:
+  zh: 根据 trace 结果优化内表访问、SQL 与循环，并回归测试。
+  en: Optimizes internal tables, SQL and loops based on trace results, followed by regression testing.
+inputs:
+  - 性能报告
+  - 源代码
+outputs:
+  - 优化后的代码
+rules:
+  - "优化前后使用相同数据与场景对比。"
+  - "优先减少数据库访问与内表全表扫描。"
+painPoints:
+  - "只盯单条语句可能忽略整体调用链。"
+objects:
+  - "tcode:SE38"
+  - "table:TADIR"
+  - "table:DD02L"
+  - "table:DD03L"
+snippets:
+  - abap-select-sales-order
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

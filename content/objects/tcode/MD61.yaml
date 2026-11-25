@@ -1,0 +1,16 @@
+id: "tcode:MD61"
+type: tcode
+technicalName: MD61
+title:
+  zh: 维护独立需求
+  en: Maintain Independent Demand
+module: pp
+summary:
+  zh: 按物料、工厂与期间录入预测或客户独立需求。
+  en: Enters forecast or customer independent requirements by material, plant and period.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

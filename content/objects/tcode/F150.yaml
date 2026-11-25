@@ -1,0 +1,16 @@
+id: "tcode:F150"
+type: tcode
+technicalName: F150
+title:
+  zh: 催款
+  en: Dunning
+module: fi
+summary:
+  zh: 按逾期天数与催款级别生成催款函。
+  en: Generates dunning letters based on overdue days and dunning levels.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,62 @@
+id: fi-accounts-payable
+type: process
+title:
+  zh: 应付账款
+  en: Accounts Payable
+module: fi
+flow: procure-to-pay
+stage: invoice
+summary:
+  zh: 从供应商发票、发票校验到付款运行与清账的应付闭环。
+  en: The AP cycle from supplier invoice and verification to payment run and clearing.
+steps:
+  - fi-fb60-vendor-invoice
+  - mm-miro-verify-invoice
+  - fi-f110-payment-run
+  - fi-f53-manual-payment
+  - fi-f44-clear-vendor
+  - fi-fbl1n-vendor-balance
+edges:
+  - from: fi-fb60-vendor-invoice
+    to: mm-miro-verify-invoice
+    kind: sequence
+    label:
+      zh: 发票校验
+      en: 发票校验
+  - from: mm-miro-verify-invoice
+    to: fi-f110-payment-run
+    kind: sequence
+    label:
+      zh: 付款运行
+      en: 付款运行
+  - from: fi-f110-payment-run
+    to: fi-f53-manual-payment
+    kind: sequence
+    label:
+      zh: 手工付款
+      en: 手工付款
+  - from: fi-f53-manual-payment
+    to: fi-f44-clear-vendor
+    kind: sequence
+    label:
+      zh: 清账
+      en: 清账
+  - from: fi-f44-clear-vendor
+    to: fi-fbl1n-vendor-balance
+    kind: sequence
+    label:
+      zh: 供应商余额
+      en: 供应商余额
+roles:
+  - 应付会计
+  - 出纳
+  - 采购员
+outcomes:
+  - 应付凭证
+  - 付款建议
+  - 清账结果
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

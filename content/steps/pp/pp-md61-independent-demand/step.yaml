@@ -1,0 +1,39 @@
+id: pp-md61-independent-demand
+type: step
+title:
+  zh: 维护独立需求
+  en: Maintain Independent Demand
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-mrp
+flows:
+  - plan-to-produce
+tcode: MD61
+summary:
+  zh: 按物料、工厂与期间录入预测或客户独立需求。
+  en: Enters forecast or customer independent requirements by material, plant and period.
+inputs:
+  - 物料
+  - 工厂
+  - 需求日期
+  - 数量
+outputs:
+  - 独立需求
+rules:
+  - "需求版本与期间必须与销售预测一致。"
+painPoints:
+  - "重复维护需求会放大 MRP。"
+objects:
+  - "tcode:MD61"
+  - "table:PLAF"
+  - "table:MARC"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

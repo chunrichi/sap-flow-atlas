@@ -1,0 +1,16 @@
+id: "tcode:FB50"
+type: tcode
+technicalName: FB50
+title:
+  zh: 录入总账凭证
+  en: Post GL Journal Entry
+module: fi
+summary:
+  zh: 手工录入总账凭证，支持借贷平衡、税码与成本对象。
+  en: Posts a GL journal entry with debit/credit balance, tax code and cost objects.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

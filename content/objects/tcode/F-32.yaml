@@ -1,0 +1,16 @@
+id: "tcode:F-32"
+type: tcode
+technicalName: F-32
+title:
+  zh: 客户清账
+  en: Clear Customer Items
+module: fi
+summary:
+  zh: 把收款与发票进行清账，关闭客户未清项。
+  en: Clears receipts against invoices to close customer open items.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

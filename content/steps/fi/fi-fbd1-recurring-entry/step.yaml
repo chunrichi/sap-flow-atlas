@@ -1,0 +1,39 @@
+id: fi-fbd1-recurring-entry
+type: step
+title:
+  zh: 维护周期凭证
+  en: Maintain Recurring Entry
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-general-ledger
+flows:
+  - record-to-report
+tcode: FBD1
+summary:
+  zh: 定义按月重复的总账凭证模板，按计划自动生成。
+  en: Defines monthly recurring journal entry templates and generates them on schedule.
+inputs:
+  - 凭证模板
+  - 金额
+  - 执行日期
+outputs:
+  - 周期凭证计划
+rules:
+  - "首次执行日期与频率必须正确。"
+  - "模板金额变更要评估后续所有期间。"
+painPoints:
+  - "模板金额修改会影响未来所有期间的凭证。"
+objects:
+  - "tcode:FBD1"
+  - "table:BKPF"
+  - "table:BSEG"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,22 @@
+id: "tcode:FD32"
+type: tcode
+technicalName: FD32
+title:
+  zh: 维护信用额度
+  en: Maintain Credit Limit
+module: sd
+summary:
+  zh: 为客户维护信用额度、风险类别与信用控制范围。
+  en: Maintains credit limit, risk category and credit control area for a customer.
+relations:
+  - target: "table:KNKK"
+    kind: writes
+    note: 信用额度与风险类别
+  - target: "table:KNA1"
+    kind: reads
+    note: 客户主数据
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

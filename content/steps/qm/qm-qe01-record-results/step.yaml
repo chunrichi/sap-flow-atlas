@@ -1,0 +1,39 @@
+id: qm-qe01-record-results
+type: step
+title:
+  zh: 录入检验结果
+  en: Record Inspection Results
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-inspection
+flows:
+  - plan-to-produce
+tcode: QE01
+summary:
+  zh: 录入检验特性的实测值、缺陷与检验结论。
+  en: Records measured values, defects and conclusions for inspection characteristics.
+inputs:
+  - 检验批
+  - 实测值
+  - 缺陷代码
+outputs:
+  - 检验结果
+rules:
+  - "检验结果必须覆盖所有必检特性。"
+painPoints:
+  - "漏录特性会导致决策依据不足。"
+objects:
+  - "tcode:QE01"
+  - "table:QAMR"
+  - "table:QAMV"
+  - "table:QALS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

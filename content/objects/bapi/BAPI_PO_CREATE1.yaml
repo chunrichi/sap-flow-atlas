@@ -1,0 +1,20 @@
+id: "bapi:BAPI_PO_CREATE1"
+type: bapi
+technicalName: BAPI_PO_CREATE1
+title:
+  zh: 创建采购订单 BAPI
+  en: Create Purchase Order BAPI
+module: mm
+summary:
+  zh: 通过 BAPI 创建采购订单，支持多行项目与条件。
+  en: Creates a purchase order via BAPI with multiple items and conditions.
+relations:
+  - target: "table:EKKO"
+    kind: writes
+  - target: "table:EKPO"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

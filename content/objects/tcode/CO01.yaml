@@ -1,0 +1,25 @@
+id: "tcode:CO01"
+type: tcode
+technicalName: CO01
+title:
+  zh: 创建生产订单
+  en: Create Production Order
+module: pp
+summary:
+  zh: 按物料、数量与日期创建生产订单，带出 BOM 与工艺路线。
+  en: Creates a production order for material, quantity and date, deriving BOM and routing.
+relations:
+  - target: "table:AUFK"
+    kind: writes
+    note: 订单主数据
+  - target: "table:AFKO"
+    kind: writes
+    note: 生产订单抬头
+  - target: "table:RESB"
+    kind: writes
+    note: 组件预留
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

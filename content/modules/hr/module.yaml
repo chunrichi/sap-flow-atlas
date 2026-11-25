@@ -1,0 +1,23 @@
+id: hr
+type: module
+abbr: HR
+title:
+  zh: 人力资源
+  en: Human Resources
+color: "#E11D48"
+icon: hr
+summary:
+  zh: 组织、人事、时间与薪酬，是人力成本进入财务的起点。
+  en: Organization, personnel, time and payroll, the starting point for labor cost entering finance.
+scope:
+  - 组织管理
+  - 人事
+  - 时间
+  - 薪酬
+keyFlows:
+  - hire-to-retire
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

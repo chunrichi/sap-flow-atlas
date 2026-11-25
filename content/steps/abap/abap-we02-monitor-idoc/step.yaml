@@ -1,0 +1,41 @@
+id: abap-we02-monitor-idoc
+type: step
+title:
+  zh: 监控 IDoc
+  en: Monitor IDoc
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-interface
+flows:
+  - develop-to-deploy
+tcode: WE02
+summary:
+  zh: 按方向、消息类型与状态查询 IDoc，定位处理失败原因。
+  en: Searches IDocs by direction, message type and status to diagnose processing failures.
+inputs:
+  - 消息类型
+  - 状态
+  - 日期
+outputs:
+  - IDoc 状态
+  - 错误明细
+rules:
+  - "按状态码 51/53/64 等分组处理。"
+painPoints:
+  - "失败后未重置状态会阻塞后续消息。"
+objects:
+  - "tcode:WE02"
+  - "table:EDIDC"
+  - "table:EDID4"
+snippets:
+  - abap-idoc-failed-status
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

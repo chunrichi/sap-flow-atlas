@@ -1,0 +1,30 @@
+id: abap-cs-service-orders
+type: snippet
+language: abap
+title:
+  zh: 读取服务订单与设备
+  en: Read Service Orders and Equipment
+objects:
+  - "tcode:IW31"
+  - "table:AUFK"
+  - "table:AFIH"
+  - "table:EQUI"
+file: abap/cs-service-orders.abap
+summary:
+  zh: 按服务订单类型 SM03 读取订单、设备与创建日期，用于服务队列跟踪。
+  en: Reads service orders of type SM03 with equipment and creation date for service queue tracking.
+annotations:
+  - lines: "1-1"
+    note: 按创建日期过滤。
+  - lines: "3-8"
+    note: 连接订单与维护抬头。
+  - lines: "10-13"
+    note: 无服务订单时返回。
+  - lines: "15-18"
+    note: 输出订单、设备与日期。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

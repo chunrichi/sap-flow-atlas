@@ -1,0 +1,48 @@
+id: sd-returns
+type: process
+title:
+  zh: 退货与贷项
+  en: Returns and Credit Memo
+module: sd
+flow: order-to-cash
+stage: fulfillment
+summary:
+  zh: 从退货订单、退货交货与收货，到贷项凭证的完整退货处理。
+  en: The returns flow from return order and return delivery/receipt to credit memo.
+steps:
+  - sd-va01-create-return
+  - sd-vl01n-return-delivery
+  - sd-vl02n-return-goods-receipt
+  - sd-vf01-credit-memo
+edges:
+  - from: sd-va01-create-return
+    to: sd-vl01n-return-delivery
+    kind: sequence
+    label:
+      zh: 创建退货交货
+      en: 创建退货交货
+  - from: sd-vl01n-return-delivery
+    to: sd-vl02n-return-goods-receipt
+    kind: sequence
+    label:
+      zh: 退货收货
+      en: 退货收货
+  - from: sd-vl02n-return-goods-receipt
+    to: sd-vf01-credit-memo
+    kind: sequence
+    label:
+      zh: 贷项凭证
+      en: 贷项凭证
+roles:
+  - 销售内勤
+  - 仓库管理员
+  - 开票员
+outcomes:
+  - 退货订单
+  - 退货交货
+  - 贷项凭证
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

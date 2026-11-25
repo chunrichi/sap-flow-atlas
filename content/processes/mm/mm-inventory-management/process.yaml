@@ -1,0 +1,55 @@
+id: mm-inventory-management
+type: process
+title:
+  zh: 库存管理
+  en: Inventory Management
+module: mm
+flow: procure-to-pay
+stage: receipt
+summary:
+  zh: 库存总览、转移过账、盘点与物料凭证查询，覆盖日常库存操作。
+  en: Stock overview, transfer postings, physical inventory and material document analysis.
+steps:
+  - mm-mbbe-stock-overview
+  - mm-mb1b-transfer-posting
+  - mm-mi01-count-document
+  - mm-mi07-count-difference
+  - mm-mb51-material-documents
+edges:
+  - from: mm-mbbe-stock-overview
+    to: mm-mb1b-transfer-posting
+    kind: sequence
+    label:
+      zh: 转移过账
+      en: 转移过账
+  - from: mm-mb1b-transfer-posting
+    to: mm-mi01-count-document
+    kind: sequence
+    label:
+      zh: 创建盘点凭证
+      en: 创建盘点凭证
+  - from: mm-mi01-count-document
+    to: mm-mi07-count-difference
+    kind: sequence
+    label:
+      zh: 差异过账
+      en: 差异过账
+  - from: mm-mi07-count-difference
+    to: mm-mb51-material-documents
+    kind: sequence
+    label:
+      zh: 查询物料凭证
+      en: 查询物料凭证
+roles:
+  - 仓库管理员
+  - 库存会计
+  - 物料计划员
+outcomes:
+  - 库存报表
+  - 物料凭证
+  - 盘点差异
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

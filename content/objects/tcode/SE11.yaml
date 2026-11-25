@@ -1,0 +1,20 @@
+id: "tcode:SE11"
+type: tcode
+technicalName: SE11
+title:
+  zh: ABAP 数据字典
+  en: ABAP Dictionary
+module: abap
+summary:
+  zh: 维护表、结构、数据元素、域与搜索帮助。
+  en: Maintains tables, structures, data elements, domains and search helps.
+relations:
+  - target: "table:VBAK"
+    kind: related
+  - target: "table:VBAP"
+    kind: related
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

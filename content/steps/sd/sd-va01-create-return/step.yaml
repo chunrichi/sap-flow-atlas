@@ -1,0 +1,41 @@
+id: sd-va01-create-return
+type: step
+title:
+  zh: 创建退货订单
+  en: Create Return Order
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-returns
+flows:
+  - order-to-cash
+tcode: VA01
+summary:
+  zh: 使用退货订单类型创建客户退货，记录退货原因与数量。
+  en: Creates a customer return with a return order type, reason and quantity.
+inputs:
+  - 客户
+  - 物料
+  - 退货数量
+  - 退货原因
+outputs:
+  - 退货订单号
+rules:
+  - "退货订单类型与原因码必须匹配。"
+painPoints:
+  - "退货原因缺失会影响质量与财务分析。"
+objects:
+  - "tcode:VA01"
+  - "table:VBAK"
+  - "table:VBAP"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 退货订单本身不产生财务凭证，后续收货与贷项才影响库存和应收。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

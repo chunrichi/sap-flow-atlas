@@ -1,0 +1,37 @@
+id: abap-st12-runtime-analysis
+type: step
+title:
+  zh: 运行时分析
+  en: Runtime Analysis
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-performance
+flows:
+  - develop-to-deploy
+tcode: ST12
+summary:
+  zh: 组合 SQL trace 与 ABAP trace，定位端到端性能瓶颈。
+  en: Combines SQL and ABAP traces to locate end-to-end performance bottlenecks.
+inputs:
+  - 事务/程序
+  - 测试数据
+outputs:
+  - 性能报告
+rules:
+  - "组合 SQL 与 ABAP trace 定位端到端瓶颈。"
+painPoints:
+  - "只测单用户可能低估并发问题。"
+objects:
+  - "tcode:ST12"
+  - "table:TADIR"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

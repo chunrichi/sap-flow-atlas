@@ -1,0 +1,18 @@
+id: "bapi:BAPI_INCINV_CREATE"
+type: bapi
+technicalName: BAPI_INCINV_CREATE
+title:
+  zh: 发票校验录入 BAPI
+  en: Create Incoming Invoice BAPI
+module: mm
+summary:
+  zh: 通过 BAPI 录入供应商发票，并执行采购订单匹配。
+  en: Creates a supplier invoice via BAPI and performs purchase order matching.
+relations:
+  - target: "table:RBKP"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

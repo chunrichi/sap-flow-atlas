@@ -1,0 +1,16 @@
+id: "tcode:QE01"
+type: tcode
+technicalName: QE01
+title:
+  zh: 录入检验结果
+  en: Record Inspection Results
+module: qm
+summary:
+  zh: 录入检验特性的实测值、缺陷与检验结论。
+  en: Records measured values, defects and conclusions for inspection characteristics.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

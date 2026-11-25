@@ -1,0 +1,14 @@
+id: service-billing-to-ar
+type: crosslink
+from: "step:cs-vf01-service-billing"
+to: "step:fi-f28-post-incoming-payment"
+relation: accounting-impact
+label:
+  zh: 服务开票形成应收，收款闭环
+  en: Service billing creates AR, payment closes the loop
+note: 服务订单确认后开票，客户付款通过 F-28 录入并清账。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

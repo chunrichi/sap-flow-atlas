@@ -1,0 +1,48 @@
+id: pp-mrp
+type: process
+title:
+  zh: MRP 物料需求计划
+  en: MRP
+module: pp
+flow: plan-to-produce
+stage: plan
+summary:
+  zh: 维护独立需求、运行 MRP、分析 MRP 清单并处理异常消息。
+  en: Maintains independent demand, runs MRP, analyzes the MRP list and handles exceptions.
+steps:
+  - pp-md61-independent-demand
+  - pp-md01-mrp-run
+  - pp-md04-mrp-list
+  - pp-md06-exception-messages
+edges:
+  - from: pp-md61-independent-demand
+    to: pp-md01-mrp-run
+    kind: sequence
+    label:
+      zh: 运行 MRP
+      en: 运行 MRP
+  - from: pp-md01-mrp-run
+    to: pp-md04-mrp-list
+    kind: sequence
+    label:
+      zh: 查看清单
+      en: 查看清单
+  - from: pp-md04-mrp-list
+    to: pp-md06-exception-messages
+    kind: sequence
+    label:
+      zh: 异常处理
+      en: 异常处理
+roles:
+  - 物料计划员
+  - 生产计划员
+  - 采购员
+outcomes:
+  - 独立需求
+  - 计划订单
+  - 采购申请
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

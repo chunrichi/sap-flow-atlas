@@ -1,0 +1,56 @@
+id: order-to-cash
+type: flow
+abbr: O2C
+title:
+  zh: 订单到收款
+  en: Order to Cash
+summary:
+  zh: 从客户下单、定价、信用检查、履约到开票收款的跨模块主干流程。
+  en: From customer order, pricing and credit check through fulfillment and billing to payment.
+modules:
+  - sd
+  - mm
+  - ewm
+  - fi
+stages:
+  - id: order
+    title:
+      zh: 订单
+      en: Order
+    primaryModule: sd
+  - id: pricing
+    title:
+      zh: 定价
+      en: Pricing
+    primaryModule: sd
+  - id: fulfillment
+    title:
+      zh: 履约
+      en: Fulfillment
+    primaryModule: sd
+  - id: shipping
+    title:
+      zh: 发货
+      en: Shipping
+    primaryModule: ewm
+  - id: billing
+    title:
+      zh: 开票
+      en: Billing
+    primaryModule: sd
+  - id: payment
+    title:
+      zh: 收款
+      en: Payment
+    primaryModule: fi
+processes:
+  - sd-order-management
+  - sd-pricing
+  - sd-credit-management
+  - sd-returns
+  - ewm-outbound
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

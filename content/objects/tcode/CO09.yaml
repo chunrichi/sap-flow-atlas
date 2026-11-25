@@ -1,0 +1,18 @@
+id: "tcode:CO09"
+type: tcode
+technicalName: CO09
+title:
+  zh: 可用性概览
+  en: Availability Overview
+module: sd
+summary:
+  zh: 按物料、工厂与日期查看可用量与需求占用。
+  en: Displays available quantity and assigned demand by material, plant and date.
+relations:
+  - target: "table:VBEP"
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

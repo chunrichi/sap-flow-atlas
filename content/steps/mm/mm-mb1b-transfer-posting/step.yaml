@@ -1,0 +1,41 @@
+id: mm-mb1b-transfer-posting
+type: step
+title:
+  zh: 库存转移过账
+  en: Transfer Posting
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-inventory-management
+flows:
+  - procure-to-pay
+tcode: MB1B
+summary:
+  zh: 通过移动类型在工厂、库存地点或库存状态之间转移库存。
+  en: Transfers stock between plants, storage locations or stock types using movement types.
+inputs:
+  - 物料
+  - 移动类型
+  - 源/目标库存地点
+  - 数量
+outputs:
+  - 物料凭证
+  - 库存变化
+rules:
+  - 移动类型决定库存方向与财务科目。
+painPoints:
+  - 移动类型选错会造成库存地点与科目错位。
+objects:
+  - "tcode:MB1B"
+  - "table:MSEG"
+  - "table:MARD"
+  - "table:MKPF"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

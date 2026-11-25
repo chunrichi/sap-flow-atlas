@@ -1,0 +1,41 @@
+id: hr-pa30-maintain-master-data
+type: step
+title:
+  zh: 维护人事主数据
+  en: Maintain HR Master Data
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-onboarding
+flows:
+  - hire-to-retire
+tcode: PA30
+summary:
+  zh: 维护组织分配、个人数据、薪酬范围与银行信息。
+  en: Maintains organizational assignment, personal data, pay scale and bank details.
+inputs:
+  - 员工编号
+  - 主数据字段
+outputs:
+  - 更新后的人事主数据
+rules:
+  - "主数据变更必须保留生效日期与原因。"
+  - "组织分配变更要同步成本中心。"
+painPoints:
+  - "直接改历史记录会破坏薪酬追溯。"
+objects:
+  - "tcode:PA30"
+  - "table:PA0001"
+  - "table:PA0002"
+  - "table:PA0008"
+  - "table:T510"
+snippets:
+  - abap-hr-org-assignment
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

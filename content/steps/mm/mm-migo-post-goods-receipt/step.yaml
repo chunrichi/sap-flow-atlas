@@ -1,0 +1,59 @@
+id: mm-migo-post-goods-receipt
+type: step
+title:
+  zh: 收货过账
+  en: Post Goods Receipt
+primaryModule: mm
+modules:
+  - mm
+  - sd
+  - pp
+  - fi
+processes:
+  - mm-procurement
+flows:
+  - procure-to-pay
+tcode: MIGO
+summary:
+  zh: 按采购订单或生产订单收货，生成物料凭证并更新库存。
+  en: Posts goods receipt against a purchase or production order, creating a material document and updating stock.
+inputs:
+  - 采购订单
+  - 收货数量
+  - 库存地点
+  - 批次
+outputs:
+  - 物料凭证
+  - 库存数量
+  - 会计凭证
+rules:
+  - 收货数量不能超过订单容差。
+  - 移动类型决定库存与财务科目。
+painPoints:
+  - 收货数量与发票数量不一致会导致发票校验阻塞。
+  - 移动类型选错会造成库存与科目错位。
+objects:
+  - "tcode:MIGO"
+  - "table:MSEG"
+  - "bapi:BAPI_GOODSMVT_CREATE"
+  - "enhancement:MB_DOCUMENT_BADI"
+  - "cds:I_MaterialDocumentItem"
+  - "odata:API_MATERIAL_DOCUMENT_SRV"
+snippets:
+  []
+crossModule:
+  - module: sd
+    relation: handoff
+    note: 销售发货过账也使用物料凭证，但移动类型不同。
+  - module: pp
+    relation: handoff
+    note: 生产订单收货同样通过物料凭证更新库存。
+  - module: fi
+    relation: accounting-impact
+    note: 收货过账生成库存与 GR/IR 凭证。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-material-document
+updatedAt: 2026-11-24

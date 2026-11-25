@@ -1,0 +1,17 @@
+id: "table:RBKP"
+type: table
+technicalName: RBKP
+title:
+  zh: 发票校验抬头
+  en: Invoice Verification Header
+module: mm
+tableClass: transparent
+summary:
+  zh: 保存发票校验的抬头数据，如供应商、金额、税额。
+  en: Stores invoice verification header data such as supplier, amount and tax.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

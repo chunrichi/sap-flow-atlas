@@ -1,0 +1,40 @@
+id: sd-fd32-maintain-credit-limit
+type: step
+title:
+  zh: 维护信用额度
+  en: Maintain Credit Limit
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-credit-management
+flows:
+  - order-to-cash
+tcode: FD32
+summary:
+  zh: 为客户维护信用额度、风险类别与信用控制范围。
+  en: Maintains credit limit, risk category and credit control area for a customer.
+inputs:
+  - 客户
+  - 信用控制范围
+  - 额度
+  - 币种
+outputs:
+  - 信用额度
+  - 风险类别
+rules:
+  - 额度按信用控制范围生效，跨公司代码时要确认范围。
+painPoints:
+  - 额度维护在错误的风险类别下，检查不会按预期触发。
+objects:
+  - "tcode:FD32"
+  - "table:KNKK"
+  - "table:KNA1"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

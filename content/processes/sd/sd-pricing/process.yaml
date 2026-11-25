@@ -1,0 +1,48 @@
+id: sd-pricing
+type: process
+title:
+  zh: 定价与条件技术
+  en: Pricing and Condition Technique
+module: sd
+flow: order-to-cash
+stage: pricing
+summary:
+  zh: 维护价格、折扣、附加费等条件记录，并在销售订单中确定定价过程与条件。
+  en: Maintains price, discount and surcharge condition records and determines pricing in sales orders.
+steps:
+  - sd-vk11-maintain-condition
+  - sd-vk12-change-condition
+  - sd-vk13-display-condition
+  - sd-va03-analyze-pricing
+edges:
+  - from: sd-vk11-maintain-condition
+    to: sd-vk12-change-condition
+    kind: sequence
+    label:
+      zh: 修改条件
+      en: 修改条件
+  - from: sd-vk12-change-condition
+    to: sd-vk13-display-condition
+    kind: sequence
+    label:
+      zh: 查看条件
+      en: 查看条件
+  - from: sd-vk13-display-condition
+    to: sd-va03-analyze-pricing
+    kind: sequence
+    label:
+      zh: 订单定价分析
+      en: 订单定价分析
+roles:
+  - 定价专员
+  - 销售内勤
+  - 财务
+outcomes:
+  - 条件记录
+  - 定价结果
+  - 价格差异分析
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

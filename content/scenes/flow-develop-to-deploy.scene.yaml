@@ -1,0 +1,70 @@
+id: flow-develop-to-deploy
+type: scene
+level: flow
+flow: develop-to-deploy
+title:
+  zh: 开发到上线
+  en: Develop to Deploy
+viewport:
+  x: 0
+  y: 0
+  zoom: 0.85
+groups:
+  - id: g-development
+    title:
+      zh: 三条并行开发线路
+      en: Three parallel development tracks
+    position: [20, 210]
+    size: [1080, 300]
+    module: abap
+nodes:
+  - id: n-flow
+    kind: flow
+    ref: "flow:develop-to-deploy"
+    position: [40, 20]
+    size: [300, 140]
+    emphasis: primary
+  - id: n-performance
+    kind: process
+    ref: "process:abap-performance"
+    position: [60, 270]
+    size: [300, 180]
+  - id: n-enhancement
+    kind: process
+    ref: "process:abap-enhancement"
+    position: [400, 270]
+    size: [300, 180]
+  - id: n-interface
+    kind: process
+    ref: "process:abap-interface"
+    position: [740, 270]
+    size: [300, 180]
+  - id: n-note
+    kind: note
+    position: [400, 520]
+    size: [640, 90]
+    label:
+      zh: 三条线路共享传输与测试规范；先定位问题，再选择增强、接口或性能工具。
+      en: All tracks share transport and test discipline; diagnose first, then choose enhancement, interface or performance tooling.
+edges:
+  - id: e-flow-performance
+    kind: flow
+    from: n-flow
+    to: n-performance
+    label:
+      zh: 分析
+      en: analyze
+  - id: e-flow-enhancement
+    kind: flow
+    from: n-flow
+    to: n-enhancement
+    label:
+      zh: 实现
+      en: implement
+  - id: e-flow-interface
+    kind: flow
+    from: n-flow
+    to: n-interface
+    label:
+      zh: 集成
+      en: integrate

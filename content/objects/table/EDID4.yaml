@@ -1,0 +1,16 @@
+id: "table:EDID4"
+type: table
+technicalName: EDID4
+title:
+  zh: IDoc 数据记录
+  en: IDoc data record
+module: abap
+summary:
+  zh: IDoc 数据记录，SAP 标准数据表，用于 ABAP 相关流程。
+  en: IDoc data record, a standard SAP table used in ABAP processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

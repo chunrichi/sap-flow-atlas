@@ -1,0 +1,16 @@
+id: "tcode:PA40"
+type: tcode
+technicalName: PA40
+title:
+  zh: 执行员工入职
+  en: Hire Employee
+module: hr
+summary:
+  zh: 执行入职动作，创建员工编号与人事事件。
+  en: Executes the hiring action, creating employee number and personnel event.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

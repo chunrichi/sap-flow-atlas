@@ -1,0 +1,16 @@
+id: "table:AUFK"
+type: table
+technicalName: AUFK
+title:
+  zh: 订单主数据
+  en: Order master
+module: co
+summary:
+  zh: 订单主数据，SAP 标准数据表，用于 CO 相关流程。
+  en: Order master, a standard SAP table used in CO processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

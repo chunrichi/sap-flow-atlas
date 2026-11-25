@@ -1,0 +1,16 @@
+id: "tcode:MD06"
+type: tcode
+technicalName: MD06
+title:
+  zh: 处理 MRP 异常
+  en: Handle MRP Exceptions
+module: pp
+summary:
+  zh: 集中处理 MRP 例外消息，如提前、延迟、取消或重新计划。
+  en: Processes MRP exception messages such as reschedule in/out, cancel or new order.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

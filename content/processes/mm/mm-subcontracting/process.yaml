@@ -1,0 +1,48 @@
+id: mm-subcontracting
+type: process
+title:
+  zh: 委外加工
+  en: Subcontracting
+module: mm
+flow: procure-to-pay
+stage: purchasing
+summary:
+  zh: 向供应商提供组件，委外加工后收回成品，并完成组件消耗与发票校验。
+  en: Provides components to a supplier, receives finished goods and consumes components.
+steps:
+  - mm-me21n-subcontract-order
+  - mm-migo-provide-components
+  - mm-migo-subcontract-receipt
+  - mm-mb51-component-consumption
+edges:
+  - from: mm-me21n-subcontract-order
+    to: mm-migo-provide-components
+    kind: sequence
+    label:
+      zh: 提供组件
+      en: 提供组件
+  - from: mm-migo-provide-components
+    to: mm-migo-subcontract-receipt
+    kind: sequence
+    label:
+      zh: 委外收货
+      en: 委外收货
+  - from: mm-migo-subcontract-receipt
+    to: mm-mb51-component-consumption
+    kind: sequence
+    label:
+      zh: 组件消耗查询
+      en: 组件消耗查询
+roles:
+  - 采购员
+  - 仓库管理员
+  - 成本会计
+outcomes:
+  - 委外采购订单
+  - 组件发货
+  - 成品收货
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

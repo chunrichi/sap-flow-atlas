@@ -1,0 +1,42 @@
+id: sd-vk11-maintain-condition
+type: step
+title:
+  zh: 创建价格条件
+  en: Create Condition Record
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-pricing
+flows:
+  - order-to-cash
+tcode: VK11
+summary:
+  zh: 为价格、折扣或附加费创建条件记录，定价时由条件技术自动读取。
+  en: Creates a condition record for price, discount or surcharge read by condition technique during pricing.
+inputs:
+  - 条件类型
+  - 客户/物料
+  - 有效期
+  - 金额或比率
+outputs:
+  - 条件记录号
+  - 条件表记录
+rules:
+  - 条件记录必须覆盖正确的销售组织、分销渠道与产品组。
+  - 同一键值的有效期不能重叠。
+painPoints:
+  - 条件表选错会导致订单取不到价格。
+objects:
+  - "tcode:VK11"
+  - "table:PRCD_ELEMENTS"
+  - "table:KONH"
+  - "table:KONP"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

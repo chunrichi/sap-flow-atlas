@@ -1,0 +1,16 @@
+id: "table:CKIS"
+type: table
+technicalName: CKIS
+title:
+  zh: 成本估算行项目
+  en: Costing items
+module: co
+summary:
+  zh: 成本估算行项目，SAP 标准数据表，用于 CO 相关流程。
+  en: Costing items, a standard SAP table used in CO processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

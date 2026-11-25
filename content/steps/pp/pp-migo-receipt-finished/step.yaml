@@ -1,0 +1,42 @@
+id: pp-migo-receipt-finished
+type: step
+title:
+  zh: 成品收货
+  en: Receive Finished Goods
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-production-order
+flows:
+  - plan-to-produce
+tcode: MIGO
+summary:
+  zh: 对生产订单收货，成品入库并按标准成本冲减订单成本。
+  en: Receives finished goods against the production order, updating stock and reducing order cost at standard.
+inputs:
+  - 生产订单
+  - 收货数量
+  - 库存地点
+outputs:
+  - 物料凭证
+  - 成品库存
+rules:
+  - "收货数量与确认产出匹配。"
+painPoints:
+  - "未收货就结算会留下 WIP。"
+objects:
+  - "tcode:MIGO"
+  - "table:MSEG"
+  - "table:AUFM"
+  - "table:AFPO"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 成品收货按标准成本入库，差异留待期末结算。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

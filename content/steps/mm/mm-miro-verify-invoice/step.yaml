@@ -1,0 +1,48 @@
+id: mm-miro-verify-invoice
+type: step
+title:
+  zh: 发票校验
+  en: Verify Invoice
+primaryModule: mm
+modules:
+  - mm
+  - fi
+processes:
+  - mm-procurement
+  - fi-accounts-payable
+flows:
+  - procure-to-pay
+tcode: MIRO
+summary:
+  zh: 把供应商发票与采购订单、收货凭证做三方匹配，形成应付。
+  en: Three-way matches a supplier invoice with purchase order and goods receipt, creating a payable.
+inputs:
+  - 采购订单
+  - 收货凭证
+  - 发票金额
+  - 税额
+outputs:
+  - 发票凭证
+  - 应付账款
+  - 差异记录
+rules:
+  - 数量与金额必须在容差范围内。
+  - 差异会阻塞付款，需要人工处理。
+painPoints:
+  - 收货与发票的数量差异会导致发票被冻结。
+  - 税率或价格单位错误会造成校验失败。
+objects:
+  - "tcode:MIRO"
+  - "table:RBKP"
+  - "bapi:BAPI_INCINV_CREATE"
+snippets:
+  []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 发票校验生成应付账款与 GR/IR 清账。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

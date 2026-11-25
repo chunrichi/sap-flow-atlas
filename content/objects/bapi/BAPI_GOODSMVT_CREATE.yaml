@@ -1,0 +1,18 @@
+id: "bapi:BAPI_GOODSMVT_CREATE"
+type: bapi
+technicalName: BAPI_GOODSMVT_CREATE
+title:
+  zh: 物料凭证过账 BAPI
+  en: Post Goods Movement BAPI
+module: mm
+summary:
+  zh: 通过 BAPI 过账物料移动，支持收货、发货与转移。
+  en: Posts goods movements via BAPI, including receipts, issues and transfers.
+relations:
+  - target: "table:MSEG"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

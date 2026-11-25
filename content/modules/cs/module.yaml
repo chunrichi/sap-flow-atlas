@@ -1,0 +1,22 @@
+id: cs
+type: module
+abbr: CS
+title:
+  zh: 客户服务
+  en: Customer Service
+color: "#14B8A6"
+icon: cs
+summary:
+  zh: 服务订单、服务合同与保修，连接售后的服务交付与成本归集。
+  en: Service orders, service contracts and warranties connecting after-sales delivery with cost collection.
+scope:
+  - 服务订单
+  - 服务合同
+  - 保修
+keyFlows:
+  - service-to-cash
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

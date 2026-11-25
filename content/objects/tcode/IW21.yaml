@@ -1,0 +1,16 @@
+id: "tcode:IW21"
+type: tcode
+technicalName: IW21
+title:
+  zh: 创建维护通知
+  en: Create Maintenance Notification
+module: pm
+summary:
+  zh: 记录设备故障、点检异常或维护请求，确定优先级。
+  en: Records equipment breakdown, inspection issue or maintenance request and priority.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

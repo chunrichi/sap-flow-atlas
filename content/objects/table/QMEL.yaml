@@ -1,0 +1,16 @@
+id: "table:QMEL"
+type: table
+technicalName: QMEL
+title:
+  zh: 质量/维护通知
+  en: Quality / maintenance notification
+module: pm
+summary:
+  zh: 质量/维护通知，SAP 标准数据表，用于 PM 相关流程。
+  en: Quality / maintenance notification, a standard SAP table used in PM processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

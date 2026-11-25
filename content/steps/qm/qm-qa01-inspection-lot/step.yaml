@@ -1,0 +1,40 @@
+id: qm-qa01-inspection-lot
+type: step
+title:
+  zh: 创建检验批
+  en: Create Inspection Lot
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-inspection
+flows:
+  - plan-to-produce
+tcode: QA01
+summary:
+  zh: 按收货、生产或出货触发检验批，带出检验计划。
+  en: Creates an inspection lot from receipt, production or delivery, deriving the inspection plan.
+inputs:
+  - 物料
+  - 批次
+  - 检验来源
+outputs:
+  - 检验批号
+rules:
+  - "检验批来源决定检验计划与库存状态。"
+painPoints:
+  - "收货未触发检验批会导致漏检。"
+objects:
+  - "tcode:QA01"
+  - "table:QALS"
+  - "table:QAVE"
+snippets: []
+crossModule:
+  - module: mm
+    relation: handoff
+    note: 采购收货或生产收货会自动触发检验批。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

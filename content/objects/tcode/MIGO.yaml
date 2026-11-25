@@ -1,0 +1,25 @@
+id: "tcode:MIGO"
+type: tcode
+technicalName: MIGO
+title:
+  zh: 物料移动
+  en: Goods Movement
+module: mm
+package: MB
+summary:
+  zh: 物料移动的通用事务码，常用于采购收货与发货。
+  en: General goods movement transaction, commonly used for goods receipt and issue.
+relations:
+  - target: "table:MSEG"
+    kind: writes
+  - target: "enhancement:MB_DOCUMENT_BADI"
+    kind: triggers
+  - target: "bapi:BAPI_GOODSMVT_CREATE"
+    kind: related
+    note: BAPI 提供编程过账入口。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-material-document
+updatedAt: 2026-11-24

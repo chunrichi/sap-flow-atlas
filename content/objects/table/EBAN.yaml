@@ -1,0 +1,17 @@
+id: "table:EBAN"
+type: table
+technicalName: EBAN
+title:
+  zh: 采购申请
+  en: Purchase Requisition
+module: mm
+tableClass: transparent
+summary:
+  zh: 保存采购申请的行项目，如物料、数量、需求日期。
+  en: Stores purchase requisition items such as material, quantity and requirement date.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

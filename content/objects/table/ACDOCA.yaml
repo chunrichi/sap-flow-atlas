@@ -1,0 +1,17 @@
+id: "table:ACDOCA"
+type: table
+technicalName: ACDOCA
+title:
+  zh: 通用日记账行项目
+  en: Universal Journal Line Item
+module: fi
+tableClass: transparent
+summary:
+  zh: S/4HANA 的通用日记账行项目表，是 FI 与 CO 的统一数据源。
+  en: The universal journal line item table in S/4HANA, the shared data source for FI and CO.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

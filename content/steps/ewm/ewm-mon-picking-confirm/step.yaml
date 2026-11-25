@@ -1,0 +1,37 @@
+id: ewm-mon-picking-confirm
+type: step
+title:
+  zh: 拣配确认
+  en: Confirm Picking
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-outbound
+flows:
+  - order-to-cash
+tcode: /SCWM/MON
+summary:
+  zh: 在仓库监控器中确认拣配任务，记录实际拣配数量与差异。
+  en: Confirms picking tasks in the warehouse monitor and records actual quantities and differences.
+inputs:
+  - 仓库任务
+  - 实际数量
+outputs:
+  - 确认记录
+  - 库存状态
+rules:
+  - "拣配差异必须在发货过账前处理。"
+painPoints:
+  - 拣配差异需要在发货过账前处理。
+objects:
+  - "tcode:/SCWM/MON"
+  - "table:LIKP"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

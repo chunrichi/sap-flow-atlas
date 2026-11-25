@@ -1,0 +1,16 @@
+id: "tcode:ST05"
+type: tcode
+technicalName: ST05
+title:
+  zh: SQL 跟踪
+  en: SQL Trace
+module: abap
+summary:
+  zh: 开启 SQL trace 捕获数据库访问，分析慢 SQL、全表扫描与索引使用。
+  en: Captures database access with SQL trace to analyze slow SQL, full scans and index usage.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

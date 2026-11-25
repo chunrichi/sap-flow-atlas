@@ -1,0 +1,41 @@
+id: hire-to-retire
+type: flow
+abbr: H2R
+title:
+  zh: 入职到离职
+  en: Hire to Retire
+summary:
+  zh: 从组织岗位、入职、主数据、时间管理到薪酬与人力成本。
+  en: From organization and hiring through master data, time and labor cost.
+modules:
+  - hr
+  - fi
+  - co
+stages:
+  - id: organize
+    title:
+      zh: 组织
+      en: Organize
+    primaryModule: hr
+  - id: hire
+    title:
+      zh: 入职
+      en: Hire
+    primaryModule: hr
+  - id: administer
+    title:
+      zh: 人事
+      en: Administer
+    primaryModule: hr
+  - id: cost
+    title:
+      zh: 成本
+      en: Cost
+    primaryModule: co
+processes:
+  - hr-onboarding
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

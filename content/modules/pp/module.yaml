@@ -1,0 +1,23 @@
+id: pp
+type: module
+abbr: PP
+title:
+  zh: 生产计划
+  en: Production Planning
+color: "#EC4899"
+icon: pp
+summary:
+  zh: BOM、工艺路线、MRP 与生产订单，把需求转成可执行的生产计划。
+  en: BOM, routings, MRP and production orders, turning demand into an executable production plan.
+scope:
+  - BOM
+  - 工艺路线
+  - MRP
+  - 生产订单
+keyFlows:
+  - plan-to-produce
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

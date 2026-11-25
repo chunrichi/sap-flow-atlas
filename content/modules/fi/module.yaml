@@ -1,0 +1,27 @@
+id: fi
+type: module
+abbr: FI
+title:
+  zh: 财务会计
+  en: Financial Accounting
+color: "#F59E0B"
+icon: fi
+summary:
+  zh: 总账、应收、应付、资产与银行，记录每一笔业务带来的财务后果。
+  en: General ledger, accounts receivable and payable, assets and banking, recording the financial consequence of every transaction.
+scope:
+  - 总账
+  - 应收
+  - 应付
+  - 资产
+  - 银行
+keyFlows:
+  - record-to-report
+  - order-to-cash
+  - procure-to-pay
+  - acquire-to-retire
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

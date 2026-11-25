@@ -1,0 +1,16 @@
+id: "table:PLPO"
+type: table
+technicalName: PLPO
+title:
+  zh: 检验计划工序
+  en: Inspection plan operation
+module: qm
+summary:
+  zh: 检验计划工序，SAP 标准数据表，用于 QM 相关流程。
+  en: Inspection plan operation, a standard SAP table used in QM processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

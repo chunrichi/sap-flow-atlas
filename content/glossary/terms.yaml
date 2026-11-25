@@ -1,0 +1,110 @@
+# SAP 常用缩写与术语。
+terms:
+  - id: term-order-to-cash
+    term:
+      zh: 订单到收款
+      en: Order to Cash
+    definition:
+      zh: 从客户下单、履约、开票到收款的端到端流程。
+      en: The end-to-end process from customer order through fulfillment and billing to payment.
+    module: sd
+    related:
+      - "flow:order-to-cash"
+    sources:
+      - sap-help-s4hana
+  - id: term-procure-to-pay
+    term:
+      zh: 采购到付款
+      en: Procure to Pay
+    definition:
+      zh: 从采购需求、下单、收货、发票校验到付款的端到端流程。
+      en: The end-to-end process from purchase demand and ordering to receipt, invoice verification and payment.
+    module: mm
+    related:
+      - "flow:procure-to-pay"
+    sources:
+      - sap-help-s4hana
+  - id: term-record-to-report
+    term:
+      zh: 记账到报告
+      en: Record to Report
+    definition:
+      zh: 从日常记账到期末关账和财务报告的核算闭环。
+      en: The accounting close from daily posting to period-end closing and financial reporting.
+    module: fi
+    related:
+      - "flow:record-to-report"
+    sources:
+      - sap-help-s4hana
+  - id: term-atp
+    term:
+      zh: 可用性检查
+      en: Available-to-Promise
+    definition:
+      zh: 根据库存、计划收货和已分配需求，计算可承诺的数量与日期。
+      en: Calculates promiseable quantity and date from stock, planned receipts and assigned demand.
+    module: sd
+    related:
+      - "step:sd-atp-availability-check"
+    sources:
+      - sap-help-s4hana
+  - id: term-gi
+    term:
+      zh: 发货过账
+      en: Goods Issue
+    definition:
+      zh: 确认货物离开库存地点，减少库存并触发成本与应收相关凭证。
+      en: Confirms goods leaving the storage location, reducing stock and triggering cost and receivable postings.
+    module: sd
+    related:
+      - "step:sd-vl01n-create-delivery"
+    sources:
+      - sap-help-s4hana
+  - id: term-bapi
+    term:
+      zh: 业务 API
+      en: Business API
+    definition:
+      zh: SAP 提供的标准业务接口，用于在 ABAP 或外部系统中创建、修改业务对象。
+      en: A standard SAP business interface used to create or change business objects from ABAP or external systems.
+    module: abap
+    related:
+      - "bapi:BAPI_SALESORDER_CREATEFROMDAT2"
+    sources:
+      - sap-help-s4hana
+  - id: term-cds
+    term:
+      zh: 核心数据服务视图
+      en: Core Data Services View
+    definition:
+      zh: 在数据库层定义的语义化视图，供分析、API 与 Fiori 应用复用。
+      en: A semantic view defined at the database layer, reused by analytics, APIs and Fiori apps.
+    module: abap
+    related:
+      - "cds:I_SalesOrder"
+    sources:
+      - sap-help-s4hana
+  - id: term-tcode
+    term:
+      zh: 事务码
+      en: Transaction Code
+    definition:
+      zh: 在 SAP GUI 中直接调用某个事务的短代码，例如 VA01。
+      en: A short code that launches a transaction in SAP GUI, for example VA01.
+    module: abap
+    related:
+      - "tcode:VA01"
+    sources:
+      - sap-help-s4hana
+  - id: term-gr-ir
+    term:
+      zh: 收货与发票暂估
+      en: Goods Receipt / Invoice Receipt
+    definition:
+      zh: 采购收货与发票校验之间形成的暂估科目，用于匹配实物与发票。
+      en: The accrual account between goods receipt and invoice verification, used to match goods and invoices.
+    module: mm
+    related:
+      - "step:mm-miro-verify-invoice"
+    sources:
+      - sap-help-s4hana

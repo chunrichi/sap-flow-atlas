@@ -1,0 +1,66 @@
+# 所有内容的来源库。内容文件只引用 id，不重复写 URL。
+# 规则见 docs/06-content-guide.md 第 9 节。
+sources:
+  - id: sap-help-s4hana
+    title: SAP Help Portal — SAP S/4HANA
+    url: https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE
+    publisher: SAP SE
+    kind: official-doc
+    language: en
+    version: S/4HANA 2023
+    accessedAt: 2026-11-24
+    note: 模块与流程的官方文档入口；具体页面在复核时补深链。
+  - id: api-sales-order
+    title: Sales Order (A2X) — API_SALES_ORDER_SRV
+    url: https://api.sap.com/api/API_SALES_ORDER_SRV/overview
+    publisher: SAP SE
+    kind: official-api
+    language: en
+    version: S/4HANA 2023
+    accessedAt: 2026-11-24
+    note: OData 服务与实体字段参考。
+  - id: api-purchase-order
+    title: Purchase Order (A2X) — API_PURCHASEORDER_PROCESS_SRV
+    url: https://api.sap.com/api/API_PURCHASEORDER_PROCESS_SRV/overview
+    publisher: SAP SE
+    kind: official-api
+    language: en
+    version: S/4HANA 2023
+    accessedAt: 2026-11-24
+    note: OData 服务与实体字段参考。
+  - id: api-material-document
+    title: Material Document (A2X) — API_MATERIAL_DOCUMENT_SRV
+    url: https://api.sap.com/api/API_MATERIAL_DOCUMENT_SRV/overview
+    publisher: SAP SE
+    kind: official-api
+    language: en
+    version: S/4HANA 2023
+    accessedAt: 2026-11-24
+    note: 物料凭证 API 参考。
+  - id: api-billing-document
+    title: Billing Document (A2X) — API_BILLING_DOCUMENT_SRV
+    url: https://api.sap.com/api/API_BILLING_DOCUMENT_SRV/overview
+    publisher: SAP SE
+    kind: official-api
+    language: en
+    version: S/4HANA 2023
+    accessedAt: 2026-11-24
+    note: 开票凭证 API 参考。
+  - id: fiori-apps-library
+    title: SAP Fiori Apps Reference Library
+    url: https://www.sap.com/fiori-apps-library
+    publisher: SAP SE
+    kind: official-library
+    language: en
+    version: current
+    accessedAt: 2026-11-24
+    note: 应用与业务流程、角色的映射。
+  - id: abap-cheat-sheets
+    title: SAP-samples — ABAP Cheat Sheets
+    url: https://github.com/SAP-samples/abap-cheat-sheets
+    publisher: SAP SE
+    kind: official-library
+    language: en
+    version: main
+    accessedAt: 2026-11-24
+    note: ABAP 语法与示例写法参考。

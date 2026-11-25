@@ -1,0 +1,16 @@
+id: "tcode:SEGW"
+type: tcode
+technicalName: SEGW
+title:
+  zh: 实现 OData 服务
+  en: Implement OData Service
+module: abap
+summary:
+  zh: 在 SEGW 中定义实体、关联与数据提供者，生成并发布 OData 服务。
+  en: Defines entities, associations and data providers in SEGW, generates and publishes the OData service.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

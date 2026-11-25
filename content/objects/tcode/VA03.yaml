@@ -1,0 +1,16 @@
+id: "tcode:VA03"
+type: tcode
+technicalName: VA03
+title:
+  zh: 分析订单定价
+  en: Analyze Order Pricing
+module: sd
+summary:
+  zh: 在销售订单中查看定价过程、条件基值与每一步的取价结果。
+  en: Analyzes the pricing procedure, condition basis and each pricing step in a sales order.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

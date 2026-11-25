@@ -1,0 +1,39 @@
+id: ewm-prdo-warehouse-task
+type: step
+title:
+  zh: 创建仓库任务
+  en: Create Warehouse Task
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-outbound
+flows:
+  - order-to-cash
+tcode: /SCWM/PRDO
+summary:
+  zh: 把出库交货转为仓库任务，确定拣配区域与数量。
+  en: Converts the outbound delivery into warehouse tasks with pick area and quantity.
+inputs:
+  - 出库交货
+  - 仓库号
+  - 拣配策略
+outputs:
+  - 仓库任务
+rules:
+  - "仓库任务按拣配策略与库存类型生成。"
+painPoints:
+  - "库存不足往往在创建任务时才暴露。"
+objects:
+  - "tcode:/SCWM/PRDO"
+  - "table:LIKP"
+snippets: []
+crossModule:
+  - module: sd
+    relation: handoff
+    note: 仓库任务执行的是 SD 交货的实物拣配。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

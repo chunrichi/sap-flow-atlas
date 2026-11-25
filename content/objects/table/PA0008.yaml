@@ -1,0 +1,16 @@
+id: "table:PA0008"
+type: table
+technicalName: PA0008
+title:
+  zh: 薪酬数据
+  en: Pay scale data
+module: hr
+summary:
+  zh: 薪酬数据，SAP 标准数据表，用于 HR 相关流程。
+  en: Pay scale data, a standard SAP table used in HR processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

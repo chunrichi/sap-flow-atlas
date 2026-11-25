@@ -1,0 +1,25 @@
+id: mm
+type: module
+abbr: MM
+title:
+  zh: 物料管理
+  en: Materials Management
+color: "#10B981"
+icon: mm
+summary:
+  zh: 采购、库存、物料主数据与发票校验，是供应链和财务的共同上游。
+  en: Purchasing, inventory, material master and invoice verification, the shared upstream of supply chain and finance.
+scope:
+  - 采购申请
+  - 采购订单
+  - 收货
+  - 库存
+  - 发票校验
+keyFlows:
+  - procure-to-pay
+  - plan-to-produce
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

@@ -1,0 +1,19 @@
+id: "odata:API_MATERIAL_DOCUMENT_SRV"
+type: odata
+technicalName: API_MATERIAL_DOCUMENT_SRV
+title:
+  zh: 物料凭证 OData 服务
+  en: Material Document OData Service
+module: mm
+serviceVersion: v2
+summary:
+  zh: 物料凭证的 OData V2 服务，提供物料凭证的查询接口。
+  en: OData V2 service providing read access to material documents.
+relations:
+  - target: "cds:I_MaterialDocumentItem"
+    kind: basedOn
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - api-material-document
+updatedAt: 2026-11-24

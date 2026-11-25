@@ -1,0 +1,40 @@
+id: hr-su01-create-user
+type: step
+title:
+  zh: 创建系统用户
+  en: Create System User
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-onboarding
+flows:
+  - hire-to-retire
+tcode: SU01
+summary:
+  zh: 为员工创建 SAP 用户并分配角色与权限。
+  en: Creates an SAP user for the employee and assigns roles and authorizations.
+inputs:
+  - 员工编号
+  - 用户 ID
+  - 角色
+outputs:
+  - 系统用户
+rules:
+  - "按最小权限分配角色，离职及时锁定。"
+painPoints:
+  - "复制用户会继承不必要的权限。"
+objects:
+  - "tcode:SU01"
+  - "table:USR02"
+  - "table:PA0001"
+snippets: []
+crossModule:
+  - module: abap
+    relation: handoff
+    note: 用户与权限由 Basis/ABAP 侧维护。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

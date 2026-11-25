@@ -1,0 +1,55 @@
+id: sd-va01-create-sales-order
+type: step
+title:
+  zh: 创建销售订单
+  en: Create Sales Order
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-order-management
+flows:
+  - order-to-cash
+tcode: VA01
+summary:
+  zh: 销售订单的入口，确定客户、物料、数量、价格与交货日期。
+  en: Entry point for a sales order covering customer, material, quantity, pricing and delivery date.
+inputs:
+  - 客户
+  - 物料
+  - 数量
+  - 价格条件
+  - 交货日期
+  - 销售组织
+outputs:
+  - 销售订单号
+  - 订单状态
+  - 定价结果
+rules:
+  - 订单必须引用有效的客户与物料主数据。
+  - 定价由条件技术决定，手工覆盖会留痕。
+  - 保存时触发可用性检查与信用检查。
+painPoints:
+  - 客户主数据不完整会导致订单无法保存。
+  - 信用检查失败时订单进入冻结状态。
+objects:
+  - "tcode:VA01"
+  - "table:VBAK"
+  - "table:VBAP"
+  - "bapi:BAPI_SALESORDER_CREATEFROMDAT2"
+  - "enhancement:MV45AFZZ"
+  - "cds:I_SalesOrder"
+  - "odata:API_SALES_ORDER_SRV"
+snippets:
+  - abap-bapi-create-sales-order
+  - abap-user-exit-save-document
+crossModule:
+  - module: mm
+    relation: master-data
+    note: 可用性检查读取 MM 的库存与计划需求。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-sales-order
+updatedAt: 2026-11-24

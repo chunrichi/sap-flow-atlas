@@ -1,0 +1,40 @@
+id: acquire-to-retire
+type: flow
+abbr: A2R
+title:
+  zh: 购置到退役
+  en: Acquire to Retire
+summary:
+  zh: 固定资产从申请、购置、折旧到报废的完整生命周期。
+  en: The full asset lifecycle from request and acquisition through depreciation to retirement.
+modules:
+  - fi
+  - mm
+stages:
+  - id: request
+    title:
+      zh: 申请
+      en: Request
+    primaryModule: fi
+  - id: acquire
+    title:
+      zh: 购置
+      en: Acquire
+    primaryModule: fi
+  - id: depreciate
+    title:
+      zh: 折旧
+      en: Depreciate
+    primaryModule: fi
+  - id: retire
+    title:
+      zh: 退役
+      en: Retire
+    primaryModule: fi
+processes:
+  - fi-asset-accounting
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

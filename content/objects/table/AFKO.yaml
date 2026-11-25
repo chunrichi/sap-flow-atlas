@@ -1,0 +1,16 @@
+id: "table:AFKO"
+type: table
+technicalName: AFKO
+title:
+  zh: 生产订单抬头
+  en: Production order header
+module: pp
+summary:
+  zh: 生产订单抬头，SAP 标准数据表，用于 PP 相关流程。
+  en: Production order header, a standard SAP table used in PP processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

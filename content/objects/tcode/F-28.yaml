@@ -1,0 +1,23 @@
+id: "tcode:F-28"
+type: tcode
+technicalName: F-28
+title:
+  zh: 录入收款
+  en: Post Incoming Payment
+module: fi
+package: FB
+summary:
+  zh: 录入客户收款并清销应收账款。
+  en: Records a customer incoming payment and clears the receivable.
+relations:
+  - target: "table:BKPF"
+    kind: writes
+  - target: "table:BSEG"
+    kind: writes
+  - target: "table:ACDOCA"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

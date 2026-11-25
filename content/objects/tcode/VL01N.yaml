@@ -1,0 +1,19 @@
+id: "tcode:VL01N"
+type: tcode
+technicalName: VL01N
+title:
+  zh: 创建交货单
+  en: Create Delivery
+module: sd
+package: LE
+summary:
+  zh: 根据销售订单创建交货单，确定发货与拣配数据。
+  en: Creates an outbound delivery from a sales order, determining shipping and picking data.
+relations:
+  - target: "table:LIKP"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

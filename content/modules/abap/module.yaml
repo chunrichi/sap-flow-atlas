@@ -1,0 +1,24 @@
+id: abap
+type: module
+abbr: ABAP
+title:
+  zh: 开发与 Basis
+  en: ABAP and Basis
+color: "#64748B"
+icon: abap
+summary:
+  zh: ABAP 开发、增强、接口、权限与传输，支撑上面所有模块的技术底座。
+  en: ABAP development, enhancements, interfaces, authorizations and transports, the technical foundation under every module.
+scope:
+  - ABAP
+  - 增强
+  - 接口
+  - 权限
+  - 传输
+keyFlows:
+  - develop-to-deploy
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

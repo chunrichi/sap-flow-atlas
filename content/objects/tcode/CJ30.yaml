@@ -1,0 +1,16 @@
+id: "tcode:CJ30"
+type: tcode
+technicalName: CJ30
+title:
+  zh: 编制项目预算
+  en: Maintain Project Budget
+module: ps
+summary:
+  zh: 为 WBS 元素分配年度预算，启用可用性控制。
+  en: Assigns annual budget to WBS elements and enables availability control.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

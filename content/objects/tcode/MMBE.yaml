@@ -1,0 +1,16 @@
+id: "tcode:MMBE"
+type: tcode
+technicalName: MMBE
+title:
+  zh: 查看库存总览
+  en: Stock Overview
+module: mm
+summary:
+  zh: 按物料、工厂与库存地点查看非限制、质检和冻结库存。
+  en: Displays unrestricted, quality and blocked stock by material, plant and storage location.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,40 @@
+id: fi-as01-create-asset
+type: step
+title:
+  zh: 创建资产主数据
+  en: Create Asset Master
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-asset-accounting
+flows:
+  - acquire-to-retire
+tcode: AS01
+summary:
+  zh: 创建资产卡片，维护资产类别、成本中心与折旧范围。
+  en: Creates an asset master record with asset class, cost center and depreciation areas.
+inputs:
+  - 资产类别
+  - 公司代码
+  - 成本中心
+  - 资本化日期
+outputs:
+  - 资产卡片
+rules:
+  - 资产类别决定折旧码与总账科目。
+painPoints:
+  - 资产类别选错会导致折旧年限与科目错误。
+objects:
+  - "tcode:AS01"
+  - "table:ANLA"
+  - "table:ANLB"
+  - "table:ANLC"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

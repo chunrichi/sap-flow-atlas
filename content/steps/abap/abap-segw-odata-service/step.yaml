@@ -1,0 +1,40 @@
+id: abap-segw-odata-service
+type: step
+title:
+  zh: 实现 OData 服务
+  en: Implement OData Service
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-interface
+flows:
+  - develop-to-deploy
+tcode: SEGW
+summary:
+  zh: 在 SEGW 中定义实体、关联与数据提供者，生成并发布 OData 服务。
+  en: Defines entities, associations and data providers in SEGW, generates and publishes the OData service.
+inputs:
+  - 实体模型
+  - 数据源
+outputs:
+  - OData 服务
+rules:
+  - "实体与关联遵循 OData 命名规范。"
+  - "实现类必须处理分页、过滤与权限。"
+painPoints:
+  - "模型变更后未重新生成运行时对象会导致 404。"
+objects:
+  - "tcode:SEGW"
+  - "table:TADIR"
+snippets: []
+crossModule:
+  - module: mm
+    relation: handoff
+    note: 接口对象常以采购/销售标准 API 为参考。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,14 @@
+id: sd-delivery-to-ewm-task
+type: crosslink
+from: "step:sd-vl01n-create-delivery"
+to: "step:ewm-vl01n-outbound-delivery"
+relation: handoff
+label:
+  zh: 交货需求进入 EWM
+  en: Delivery demand enters EWM
+note: SD 交货单是 EWM 出库仓库任务的业务来源；EWM 执行实物拣配后回写发货状态。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

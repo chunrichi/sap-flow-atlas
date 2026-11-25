@@ -1,0 +1,16 @@
+id: "tcode:F.01"
+type: tcode
+technicalName: F.01
+title:
+  zh: 财务报表
+  en: Financial Statements
+module: fi
+summary:
+  zh: 生成资产负债表、损益表等法定财务报表。
+  en: Generates balance sheet, profit and loss and other statutory financial statements.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

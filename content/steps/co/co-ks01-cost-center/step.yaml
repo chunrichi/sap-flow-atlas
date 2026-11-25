@@ -1,0 +1,39 @@
+id: co-ks01-cost-center
+type: step
+title:
+  zh: 创建成本中心
+  en: Create Cost Center
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-cost-center
+flows:
+  - record-to-report
+tcode: KS01
+summary:
+  zh: 创建成本中心并分配负责部门、成本中心类别与有效期。
+  en: Creates a cost center with responsible department, category and validity.
+inputs:
+  - 控制范围
+  - 成本中心
+  - 负责人
+  - 有效期
+outputs:
+  - 成本中心主数据
+rules:
+  - 成本中心必须挂在有效的控制范围与利润中心下。
+painPoints:
+  - "成本中心有效期与组织变更不同步会导致过账失败。"
+objects:
+  - "tcode:KS01"
+  - "table:CSKS"
+  - "table:CSKT"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

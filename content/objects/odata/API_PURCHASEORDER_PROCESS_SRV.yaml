@@ -1,0 +1,19 @@
+id: "odata:API_PURCHASEORDER_PROCESS_SRV"
+type: odata
+technicalName: API_PURCHASEORDER_PROCESS_SRV
+title:
+  zh: 采购订单 OData 服务
+  en: Purchase Order OData Service
+module: mm
+serviceVersion: v2
+summary:
+  zh: 采购订单的 OData V2 服务，覆盖创建与处理后操作。
+  en: OData V2 service for purchase orders covering creation and follow-up actions.
+relations:
+  - target: "cds:I_PurchaseOrder"
+    kind: basedOn
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - api-purchase-order
+updatedAt: 2026-11-24

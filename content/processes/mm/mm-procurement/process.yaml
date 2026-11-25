@@ -1,0 +1,50 @@
+id: mm-procurement
+type: process
+title:
+  zh: MM 采购
+  en: Procurement
+module: mm
+flow: procure-to-pay
+stage: purchasing
+summary:
+  zh: 从采购申请、采购订单到收货和发票校验的 MM 核心流程。
+  en: The core MM flow from purchase requisition and purchase order to goods receipt and invoice verification.
+steps:
+  - mm-me51n-create-purchase-requisition
+  - mm-me21n-create-purchase-order
+  - mm-migo-post-goods-receipt
+  - mm-miro-verify-invoice
+edges:
+  - from: mm-me51n-create-purchase-requisition
+    to: mm-me21n-create-purchase-order
+    kind: sequence
+    label:
+      zh: 转为采购订单
+      en: Convert to PO
+  - from: mm-me21n-create-purchase-order
+    to: mm-migo-post-goods-receipt
+    kind: sequence
+    label:
+      zh: 收货
+      en: Goods receipt
+  - from: mm-migo-post-goods-receipt
+    to: mm-miro-verify-invoice
+    kind: sequence
+    label:
+      zh: 发票校验
+      en: Invoice verification
+roles:
+  - 采购员
+  - 仓库管理员
+  - 应付会计
+outcomes:
+  - 采购申请
+  - 采购订单
+  - 物料凭证
+  - 发票凭证
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-purchase-order
+updatedAt: 2026-11-24

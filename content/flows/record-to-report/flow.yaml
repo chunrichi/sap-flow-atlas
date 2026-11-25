@@ -1,0 +1,41 @@
+id: record-to-report
+type: flow
+abbr: R2R
+title:
+  zh: 记账到报告
+  en: Record to Report
+summary:
+  zh: 从日常记账、关账到财务报告与管理会计分析的核算闭环。
+  en: From daily posting and period close to financial reporting and management analysis.
+modules:
+  - fi
+  - co
+stages:
+  - id: posting
+    title:
+      zh: 记账
+      en: Posting
+    primaryModule: fi
+  - id: closing
+    title:
+      zh: 关账
+      en: Closing
+    primaryModule: fi
+  - id: reporting
+    title:
+      zh: 报告
+      en: Reporting
+    primaryModule: co
+  - id: analysis
+    title:
+      zh: 分析
+      en: Analysis
+    primaryModule: co
+processes:
+  - fi-general-ledger
+  - co-cost-center
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

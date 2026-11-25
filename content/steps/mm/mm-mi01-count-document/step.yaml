@@ -1,0 +1,39 @@
+id: mm-mi01-count-document
+type: step
+title:
+  zh: 创建盘点凭证
+  en: Create Physical Inventory Document
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-inventory-management
+flows:
+  - procure-to-pay
+tcode: MI01
+summary:
+  zh: 为指定物料与库存地点创建盘点凭证，冻结账面数量供盘点。
+  en: Creates a physical inventory document for a material and storage location, freezing the book quantity.
+inputs:
+  - 物料
+  - 工厂
+  - 库存地点
+  - 盘点日期
+outputs:
+  - 盘点凭证号
+rules:
+  - "盘点期间冻结相关库存移动。"
+painPoints:
+  - "盘点凭证未冻结会造成账实差异。"
+objects:
+  - "tcode:MI01"
+  - "table:MARD"
+  - "table:MSEG"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

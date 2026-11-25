@@ -1,0 +1,16 @@
+id: "tcode:CJ88"
+type: tcode
+technicalName: CJ88
+title:
+  zh: 项目结算
+  en: Settle Project
+module: ps
+summary:
+  zh: 把项目实际成本结算到资产、成本中心或获利段。
+  en: Settles project actual cost to asset, cost center or profitability segment.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

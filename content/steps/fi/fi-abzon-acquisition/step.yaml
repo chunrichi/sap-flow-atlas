@@ -1,0 +1,44 @@
+id: fi-abzon-acquisition
+type: step
+title:
+  zh: 资产购置过账
+  en: Post Asset Acquisition
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-asset-accounting
+flows:
+  - acquire-to-retire
+tcode: ABZON
+summary:
+  zh: 录入资产购置，更新资产价值与折旧基础。
+  en: Posts an asset acquisition, updating asset values and depreciation basis.
+inputs:
+  - 资产卡片
+  - 购置金额
+  - 供应商
+  - 资本化日期
+outputs:
+  - 购置凭证
+  - 资产价值
+rules:
+  - "资本化日期决定折旧开始期间。"
+  - "购置金额必须与供应商发票/采购订单一致。"
+painPoints:
+  - "购置日期与资本化日期混淆会少提或多提折旧。"
+objects:
+  - "tcode:ABZON"
+  - "table:ANLA"
+  - "table:ANLC"
+  - "table:ACDOCA"
+snippets: []
+crossModule:
+  - module: mm
+    relation: accounting-impact
+    note: 资产购置可能来自采购订单收货或直接费用资本化。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

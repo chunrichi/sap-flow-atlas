@@ -1,0 +1,38 @@
+id: pp-ko88-settle-order
+type: step
+title:
+  zh: 生产订单结算
+  en: Settle Production Order
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-production-order
+flows:
+  - plan-to-produce
+tcode: KO88
+summary:
+  zh: 把生产订单的实际成本与差异结算到库存或差异科目。
+  en: Settles production order actual cost and variance to inventory or variance accounts.
+inputs:
+  - 生产订单
+  - 期间
+outputs:
+  - 结算凭证
+  - 订单余额
+rules:
+  - 订单必须已完工或达到可结算状态。
+painPoints:
+  - "订单未收货/未确认就结算会产生异常余额。"
+objects:
+  - "tcode:KO88"
+  - "table:AUFK"
+  - "table:COEP"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

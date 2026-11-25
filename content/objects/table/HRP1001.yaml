@@ -1,0 +1,16 @@
+id: "table:HRP1001"
+type: table
+technicalName: HRP1001
+title:
+  zh: 组织关系
+  en: HR relationships
+module: hr
+summary:
+  zh: 组织关系，SAP 标准数据表，用于 HR 相关流程。
+  en: HR relationships, a standard SAP table used in HR processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,40 @@
+id: sd-vl02n-return-goods-receipt
+type: step
+title:
+  zh: 退货收货
+  en: Post Return Goods Receipt
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-returns
+flows:
+  - order-to-cash
+tcode: VL02N
+summary:
+  zh: 对退货交货执行收货过账，增加库存并生成物料凭证。
+  en: Posts goods receipt for the return delivery, increasing stock and creating a material document.
+inputs:
+  - 退货交货单
+  - 收货数量
+outputs:
+  - 物料凭证
+  - 库存增加
+rules:
+  - "收货数量不能超过退货订单数量。"
+painPoints:
+  - "未质检直接入库会掩盖质量问题。"
+objects:
+  - "tcode:VL02N"
+  - "table:LIKP"
+  - "table:MSEG"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 退货收货会生成库存与冲减 COGS 的财务凭证。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

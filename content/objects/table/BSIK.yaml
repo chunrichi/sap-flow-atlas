@@ -1,0 +1,16 @@
+id: "table:BSIK"
+type: table
+technicalName: BSIK
+title:
+  zh: 应付未清项
+  en: AP open items
+module: fi
+summary:
+  zh: 应付未清项，SAP 标准数据表，用于 FI 相关流程。
+  en: AP open items, a standard SAP table used in FI processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

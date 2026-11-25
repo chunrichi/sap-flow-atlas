@@ -1,0 +1,30 @@
+id: abap-user-exit-save-document
+type: snippet
+language: abap
+title:
+  zh: 在保存用户出口中写审计日志
+  en: Write an audit log in the save user exit
+objects:
+  - "enhancement:MV45AFZZ"
+  - "tcode:VA01"
+file: abap/user-exit-save-document.abap
+summary:
+  zh: 在 MV45AFZZ 的 USEREXIT_SAVE_DOCUMENT 中，为当天新建的销售订单写入自定义审计表。
+  en: Writes a custom audit record for sales orders created today from USEREXIT_SAVE_DOCUMENT in MV45AFZZ.
+annotations:
+  - lines: 2
+    note: 自定义审计表结构，字段按实际系统调整。
+  - lines: 4-7
+    note: 仅处理销售订单 C，报价与合同不进入审计。
+  - lines: 9-12
+    note: 只记录当天、当前用户新建的订单，避免修改时重复写入。
+  - lines: 14-18
+    note: 填充审计字段；sy-tcode 记录入口事务码。
+  - lines: 20-23
+    note: 写入失败直接抛错，让保存事务回滚。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-24

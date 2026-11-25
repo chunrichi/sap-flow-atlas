@@ -1,0 +1,113 @@
+id: universe
+type: scene
+level: universe
+title:
+  zh: SAP 系统全景
+  en: SAP System Overview
+viewport:
+  x: -40
+  y: -20
+  zoom: 0.6
+groups: []
+nodes:
+  - id: n-sd
+    kind: module
+    ref: "module:sd"
+    position: [80, 80]
+    size: [280, 150]
+  - id: n-mm
+    kind: module
+    ref: "module:mm"
+    position: [440, 80]
+    size: [280, 150]
+  - id: n-fi
+    kind: module
+    ref: "module:fi"
+    position: [800, 80]
+    size: [280, 150]
+  - id: n-co
+    kind: module
+    ref: "module:co"
+    position: [1160, 80]
+    size: [280, 150]
+  - id: n-pp
+    kind: module
+    ref: "module:pp"
+    position: [80, 320]
+    size: [280, 150]
+  - id: n-qm
+    kind: module
+    ref: "module:qm"
+    position: [440, 320]
+    size: [280, 150]
+  - id: n-pm
+    kind: module
+    ref: "module:pm"
+    position: [800, 320]
+    size: [280, 150]
+  - id: n-ewm
+    kind: module
+    ref: "module:ewm"
+    position: [1160, 320]
+    size: [280, 150]
+  - id: n-ps
+    kind: module
+    ref: "module:ps"
+    position: [80, 560]
+    size: [280, 150]
+  - id: n-cs
+    kind: module
+    ref: "module:cs"
+    position: [440, 560]
+    size: [280, 150]
+  - id: n-hr
+    kind: module
+    ref: "module:hr"
+    position: [800, 560]
+    size: [280, 150]
+  - id: n-abap
+    kind: module
+    ref: "module:abap"
+    position: [1160, 560]
+    size: [280, 150]
+edges:
+  - id: e-o2c-1
+    kind: flow
+    ref: "flow:order-to-cash"
+    from: n-sd
+    to: n-ewm
+    label:
+      zh: O2C
+      en: O2C
+  - id: e-o2c-2
+    kind: flow
+    ref: "flow:order-to-cash"
+    from: n-ewm
+    to: n-fi
+    label:
+      zh: 开票与收款
+      en: Billing and payment
+  - id: e-p2p-1
+    kind: flow
+    ref: "flow:procure-to-pay"
+    from: n-mm
+    to: n-fi
+    label:
+      zh: P2P
+      en: P2P
+  - id: e-r2r-1
+    kind: flow
+    ref: "flow:record-to-report"
+    from: n-fi
+    to: n-co
+    label:
+      zh: R2R
+      en: R2R
+  - id: e-p2pro-1
+    kind: flow
+    ref: "flow:plan-to-produce"
+    from: n-pp
+    to: n-qm
+    label:
+      zh: 计划到生产
+      en: Plan to produce

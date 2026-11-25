@@ -1,0 +1,22 @@
+id: "tcode:MIRO"
+type: tcode
+technicalName: MIRO
+title:
+  zh: 发票校验
+  en: Enter Invoice
+module: mm
+package: MR
+summary:
+  zh: 录入供应商发票并与采购订单、收货做匹配。
+  en: Enters a supplier invoice and matches it against purchase order and goods receipt.
+relations:
+  - target: "table:RBKP"
+    kind: writes
+  - target: "bapi:BAPI_INCINV_CREATE"
+    kind: related
+    note: BAPI 提供编程录入入口。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

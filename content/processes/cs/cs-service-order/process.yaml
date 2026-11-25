@@ -1,0 +1,48 @@
+id: cs-service-order
+type: process
+title:
+  zh: 服务订单
+  en: Service Order
+module: cs
+flow: service-to-cash
+stage: execute
+summary:
+  zh: 服务订单、服务确认、服务开票与服务成本分析。
+  en: Service order, confirmation, billing and service cost analysis.
+steps:
+  - cs-iw31-service-order
+  - cs-iw41-service-confirmation
+  - cs-vf01-service-billing
+  - cs-ksb1-service-cost
+edges:
+  - from: cs-iw31-service-order
+    to: cs-iw41-service-confirmation
+    kind: sequence
+    label:
+      zh: 服务确认
+      en: 服务确认
+  - from: cs-iw41-service-confirmation
+    to: cs-vf01-service-billing
+    kind: sequence
+    label:
+      zh: 服务开票
+      en: 服务开票
+  - from: cs-vf01-service-billing
+    to: cs-ksb1-service-cost
+    kind: sequence
+    label:
+      zh: 成本分析
+      en: 成本分析
+roles:
+  - 服务工程师
+  - 服务经理
+  - 应收会计
+outcomes:
+  - 服务订单
+  - 服务确认
+  - 服务发票
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

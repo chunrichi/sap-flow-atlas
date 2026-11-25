@@ -1,0 +1,38 @@
+id: abap-se01-transport
+type: step
+title:
+  zh: 创建传输请求
+  en: Create Transport Request
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-enhancement
+flows:
+  - develop-to-deploy
+tcode: SE01
+summary:
+  zh: 把开发对象放入传输请求，描述变更并释放任务。
+  en: Adds development objects to a transport request, documents changes and releases the task.
+inputs:
+  - 开发对象
+  - 传输描述
+outputs:
+  - 传输请求
+rules:
+  - 传输请求必须包含完整依赖对象。
+painPoints:
+  - "跨系统传输缺少依赖对象会导致导入失败。"
+objects:
+  - "tcode:SE01"
+  - "table:E070"
+  - "table:E071"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,50 @@
+id: procure-to-pay
+type: flow
+abbr: P2P
+title:
+  zh: 采购到付款
+  en: Procure to Pay
+summary:
+  zh: 从需求、采购、收货、发票校验到供应商付款的跨模块主干流程。
+  en: From demand and purchasing through receipt and invoice verification to supplier payment.
+modules:
+  - mm
+  - ewm
+  - qm
+  - fi
+stages:
+  - id: demand
+    title:
+      zh: 需求
+      en: Demand
+    primaryModule: mm
+  - id: purchasing
+    title:
+      zh: 采购
+      en: Purchasing
+    primaryModule: mm
+  - id: receipt
+    title:
+      zh: 收货
+      en: Goods Receipt
+    primaryModule: mm
+  - id: invoice
+    title:
+      zh: 发票校验
+      en: Invoice Verification
+    primaryModule: fi
+  - id: payment
+    title:
+      zh: 付款
+      en: Payment
+    primaryModule: fi
+processes:
+  - mm-procurement
+  - mm-inventory-management
+  - mm-subcontracting
+  - fi-accounts-payable
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

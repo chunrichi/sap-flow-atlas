@@ -1,0 +1,17 @@
+id: "table:BKPF"
+type: table
+technicalName: BKPF
+title:
+  zh: 会计凭证抬头
+  en: Accounting Document Header
+module: fi
+tableClass: transparent
+summary:
+  zh: 保存所有会计凭证的抬头，如凭证日期、公司代码。
+  en: Stores the header of every accounting document, including posting date and company code.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

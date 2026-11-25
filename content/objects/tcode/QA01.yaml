@@ -1,0 +1,16 @@
+id: "tcode:QA01"
+type: tcode
+technicalName: QA01
+title:
+  zh: 创建检验批
+  en: Create Inspection Lot
+module: qm
+summary:
+  zh: 按收货、生产或出货触发检验批，带出检验计划。
+  en: Creates an inspection lot from receipt, production or delivery, deriving the inspection plan.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

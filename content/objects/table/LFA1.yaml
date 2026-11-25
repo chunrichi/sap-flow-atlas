@@ -1,0 +1,16 @@
+id: "table:LFA1"
+type: table
+technicalName: LFA1
+title:
+  zh: 供应商主数据
+  en: Supplier master
+module: fi
+summary:
+  zh: 供应商主数据，SAP 标准数据表，用于 FI 相关流程。
+  en: Supplier master, a standard SAP table used in FI processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,46 @@
+id: fi-fb70-customer-invoice
+type: step
+title:
+  zh: 录入客户发票
+  en: Post Customer Invoice
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-accounts-receivable
+flows:
+  - order-to-cash
+tcode: FB70
+summary:
+  zh: 手工录入客户发票，生成应收凭证与收入。
+  en: Posts a customer invoice manually, creating a receivable and revenue.
+inputs:
+  - 客户
+  - 发票金额
+  - 税额
+  - 收入科目
+outputs:
+  - 应收凭证
+  - 未清项
+rules:
+  - "收入科目与税码必须匹配客户/物料。"
+  - "手工开票要确认是否绕过 SD 开票。"
+painPoints:
+  - "手工开票绕过 SD 会造成收入与库存不匹配。"
+objects:
+  - "tcode:FB70"
+  - "table:BKPF"
+  - "table:BSEG"
+  - "table:BSID"
+  - "table:KNA1"
+  - "cds:I_JournalEntry"
+snippets: []
+crossModule:
+  - module: sd
+    relation: accounting-impact
+    note: 标准 O2C 通常由 SD 开票自动生成应收，手工 FB70 用于特殊场景。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,39 @@
+id: abap-smod-find-enhancement
+type: step
+title:
+  zh: 查找增强点
+  en: Find Enhancement
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-enhancement
+flows:
+  - develop-to-deploy
+tcode: SMOD
+summary:
+  zh: 在 SMOD 中查找标准程序的用户出口，确认增强点与所属包。
+  en: Finds user exits in SMOD for standard programs and confirms enhancement points and packages.
+inputs:
+  - 业务事务
+  - 标准程序
+  - 增强需求
+outputs:
+  - 增强点清单
+rules:
+  - 优先使用 BAdI/增强框架，user-exit 仅在必要时使用。
+painPoints:
+  - 同名出口可能存在于多个程序，必须核对调用位置。
+objects:
+  - "tcode:SMOD"
+  - "table:MODSAP"
+  - "table:TADIR"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

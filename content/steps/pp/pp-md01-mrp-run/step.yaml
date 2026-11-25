@@ -1,0 +1,41 @@
+id: pp-md01-mrp-run
+type: step
+title:
+  zh: 运行 MRP
+  en: Run MRP
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-mrp
+flows:
+  - plan-to-produce
+tcode: MD01
+summary:
+  zh: 按工厂与范围运行物料需求计划，生成计划订单、采购申请与例外消息。
+  en: Runs material requirements planning by plant and scope, generating planned orders, requisitions and exceptions.
+inputs:
+  - 工厂
+  - 物料范围
+  - 处理代码
+outputs:
+  - 计划订单
+  - 采购申请
+  - 例外消息
+rules:
+  - MRP 运行前必须确认库存、在途与需求数据准确。
+painPoints:
+  - 需求日期或库存错误会放大计划波动。
+objects:
+  - "tcode:MD01"
+  - "table:PLAF"
+  - "table:RESB"
+  - "table:MARC"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

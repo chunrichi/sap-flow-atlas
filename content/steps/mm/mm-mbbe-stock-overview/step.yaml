@@ -1,0 +1,40 @@
+id: mm-mbbe-stock-overview
+type: step
+title:
+  zh: 查看库存总览
+  en: Stock Overview
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-inventory-management
+flows:
+  - procure-to-pay
+tcode: MMBE
+summary:
+  zh: 按物料、工厂与库存地点查看非限制、质检和冻结库存。
+  en: Displays unrestricted, quality and blocked stock by material, plant and storage location.
+inputs:
+  - 物料
+  - 工厂
+  - 库存地点
+outputs:
+  - 库存数量
+  - 库存状态
+rules:
+  - "区分非限制、质检与冻结库存。"
+painPoints:
+  - "只看总库存会忽略可用性限制。"
+objects:
+  - "tcode:MMBE"
+  - "table:MARD"
+  - "table:MCHB"
+  - "table:MARC"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

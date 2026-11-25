@@ -1,0 +1,16 @@
+id: "tcode:KB11N"
+type: tcode
+technicalName: KB11N
+title:
+  zh: 成本手工过账
+  en: Manual Cost Reposting
+module: co
+summary:
+  zh: 在成本中心之间手工重过账成本，用于纠正归集错误。
+  en: Manually reposts costs between cost centers to correct allocation errors.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

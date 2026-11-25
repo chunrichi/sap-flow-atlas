@@ -1,0 +1,30 @@
+id: abap-pm-order-equipment
+type: snippet
+language: abap
+title:
+  zh: 读取维护订单与设备
+  en: Read Maintenance Orders and Equipment
+objects:
+  - "tcode:IW31"
+  - "table:AUFK"
+  - "table:AFIH"
+  - "table:EQUI"
+file: abap/pm-order-equipment.abap
+summary:
+  zh: 按订单类型与创建日期读取维护订单及其设备/功能位置。
+  en: Reads maintenance orders with equipment/functional location by order type and date.
+annotations:
+  - lines: "1-1"
+    note: 按创建日期过滤。
+  - lines: "3-8"
+    note: 连接订单与维护抬头。
+  - lines: "10-13"
+    note: 无订单时返回。
+  - lines: "15-18"
+    note: 输出订单、设备与日期。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

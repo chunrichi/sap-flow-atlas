@@ -1,0 +1,16 @@
+id: "tcode:FBL5N"
+type: tcode
+technicalName: FBL5N
+title:
+  zh: 客户余额分析
+  en: Customer Balance Analysis
+module: fi
+summary:
+  zh: 按客户查看未清、已清项目与账龄。
+  en: Displays open and cleared items with aging by customer.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

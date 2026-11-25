@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+pnpm-store/
+.pnpm-store/
+
+# build output
+dist/
+coverage/
+playwright-report/
+test-results/
+
+# generated content indexes
+src/generated/
+
+# local SAP exports / sensitive data
+raw/
+*.csv
+*.xlsx
+.env
+.env.*
+!.env.example
+
+# local QA artifacts
+tmp/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+*.log

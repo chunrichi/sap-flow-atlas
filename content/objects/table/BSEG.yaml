@@ -1,0 +1,17 @@
+id: "table:BSEG"
+type: table
+technicalName: BSEG
+title:
+  zh: 会计凭证行项目
+  en: Accounting Document Line Item
+module: fi
+tableClass: cluster
+summary:
+  zh: 保存会计凭证的行项目，如科目、金额、成本中心。
+  en: Stores accounting document line items such as account, amount and cost center.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

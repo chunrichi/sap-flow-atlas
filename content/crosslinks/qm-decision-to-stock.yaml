@@ -1,0 +1,14 @@
+id: qm-decision-to-stock
+type: crosslink
+from: "step:qm-qa11-usage-decision"
+to: "step:mm-mbbe-stock-overview"
+relation: data-flow
+label:
+  zh: 使用决策改变库存状态
+  en: Usage decision changes stock status
+note: 质检接收会把库存从质检状态转为非限制库存，拒收则进入冻结或退货流程。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

@@ -1,0 +1,44 @@
+id: ps-fb60-project-posting
+type: step
+title:
+  zh: 项目实际过账
+  en: Post Project Actuals
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-project-execution
+flows:
+  - project-to-profit
+tcode: FB60
+summary:
+  zh: 把采购发票或费用过账到 WBS 元素，形成项目实际成本。
+  en: Posts supplier invoices or expenses to WBS elements, creating project actual cost.
+inputs:
+  - 供应商发票
+  - WBS 元素
+  - 金额
+outputs:
+  - 会计凭证
+  - 项目实际成本
+rules:
+  - "WBS 必须已存在且允许过账。"
+painPoints:
+  - "直接费用过账缺少 WBS 会进入默认成本中心。"
+objects:
+  - "tcode:FB60"
+  - "table:BKPF"
+  - "table:BSEG"
+  - "table:PRPS"
+  - "table:ACDOCA"
+snippets:
+  - abap-ps-project-actuals
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 项目实际成本通过 FI 凭证进入 CO。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

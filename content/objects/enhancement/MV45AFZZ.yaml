@@ -1,0 +1,20 @@
+id: "enhancement:MV45AFZZ"
+type: enhancement
+technicalName: MV45AFZZ
+title:
+  zh: 销售订单用户出口
+  en: Sales Order User Exit Include
+module: sd
+subtype: user-exit
+summary:
+  zh: 销售订单保存时的用户出口 include，常用 FORM USEREXIT_SAVE_DOCUMENT。
+  en: User exit include during sales order save, commonly FORM USEREXIT_SAVE_DOCUMENT.
+relations:
+  - target: "tcode:VA01"
+    kind: enhances
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets
+updatedAt: 2026-11-24

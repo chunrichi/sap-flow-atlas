@@ -1,0 +1,16 @@
+id: "tcode:IW31"
+type: tcode
+technicalName: IW31
+title:
+  zh: 创建服务订单
+  en: Create Service Order
+module: cs
+summary:
+  zh: 创建服务订单，记录客户、设备、服务内容与计划工时。
+  en: Creates a service order with customer, equipment, service scope and planned labor.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

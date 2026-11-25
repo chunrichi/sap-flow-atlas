@@ -1,0 +1,50 @@
+id: fi-f28-post-incoming-payment
+type: step
+title:
+  zh: 录入收款
+  en: Post Incoming Payment
+primaryModule: fi
+modules:
+  - fi
+  - sd
+processes:
+  - sd-order-management
+  - fi-accounts-receivable
+flows:
+  - order-to-cash
+tcode: F-28
+summary:
+  zh: 登记客户收款并清销应收账款，完成 O2C 的资金闭环。
+  en: Records a customer payment and clears the receivable, closing the cash loop of O2C.
+inputs:
+  - 客户
+  - 收款金额
+  - 银行账户
+  - 发票号
+outputs:
+  - 收款凭证
+  - 清账状态
+  - 未清余额
+rules:
+  - 收款金额与发票金额不一致时会产生部分清账或差异。
+  - 清账必须匹配正确的客户与凭证。
+painPoints:
+  - 银行流水与发票号不匹配时，手工清账工作量大。
+  - 部分清账会留下残余未清项，影响账龄分析。
+objects:
+  - "tcode:F-28"
+  - "table:BKPF"
+  - "table:BSEG"
+  - "table:ACDOCA"
+  - "cds:I_JournalEntry"
+snippets:
+  []
+crossModule:
+  - module: sd
+    relation: accounting-impact
+    note: 清账的对象是 SD 开票形成的应收。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

@@ -1,0 +1,16 @@
+id: "tcode:SMOD"
+type: tcode
+technicalName: SMOD
+title:
+  zh: 查找增强点
+  en: Find Enhancement
+module: abap
+summary:
+  zh: 在 SMOD 中查找标准程序的用户出口，确认增强点与所属包。
+  en: Finds user exits in SMOD for standard programs and confirms enhancement points and packages.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,39 @@
+id: fi-aw01n-asset-explorer
+type: step
+title:
+  zh: 资产浏览器
+  en: Asset Explorer
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-asset-accounting
+flows:
+  - acquire-to-retire
+tcode: AW01N
+summary:
+  zh: 查看资产价值、折旧计划、购置与报废的完整明细。
+  en: Displays asset values, depreciation plan, acquisitions and retirements.
+inputs:
+  - 资产卡片
+  - 会计年度
+outputs:
+  - 资产价值明细
+  - 折旧计划
+rules:
+  - "核对资产价值、折旧计划与总账余额。"
+painPoints:
+  - "手工调整未反映在折旧计划会造成报表差异。"
+objects:
+  - "tcode:AW01N"
+  - "table:ANLA"
+  - "table:ANLC"
+  - "table:ANLP"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

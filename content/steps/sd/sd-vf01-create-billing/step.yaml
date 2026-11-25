@@ -1,0 +1,46 @@
+id: sd-vf01-create-billing
+type: step
+title:
+  zh: 创建发票
+  en: Create Billing Document
+primaryModule: sd
+modules:
+  - sd
+  - fi
+processes:
+  - sd-order-management
+flows:
+  - order-to-cash
+tcode: VF01
+summary:
+  zh: 基于交货单或销售订单创建发票，形成应收并触发收入确认。
+  en: Creates a billing document from a delivery or sales order, generating a receivable and revenue recognition.
+inputs:
+  - 交货单
+  - 开票日期
+  - 定价条件
+outputs:
+  - 发票号
+  - 应收金额
+  - 会计凭证
+rules:
+  - 开票数量不能超过可开票数量。
+  - 发票过账会同步生成 FI 凭证。
+painPoints:
+  - 定价条件缺失会导致发票金额为 0。
+  - 跨期开票需要处理收入与成本的期间匹配。
+objects:
+  - "tcode:VF01"
+  - "table:VBRK"
+snippets:
+  []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 发票过账生成客户应收与收入凭证。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-billing-document
+updatedAt: 2026-11-24

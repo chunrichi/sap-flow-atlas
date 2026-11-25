@@ -1,0 +1,41 @@
+id: cs-iw31-service-order
+type: step
+title:
+  zh: 创建服务订单
+  en: Create Service Order
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-service-order
+flows:
+  - service-to-cash
+tcode: IW31
+summary:
+  zh: 创建服务订单，记录客户、设备、服务内容与计划工时。
+  en: Creates a service order with customer, equipment, service scope and planned labor.
+inputs:
+  - 客户
+  - 设备
+  - 服务内容
+  - 计划工时
+outputs:
+  - 服务订单号
+rules:
+  - "服务订单类型决定结算规则与开票类型。"
+painPoints:
+  - "订单类型选错会导致无法开票或结算。"
+objects:
+  - "tcode:IW31"
+  - "table:AUFK"
+  - "table:AFIH"
+  - "table:EQUI"
+snippets:
+  - abap-cs-service-orders
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

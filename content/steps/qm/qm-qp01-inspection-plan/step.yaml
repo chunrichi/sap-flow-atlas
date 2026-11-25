@@ -1,0 +1,38 @@
+id: qm-qp01-inspection-plan
+type: step
+title:
+  zh: 创建检验计划
+  en: Create Inspection Plan
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-inspection
+flows:
+  - plan-to-produce
+tcode: QP01
+summary:
+  zh: 为物料维护检验特性、检验方法与抽样方案。
+  en: Maintains inspection characteristics, methods and sampling for a material.
+inputs:
+  - 物料
+  - 检验类型
+  - 检验特性
+outputs:
+  - 检验计划
+rules:
+  - "检验计划必须覆盖检验类型与抽样方案。"
+painPoints:
+  - "计划未释放会导致检验批无特性。"
+objects:
+  - "tcode:QP01"
+  - "table:PLKO"
+  - "table:PLPO"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

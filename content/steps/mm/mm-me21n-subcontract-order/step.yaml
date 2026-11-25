@@ -1,0 +1,41 @@
+id: mm-me21n-subcontract-order
+type: step
+title:
+  zh: 创建委外采购订单
+  en: Create Subcontracting PO
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-subcontracting
+flows:
+  - procure-to-pay
+tcode: ME21N
+summary:
+  zh: 创建行项目类别为委外的采购订单，并维护需要提供给供应商的组件。
+  en: Creates a subcontracting purchase order with item category L and the components to provide.
+inputs:
+  - 供应商
+  - 委外成品
+  - 组件清单
+  - 加工费
+outputs:
+  - 委外采购订单
+rules:
+  - 组件清单与 BOM 必须一致。
+  - 委外行项目的组件在收货时按 BOM 消耗。
+painPoints:
+  - "组件清单与 BOM 不一致会导致收货时组件短缺。"
+objects:
+  - "tcode:ME21N"
+  - "table:EKKO"
+  - "table:EKPO"
+  - "table:RESB"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

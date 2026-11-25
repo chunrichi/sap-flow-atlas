@@ -1,0 +1,16 @@
+id: "tcode:ABAON"
+type: tcode
+technicalName: ABAON
+title:
+  zh: 资产报废
+  en: Retire Asset
+module: fi
+summary:
+  zh: 对资产执行报废或出售，计算处置损益并更新资产价值。
+  en: Retires or sells an asset, calculating gain/loss and updating asset values.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

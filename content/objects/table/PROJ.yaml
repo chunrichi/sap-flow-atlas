@@ -1,0 +1,16 @@
+id: "table:PROJ"
+type: table
+technicalName: PROJ
+title:
+  zh: 项目定义
+  en: Project definition
+module: ps
+summary:
+  zh: 项目定义，SAP 标准数据表，用于 PS 相关流程。
+  en: Project definition, a standard SAP table used in PS processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

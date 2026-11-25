@@ -1,0 +1,46 @@
+id: fi-f110-payment-run
+type: step
+title:
+  zh: 执行付款运行
+  en: Run Payment Program
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-accounts-payable
+flows:
+  - procure-to-pay
+tcode: F110
+summary:
+  zh: 按公司代码与付款条件选择到期未清项，生成付款建议与付款凭证。
+  en: Selects due open items by company code and payment terms, generating a payment proposal and documents.
+inputs:
+  - 公司代码
+  - 付款日期
+  - 付款方式
+  - 供应商
+outputs:
+  - 付款建议
+  - 付款凭证
+  - 银行文件
+rules:
+  - 付款建议需要先审核再执行。
+  - 付款方式与银行账户必须有效。
+painPoints:
+  - 银行主数据不完整会导致付款文件生成失败。
+objects:
+  - "tcode:F110"
+  - "table:BSIK"
+  - "table:BSAK"
+  - "table:BKPF"
+  - "table:BSEG"
+snippets: []
+crossModule:
+  - module: mm
+    relation: accounting-impact
+    note: 付款清销的是采购发票形成的应付。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

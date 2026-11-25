@@ -1,0 +1,24 @@
+id: ewm
+type: module
+abbr: EWM
+title:
+  zh: 扩展仓库管理
+  en: Extended Warehouse Management
+color: "#84CC16"
+icon: ewm
+summary:
+  zh: 入库、出库、内部移动与仓库任务，承接交货单之后的实物执行。
+  en: Inbound, outbound, internal movements and warehouse tasks that execute the physical flow after delivery.
+scope:
+  - 入库
+  - 出库
+  - 仓库任务
+  - 库存盘点
+keyFlows:
+  - order-to-cash
+  - procure-to-pay
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

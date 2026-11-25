@@ -1,0 +1,16 @@
+id: "tcode:MB51"
+type: tcode
+technicalName: MB51
+title:
+  zh: 查询组件消耗
+  en: Analyze Component Consumption
+module: mm
+summary:
+  zh: 按委外订单与移动类型查询组件消耗与成品收货凭证。
+  en: Analyzes component consumption and finished goods receipts by subcontract order and movement type.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

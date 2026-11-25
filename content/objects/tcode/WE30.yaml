@@ -1,0 +1,16 @@
+id: "tcode:WE30"
+type: tcode
+technicalName: WE30
+title:
+  zh: 定义 IDoc 类型
+  en: Define IDoc Type
+module: abap
+summary:
+  zh: 定义或扩展 IDoc 基本类型与消息类型，作为接口数据结构。
+  en: Defines or extends IDoc basic and message types as the interface data structure.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

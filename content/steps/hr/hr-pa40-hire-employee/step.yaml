@@ -1,0 +1,41 @@
+id: hr-pa40-hire-employee
+type: step
+title:
+  zh: 执行员工入职
+  en: Hire Employee
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-onboarding
+flows:
+  - hire-to-retire
+tcode: PA40
+summary:
+  zh: 执行入职动作，创建员工编号与人事事件。
+  en: Executes the hiring action, creating employee number and personnel event.
+inputs:
+  - 姓名
+  - 入职日期
+  - 组织单位
+  - 岗位
+outputs:
+  - 员工编号
+  - 人事事件
+rules:
+  - "入职日期、组织单位与岗位必须完整。"
+painPoints:
+  - "入职动作未完成会导致后续薪酬/权限缺失。"
+objects:
+  - "tcode:PA40"
+  - "table:PA0001"
+  - "table:PA0002"
+  - "table:T001P"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

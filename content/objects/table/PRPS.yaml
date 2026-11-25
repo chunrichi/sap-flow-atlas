@@ -1,0 +1,16 @@
+id: "table:PRPS"
+type: table
+technicalName: PRPS
+title:
+  zh: WBS 元素
+  en: WBS element
+module: ps
+summary:
+  zh: WBS 元素，SAP 标准数据表，用于 PS 相关流程。
+  en: WBS element, a standard SAP table used in PS processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

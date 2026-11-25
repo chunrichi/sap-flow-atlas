@@ -1,0 +1,39 @@
+id: abap-cmod-create-project
+type: step
+title:
+  zh: 创建增强项目
+  en: Create Enhancement Project
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-enhancement
+flows:
+  - develop-to-deploy
+tcode: CMOD
+summary:
+  zh: 在 CMOD 中创建增强项目并挂载需要实现的出口。
+  en: Creates an enhancement project in CMOD and attaches the exits to implement.
+inputs:
+  - 增强点
+  - 项目命名
+outputs:
+  - 增强项目
+rules:
+  - "增强项目命名与开发包遵循团队规范。"
+  - "项目必须覆盖所有相关出口，避免跨请求遗漏。"
+painPoints:
+  - "多个项目挂同一出口会造成实现冲突。"
+objects:
+  - "tcode:CMOD"
+  - "table:MODSAP"
+  - "table:TADIR"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

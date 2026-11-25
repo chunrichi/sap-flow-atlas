@@ -1,0 +1,16 @@
+id: "tcode:SE24"
+type: tcode
+technicalName: SE24
+title:
+  zh: 类构建器
+  en: Class Builder
+module: abap
+summary:
+  zh: 查看与维护 ABAP 类、接口、方法及属性。
+  en: Displays and maintains ABAP classes, interfaces, methods and attributes.
+relations: []
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

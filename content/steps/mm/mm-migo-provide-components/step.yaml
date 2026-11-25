@@ -1,0 +1,41 @@
+id: mm-migo-provide-components
+type: step
+title:
+  zh: 提供组件给供应商
+  en: Provide Components
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-subcontracting
+flows:
+  - procure-to-pay
+tcode: MIGO
+summary:
+  zh: 通过 541 移动类型把组件发到供应商，形成供应商处的组件库存。
+  en: Issues components to the supplier with movement type 541, creating supplier stock.
+inputs:
+  - 委外采购订单
+  - 组件数量
+outputs:
+  - 物料凭证
+  - 供应商库存
+rules:
+  - "541 发料需与委外 PO 的组件行匹配。"
+painPoints:
+  - "组件发错供应商库存难以追回。"
+objects:
+  - "tcode:MIGO"
+  - "table:MSEG"
+  - "table:RESB"
+  - "table:MARC"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 组件发出会改变库存归属但仍在企业资产范围内。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

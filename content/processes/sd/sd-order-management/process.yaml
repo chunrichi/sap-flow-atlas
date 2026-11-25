@@ -1,0 +1,58 @@
+id: sd-order-management
+type: process
+title:
+  zh: 销售订单管理
+  en: Sales Order Management
+module: sd
+flow: order-to-cash
+stage: order
+summary:
+  zh: 从创建销售订单与可用性检查，到交货、开票和收款的 SD 核心流程。
+  en: The core SD flow from sales order creation and ATP to delivery, billing and payment.
+steps:
+  - sd-va01-create-sales-order
+  - sd-atp-availability-check
+  - sd-vl01n-create-delivery
+  - sd-vf01-create-billing
+  - fi-f28-post-incoming-payment
+edges:
+  - from: sd-va01-create-sales-order
+    to: sd-atp-availability-check
+    kind: sequence
+    label:
+      zh: 可用性检查
+      en: ATP check
+  - from: sd-atp-availability-check
+    to: sd-vl01n-create-delivery
+    kind: sequence
+    label:
+      zh: 创建交货
+      en: Create delivery
+  - from: sd-vl01n-create-delivery
+    to: sd-vf01-create-billing
+    kind: handoff
+    label:
+      zh: 发货后开票
+      en: Bill after goods issue
+  - from: sd-vf01-create-billing
+    to: fi-f28-post-incoming-payment
+    kind: handoff
+    label:
+      zh: 形成应收并收款
+      en: Receivable and payment
+roles:
+  - 销售内勤
+  - 销售经理
+  - 仓库管理员
+  - 开票员
+  - 应收会计
+outcomes:
+  - 销售订单
+  - 交货单
+  - 发票
+  - 应收账款清账
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

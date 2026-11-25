@@ -1,0 +1,49 @@
+id: sd-vl01n-create-delivery
+type: step
+title:
+  zh: 创建交货单
+  en: Create Delivery
+primaryModule: sd
+modules:
+  - sd
+  - ewm
+processes:
+  - sd-order-management
+flows:
+  - order-to-cash
+tcode: VL01N
+summary:
+  zh: 把销售订单转为交货单，确定发货工厂、库存地点与拣配数量。
+  en: Converts a sales order into a delivery, determining shipping plant, storage location and pick quantity.
+inputs:
+  - 销售订单
+  - 发货工厂
+  - 库存地点
+  - 交货日期
+outputs:
+  - 交货单号
+  - 拣配数量
+  - 发货状态
+rules:
+  - 交货单可以引用多张销售订单。
+  - 发货过账后才真正减少库存。
+painPoints:
+  - 库存地点错误会导致拣配失败。
+  - 部分交货会拆成多张交货单，跟踪成本高。
+objects:
+  - "tcode:VL01N"
+  - "table:LIKP"
+snippets:
+  []
+crossModule:
+  - module: ewm
+    relation: handoff
+    note: 交货单触发 EWM 的出库仓库任务。
+  - module: fi
+    relation: accounting-impact
+    note: 发货过账会生成 COGS 财务凭证。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

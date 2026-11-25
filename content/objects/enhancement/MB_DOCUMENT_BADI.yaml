@@ -1,0 +1,19 @@
+id: "enhancement:MB_DOCUMENT_BADI"
+type: enhancement
+technicalName: MB_DOCUMENT_BADI
+title:
+  zh: 物料凭证 BAdI
+  en: Material Document BAdI
+module: mm
+subtype: badi
+summary:
+  zh: 物料凭证过账前后的 BAdI，用于增强收货校验。
+  en: BAdI around material document posting, used to enhance goods receipt validation.
+relations:
+  - target: "tcode:MIGO"
+    kind: enhances
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

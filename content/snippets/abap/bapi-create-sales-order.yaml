@@ -1,0 +1,34 @@
+id: abap-bapi-create-sales-order
+type: snippet
+language: abap
+title:
+  zh: 使用 BAPI 创建销售订单
+  en: Create a sales order with BAPI
+objects:
+  - "bapi:BAPI_SALESORDER_CREATEFROMDAT2"
+  - "table:VBAK"
+file: abap/bapi-create-sales-order.abap
+summary:
+  zh: 最小可运行的 BAPI 调用骨架，包含订单头、行项目、合作伙伴与提交后的错误处理。
+  en: Minimal BAPI skeleton with header, item, partner and post-commit error handling.
+annotations:
+  - lines: 2-11
+    note: 声明 BAPI 所需的结构与返回表。
+  - lines: 13-19
+    note: 订单头：订单类型、销售组织、分销渠道与产品组。
+  - lines: 21-30
+    note: 行项目：物料、数量与工厂；创建时必须同时提供 X 结构。
+  - lines: 32-35
+    note: 售达方 AG；合作伙伴角色必须与订单类型匹配。
+  - lines: 37-47
+    note: 调用 BAPI，返回订单号与消息表。
+  - lines: 49-54
+    note: 检查 RETURN 中的 E 类型消息，错误时回滚。
+  - lines: 56-60
+    note: 成功后显式提交，并输出订单号。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-24

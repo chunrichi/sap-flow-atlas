@@ -1,0 +1,16 @@
+id: "tcode:FD33"
+type: tcode
+technicalName: FD33
+title:
+  zh: 查看信用敞口
+  en: Display Credit Exposure
+module: sd
+summary:
+  zh: 查看客户的信用额度、已用额度和未清项目明细。
+  en: Displays credit limit, utilized amount and open items for a customer.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

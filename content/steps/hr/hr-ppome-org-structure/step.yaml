@@ -1,0 +1,38 @@
+id: hr-ppome-org-structure
+type: step
+title:
+  zh: 维护组织与岗位
+  en: Maintain Org Structure
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-onboarding
+flows:
+  - hire-to-retire
+tcode: PPOME
+summary:
+  zh: 维护组织单位、岗位、汇报关系与人员分配。
+  en: Maintains organizational units, positions, reporting lines and assignments.
+inputs:
+  - 组织单位
+  - 岗位
+  - 上级组织
+outputs:
+  - 组织架构
+rules:
+  - "组织变更需同时维护岗位与汇报关系。"
+painPoints:
+  - "只改组织单位不改岗位会造成编制不一致。"
+objects:
+  - "tcode:PPOME"
+  - "table:HRP1000"
+  - "table:HRP1001"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

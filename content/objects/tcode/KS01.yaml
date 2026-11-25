@@ -1,0 +1,16 @@
+id: "tcode:KS01"
+type: tcode
+technicalName: KS01
+title:
+  zh: 创建成本中心
+  en: Create Cost Center
+module: co
+summary:
+  zh: 创建成本中心并分配负责部门、成本中心类别与有效期。
+  en: Creates a cost center with responsible department, category and validity.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,39 @@
+id: cs-iw41-service-confirmation
+type: step
+title:
+  zh: 服务确认
+  en: Confirm Service
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-service-order
+flows:
+  - service-to-cash
+tcode: IW41
+summary:
+  zh: 确认实际工时、备件消耗与服务完成情况。
+  en: Confirms actual labor, spare parts consumption and service completion.
+inputs:
+  - 服务订单
+  - 工时
+  - 备件
+outputs:
+  - 确认凭证
+  - 服务成本
+rules:
+  - "确认工时与备件必须对应服务订单工序。"
+painPoints:
+  - "工时未确认会低估服务成本。"
+objects:
+  - "tcode:IW41"
+  - "table:AUFK"
+  - "table:AUFM"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

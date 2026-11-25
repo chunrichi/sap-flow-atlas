@@ -1,0 +1,48 @@
+id: ewm-outbound
+type: process
+title:
+  zh: EWM 出库
+  en: EWM Outbound
+module: ewm
+flow: order-to-cash
+stage: shipping
+summary:
+  zh: 从出库交货、仓库任务、拣配确认到发货过账的仓库执行链路。
+  en: The warehouse execution chain from outbound delivery and warehouse task to picking and goods issue.
+steps:
+  - ewm-vl01n-outbound-delivery
+  - ewm-prdo-warehouse-task
+  - ewm-mon-picking-confirm
+  - ewm-vl02n-goods-issue
+edges:
+  - from: ewm-vl01n-outbound-delivery
+    to: ewm-prdo-warehouse-task
+    kind: sequence
+    label:
+      zh: 创建仓库任务
+      en: 创建仓库任务
+  - from: ewm-prdo-warehouse-task
+    to: ewm-mon-picking-confirm
+    kind: sequence
+    label:
+      zh: 拣配确认
+      en: 拣配确认
+  - from: ewm-mon-picking-confirm
+    to: ewm-vl02n-goods-issue
+    kind: sequence
+    label:
+      zh: 发货过账
+      en: 发货过账
+roles:
+  - 仓库管理员
+  - 拣货员
+  - 发货员
+outcomes:
+  - 出库交货
+  - 仓库任务
+  - 发货过账
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

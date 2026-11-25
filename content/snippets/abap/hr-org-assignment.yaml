@@ -1,0 +1,30 @@
+id: abap-hr-org-assignment
+type: snippet
+language: abap
+title:
+  zh: 读取员工组织分配
+  en: Read Employee Org Assignment
+objects:
+  - "tcode:PA30"
+  - "table:PA0001"
+  - "table:T001P"
+  - "table:CSKS"
+file: abap/hr-org-assignment.abap
+summary:
+  zh: 读取当前有效的人事组织分配，检查工厂、人事子范围、成本中心与组织单位。
+  en: Reads current employee org assignments including plant, personnel subarea, cost center and org unit.
+annotations:
+  - lines: "1-1"
+    note: 按入职起始日期过滤。
+  - lines: "3-8"
+    note: 读取当前有效记录。
+  - lines: "10-13"
+    note: 无员工时返回。
+  - lines: "15-19"
+    note: 输出员工、工厂、人事范围、成本中心与组织单位。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

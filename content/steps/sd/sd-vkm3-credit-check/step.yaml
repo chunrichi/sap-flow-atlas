@@ -1,0 +1,40 @@
+id: sd-vkm3-credit-check
+type: step
+title:
+  zh: 执行信用检查
+  en: Run Credit Check
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-credit-management
+flows:
+  - order-to-cash
+tcode: VKM3
+summary:
+  zh: 在订单保存或交货前检查客户信用敞口，超限时冻结订单。
+  en: Checks customer credit exposure before order save or delivery and blocks the order when exceeded.
+inputs:
+  - 销售订单
+  - 信用额度
+  - 未清应收
+outputs:
+  - 信用状态
+  - 冻结原因
+rules:
+  - 信用检查在订单保存、交货等节点触发，结果决定后续是否可继续。
+painPoints:
+  - "信用检查通过后额度变化不会自动重检，需要重新释放。"
+objects:
+  - "tcode:VKM3"
+  - "table:KNKK"
+  - "table:BSID"
+  - "table:VBAK"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

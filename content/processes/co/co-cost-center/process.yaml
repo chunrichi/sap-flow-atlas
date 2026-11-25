@@ -1,0 +1,48 @@
+id: co-cost-center
+type: process
+title:
+  zh: 成本中心
+  en: Cost Center Accounting
+module: co
+flow: record-to-report
+stage: closing
+summary:
+  zh: 成本中心主数据、成本过账、分配与成本中心报表。
+  en: Cost center master data, cost postings, allocation and cost center reporting.
+steps:
+  - co-ks01-cost-center
+  - co-kb11n-cost-posting
+  - co-ksu5-cost-allocation
+  - co-ksb1-cost-report
+edges:
+  - from: co-ks01-cost-center
+    to: co-kb11n-cost-posting
+    kind: sequence
+    label:
+      zh: 成本过账
+      en: 成本过账
+  - from: co-kb11n-cost-posting
+    to: co-ksu5-cost-allocation
+    kind: sequence
+    label:
+      zh: 成本分配
+      en: 成本分配
+  - from: co-ksu5-cost-allocation
+    to: co-ksb1-cost-report
+    kind: sequence
+    label:
+      zh: 成本报表
+      en: 成本报表
+roles:
+  - 成本会计
+  - 部门经理
+  - 财务分析师
+outcomes:
+  - 成本中心
+  - 分配结果
+  - 成本报表
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,14 @@
+id: pp-settlement-to-co-variance
+type: crosslink
+from: "step:pp-ko88-settle-order"
+to: "step:co-kks1-variance"
+relation: accounting-impact
+label:
+  zh: 订单结算形成差异分析基础
+  en: Order settlement feeds variance analysis
+note: 生产订单结算后，目标成本与实际成本的差异可在 CO 中按订单与期间分析。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

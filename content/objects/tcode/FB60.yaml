@@ -1,0 +1,25 @@
+id: "tcode:FB60"
+type: tcode
+technicalName: FB60
+title:
+  zh: 录入供应商发票
+  en: Post Vendor Invoice
+module: fi
+summary:
+  zh: 手工录入供应商发票，生成应付凭证与 GR/IR 清账。
+  en: Posts a supplier invoice manually, creating a payable and clearing GR/IR.
+relations:
+  - target: "table:BKPF"
+    kind: writes
+    note: 发票凭证抬头
+  - target: "table:BSEG"
+    kind: writes
+    note: 发票行项目
+  - target: "table:BSIK"
+    kind: writes
+    note: 应付未清项
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

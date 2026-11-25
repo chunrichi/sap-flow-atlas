@@ -1,0 +1,37 @@
+id: sd-vk13-display-condition
+type: step
+title:
+  zh: 查看价格条件
+  en: Display Condition Record
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-pricing
+flows:
+  - order-to-cash
+tcode: VK13
+summary:
+  zh: 按条件类型与键值查看条件记录、有效期和金额。
+  en: Displays condition records, validity and amounts by condition type and key.
+inputs:
+  - 条件类型
+  - 客户/物料
+outputs:
+  - 条件明细
+rules:
+  - "查看条件时确认有效期与条件排除。"
+painPoints:
+  - "只看金额不看有效期会误判。"
+objects:
+  - "tcode:VK13"
+  - "table:KONH"
+  - "table:KONP"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,16 @@
+id: "table:KEKO"
+type: table
+technicalName: KEKO
+title:
+  zh: 产品成本估算抬头
+  en: Product cost estimate header
+module: co
+summary:
+  zh: 产品成本估算抬头，SAP 标准数据表，用于 CO 相关流程。
+  en: Product cost estimate header, a standard SAP table used in CO processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

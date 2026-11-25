@@ -1,0 +1,39 @@
+id: co-ck24-mark-release
+type: step
+title:
+  zh: 标记与释放标准成本
+  en: Mark and Release Standard Cost
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-product-costing
+flows:
+  - plan-to-produce
+tcode: CK24
+summary:
+  zh: 将成本估算标记为未来标准成本，并在生效期释放。
+  en: Marks a cost estimate as future standard cost and releases it for the effective period.
+inputs:
+  - 成本估算
+  - 物料
+  - 生效期间
+outputs:
+  - 标准成本
+  - 释放日志
+rules:
+  - 标记与释放必须按期间顺序执行。
+painPoints:
+  - "释放后修改 BOM 会让标准成本与当期实际脱节。"
+objects:
+  - "tcode:CK24"
+  - "table:KEKO"
+  - "table:KEPH"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

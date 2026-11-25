@@ -1,0 +1,19 @@
+id: "tcode:ME51N"
+type: tcode
+technicalName: ME51N
+title:
+  zh: 创建采购申请
+  en: Create Purchase Requisition
+module: mm
+package: ME
+summary:
+  zh: 手工创建采购申请，等待转采购订单。
+  en: Creates a purchase requisition manually for later conversion to a purchase order.
+relations:
+  - target: "table:EBAN"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

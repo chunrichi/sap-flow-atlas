@@ -1,0 +1,41 @@
+id: service-to-cash
+type: flow
+abbr: S2C
+title:
+  zh: 服务到收款
+  en: Service to Cash
+summary:
+  zh: 从服务请求、服务订单执行到开票与收款的售后链路。
+  en: The after-sales chain from service request and order execution to billing and collection.
+modules:
+  - cs
+  - sd
+  - fi
+stages:
+  - id: request
+    title:
+      zh: 请求
+      en: Request
+    primaryModule: cs
+  - id: execute
+    title:
+      zh: 执行
+      en: Execute
+    primaryModule: cs
+  - id: bill
+    title:
+      zh: 开票
+      en: Bill
+    primaryModule: sd
+  - id: collect
+    title:
+      zh: 收款
+      en: Collect
+    primaryModule: fi
+processes:
+  - cs-service-order
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

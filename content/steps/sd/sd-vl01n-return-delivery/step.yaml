@@ -1,0 +1,39 @@
+id: sd-vl01n-return-delivery
+type: step
+title:
+  zh: 创建退货交货
+  en: Create Return Delivery
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-returns
+flows:
+  - order-to-cash
+tcode: VL01N
+summary:
+  zh: 把退货订单转为入库交货，确定退回的库存地点。
+  en: Converts a return order into an inbound delivery with the receiving storage location.
+inputs:
+  - 退货订单
+  - 库存地点
+outputs:
+  - 退货交货单
+rules:
+  - "退货交货的库存地点必须是退货专用。"
+painPoints:
+  - "退回到错误库存地点会造成库存污染。"
+objects:
+  - "tcode:VL01N"
+  - "table:LIKP"
+  - "table:LIPS"
+snippets: []
+crossModule:
+  - module: ewm
+    relation: handoff
+    note: 退货交货在 EWM 中会生成入库仓库任务。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

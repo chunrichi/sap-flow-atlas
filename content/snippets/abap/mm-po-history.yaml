@@ -1,0 +1,30 @@
+id: abap-mm-po-history
+type: snippet
+language: abap
+title:
+  zh: 读取采购订单收货与发票历史
+  en: Read Purchase Order History
+objects:
+  - "tcode:ME21N"
+  - "table:EKKO"
+  - "table:EKPO"
+  - "table:EKBE"
+file: abap/mm-po-history.abap
+summary:
+  zh: 按采购订单号读取收货、发票与后续调整历史，检查是否还有未清数量。
+  en: Reads goods receipt, invoice and subsequent adjustment history for a purchase order.
+annotations:
+  - lines: "1-2"
+    note: 按采购订单与起始日期筛选。
+  - lines: "7-11"
+    note: 只读取需要的字段。
+  - lines: "13-16"
+    note: 无历史时直接返回。
+  - lines: "18-22"
+    note: 逐行输出业务类型与金额。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

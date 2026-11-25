@@ -1,0 +1,39 @@
+id: fi-fbl1n-vendor-balance
+type: step
+title:
+  zh: 供应商余额分析
+  en: Vendor Balance Analysis
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-accounts-payable
+flows:
+  - procure-to-pay
+tcode: FBL1N
+summary:
+  zh: 按供应商查看未清、已清和全部项目，用于对账与账龄分析。
+  en: Displays open, cleared and all items by vendor for reconciliation and aging.
+inputs:
+  - 供应商
+  - 公司代码
+  - 期间
+outputs:
+  - 未清项目
+  - 账龄
+rules:
+  - "对账前确认公司代码、供应商与期间。"
+painPoints:
+  - "未清与已清项目混看会误判账龄。"
+objects:
+  - "tcode:FBL1N"
+  - "table:BSIK"
+  - "table:BSAK"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

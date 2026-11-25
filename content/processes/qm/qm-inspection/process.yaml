@@ -1,0 +1,55 @@
+id: qm-inspection
+type: process
+title:
+  zh: 质量检验
+  en: Quality Inspection
+module: qm
+flow: plan-to-produce
+stage: inspect
+summary:
+  zh: 检验计划、检验批、结果记录、使用决策与质量通知。
+  en: Inspection plans, lots, results recording, usage decision and quality notifications.
+steps:
+  - qm-qp01-inspection-plan
+  - qm-qa01-inspection-lot
+  - qm-qe01-record-results
+  - qm-qa11-usage-decision
+  - qm-qm01-quality-notification
+edges:
+  - from: qm-qp01-inspection-plan
+    to: qm-qa01-inspection-lot
+    kind: sequence
+    label:
+      zh: 创建检验批
+      en: 创建检验批
+  - from: qm-qa01-inspection-lot
+    to: qm-qe01-record-results
+    kind: sequence
+    label:
+      zh: 录入结果
+      en: 录入结果
+  - from: qm-qe01-record-results
+    to: qm-qa11-usage-decision
+    kind: sequence
+    label:
+      zh: 使用决策
+      en: 使用决策
+  - from: qm-qa11-usage-decision
+    to: qm-qm01-quality-notification
+    kind: sequence
+    label:
+      zh: 质量通知
+      en: 质量通知
+roles:
+  - 质检员
+  - 质量工程师
+  - 生产主管
+outcomes:
+  - 检验计划
+  - 检验批
+  - 使用决策
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

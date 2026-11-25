@@ -1,0 +1,48 @@
+id: hr-onboarding
+type: process
+title:
+  zh: 员工入职
+  en: Employee Onboarding
+module: hr
+flow: hire-to-retire
+stage: hire
+summary:
+  zh: 组织岗位、入职动作、人事主数据与系统用户的创建。
+  en: Organization, hiring actions, HR master data and system user creation.
+steps:
+  - hr-ppome-org-structure
+  - hr-pa40-hire-employee
+  - hr-pa30-maintain-master-data
+  - hr-su01-create-user
+edges:
+  - from: hr-ppome-org-structure
+    to: hr-pa40-hire-employee
+    kind: sequence
+    label:
+      zh: 执行入职
+      en: 执行入职
+  - from: hr-pa40-hire-employee
+    to: hr-pa30-maintain-master-data
+    kind: sequence
+    label:
+      zh: 维护主数据
+      en: 维护主数据
+  - from: hr-pa30-maintain-master-data
+    to: hr-su01-create-user
+    kind: sequence
+    label:
+      zh: 创建用户
+      en: 创建用户
+roles:
+  - HR 专员
+  - 部门经理
+  - IT 管理员
+outcomes:
+  - 组织岗位
+  - 员工主数据
+  - 系统用户
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

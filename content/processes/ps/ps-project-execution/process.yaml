@@ -1,0 +1,55 @@
+id: ps-project-execution
+type: process
+title:
+  zh: 项目执行
+  en: Project Execution
+module: ps
+flow: project-to-profit
+stage: execute
+summary:
+  zh: 项目定义、WBS、预算、实际过账与项目结算。
+  en: Project definition, WBS, budget, actual postings and project settlement.
+steps:
+  - ps-cj01-project-definition
+  - ps-cj20n-wbs
+  - ps-cj30-project-budget
+  - ps-fb60-project-posting
+  - ps-cj88-project-settlement
+edges:
+  - from: ps-cj01-project-definition
+    to: ps-cj20n-wbs
+    kind: sequence
+    label:
+      zh: 维护 WBS
+      en: 维护 WBS
+  - from: ps-cj20n-wbs
+    to: ps-cj30-project-budget
+    kind: sequence
+    label:
+      zh: 编制预算
+      en: 编制预算
+  - from: ps-cj30-project-budget
+    to: ps-fb60-project-posting
+    kind: sequence
+    label:
+      zh: 实际过账
+      en: 实际过账
+  - from: ps-fb60-project-posting
+    to: ps-cj88-project-settlement
+    kind: sequence
+    label:
+      zh: 项目结算
+      en: 项目结算
+roles:
+  - 项目经理
+  - 项目会计
+  - 成本控制
+outcomes:
+  - 项目定义
+  - WBS 预算
+  - 结算结果
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,17 @@
+id: "table:LIKP"
+type: table
+technicalName: LIKP
+title:
+  zh: 交货单抬头
+  en: Delivery Header
+module: sd
+tableClass: transparent
+summary:
+  zh: 保存交货单的抬头数据，如发货工厂、收货方。
+  en: Stores delivery header data such as shipping plant and ship-to party.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

@@ -1,0 +1,37 @@
+id: co-ck13n-cost-component
+type: step
+title:
+  zh: 成本构成分析
+  en: Cost Component Analysis
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-product-costing
+flows:
+  - plan-to-produce
+tcode: CK13N
+summary:
+  zh: 查看标准成本按材料、人工、制造费用等成本构成的拆分。
+  en: Displays the standard cost split by material, labor and overhead components.
+inputs:
+  - 物料
+  - 成本估算
+outputs:
+  - 成本构成
+rules:
+  - "成本构成与成本核算变式必须一致。"
+painPoints:
+  - "构成组配置不一致会导致分析口径偏差。"
+objects:
+  - "tcode:CK13N"
+  - "table:KEPH"
+  - "table:CKIS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

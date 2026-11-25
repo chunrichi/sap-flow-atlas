@@ -1,0 +1,45 @@
+id: mm-me51n-create-purchase-requisition
+type: step
+title:
+  zh: 创建采购申请
+  en: Create Purchase Requisition
+primaryModule: mm
+modules:
+  - mm
+  - pp
+processes:
+  - mm-procurement
+flows:
+  - procure-to-pay
+tcode: ME51N
+summary:
+  zh: 内部需求或 MRP 结果转为采购申请，等待采购员转单。
+  en: Converts internal demand or MRP results into a purchase requisition for a buyer to process.
+inputs:
+  - 物料
+  - 数量
+  - 需求日期
+  - 工厂
+outputs:
+  - 采购申请号
+  - 需求行项目
+rules:
+  - 采购申请可以手工创建，也可以由 MRP 自动生成。
+  - 申请转采购订单时可能合并或拆分。
+painPoints:
+  - 需求日期早于供应商交期时，MRP 会持续报警。
+  - 重复申请会造成重复采购。
+objects:
+  - "tcode:ME51N"
+  - "table:EBAN"
+snippets:
+  []
+crossModule:
+  - module: pp
+    relation: handoff
+    note: MRP 运行会直接生成采购申请。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

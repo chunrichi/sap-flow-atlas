@@ -1,0 +1,55 @@
+id: fi-general-ledger
+type: process
+title:
+  zh: 总账与期间关账
+  en: General Ledger and Closing
+module: fi
+flow: record-to-report
+stage: posting
+summary:
+  zh: 总账凭证、周期凭证、期间控制、财务报表与冲销。
+  en: GL journal entries, recurring entries, period control, financial statements and reversal.
+steps:
+  - fi-fb50-gl-journal
+  - fi-fbd1-recurring-entry
+  - fi-ob52-period-control
+  - fi-f01-financial-statements
+  - fi-fb08-reverse-document
+edges:
+  - from: fi-fb50-gl-journal
+    to: fi-fbd1-recurring-entry
+    kind: sequence
+    label:
+      zh: 周期凭证
+      en: 周期凭证
+  - from: fi-fbd1-recurring-entry
+    to: fi-ob52-period-control
+    kind: sequence
+    label:
+      zh: 期间控制
+      en: 期间控制
+  - from: fi-ob52-period-control
+    to: fi-f01-financial-statements
+    kind: sequence
+    label:
+      zh: 财务报表
+      en: 财务报表
+  - from: fi-f01-financial-statements
+    to: fi-fb08-reverse-document
+    kind: sequence
+    label:
+      zh: 冲销凭证
+      en: 冲销凭证
+roles:
+  - 总账会计
+  - 财务经理
+  - 审计
+outcomes:
+  - 总账凭证
+  - 关账期间
+  - 财务报表
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

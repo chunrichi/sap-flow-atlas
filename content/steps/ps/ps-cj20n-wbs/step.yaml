@@ -1,0 +1,37 @@
+id: ps-cj20n-wbs
+type: step
+title:
+  zh: 维护 WBS 结构
+  en: Maintain WBS
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-project-execution
+flows:
+  - project-to-profit
+tcode: CJ20N
+summary:
+  zh: 搭建 WBS 层级、责任人、日期与预算控制范围。
+  en: Builds WBS hierarchy, responsible persons, dates and budget control scope.
+inputs:
+  - 项目定义
+  - WBS 层级
+outputs:
+  - WBS 元素
+rules:
+  - WBS 必须覆盖项目范围且层级清晰。
+painPoints:
+  - "WBS 层级变更会影响预算与结算归集。"
+objects:
+  - "tcode:CJ20N"
+  - "table:PROJ"
+  - "table:PRPS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

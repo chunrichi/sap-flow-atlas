@@ -1,0 +1,16 @@
+id: "tcode:AFAB"
+type: tcode
+technicalName: AFAB
+title:
+  zh: 运行折旧
+  en: Run Depreciation
+module: fi
+summary:
+  zh: 按期间运行折旧，生成折旧凭证并更新账面价值。
+  en: Runs depreciation for a period, generating depreciation documents and updating net book value.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

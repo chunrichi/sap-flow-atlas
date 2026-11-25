@@ -1,0 +1,39 @@
+id: ps-cj30-project-budget
+type: step
+title:
+  zh: 编制项目预算
+  en: Maintain Project Budget
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-project-execution
+flows:
+  - project-to-profit
+tcode: CJ30
+summary:
+  zh: 为 WBS 元素分配年度预算，启用可用性控制。
+  en: Assigns annual budget to WBS elements and enables availability control.
+inputs:
+  - WBS 元素
+  - 预算金额
+  - 年度
+outputs:
+  - 预算记录
+rules:
+  - "预算按年度/WBS 分配并启用可用性控制。"
+painPoints:
+  - "超预算未拦截会导致年末调整。"
+objects:
+  - "tcode:CJ30"
+  - "table:PROJ"
+  - "table:PRPS"
+  - "table:COSP"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,14 @@
+id: sd-billing-to-fi-payment
+type: crosslink
+from: "step:sd-vf01-create-billing"
+to: "step:fi-f28-post-incoming-payment"
+relation: accounting-impact
+label:
+  zh: 开票形成应收，收款清销应收
+  en: Billing creates a receivable, payment clears it
+note: SD 开票在 FI 生成客户应收；收款录入后完成清账，O2C 的资金闭环才结束。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-24

@@ -1,0 +1,16 @@
+id: "tcode:/SCWM/PRDO"
+type: tcode
+technicalName: /SCWM/PRDO
+title:
+  zh: 创建仓库任务
+  en: Create Warehouse Task
+module: ewm
+summary:
+  zh: 把出库交货转为仓库任务，确定拣配区域与数量。
+  en: Converts the outbound delivery into warehouse tasks with pick area and quantity.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

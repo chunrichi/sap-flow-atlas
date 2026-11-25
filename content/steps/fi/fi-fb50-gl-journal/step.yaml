@@ -1,0 +1,42 @@
+id: fi-fb50-gl-journal
+type: step
+title:
+  zh: 录入总账凭证
+  en: Post GL Journal Entry
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-general-ledger
+flows:
+  - record-to-report
+tcode: FB50
+summary:
+  zh: 手工录入总账凭证，支持借贷平衡、税码与成本对象。
+  en: Posts a GL journal entry with debit/credit balance, tax code and cost objects.
+inputs:
+  - 公司代码
+  - 过账日期
+  - 科目
+  - 金额
+outputs:
+  - 会计凭证
+rules:
+  - 借贷必须平衡，期间必须已打开。
+painPoints:
+  - 成本对象缺失会导致 CO 分摊不到。
+objects:
+  - "tcode:FB50"
+  - "table:BKPF"
+  - "table:BSEG"
+  - "table:ACDOCA"
+  - "cds:I_JournalEntry"
+snippets:
+  - abap-fi-post-gl
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

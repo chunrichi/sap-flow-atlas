@@ -1,0 +1,38 @@
+id: mm-mb51-material-documents
+type: step
+title:
+  zh: 查询物料凭证
+  en: Display Material Documents
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-inventory-management
+flows:
+  - procure-to-pay
+tcode: MB51
+summary:
+  zh: 按物料、移动类型、日期与工厂查询物料凭证明细。
+  en: Displays material document items by material, movement type, date and plant.
+inputs:
+  - 物料
+  - 移动类型
+  - 日期范围
+outputs:
+  - 物料凭证清单
+rules:
+  - "按移动类型与期间核对，避免全表扫描。"
+painPoints:
+  - "凭证量大时需限制工厂/物料范围。"
+objects:
+  - "tcode:MB51"
+  - "table:MSEG"
+  - "table:MKPF"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

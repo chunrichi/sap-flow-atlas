@@ -1,0 +1,17 @@
+id: "table:VBAK"
+type: table
+technicalName: VBAK
+title:
+  zh: 销售订单抬头
+  en: Sales Document Header
+module: sd
+tableClass: transparent
+summary:
+  zh: 保存销售订单的抬头数据，如客户、日期、销售组织。
+  en: Stores sales document header data such as customer, date and sales organization.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

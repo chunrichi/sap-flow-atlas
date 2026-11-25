@@ -1,0 +1,16 @@
+id: "tcode:CO02"
+type: tcode
+technicalName: CO02
+title:
+  zh: 下达生产订单
+  en: Release Production Order
+module: pp
+summary:
+  zh: 检查可用性与组件，正式下达生产订单。
+  en: Checks availability and components and formally releases the production order.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

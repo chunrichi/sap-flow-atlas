@@ -1,0 +1,39 @@
+id: ewm-vl01n-outbound-delivery
+type: step
+title:
+  zh: 创建出库交货
+  en: Create Outbound Delivery
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-outbound
+flows:
+  - order-to-cash
+tcode: VL01N
+summary:
+  zh: 根据销售订单创建出库交货，确定发货工厂与库存地点。
+  en: Creates an outbound delivery from a sales order, determining shipping plant and storage location.
+inputs:
+  - 销售订单
+  - 发货工厂
+  - 库存地点
+outputs:
+  - 出库交货单
+rules:
+  - "交货日期与工厂必须与销售订单一致。"
+painPoints:
+  - "工厂/库存地点错误会导致后续仓库任务失败。"
+objects:
+  - "tcode:VL01N"
+  - "table:LIKP"
+snippets: []
+crossModule:
+  - module: sd
+    relation: handoff
+    note: 出库交货在 SD 与 EWM 之间传递需求。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

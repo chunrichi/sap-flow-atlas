@@ -1,0 +1,16 @@
+id: "tcode:IW32"
+type: tcode
+technicalName: IW32
+title:
+  zh: 计划与排程
+  en: Plan and Schedule
+module: pm
+summary:
+  zh: 维护工序、能力与日期，检查组件可用性并安排执行。
+  en: Maintains operations, capacity and dates, checks component availability and schedules execution.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

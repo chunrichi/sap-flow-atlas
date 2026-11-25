@@ -1,0 +1,22 @@
+id: "tcode:VK12"
+type: tcode
+technicalName: VK12
+title:
+  zh: 修改价格条件
+  en: Change Condition Record
+module: sd
+summary:
+  zh: 按条件类型与有效期调整已有条件记录，并保留变更历史。
+  en: Changes an existing condition record by condition type and validity, keeping change history.
+relations:
+  - target: "table:KONP"
+    kind: writes
+    note: 修改条件金额与有效期
+  - target: "table:PRCD_ELEMENTS"
+    kind: writes
+    note: 条件明细
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

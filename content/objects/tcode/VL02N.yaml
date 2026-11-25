@@ -1,0 +1,16 @@
+id: "tcode:VL02N"
+type: tcode
+technicalName: VL02N
+title:
+  zh: 发货过账
+  en: Post Goods Issue
+module: ewm
+summary:
+  zh: 对出库交货执行发货过账，减少库存并生成物料与会计凭证。
+  en: Posts goods issue for the outbound delivery, reducing stock and creating material and accounting documents.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

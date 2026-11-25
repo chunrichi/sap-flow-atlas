@@ -1,0 +1,42 @@
+id: pp-migo-issue-components
+type: step
+title:
+  zh: 生产发料
+  en: Issue Components
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-production-order
+flows:
+  - plan-to-produce
+tcode: MIGO
+summary:
+  zh: 按生产订单与预留发料，减少库存并归集订单成本。
+  en: Issues components against the production order and reservation, reducing stock and collecting order cost.
+inputs:
+  - 生产订单
+  - 组件数量
+  - 库存地点
+outputs:
+  - 物料凭证
+  - 订单实际成本
+rules:
+  - "按订单组件与预留发料。"
+painPoints:
+  - "多发/少发会导致订单成本与库存差异。"
+objects:
+  - "tcode:MIGO"
+  - "table:RESB"
+  - "table:MSEG"
+  - "table:AUFM"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 发料按标准价格或实际价格计入订单成本。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

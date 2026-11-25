@@ -1,0 +1,16 @@
+id: "tcode:SM58"
+type: tcode
+technicalName: SM58
+title:
+  zh: 监控 RFC 队列
+  en: Monitor RFC Queue
+module: abap
+summary:
+  zh: 查看失败或挂起的 RFC 调用，重试或分析目标系统错误。
+  en: Reviews failed or queued RFC calls, retries or analyzes target system errors.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

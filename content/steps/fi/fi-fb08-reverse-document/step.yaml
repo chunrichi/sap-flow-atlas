@@ -1,0 +1,39 @@
+id: fi-fb08-reverse-document
+type: step
+title:
+  zh: 冲销会计凭证
+  en: Reverse Accounting Document
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-general-ledger
+flows:
+  - record-to-report
+tcode: FB08
+summary:
+  zh: 对已过账凭证执行冲销，可冲销到当前或原始期间。
+  en: Reverses a posted document into the current or original period.
+inputs:
+  - 凭证号
+  - 冲销原因
+  - 冲销日期
+outputs:
+  - 冲销凭证
+rules:
+  - 冲销原因必须填写，影响审计追溯。
+painPoints:
+  - "已清项冲销可能重新打开未清项，需通知应收/应付。"
+objects:
+  - "tcode:FB08"
+  - "table:BKPF"
+  - "table:BSEG"
+  - "table:ACDOCA"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

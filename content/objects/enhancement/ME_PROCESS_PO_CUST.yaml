@@ -1,0 +1,19 @@
+id: "enhancement:ME_PROCESS_PO_CUST"
+type: enhancement
+technicalName: ME_PROCESS_PO_CUST
+title:
+  zh: 采购订单处理 BAdI
+  en: Purchase Order Customer BAdI
+module: mm
+subtype: badi
+summary:
+  zh: 采购订单处理的 BAdI，可校验或修改抬头与行项目。
+  en: BAdI for purchase order processing, allowing validation or modification of header and items.
+relations:
+  - target: "tcode:ME21N"
+    kind: enhances
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

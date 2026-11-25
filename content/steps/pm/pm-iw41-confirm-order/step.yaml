@@ -1,0 +1,42 @@
+id: pm-iw41-confirm-order
+type: step
+title:
+  zh: 维护确认
+  en: Confirm Maintenance Order
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-maintenance-order
+flows:
+  - maintain-to-availability
+tcode: IW41
+summary:
+  zh: 确认工时、组件消耗与完成情况，回写订单成本。
+  en: Confirms labor, component consumption and completion, updating order cost.
+inputs:
+  - 维护订单
+  - 工时
+  - 组件消耗
+outputs:
+  - 确认凭证
+  - 订单成本
+rules:
+  - "确认工时与备件必须对应订单工序。"
+painPoints:
+  - "漏确认工时会低估维护成本。"
+objects:
+  - "tcode:IW41"
+  - "table:AUFK"
+  - "table:AFIH"
+  - "table:AUFM"
+snippets: []
+crossModule:
+  - module: co
+    relation: accounting-impact
+    note: 确认工时与组件会归集维护订单成本。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

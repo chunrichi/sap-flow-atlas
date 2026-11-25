@@ -1,0 +1,22 @@
+id: "tcode:WE20"
+type: tcode
+technicalName: WE20
+title:
+  zh: 配置伙伴参数
+  en: Configure Partner Profile
+module: abap
+summary:
+  zh: 为伙伴配置入站/出站消息类型、处理代码与端口。
+  en: Configures inbound/outbound message types, process codes and ports for a partner.
+relations:
+  - target: "table:EDIDC"
+    kind: writes
+    note: IDoc 控制记录
+  - target: "table:EDID4"
+    kind: writes
+    note: IDoc 数据记录
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

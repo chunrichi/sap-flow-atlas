@@ -1,0 +1,16 @@
+id: "table:EDIDC"
+type: table
+technicalName: EDIDC
+title:
+  zh: IDoc 控制记录
+  en: IDoc control record
+module: abap
+summary:
+  zh: IDoc 控制记录，SAP 标准数据表，用于 ABAP 相关流程。
+  en: IDoc control record, a standard SAP table used in ABAP processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,48 @@
+id: co-product-costing
+type: process
+title:
+  zh: 产品成本核算
+  en: Product Costing
+module: co
+flow: plan-to-produce
+stage: settle
+summary:
+  zh: 标准成本估算、标记/释放、成本构成与生产订单差异分析。
+  en: Standard cost estimate, marking/release, cost component split and production variance.
+steps:
+  - co-ck11n-cost-estimate
+  - co-ck24-mark-release
+  - co-ck13n-cost-component
+  - co-kks1-variance
+edges:
+  - from: co-ck11n-cost-estimate
+    to: co-ck24-mark-release
+    kind: sequence
+    label:
+      zh: 标记与释放
+      en: 标记与释放
+  - from: co-ck24-mark-release
+    to: co-ck13n-cost-component
+    kind: sequence
+    label:
+      zh: 成本构成
+      en: 成本构成
+  - from: co-ck13n-cost-component
+    to: co-kks1-variance
+    kind: sequence
+    label:
+      zh: 差异分析
+      en: 差异分析
+roles:
+  - 成本会计
+  - 生产计划员
+  - 财务分析师
+outcomes:
+  - 标准成本
+  - 成本构成
+  - 差异分析
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

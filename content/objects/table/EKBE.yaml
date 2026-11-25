@@ -1,0 +1,16 @@
+id: "table:EKBE"
+type: table
+technicalName: EKBE
+title:
+  zh: 采购订单历史
+  en: Purchase order history
+module: mm
+summary:
+  zh: 采购订单历史，SAP 标准数据表，用于 MM 相关流程。
+  en: Purchase order history, a standard SAP table used in MM processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

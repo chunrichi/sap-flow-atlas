@@ -1,0 +1,21 @@
+id: "bapi:BAPI_SALESORDER_CREATEFROMDAT2"
+type: bapi
+technicalName: BAPI_SALESORDER_CREATEFROMDAT2
+title:
+  zh: 创建销售订单 BAPI
+  en: Create Sales Order BAPI
+module: sd
+summary:
+  zh: 通过 BAPI 创建销售订单，支持订单头、行项目与合作伙伴。
+  en: Creates a sales order via BAPI with header, item and partner data.
+relations:
+  - target: "table:VBAK"
+    kind: writes
+  - target: "table:VBAP"
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets
+updatedAt: 2026-11-24

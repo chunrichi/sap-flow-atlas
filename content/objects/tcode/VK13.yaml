@@ -1,0 +1,22 @@
+id: "tcode:VK13"
+type: tcode
+technicalName: VK13
+title:
+  zh: 查看价格条件
+  en: Display Condition Record
+module: sd
+summary:
+  zh: 按条件类型与键值查看条件记录、有效期和金额。
+  en: Displays condition records, validity and amounts by condition type and key.
+relations:
+  - target: "table:KONH"
+    kind: reads
+    note: 读取条件抬头
+  - target: "table:KONP"
+    kind: reads
+    note: 读取条件行
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

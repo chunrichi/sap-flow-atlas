@@ -1,0 +1,16 @@
+id: "tcode:IW41"
+type: tcode
+technicalName: IW41
+title:
+  zh: 服务确认
+  en: Confirm Service
+module: cs
+summary:
+  zh: 确认实际工时、备件消耗与服务完成情况。
+  en: Confirms actual labor, spare parts consumption and service completion.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

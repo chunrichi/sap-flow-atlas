@@ -1,0 +1,42 @@
+id: co-ksu5-cost-allocation
+type: step
+title:
+  zh: 成本分配
+  en: Cost Allocation
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-cost-center
+flows:
+  - record-to-report
+tcode: KSU5
+summary:
+  zh: 按分配循环把间接成本从服务成本中心分摊到受益对象。
+  en: Allocates indirect costs from service cost centers to receivers using allocation cycles.
+inputs:
+  - 分配循环
+  - 发送方
+  - 接收方
+  - 期间
+outputs:
+  - 分配凭证
+  - 成本中心余额
+rules:
+  - 分配循环的发送方与接收方规则必须完整。
+  - 分配前要确认成本已全部归集。
+painPoints:
+  - 循环分配可能造成成本反复震荡。
+objects:
+  - "tcode:KSU5"
+  - "table:COSP"
+  - "table:COSS"
+  - "table:CSKS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

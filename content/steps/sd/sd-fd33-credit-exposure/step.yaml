@@ -1,0 +1,39 @@
+id: sd-fd33-credit-exposure
+type: step
+title:
+  zh: 查看信用敞口
+  en: Display Credit Exposure
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-credit-management
+flows:
+  - order-to-cash
+tcode: FD33
+summary:
+  zh: 查看客户的信用额度、已用额度和未清项目明细。
+  en: Displays credit limit, utilized amount and open items for a customer.
+inputs:
+  - 客户
+  - 信用控制范围
+outputs:
+  - 信用敞口
+  - 未清项目
+rules:
+  - "信用敞口按信用控制范围汇总。"
+painPoints:
+  - "未清项与订单承诺未同时考虑会低估风险。"
+objects:
+  - "tcode:FD33"
+  - "table:KNKK"
+  - "table:BSID"
+  - "table:BSAD"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

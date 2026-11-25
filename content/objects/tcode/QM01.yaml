@@ -1,0 +1,16 @@
+id: "tcode:QM01"
+type: tcode
+technicalName: QM01
+title:
+  zh: 创建质量通知
+  en: Create Quality Notification
+module: qm
+summary:
+  zh: 记录质量异常、缺陷原因、纠正措施与责任部门。
+  en: Records quality issues, defect causes, corrective actions and responsible departments.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

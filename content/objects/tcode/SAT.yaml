@@ -1,0 +1,16 @@
+id: "tcode:SAT"
+type: tcode
+technicalName: SAT
+title:
+  zh: ABAP 运行时跟踪
+  en: ABAP Trace
+module: abap
+summary:
+  zh: 用 SAT 分析程序内部调用、数据库时间与热点方法。
+  en: Uses SAT to analyze internal calls, database time and hotspot methods.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

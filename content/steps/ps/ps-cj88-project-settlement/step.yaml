@@ -1,0 +1,41 @@
+id: ps-cj88-project-settlement
+type: step
+title:
+  zh: 项目结算
+  en: Settle Project
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-project-execution
+flows:
+  - project-to-profit
+tcode: CJ88
+summary:
+  zh: 把项目实际成本结算到资产、成本中心或获利段。
+  en: Settles project actual cost to asset, cost center or profitability segment.
+inputs:
+  - 项目
+  - 结算规则
+  - 期间
+outputs:
+  - 结算凭证
+rules:
+  - "结算规则必须覆盖全部 WBS 成本。"
+painPoints:
+  - "结算后未清余额需手工处理。"
+objects:
+  - "tcode:CJ88"
+  - "table:PROJ"
+  - "table:COSP"
+  - "table:COSS"
+snippets: []
+crossModule:
+  - module: co
+    relation: accounting-impact
+    note: 结算结果进入 CO 与 FI 报表。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,21 @@
+id: "tcode:SE38"
+type: tcode
+technicalName: SE38
+title:
+  zh: ABAP 编辑器
+  en: ABAP Editor
+module: abap
+summary:
+  zh: 创建、编辑、运行与调试 ABAP 报表和程序。
+  en: Creates, edits, runs and debugs ABAP reports and programs.
+relations:
+  - target: "table:VBAK"
+    kind: related
+  - target: "table:VBAP"
+    kind: related
+status: reviewed
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets
+updatedAt: 2026-11-25

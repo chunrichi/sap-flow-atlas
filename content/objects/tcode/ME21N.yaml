@@ -1,0 +1,27 @@
+id: "tcode:ME21N"
+type: tcode
+technicalName: ME21N
+title:
+  zh: 创建采购订单
+  en: Create Purchase Order
+module: mm
+package: ME
+summary:
+  zh: 创建采购订单，可引用采购申请。
+  en: Creates a purchase order, optionally referencing a purchase requisition.
+relations:
+  - target: "table:EKKO"
+    kind: writes
+  - target: "table:EKPO"
+    kind: writes
+  - target: "enhancement:ME_PROCESS_PO_CUST"
+    kind: triggers
+  - target: "bapi:BAPI_PO_CREATE1"
+    kind: related
+    note: BAPI 提供编程创建入口。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - api-purchase-order
+updatedAt: 2026-11-24

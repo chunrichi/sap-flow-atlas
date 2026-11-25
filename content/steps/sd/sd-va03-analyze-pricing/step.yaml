@@ -1,0 +1,38 @@
+id: sd-va03-analyze-pricing
+type: step
+title:
+  zh: 分析订单定价
+  en: Analyze Order Pricing
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-pricing
+flows:
+  - order-to-cash
+tcode: VA03
+summary:
+  zh: 在销售订单中查看定价过程、条件基值与每一步的取价结果。
+  en: Analyzes the pricing procedure, condition basis and each pricing step in a sales order.
+inputs:
+  - 销售订单号
+outputs:
+  - 定价过程
+  - 条件明细
+  - 净价
+rules:
+  - "分析定价时逐级核对条件基值与条件排除。"
+painPoints:
+  - 条件排除或定价过程错误会导致金额与预期不一致。
+objects:
+  - "tcode:VA03"
+  - "table:VBAK"
+  - "table:PRCD_ELEMENTS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

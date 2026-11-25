@@ -1,0 +1,16 @@
+id: "tcode:CK24"
+type: tcode
+technicalName: CK24
+title:
+  zh: 标记与释放标准成本
+  en: Mark and Release Standard Cost
+module: co
+summary:
+  zh: 将成本估算标记为未来标准成本，并在生效期释放。
+  en: Marks a cost estimate as future standard cost and releases it for the effective period.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,16 @@
+id: "table:BSAK"
+type: table
+technicalName: BSAK
+title:
+  zh: 应付已清项
+  en: AP cleared items
+module: fi
+summary:
+  zh: 应付已清项，SAP 标准数据表，用于 FI 相关流程。
+  en: AP cleared items, a standard SAP table used in FI processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

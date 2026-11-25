@@ -1,0 +1,14 @@
+id: abap-enhancement-to-sales-order
+type: crosslink
+from: "step:abap-se80-implement-exit"
+to: "step:sd-va01-create-sales-order"
+relation: process-impact
+label:
+  zh: 销售订单增强影响下单行为
+  en: Sales order enhancement affects order creation
+note: MV45AFZZ 的保存出口在 VA01 保存时执行，必须覆盖成功、错误与回滚路径。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

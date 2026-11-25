@@ -1,0 +1,16 @@
+id: "tcode:SU01"
+type: tcode
+technicalName: SU01
+title:
+  zh: 创建系统用户
+  en: Create System User
+module: hr
+summary:
+  zh: 为员工创建 SAP 用户并分配角色与权限。
+  en: Creates an SAP user for the employee and assigns roles and authorizations.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

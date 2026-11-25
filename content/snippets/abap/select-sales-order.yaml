@@ -1,0 +1,31 @@
+id: abap-select-sales-order
+type: snippet
+language: abap
+title:
+  zh: 读取当日销售订单与行项目
+  en: Read today's sales orders and items
+objects:
+  - "tcode:SE38"
+  - "table:VBAK"
+  - "table:VBAP"
+file: abap/select-sales-order.abap
+summary:
+  zh: 用 Open SQL 读取当天创建的销售订单，再按订单号读取行项目；展示 FOR ALL ENTRIES 的常见写法。
+  en: Reads today's sales orders with Open SQL, then their items with FOR ALL ENTRIES.
+annotations:
+  - lines: 1-2
+    note: 声明与表结构对应的内表，避免 SELECT *。
+  - lines: 4-7
+    note: 只取需要的字段，并按创建日期过滤当天订单。
+  - lines: 9-12
+    note: 空结果直接返回，避免后续无效查询。
+  - lines: 14-18
+    note: FOR ALL ENTRIES 读取行项目；生产代码需注意内表为空时不要执行。
+  - lines: 20-21
+    note: 输出订单数与行项目数，便于调试。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

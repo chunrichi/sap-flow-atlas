@@ -1,0 +1,19 @@
+id: "cds:I_JournalEntry"
+type: cds
+technicalName: I_JournalEntry
+title:
+  zh: 会计凭证接口视图
+  en: Journal Entry Interface View
+module: fi
+viewType: interface
+summary:
+  zh: 会计凭证的接口 CDS 视图，供报表与 API 复用。
+  en: Interface CDS view for journal entries, reused by reporting and APIs.
+relations:
+  - target: "table:ACDOCA"
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

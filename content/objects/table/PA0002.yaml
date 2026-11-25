@@ -1,0 +1,16 @@
+id: "table:PA0002"
+type: table
+technicalName: PA0002
+title:
+  zh: 个人数据
+  en: Personal data
+module: hr
+summary:
+  zh: 个人数据，SAP 标准数据表，用于 HR 相关流程。
+  en: Personal data, a standard SAP table used in HR processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

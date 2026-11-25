@@ -1,0 +1,39 @@
+id: sd-vkm3-release-order
+type: step
+title:
+  zh: 释放冻结订单
+  en: Release Blocked Order
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-credit-management
+flows:
+  - order-to-cash
+tcode: VKM3
+summary:
+  zh: 在信用额度调整或风险确认后，释放被冻结的销售订单。
+  en: Releases a credit-blocked sales order after limit adjustment or risk approval.
+inputs:
+  - 冻结订单
+  - 释放原因
+outputs:
+  - 释放记录
+  - 订单状态
+rules:
+  - 释放需要具备信用释放权限。
+  - 释放后仍需确认交货日期与库存。
+painPoints:
+  - "释放后未重新检查交货日期可能延迟履约。"
+objects:
+  - "tcode:VKM3"
+  - "table:VBAK"
+  - "table:KNKK"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

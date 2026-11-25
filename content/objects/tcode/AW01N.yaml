@@ -1,0 +1,16 @@
+id: "tcode:AW01N"
+type: tcode
+technicalName: AW01N
+title:
+  zh: 资产浏览器
+  en: Asset Explorer
+module: fi
+summary:
+  zh: 查看资产价值、折旧计划、购置与报废的完整明细。
+  en: Displays asset values, depreciation plan, acquisitions and retirements.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

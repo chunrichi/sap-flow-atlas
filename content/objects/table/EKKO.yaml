@@ -1,0 +1,17 @@
+id: "table:EKKO"
+type: table
+technicalName: EKKO
+title:
+  zh: 采购订单抬头
+  en: Purchase Order Header
+module: mm
+tableClass: transparent
+summary:
+  zh: 保存采购订单的抬头数据，如供应商、采购组织。
+  en: Stores purchase order header data such as supplier and purchasing organization.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

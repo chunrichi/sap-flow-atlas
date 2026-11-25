@@ -1,0 +1,62 @@
+id: pp-production-order
+type: process
+title:
+  zh: 生产订单执行
+  en: Production Order Execution
+module: pp
+flow: plan-to-produce
+stage: produce
+summary:
+  zh: 创建与下达生产订单、发料、工序确认、收货与订单结算。
+  en: Creates and releases production orders, issues components, confirms operations, receives and settles.
+steps:
+  - pp-co01-create-production-order
+  - pp-co02-release-order
+  - pp-migo-issue-components
+  - pp-co11n-confirm-operation
+  - pp-migo-receipt-finished
+  - pp-ko88-settle-order
+edges:
+  - from: pp-co01-create-production-order
+    to: pp-co02-release-order
+    kind: sequence
+    label:
+      zh: 下达订单
+      en: 下达订单
+  - from: pp-co02-release-order
+    to: pp-migo-issue-components
+    kind: sequence
+    label:
+      zh: 发料
+      en: 发料
+  - from: pp-migo-issue-components
+    to: pp-co11n-confirm-operation
+    kind: sequence
+    label:
+      zh: 工序确认
+      en: 工序确认
+  - from: pp-co11n-confirm-operation
+    to: pp-migo-receipt-finished
+    kind: sequence
+    label:
+      zh: 成品收货
+      en: 成品收货
+  - from: pp-migo-receipt-finished
+    to: pp-ko88-settle-order
+    kind: sequence
+    label:
+      zh: 订单结算
+      en: 订单结算
+roles:
+  - 生产计划员
+  - 车间主管
+  - 成本会计
+outcomes:
+  - 生产订单
+  - 物料凭证
+  - 订单结算
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,42 @@
+id: mm-migo-subcontract-receipt
+type: step
+title:
+  zh: 委外成品收货
+  en: Receive Subcontracting Finished Goods
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-subcontracting
+flows:
+  - procure-to-pay
+tcode: MIGO
+summary:
+  zh: 对委外采购订单收货，成品入库并按 BOM 消耗供应商处组件。
+  en: Receives finished goods against the subcontract PO and consumes components at the supplier per BOM.
+inputs:
+  - 委外采购订单
+  - 收货数量
+outputs:
+  - 成品库存
+  - 组件消耗凭证
+rules:
+  - "收货数量不能超过可消耗组件量。"
+painPoints:
+  - "组件消耗与成品收货不同步会造成库存虚高。"
+objects:
+  - "tcode:MIGO"
+  - "table:MSEG"
+  - "table:EKBE"
+  - "table:RESB"
+snippets:
+  - abap-mm-po-history
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 成品收货与组件消耗共同影响存货与 GR/IR。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

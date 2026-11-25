@@ -1,0 +1,16 @@
+id: "tcode:CJ01"
+type: tcode
+technicalName: CJ01
+title:
+  zh: 创建项目定义
+  en: Create Project Definition
+module: ps
+summary:
+  zh: 创建项目定义，确定项目类型、公司代码与负责人。
+  en: Creates a project definition with project type, company code and responsible person.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

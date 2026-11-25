@@ -1,0 +1,22 @@
+id: "tcode:AS01"
+type: tcode
+technicalName: AS01
+title:
+  zh: 创建资产主数据
+  en: Create Asset Master
+module: fi
+summary:
+  zh: 创建资产卡片，维护资产类别、成本中心与折旧范围。
+  en: Creates an asset master record with asset class, cost center and depreciation areas.
+relations:
+  - target: "table:ANLA"
+    kind: writes
+    note: 资产主数据
+  - target: "table:ANLB"
+    kind: writes
+    note: 折旧范围
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

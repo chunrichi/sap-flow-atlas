@@ -1,0 +1,16 @@
+id: "tcode:WE02"
+type: tcode
+technicalName: WE02
+title:
+  zh: 监控 IDoc
+  en: Monitor IDoc
+module: abap
+summary:
+  zh: 按方向、消息类型与状态查询 IDoc，定位处理失败原因。
+  en: Searches IDocs by direction, message type and status to diagnose processing failures.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

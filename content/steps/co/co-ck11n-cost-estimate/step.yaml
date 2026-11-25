@@ -1,0 +1,42 @@
+id: co-ck11n-cost-estimate
+type: step
+title:
+  zh: 创建成本估算
+  en: Create Cost Estimate
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-product-costing
+flows:
+  - plan-to-produce
+tcode: CK11N
+summary:
+  zh: 基于 BOM、工艺路线与作业价格计算标准成本。
+  en: Calculates standard cost from BOM, routing and activity prices.
+inputs:
+  - 物料
+  - 工厂
+  - 成本核算变式
+  - 期间
+outputs:
+  - 成本估算
+  - 标准成本
+rules:
+  - BOM 与工艺路线必须有效。
+  - 成本核算变式决定取价逻辑。
+painPoints:
+  - BOM 或工艺路线缺失会导致成本估算不完整。
+objects:
+  - "tcode:CK11N"
+  - "table:KEKO"
+  - "table:KEPH"
+  - "table:CKIS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

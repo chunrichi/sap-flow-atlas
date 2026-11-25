@@ -1,0 +1,29 @@
+id: abap-qm-inspection-lots
+type: snippet
+language: abap
+title:
+  zh: 读取检验批与检验数量
+  en: Read Inspection Lots
+objects:
+  - "tcode:QA11"
+  - "table:QALS"
+  - "table:QAVE"
+file: abap/qm-inspection-lots.abap
+summary:
+  zh: 按工厂与创建日期读取检验批、物料、批量与状态，用于日常质量跟踪。
+  en: Reads inspection lots, materials, lot sizes and status by plant and creation date.
+annotations:
+  - lines: "1-2"
+    note: 按工厂与日期过滤。
+  - lines: "4-8"
+    note: 读取检验批关键字段。
+  - lines: "10-13"
+    note: 无检验批时返回。
+  - lines: "15-18"
+    note: 输出批次、物料、数量与日期。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

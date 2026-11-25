@@ -1,0 +1,16 @@
+id: "tcode:ABZON"
+type: tcode
+technicalName: ABZON
+title:
+  zh: 资产购置过账
+  en: Post Asset Acquisition
+module: fi
+summary:
+  zh: 录入资产购置，更新资产价值与折旧基础。
+  en: Posts an asset acquisition, updating asset values and depreciation basis.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

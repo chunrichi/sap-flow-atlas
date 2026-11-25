@@ -1,0 +1,40 @@
+id: fi-afab-depreciation
+type: step
+title:
+  zh: 运行折旧
+  en: Run Depreciation
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-asset-accounting
+flows:
+  - acquire-to-retire
+tcode: AFAB
+summary:
+  zh: 按期间运行折旧，生成折旧凭证并更新账面价值。
+  en: Runs depreciation for a period, generating depreciation documents and updating net book value.
+inputs:
+  - 公司代码
+  - 折旧期间
+outputs:
+  - 折旧凭证
+  - 折旧计划
+rules:
+  - 折旧运行前必须完成资产购置与调整。
+  - 重复运行只允许在未过账的情况下。
+painPoints:
+  - 折旧码错误会导致折旧金额与税务口径不一致。
+objects:
+  - "tcode:AFAB"
+  - "table:ANLC"
+  - "table:ANLP"
+  - "table:ACDOCA"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

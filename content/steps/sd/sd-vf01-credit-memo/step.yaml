@@ -1,0 +1,41 @@
+id: sd-vf01-credit-memo
+type: step
+title:
+  zh: 创建贷项凭证
+  en: Create Credit Memo
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-returns
+flows:
+  - order-to-cash
+tcode: VF01
+summary:
+  zh: 基于退货交货创建贷项凭证，冲减客户应收。
+  en: Creates a credit memo from the return delivery, reducing the customer receivable.
+inputs:
+  - 退货交货
+  - 开票类型
+outputs:
+  - 贷项凭证号
+  - 应收冲减
+rules:
+  - "贷项凭证必须引用退货交货。"
+painPoints:
+  - "直接贷项不退货会造成库存与应收双缺口。"
+objects:
+  - "tcode:VF01"
+  - "table:VBRK"
+  - "table:VBRP"
+  - "table:BSID"
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 贷项凭证生成贷方应收，后续可与收款或退款清账。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

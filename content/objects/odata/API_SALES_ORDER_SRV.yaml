@@ -1,0 +1,19 @@
+id: "odata:API_SALES_ORDER_SRV"
+type: odata
+technicalName: API_SALES_ORDER_SRV
+title:
+  zh: 销售订单 OData 服务
+  en: Sales Order OData Service
+module: sd
+serviceVersion: v2
+summary:
+  zh: 销售订单的 OData V2 服务，支持创建、读取与修改。
+  en: OData V2 service for sales orders supporting create, read and update.
+relations:
+  - target: "cds:I_SalesOrder"
+    kind: basedOn
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - api-sales-order
+updatedAt: 2026-11-24

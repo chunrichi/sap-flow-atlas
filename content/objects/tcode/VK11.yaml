@@ -1,0 +1,25 @@
+id: "tcode:VK11"
+type: tcode
+technicalName: VK11
+title:
+  zh: 创建价格条件
+  en: Create Condition Record
+module: sd
+summary:
+  zh: 为价格、折扣或附加费创建条件记录，定价时由条件技术自动读取。
+  en: Creates a condition record for price, discount or surcharge read by condition technique during pricing.
+relations:
+  - target: "table:PRCD_ELEMENTS"
+    kind: writes
+    note: 写入定价条件明细
+  - target: "table:KONH"
+    kind: writes
+    note: 条件抬头
+  - target: "table:KONP"
+    kind: writes
+    note: 条件行项目
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

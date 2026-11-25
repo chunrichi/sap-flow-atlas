@@ -1,0 +1,17 @@
+id: "table:VBAP"
+type: table
+technicalName: VBAP
+title:
+  zh: 销售订单行项目
+  en: Sales Document Item
+module: sd
+tableClass: transparent
+summary:
+  zh: 保存销售订单的行项目，如物料、数量、价格。
+  en: Stores sales document items such as material, quantity and price.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

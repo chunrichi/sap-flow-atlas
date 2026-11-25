@@ -1,0 +1,29 @@
+id: abap-co-cost-actuals
+type: snippet
+language: abap
+title:
+  zh: 汇总成本中心两期实际成本
+  en: Summarize Cost Center Actuals
+objects:
+  - "tcode:KSB1"
+  - "table:CSKS"
+  - "table:COSP"
+file: abap/co-cost-actuals.abap
+summary:
+  zh: 校验成本中心有效期后，汇总 COSP 中两个期间的实际成本。
+  en: Validates cost center validity, then sums actual cost for two periods in COSP.
+annotations:
+  - lines: "1-2"
+    note: 输入成本中心与会计年度。
+  - lines: "4-8"
+    note: 检查成本中心有效期。
+  - lines: "15-20"
+    note: 汇总两个期间的实际成本。
+  - lines: "22-23"
+    note: 输出成本中心与两期金额。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

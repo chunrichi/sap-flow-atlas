@@ -1,0 +1,16 @@
+id: "table:AFPO"
+type: table
+technicalName: AFPO
+title:
+  zh: 生产订单行项目
+  en: Production order item
+module: pp
+summary:
+  zh: 生产订单行项目，SAP 标准数据表，用于 PP 相关流程。
+  en: Production order item, a standard SAP table used in PP processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

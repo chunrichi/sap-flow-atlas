@@ -1,0 +1,16 @@
+id: "tcode:PA30"
+type: tcode
+technicalName: PA30
+title:
+  zh: 维护人事主数据
+  en: Maintain HR Master Data
+module: hr
+summary:
+  zh: 维护组织分配、个人数据、薪酬范围与银行信息。
+  en: Maintains organizational assignment, personal data, pay scale and bank details.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

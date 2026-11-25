@@ -1,0 +1,16 @@
+id: "tcode:FB08"
+type: tcode
+technicalName: FB08
+title:
+  zh: 冲销会计凭证
+  en: Reverse Accounting Document
+module: fi
+summary:
+  zh: 对已过账凭证执行冲销，可冲销到当前或原始期间。
+  en: Reverses a posted document into the current or original period.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

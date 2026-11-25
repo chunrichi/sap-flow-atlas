@@ -1,0 +1,30 @@
+id: abap-pp-order-status
+type: snippet
+language: abap
+title:
+  zh: 读取生产订单与产出
+  en: Read Production Orders and Output
+objects:
+  - "tcode:CO01"
+  - "table:AUFK"
+  - "table:AFPO"
+  - "table:RESB"
+file: abap/pp-order-status.abap
+summary:
+  zh: 按订单类型与创建日期读取生产订单、物料和计划/确认数量。
+  en: Reads production orders, materials and planned/confirmed quantities by order type and date.
+annotations:
+  - lines: "1-2"
+    note: 按日期与订单类型筛选。
+  - lines: "4-10"
+    note: 连接 AUFK 与 AFPO 读取订单行。
+  - lines: "12-15"
+    note: 无结果时退出。
+  - lines: "17-20"
+    note: 输出订单、物料与数量。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

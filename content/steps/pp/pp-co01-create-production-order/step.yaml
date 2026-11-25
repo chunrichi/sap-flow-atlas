@@ -1,0 +1,42 @@
+id: pp-co01-create-production-order
+type: step
+title:
+  zh: 创建生产订单
+  en: Create Production Order
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-production-order
+flows:
+  - plan-to-produce
+tcode: CO01
+summary:
+  zh: 按物料、数量与日期创建生产订单，带出 BOM 与工艺路线。
+  en: Creates a production order for material, quantity and date, deriving BOM and routing.
+inputs:
+  - 物料
+  - 工厂
+  - 数量
+  - 开始日期
+outputs:
+  - 生产订单号
+rules:
+  - BOM 与工艺路线必须已存在。
+painPoints:
+  - "BOM/工艺路线变更后未更新订单会导致组件与工时错误。"
+objects:
+  - "tcode:CO01"
+  - "table:AUFK"
+  - "table:AFKO"
+  - "table:AFPO"
+  - "table:RESB"
+snippets:
+  - abap-pp-order-status
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

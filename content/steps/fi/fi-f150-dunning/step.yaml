@@ -1,0 +1,40 @@
+id: fi-f150-dunning
+type: step
+title:
+  zh: 催款
+  en: Dunning
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-accounts-receivable
+flows:
+  - order-to-cash
+tcode: F150
+summary:
+  zh: 按逾期天数与催款级别生成催款函。
+  en: Generates dunning letters based on overdue days and dunning levels.
+inputs:
+  - 客户
+  - 公司代码
+  - 催款日期
+outputs:
+  - 催款函
+  - 催款日志
+rules:
+  - "催款级别与逾期天数必须匹配。"
+  - "先确认客户催款程序与联系人。"
+painPoints:
+  - "客户主数据缺少催款程序不会生成催款函。"
+objects:
+  - "tcode:F150"
+  - "table:BSID"
+  - "table:KNA1"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

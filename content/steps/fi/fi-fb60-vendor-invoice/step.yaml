@@ -1,0 +1,46 @@
+id: fi-fb60-vendor-invoice
+type: step
+title:
+  zh: 录入供应商发票
+  en: Post Vendor Invoice
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-accounts-payable
+flows:
+  - procure-to-pay
+tcode: FB60
+summary:
+  zh: 手工录入供应商发票，生成应付凭证与 GR/IR 清账。
+  en: Posts a supplier invoice manually, creating a payable and clearing GR/IR.
+inputs:
+  - 供应商
+  - 发票金额
+  - 税额
+  - 采购订单/收货
+outputs:
+  - 应付凭证
+  - 未清项
+rules:
+  - 发票金额与税额必须与采购订单/收货匹配。
+  - 过账日期决定所属期间。
+painPoints:
+  - 供应商主数据冻结会导致无法过账。
+objects:
+  - "tcode:FB60"
+  - "table:BKPF"
+  - "table:BSEG"
+  - "table:BSIK"
+  - "table:LFA1"
+  - "cds:I_JournalEntry"
+snippets: []
+crossModule:
+  - module: mm
+    relation: accounting-impact
+    note: 发票过账与 MM 发票校验共享 GR/IR 逻辑。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

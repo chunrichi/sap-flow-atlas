@@ -1,0 +1,38 @@
+id: sd-vk12-change-condition
+type: step
+title:
+  zh: 修改价格条件
+  en: Change Condition Record
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-pricing
+flows:
+  - order-to-cash
+tcode: VK12
+summary:
+  zh: 按条件类型与有效期调整已有条件记录，并保留变更历史。
+  en: Changes an existing condition record by condition type and validity, keeping change history.
+inputs:
+  - 条件记录
+  - 新金额
+  - 生效日期
+outputs:
+  - 更新后的条件记录
+rules:
+  - "修改条件记录需评估对已开票订单的追溯影响。"
+painPoints:
+  - 直接覆盖历史条件会影响已开票订单的追溯。
+objects:
+  - "tcode:VK12"
+  - "table:KONP"
+  - "table:PRCD_ELEMENTS"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

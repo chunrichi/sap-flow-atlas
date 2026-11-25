@@ -1,0 +1,41 @@
+id: fi-f53-manual-payment
+type: step
+title:
+  zh: 手工付款
+  en: Post Manual Payment
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-accounts-payable
+flows:
+  - procure-to-pay
+tcode: F-53
+summary:
+  zh: 手工录入供应商付款并清销指定发票。
+  en: Posts a manual vendor payment and clears selected invoices.
+inputs:
+  - 供应商
+  - 付款金额
+  - 银行账户
+  - 发票号
+outputs:
+  - 付款凭证
+  - 清账结果
+rules:
+  - "手工付款需选择正确的银行账户与付款方式。"
+painPoints:
+  - 部分付款会留下残余未清项。
+objects:
+  - "tcode:F-53"
+  - "table:BSIK"
+  - "table:BKPF"
+  - "table:BSEG"
+snippets: []
+crossModule:
+  []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

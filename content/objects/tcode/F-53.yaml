@@ -1,0 +1,16 @@
+id: "tcode:F-53"
+type: tcode
+technicalName: F-53
+title:
+  zh: 手工付款
+  en: Post Manual Payment
+module: fi
+summary:
+  zh: 手工录入供应商付款并清销指定发票。
+  en: Posts a manual vendor payment and clears selected invoices.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

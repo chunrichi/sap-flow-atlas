@@ -1,0 +1,16 @@
+id: "tcode:KSB1"
+type: tcode
+technicalName: KSB1
+title:
+  zh: 成本中心报表
+  en: Cost Center Report
+module: co
+summary:
+  zh: 按成本中心、期间与成本要素查看实际、计划和差异。
+  en: Displays actual, plan and variance by cost center, period and cost element.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

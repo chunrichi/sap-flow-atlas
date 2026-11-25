@@ -1,0 +1,16 @@
+id: "tcode:CO11N"
+type: tcode
+technicalName: CO11N
+title:
+  zh: 工序确认
+  en: Confirm Operation
+module: pp
+summary:
+  zh: 确认工序的产出、工时与废品，回写订单进度与成本。
+  en: Confirms operation yield, time and scrap, updating order progress and cost.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

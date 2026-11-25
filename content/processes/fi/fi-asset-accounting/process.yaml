@@ -1,0 +1,55 @@
+id: fi-asset-accounting
+type: process
+title:
+  zh: 固定资产
+  en: Asset Accounting
+module: fi
+flow: acquire-to-retire
+stage: acquire
+summary:
+  zh: 资产主数据、购置、折旧、报废与资产报表的完整生命周期。
+  en: The asset lifecycle from master data and acquisition to depreciation, retirement and reporting.
+steps:
+  - fi-as01-create-asset
+  - fi-abzon-acquisition
+  - fi-afab-depreciation
+  - fi-abaon-retirement
+  - fi-aw01n-asset-explorer
+edges:
+  - from: fi-as01-create-asset
+    to: fi-abzon-acquisition
+    kind: sequence
+    label:
+      zh: 资产购置
+      en: 资产购置
+  - from: fi-abzon-acquisition
+    to: fi-afab-depreciation
+    kind: sequence
+    label:
+      zh: 折旧运行
+      en: 折旧运行
+  - from: fi-afab-depreciation
+    to: fi-abaon-retirement
+    kind: sequence
+    label:
+      zh: 资产报废
+      en: 资产报废
+  - from: fi-abaon-retirement
+    to: fi-aw01n-asset-explorer
+    kind: sequence
+    label:
+      zh: 资产报表
+      en: 资产报表
+roles:
+  - 资产会计
+  - 财务经理
+  - 采购员
+outcomes:
+  - 资产卡片
+  - 折旧凭证
+  - 报废凭证
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

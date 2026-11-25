@@ -1,0 +1,14 @@
+id: asset-depreciation-to-cost
+type: crosslink
+from: "step:fi-afab-depreciation"
+to: "step:co-ksb1-cost-report"
+relation: accounting-impact
+label:
+  zh: 折旧进入成本中心
+  en: Depreciation flows to cost centers
+note: 资产折旧凭证按成本中心归集，成为期间费用与成本分析的一部分。
+sources:
+  - sap-help-s4hana
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-25

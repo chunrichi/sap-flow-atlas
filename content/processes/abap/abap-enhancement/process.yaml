@@ -1,0 +1,55 @@
+id: abap-enhancement
+type: process
+title:
+  zh: ABAP 增强开发
+  en: ABAP Enhancement
+module: abap
+flow: develop-to-deploy
+stage: implement
+summary:
+  zh: 定位增强点、创建增强项目、实现用户出口、测试并传输。
+  en: Locate enhancement points, create an enhancement project, implement a user exit, test and transport.
+steps:
+  - abap-smod-find-enhancement
+  - abap-cmod-create-project
+  - abap-se80-implement-exit
+  - abap-se38-test-exit
+  - abap-se01-transport
+edges:
+  - from: abap-smod-find-enhancement
+    to: abap-cmod-create-project
+    kind: sequence
+    label:
+      zh: 创建项目
+      en: 创建项目
+  - from: abap-cmod-create-project
+    to: abap-se80-implement-exit
+    kind: sequence
+    label:
+      zh: 实现出口
+      en: 实现出口
+  - from: abap-se80-implement-exit
+    to: abap-se38-test-exit
+    kind: sequence
+    label:
+      zh: 测试
+      en: 测试
+  - from: abap-se38-test-exit
+    to: abap-se01-transport
+    kind: sequence
+    label:
+      zh: 传输
+      en: 传输
+roles:
+  - ABAP 开发
+  - 功能顾问
+  - Basis
+outcomes:
+  - 增强项目
+  - 用户出口
+  - 传输请求
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

@@ -1,0 +1,30 @@
+id: abap-ps-project-actuals
+type: snippet
+language: abap
+title:
+  zh: 读取项目 WBS 实际成本
+  en: Read WBS Actual Cost
+objects:
+  - "tcode:CJ20N"
+  - "table:PROJ"
+  - "table:PRPS"
+  - "table:COSP"
+file: abap/ps-project-actuals.abap
+summary:
+  zh: 按项目编号连接 WBS 与 COSP，查看每个 WBS 元素的两期实际成本。
+  en: Joins WBS and COSP by project ID to show actual cost per WBS element.
+annotations:
+  - lines: "1-1"
+    note: 输入项目编号。
+  - lines: "3-9"
+    note: 连接项目、WBS 与 COSP。
+  - lines: "11-14"
+    note: 无实际成本时返回。
+  - lines: "16-19"
+    note: 按 WBS 输出金额。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: 2026-11-25

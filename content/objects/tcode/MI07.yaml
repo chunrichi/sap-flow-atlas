@@ -1,0 +1,16 @@
+id: "tcode:MI07"
+type: tcode
+technicalName: MI07
+title:
+  zh: 盘点差异过账
+  en: Post Inventory Differences
+module: mm
+summary:
+  zh: 录入实盘数量后过账盘盈盘亏，并生成库存与会计凭证。
+  en: Posts count differences after entering physical quantities, updating stock and accounting.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

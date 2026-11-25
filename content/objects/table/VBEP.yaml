@@ -1,0 +1,17 @@
+id: "table:VBEP"
+type: table
+technicalName: VBEP
+title:
+  zh: 销售订单计划行
+  en: Sales Document Schedule Line
+module: sd
+tableClass: transparent
+summary:
+  zh: 保存销售订单的计划行与确认数量、日期。
+  en: Stores schedule lines with confirmed quantities and dates for sales documents.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

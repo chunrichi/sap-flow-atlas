@@ -1,0 +1,48 @@
+id: abap-performance
+type: process
+title:
+  zh: ABAP 性能优化
+  en: ABAP Performance
+module: abap
+flow: develop-to-deploy
+stage: analyze
+summary:
+  zh: SQL trace、ABAP trace、运行时分析与代码优化。
+  en: SQL trace, ABAP trace, runtime analysis and code optimization.
+steps:
+  - abap-st05-sql-trace
+  - abap-sat-abap-trace
+  - abap-st12-runtime-analysis
+  - abap-se38-optimize-code
+edges:
+  - from: abap-st05-sql-trace
+    to: abap-sat-abap-trace
+    kind: sequence
+    label:
+      zh: ABAP trace
+      en: ABAP trace
+  - from: abap-sat-abap-trace
+    to: abap-st12-runtime-analysis
+    kind: sequence
+    label:
+      zh: 运行时分析
+      en: 运行时分析
+  - from: abap-st12-runtime-analysis
+    to: abap-se38-optimize-code
+    kind: sequence
+    label:
+      zh: 优化代码
+      en: 优化代码
+roles:
+  - ABAP 开发
+  - 性能专家
+  - Basis
+outcomes:
+  - SQL trace
+  - 运行时分析
+  - 优化方案
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

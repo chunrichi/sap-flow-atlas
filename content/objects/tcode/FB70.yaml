@@ -1,0 +1,16 @@
+id: "tcode:FB70"
+type: tcode
+technicalName: FB70
+title:
+  zh: 录入客户发票
+  en: Post Customer Invoice
+module: fi
+summary:
+  zh: 手工录入客户发票，生成应收凭证与收入。
+  en: Posts a customer invoice manually, creating a receivable and revenue.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25

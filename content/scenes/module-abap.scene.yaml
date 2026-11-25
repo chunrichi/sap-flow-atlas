@@ -1,0 +1,155 @@
+id: module-abap
+type: scene
+level: module
+module: abap
+title:
+  zh: ABAP 与 Basis 开发地图
+  en: ABAP and Basis Development Map
+viewport:
+  x: 0
+  y: 0
+  zoom: 0.8
+groups:
+  - id: g-tools
+    title:
+      zh: 开发工具
+      en: Development tools
+    position: [0, -40]
+    size: [1000, 440]
+    module: abap
+  - id: g-data
+    title:
+      zh: 数据对象
+      en: Data objects
+    position: [1020, -40]
+    size: [480, 440]
+    module: abap
+  - id: g-ext
+    title:
+      zh: 增强与接口
+      en: Enhancements and interfaces
+    position: [0, 440]
+    size: [1000, 420]
+    module: abap
+nodes:
+  - id: n-se80
+    kind: object
+    ref: "tcode:SE80"
+    position: [40, 40]
+    size: [240, 140]
+  - id: n-se11
+    kind: object
+    ref: "tcode:SE11"
+    position: [340, 40]
+    size: [240, 140]
+  - id: n-se37
+    kind: object
+    ref: "tcode:SE37"
+    position: [640, 40]
+    size: [240, 140]
+  - id: n-se24
+    kind: object
+    ref: "tcode:SE24"
+    position: [40, 230]
+    size: [240, 140]
+  - id: n-se93
+    kind: object
+    ref: "tcode:SE93"
+    position: [340, 230]
+    size: [240, 140]
+  - id: n-se38
+    kind: object
+    ref: "tcode:SE38"
+    position: [640, 230]
+    size: [240, 140]
+  - id: n-vbak
+    kind: object
+    ref: "table:VBAK"
+    position: [1060, 40]
+    size: [240, 140]
+  - id: n-vbap
+    kind: object
+    ref: "table:VBAP"
+    position: [1060, 230]
+    size: [240, 140]
+  - id: n-mv45afzz
+    kind: object
+    ref: "enhancement:MV45AFZZ"
+    position: [40, 520]
+    size: [240, 140]
+  - id: n-bapi
+    kind: object
+    ref: "bapi:BAPI_SALESORDER_CREATEFROMDAT2"
+    position: [340, 520]
+    size: [240, 140]
+  - id: n-isales
+    kind: object
+    ref: "cds:I_SalesOrder"
+    position: [640, 520]
+    size: [240, 140]
+  - id: n-odata
+    kind: object
+    ref: "odata:API_SALES_ORDER_SRV"
+    position: [40, 700]
+    size: [240, 140]
+  - id: n-note
+    kind: note
+    position: [1020, 520]
+    size: [420, 120]
+    label:
+      zh: ABAP 是横切模块。这里展示工具、增强与接口对象；示例代码在对象详情中查看。
+      en: ABAP is cross-cutting. This board links tools, enhancements and interface objects; open an object for code.
+  - id: n-portal-d2d
+    kind: portal
+    module: abap
+    position: [1020, 670]
+    size: [420, 150]
+    label:
+      zh: 查看开发到上线流程
+      en: View Develop to Deploy
+    target:
+      scene: flow-develop-to-deploy
+      step: abap-se80-implement-exit
+edges:
+  - id: e-se80-mv45
+    kind: dependency
+    from: n-se80
+    to: n-mv45afzz
+    label:
+      zh: 打开 include
+      en: open include
+  - id: e-se37-bapi
+    kind: dependency
+    from: n-se37
+    to: n-bapi
+    label:
+      zh: 测试函数
+      en: test function
+  - id: e-se11-vbak
+    kind: dependency
+    from: n-se11
+    to: n-vbak
+    label:
+      zh: 查看表
+      en: inspect table
+  - id: e-bapi-vbak
+    kind: data
+    from: n-bapi
+    to: n-vbak
+    label:
+      zh: 写入
+      en: writes
+  - id: e-isales-vbak
+    kind: data
+    from: n-isales
+    to: n-vbak
+    label:
+      zh: 读取
+      en: reads
+  - id: e-odata-isales
+    kind: dependency
+    from: n-odata
+    to: n-isales
+    label:
+      zh: 基于
+      en: based on

@@ -1,0 +1,26 @@
+id: "tcode:VA01"
+type: tcode
+technicalName: VA01
+title:
+  zh: 创建销售订单
+  en: Create Sales Order
+module: sd
+package: VA
+summary:
+  zh: 销售订单创建的事务码，写入 VBAK 与 VBAP 等表。
+  en: Transaction for creating sales orders, writing VBAK, VBAP and related tables.
+relations:
+  - target: "table:VBAK"
+    kind: writes
+  - target: "table:VBAP"
+    kind: writes
+  - target: "enhancement:MV45AFZZ"
+    kind: triggers
+  - target: "bapi:BAPI_SALESORDER_CREATEFROMDAT2"
+    kind: related
+    note: BAPI 提供与 VA01 等价的编程入口。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-24

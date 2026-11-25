@@ -1,0 +1,16 @@
+id: "table:PLAF"
+type: table
+technicalName: PLAF
+title:
+  zh: 计划订单
+  en: Planned order
+module: pp
+summary:
+  zh: 计划订单，SAP 标准数据表，用于 PP 相关流程。
+  en: Planned order, a standard SAP table used in PP processes.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-25
