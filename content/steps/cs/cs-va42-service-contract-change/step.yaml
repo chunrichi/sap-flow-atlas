@@ -1,0 +1,44 @@
+id: cs-va42-service-contract-change
+type: step
+title:
+  zh: 修改服务合同
+  en: Change Service Contract
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-contract
+flows:
+  - service-to-cash
+tcode: VA42
+summary:
+  zh: 调整合同条款、服务范围与有效期。
+  en: Adjusts contract terms, service scope and validity.
+optional: true
+condition:
+  zh: 合同续签、范围变更或价格调整时才执行；首次签订走创建流程。
+  en: Only for renewals, scope changes or price adjustments; first-time signing uses the creation flow.
+inputs:
+  - 服务合同
+  - 变更字段
+outputs:
+  - 更新后的合同
+rules:
+  - 已开票期间的变更从下一期生效。
+  - 价格变更需保留审批痕迹。
+painPoints:
+  - 变更未同步开票计划。
+  - 历史合同被覆盖，无法追溯。
+objects:
+  - tcode:VA42
+  - table:VBAK
+  - table:VBKD
+  - table:FPLA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

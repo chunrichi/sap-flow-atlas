@@ -8,6 +8,7 @@ modules:
   - cs
 processes:
   - cs-service-order
+  - cs-notification
 flows:
   - service-to-cash
 tcode: IW41
@@ -22,18 +23,17 @@ outputs:
   - 确认凭证
   - 服务成本
 rules:
-  - "确认工时与备件必须对应服务订单工序。"
+  - 确认工时与备件必须对应服务订单工序。
 painPoints:
-  - "工时未确认会低估服务成本。"
+  - 工时未确认会低估服务成本。
 objects:
-  - "tcode:IW41"
-  - "table:AUFK"
-  - "table:AUFM"
+  - tcode:IW41
+  - table:AUFK
+  - table:AUFM
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

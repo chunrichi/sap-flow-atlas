@@ -61,6 +61,14 @@ export const edgeSchema = z.object({
   label: localeTextSchema.optional(),
 });
 
+/**
+ * 流程变体：
+ * - core：主干流程，每个业务周期都会经过；
+ * - optional：条件触发流程，只有满足条件时才执行（虚线呈现）；
+ * - exception：异常/纠偏流程，处理冻结、冲销、差异、投诉等（虚线 + 例外色）。
+ */
+export const processVariantSchema = z.enum(["core", "optional", "exception"]);
+
 export const processSchema = z.object({
   id: z.string().min(1),
   type: z.literal("process"),
@@ -69,6 +77,9 @@ export const processSchema = z.object({
   flow: z.string().min(1),
   stage: z.string().min(1),
   summary: localeTextSchema,
+  variant: processVariantSchema.default("core"),
+  /** 条件触发流程的适用条件（variant 非 core 时必填）。 */
+  trigger: localeTextSchema.optional(),
   steps: z.array(z.string()).default([]),
   edges: z.array(edgeSchema).default([]),
   roles: z.array(z.string()).default([]),
@@ -95,6 +106,10 @@ export const stepSchema = z.object({
   flows: z.array(z.string()).default([]),
   tcode: z.string().optional(),
   summary: localeTextSchema,
+  /** 条件步骤：只为 true 时在特定业务条件下执行（主路径可跳过）。 */
+  optional: z.boolean().default(false),
+  /** 条件步骤的触发条件（optional 为 true 时必填）。 */
+  condition: localeTextSchema.optional(),
   inputs: z.array(z.string()).default([]),
   outputs: z.array(z.string()).default([]),
   rules: z.array(z.string()).default([]),
@@ -274,6 +289,7 @@ export type ContentSnippet = z.infer<typeof snippetSchema> & {
 export type ContentScene = z.infer<typeof sceneSchema>;
 export type ContentSource = z.infer<typeof sourceSchema>;
 export type ContentCrosslink = z.infer<typeof crosslinkSchema>;
+export type ProcessVariant = z.infer<typeof processVariantSchema>;
 export type ContentTerm = z.infer<typeof termSchema>;
 export type SceneNode = z.infer<typeof sceneNodeSchema>;
 export type SceneEdge = z.infer<typeof sceneEdgeSchema>;

@@ -1,0 +1,43 @@
+id: ewm-prdi-inbound-delivery
+type: step
+title:
+  zh: 创建入库交货
+  en: Create Inbound Delivery
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-inbound
+flows:
+  - procure-to-pay
+tcode: /SCWM/PRDI
+summary:
+  zh: 在 EWM 中创建或接收入库交货单，作为收货与上架的依据。
+  en: Creates or receives inbound deliveries in EWM as the basis for goods receipt and putaway.
+inputs:
+  - 采购订单/入库交货
+  - 供应商
+  - 物料
+outputs:
+  - EWM 入库交货单
+rules:
+  - 入库交货必须与 ERP 交货一致。
+  - 仓位策略决定上架目标。
+painPoints:
+  - ERP 与 EWM 状态不同步。
+  - 交货数量单位不一致。
+objects:
+  - tcode:/SCWM/PRDI
+  - table:/SCWM/ORDIM_O
+  - table:EKKO
+  - table:EKPO
+snippets: []
+crossModule:
+  - module: mm
+    relation: handoff
+    note: 入库交货来自 MM 采购订单与收货计划。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

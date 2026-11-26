@@ -15,13 +15,17 @@ scope:
   - 应付
   - 资产
   - 银行
+  - 财务报告
+  - 收款与付款
+  - 服务收款
 keyFlows:
   - record-to-report
   - order-to-cash
   - procure-to-pay
   - acquire-to-retire
+  - service-to-cash
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

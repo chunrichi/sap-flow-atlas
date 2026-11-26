@@ -1,0 +1,40 @@
+id: sd-va23-track-quotation
+type: step
+title:
+  zh: 跟进报价
+  en: Track Quotation
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-presales
+flows:
+  - order-to-cash
+tcode: VA23
+summary:
+  zh: 查询报价状态、有效期与后续订单引用，决定是否重新报价或关闭。
+  en: Checks quotation status, validity and follow-up order references to decide on re-quoting or closing.
+inputs:
+  - 报价单号
+  - 客户
+outputs:
+  - 报价状态
+  - 跟进记录
+rules:
+  - 报价状态由有效期与后续订单引用共同决定。
+  - 失效报价需要重新报价，不能复用原单。
+painPoints:
+  - 销售忘记跟进过期报价，商机流失。
+  - 同一询价被重复报价导致价格不一致。
+objects:
+  - tcode:VA23
+  - table:VBAK
+  - table:VBAP
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

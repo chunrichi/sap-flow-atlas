@@ -8,6 +8,7 @@ modules:
   - qm
 processes:
   - qm-inspection
+  - qm-notification
 flows:
   - plan-to-produce
 tcode: QM01
@@ -22,17 +23,20 @@ outputs:
   - 质量通知
   - 措施任务
 rules:
-  - "质量通知必须关联物料/批次与责任部门。"
+  - 质量通知必须关联物料/批次与责任部门。
 painPoints:
-  - "措施未闭环会导致重复问题。"
+  - 措施未闭环会导致重复问题。
 objects:
-  - "tcode:QM01"
-  - "table:QMEL"
+  - tcode:QM01
+  - table:QMEL
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 检验不合格、来料异常或客户投诉时才创建质量通知。
+  en: Create a quality notification only for inspection failures, incoming anomalies or customer complaints.

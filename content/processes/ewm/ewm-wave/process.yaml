@@ -1,0 +1,52 @@
+id: ewm-wave
+type: process
+title:
+  zh: 波次与拣配
+  en: Wave and Picking
+module: ewm
+flow: order-to-cash
+stage: shipping
+summary:
+  zh: 从创建波次、仓库任务、拣配确认到发货过账。
+  en: From wave creation and warehouse tasks to picking confirmation and goods issue.
+variant: optional
+trigger:
+  zh: 多订单合并拣配、按路线或承运商集中发运时才使用；单订单可直接创建仓库任务。
+  en: Only for consolidated picking of multiple orders or route/carrier-based shipping; single orders can create warehouse tasks directly.
+steps:
+  - ewm-wave-create
+  - ewm-prdo-warehouse-task
+  - ewm-mon-picking-confirm
+  - ewm-vl02n-goods-issue
+edges:
+  - from: ewm-wave-create
+    to: ewm-prdo-warehouse-task
+    kind: sequence
+    label:
+      zh: 创建仓库任务
+      en: Create warehouse task
+  - from: ewm-prdo-warehouse-task
+    to: ewm-mon-picking-confirm
+    kind: sequence
+    label:
+      zh: 拣配确认
+      en: Confirm picking
+  - from: ewm-mon-picking-confirm
+    to: ewm-vl02n-goods-issue
+    kind: sequence
+    label:
+      zh: 发货过账
+      en: Post goods issue
+roles:
+  - 仓库管理员
+  - 拣货员
+  - 发货员
+outcomes:
+  - 波次
+  - 仓库订单
+  - 已发货库存
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

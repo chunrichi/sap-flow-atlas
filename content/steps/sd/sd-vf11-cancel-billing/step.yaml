@@ -1,0 +1,51 @@
+id: sd-vf11-cancel-billing
+type: step
+title:
+  zh: 取消发票
+  en: Cancel Billing Document
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-billing
+  - sd-service-billing
+flows:
+  - order-to-cash
+  - service-to-cash
+tcode: VF11
+summary:
+  zh: 对错误发票做取消，生成冲销凭证并恢复应收。
+  en: Cancels an incorrect billing document, creates a reversal document and restores receivables.
+optional: true
+condition:
+  zh: 发票开错、客户拒收或需要重开时才执行；正常开票不经过该步骤。
+  en: Only when an invoice is wrong, rejected by the customer or must be reissued; normal billing skips it.
+inputs:
+  - 发票号
+  - 冲销原因
+  - 冲销日期
+outputs:
+  - 冲销发票
+  - 红字应收
+rules:
+  - 已付款或已清账的发票需先处理付款再冲销。
+  - 冲销日期不能早于原凭证的关闭期间。
+painPoints:
+  - 跨期冲销导致期间数据波动。
+  - 忘记通知客户，造成重复收款。
+objects:
+  - tcode:VF11
+  - table:VBRK
+  - table:VBRP
+  - tcode:FB08
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 冲销会同步生成 FI 反记账凭证。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-billing-document

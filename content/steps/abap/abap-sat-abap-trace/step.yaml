@@ -20,19 +20,22 @@ inputs:
 outputs:
   - 运行时分析
 rules:
-  - "在测试客户端执行 trace，避免影响生产。"
-  - "只保留与问题时间窗口一致的数据。"
+  - 在测试客户端执行 trace，避免影响生产。
+  - 只保留与问题时间窗口一致的数据。
 painPoints:
-  - "trace 包含大量无关调用，先过滤再分析。"
+  - trace 包含大量无关调用，先过滤再分析。
 objects:
-  - "tcode:SAT"
-  - "table:TADIR"
+  - tcode:SAT
+  - table:TADIR
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - abap-cheat-sheets
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 需要分析 ABAP 代码执行路径与耗时占比时才执行。
+  en: Only when ABAP execution paths and time distribution must be analyzed.

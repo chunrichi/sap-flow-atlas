@@ -1,0 +1,43 @@
+id: ps-cj32-budget-supplement
+type: step
+title:
+  zh: 追加项目预算
+  en: Supplement Project Budget
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-budget
+flows:
+  - project-to-profit
+tcode: CJ32
+summary:
+  zh: 对项目或 WBS 追加预算并保留审批痕迹。
+  en: Adds budget to a project or WBS with an approval trail.
+optional: true
+condition:
+  zh: 原预算不足且已获追加审批时才执行；预算充足的项目不经过该步骤。
+  en: Only when the original budget is insufficient and a supplement is approved; projects with sufficient budget skip it.
+inputs:
+  - 项目/WBS
+  - 追加金额
+  - 审批依据
+outputs:
+  - 追加预算
+rules:
+  - 追加必须经过审批。
+  - 追加后可用预算实时更新。
+painPoints:
+  - 未审批先追加。
+  - 追加金额超过项目上限。
+objects:
+  - tcode:CJ32
+  - table:PRPS
+  - tcode:CJ30
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

@@ -1,0 +1,17 @@
+id: table:T549A
+type: table
+technicalName: T549A
+title:
+  zh: 薪酬范围
+  en: Payroll Areas
+module: hr
+tableClass: customizing
+summary:
+  zh: 保存工资核算范围与控制参数。
+  en: Stores payroll areas and control parameters.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

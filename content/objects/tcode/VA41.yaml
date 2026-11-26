@@ -1,0 +1,22 @@
+id: tcode:VA41
+type: tcode
+technicalName: VA41
+title:
+  zh: 创建服务合同
+  en: Create Service Contract
+module: cs
+summary:
+  zh: 建立含服务范围、周期与开票计划的合同。
+  en: Creates a contract with service scope, cycles and a billing plan.
+relations:
+  - target: table:VBAK
+    kind: writes
+  - target: table:VBKD
+    kind: writes
+  - target: table:FPLA
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

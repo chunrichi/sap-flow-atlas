@@ -1,0 +1,20 @@
+id: tcode:CA03
+type: tcode
+technicalName: CA03
+title:
+  zh: 显示工艺路线
+  en: Display Routing
+module: pp
+summary:
+  zh: 查看工艺路线的工序、组件分配与变更状态。
+  en: Displays routing operations, component assignment and change status.
+relations:
+  - target: table:PLKO
+    kind: reads
+  - target: table:PLPO
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,46 @@
+id: pp-cs01-bom
+type: step
+title:
+  zh: 创建物料清单
+  en: Create Bill of Material
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-routing
+flows:
+  - plan-to-produce
+tcode: CS01
+summary:
+  zh: 维护 BOM 抬头与组件，定义生产所需的物料结构。
+  en: Maintains BOM header and components that define the material structure for production.
+inputs:
+  - 物料
+  - 工厂
+  - 组件
+  - 用量
+outputs:
+  - BOM 抬头
+  - BOM 行项目
+rules:
+  - BOM 用途与有效期决定可选性。
+  - 组件必须存在有效的物料主数据。
+painPoints:
+  - 组件单位与用量不匹配。
+  - 循环 BOM 导致展开失败。
+objects:
+  - tcode:CS01
+  - table:MAST
+  - table:STKO
+  - table:STPO
+  - table:MARC
+snippets: []
+crossModule:
+  - module: mm
+    relation: master-data
+    note: BOM 组件依赖 MM 物料主数据与采购类型。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

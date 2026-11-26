@@ -1,0 +1,48 @@
+id: ewm-wave-create
+type: step
+title:
+  zh: 创建波次
+  en: Create Wave
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-wave
+flows:
+  - order-to-cash
+tcode: /SCWM/WAVE
+summary:
+  zh: 按路线、承运商或时间窗合并出库需求生成波次。
+  en: Groups outbound demands into waves by route, carrier or time window.
+optional: true
+condition:
+  zh: 多订单需要合并拣配、按路线/承运商集中发运时才使用；单订单可直接创建仓库任务。
+  en: Only when multiple orders are consolidated for picking or shipped by route/carrier; single orders can create warehouse tasks directly.
+inputs:
+  - 出库交货
+  - 路线
+  - 承运商
+  - 时间窗
+outputs:
+  - 波次
+  - 仓库订单
+rules:
+  - 波次按路线或时间窗合并。
+  - 未分配库存的交货不能进入波次。
+painPoints:
+  - 波次过大导致拣配拥堵。
+  - 承运商截止时间未考虑。
+objects:
+  - tcode:/SCWM/WAVE
+  - table:/SCWM/ORDIM_O
+  - tcode:/SCWM/MON
+snippets: []
+crossModule:
+  - module: sd
+    relation: fulfillment
+    note: 波次来自 SD 出库交货与装运计划。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

@@ -65,10 +65,37 @@ export const statusLabels: Record<string, string> = {
   verified: "已验证",
 };
 
+export const processVariantLabels: Record<string, string> = {
+  core: "核心流程",
+  optional: "可选流程",
+  exception: "例外流程",
+};
+
+export const processVariantShort: Record<string, string> = {
+  core: "核心",
+  optional: "可选",
+  exception: "例外",
+};
+
+export const processVariantDescriptions: Record<string, string> = {
+  core: "主干路径，每个业务周期都会经过",
+  optional: "条件满足时才执行，主路径可以跳过",
+  exception: "异常或纠偏路径，用于冻结、冲销、差异与投诉",
+};
+
+/** 非核心流程需要用虚线 + 徽标在界面中区分。 */
+export function isConditionalProcess(process: { variant?: string }): boolean {
+  return (process.variant ?? "core") !== "core";
+}
+
+export function isOptionalStep(step: { optional?: boolean }): boolean {
+  return step.optional === true;
+}
+
 export const levelLabels: Record<string, string> = {
   universe: "系统全景",
   module: "模块工作区",
-  process: "流程画布",
+  process: "业务流程",
   flow: "端到端流程",
 };
 

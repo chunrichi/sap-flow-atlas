@@ -1,0 +1,43 @@
+id: abap-sm35-batch-input
+type: step
+title:
+  zh: 执行批输入会话
+  en: Process Batch Input Session
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-migration
+flows:
+  - develop-to-deploy
+tcode: SM35
+summary:
+  zh: 监控、调试与执行批输入会话，处理错误记录。
+  en: Monitors, debugs and executes batch input sessions and handles error records.
+optional: true
+condition:
+  zh: 使用 LSMW 或 BDC 生成批输入会话时才执行；直接 API 迁移不经过 SM35。
+  en: Only when LSMW or BDC generated batch input sessions; API-based migration does not use SM35.
+inputs:
+  - 批输入会话
+outputs:
+  - 执行结果
+  - 错误日志
+rules:
+  - 先在测试系统执行。
+  - 错误会话需修正后重跑。
+painPoints:
+  - 会话锁未释放。
+  - 错误日志未逐条处理。
+objects:
+  - tcode:SM35
+  - table:APQI
+  - table:APQD
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

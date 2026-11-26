@@ -1,0 +1,20 @@
+id: tcode:KE51
+type: tcode
+technicalName: KE51
+title:
+  zh: 创建利润中心
+  en: Create Profit Center
+module: co
+summary:
+  zh: 定义利润中心及其负责人、有效期与所属控制范围。
+  en: Defines a profit center with owner, validity and controlling area.
+relations:
+  - target: table:CEPC
+    kind: writes
+  - target: table:CEPCT
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

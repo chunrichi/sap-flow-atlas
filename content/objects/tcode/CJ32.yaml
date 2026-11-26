@@ -1,0 +1,20 @@
+id: tcode:CJ32
+type: tcode
+technicalName: CJ32
+title:
+  zh: 预算追加
+  en: Budget Supplement
+module: ps
+summary:
+  zh: 对项目或 WBS 追加预算并保留审批痕迹。
+  en: Adds budget to a project or WBS with an approval trail.
+relations:
+  - target: table:PRPS
+    kind: writes
+  - target: tcode:CJ30
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,18 @@
+id: tcode:IW28
+type: tcode
+technicalName: IW28
+title:
+  zh: 维护通知清单
+  en: Maintenance Notification List
+module: pm
+summary:
+  zh: 按设备、功能位置与状态筛选维护通知。
+  en: Filters maintenance notifications by equipment, functional location and status.
+relations:
+  - target: table:QMEL
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

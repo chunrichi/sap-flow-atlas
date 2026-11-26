@@ -1,0 +1,20 @@
+id: tcode:KE52
+type: tcode
+technicalName: KE52
+title:
+  zh: 修改利润中心
+  en: Change Profit Center
+module: co
+summary:
+  zh: 修改利润中心的名称、负责人或有效期。
+  en: Changes profit center name, owner or validity.
+relations:
+  - target: table:CEPC
+    kind: writes
+  - target: tcode:KE51
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

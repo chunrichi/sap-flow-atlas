@@ -1,0 +1,42 @@
+id: abap-se38-create-report
+type: step
+title:
+  zh: 创建报表程序
+  en: Create Report Program
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-reporting
+flows:
+  - develop-to-deploy
+tcode: SE38
+summary:
+  zh: 创建可执行 ABAP 报表，定义选择屏幕、数据读取与输出。
+  en: Creates an executable ABAP report with selection screen, data access and output.
+inputs:
+  - 程序名
+  - 包
+  - 描述
+  - 报表逻辑
+outputs:
+  - 可执行程序
+rules:
+  - 程序必须分配包与传输请求。
+  - 命名遵循 Z/Y 前缀，不能修改 SAP 标准对象。
+painPoints:
+  - 直接在生产系统改代码。
+  - 缺少权限检查，越权读取数据。
+objects:
+  - tcode:SE38
+  - table:TADIR
+  - table:TRDIR
+  - table:DD02L
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

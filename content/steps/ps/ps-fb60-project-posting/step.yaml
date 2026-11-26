@@ -8,6 +8,7 @@ modules:
   - ps
 processes:
   - ps-project-execution
+  - ps-settlement
 flows:
   - project-to-profit
 tcode: FB60
@@ -22,15 +23,15 @@ outputs:
   - 会计凭证
   - 项目实际成本
 rules:
-  - "WBS 必须已存在且允许过账。"
+  - WBS 必须已存在且允许过账。
 painPoints:
-  - "直接费用过账缺少 WBS 会进入默认成本中心。"
+  - 直接费用过账缺少 WBS 会进入默认成本中心。
 objects:
-  - "tcode:FB60"
-  - "table:BKPF"
-  - "table:BSEG"
-  - "table:PRPS"
-  - "table:ACDOCA"
+  - tcode:FB60
+  - table:BKPF
+  - table:BSEG
+  - table:PRPS
+  - table:ACDOCA
 snippets:
   - abap-ps-project-actuals
 crossModule:
@@ -41,4 +42,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

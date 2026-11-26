@@ -1,0 +1,39 @@
+id: pm-iw23-display-notification
+type: step
+title:
+  zh: 查看维护通知
+  en: Display Maintenance Notification
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-notification
+flows:
+  - maintain-to-availability
+tcode: IW23
+summary:
+  zh: 查看通知历史、状态与关联订单。
+  en: Displays notification history, status and linked orders.
+inputs:
+  - 通知号
+outputs:
+  - 通知历史
+  - 状态
+  - 关联订单
+rules:
+  - 显示受权限与通知类型限制。
+  - 关联订单用于追踪维修成本。
+painPoints:
+  - 关联订单未维护，无法追踪成本。
+  - 历史通知未合并。
+objects:
+  - tcode:IW23
+  - table:QMEL
+  - table:AUFK
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

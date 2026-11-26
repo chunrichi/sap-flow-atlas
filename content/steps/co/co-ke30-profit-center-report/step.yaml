@@ -1,0 +1,40 @@
+id: co-ke30-profit-center-report
+type: step
+title:
+  zh: 运行利润中心报表
+  en: Run Profit Center Report
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-profit-center
+flows:
+  - record-to-report
+tcode: KE30
+summary:
+  zh: 按利润中心查看收入、成本与贡献边际。
+  en: Reports revenue, cost and contribution margin by profit center.
+inputs:
+  - 利润中心
+  - 期间
+  - 版本
+outputs:
+  - 收入/成本/贡献边际报表
+rules:
+  - 报表口径由控制范围与货币决定。
+  - 实际与计划分开比较，不能混合口径。
+painPoints:
+  - 成本未按利润中心归集，报表失真。
+  - 内部结算造成重复计算。
+objects:
+  - tcode:KE30
+  - table:CEPC
+  - table:ACDOCA
+  - table:COSP
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

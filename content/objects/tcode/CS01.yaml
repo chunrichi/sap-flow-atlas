@@ -1,0 +1,22 @@
+id: tcode:CS01
+type: tcode
+technicalName: CS01
+title:
+  zh: 创建物料清单
+  en: Create Bill of Material
+module: pp
+summary:
+  zh: 维护 BOM 抬头与组件，定义生产所需的物料结构。
+  en: Maintains BOM header and components that define the material structure for production.
+relations:
+  - target: table:MAST
+    kind: writes
+  - target: table:STKO
+    kind: writes
+  - target: table:STPO
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

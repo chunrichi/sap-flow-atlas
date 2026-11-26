@@ -8,6 +8,7 @@ modules:
   - ewm
 processes:
   - ewm-outbound
+  - ewm-wave
 flows:
   - order-to-cash
 tcode: VL02N
@@ -21,13 +22,13 @@ outputs:
   - 物料凭证
   - 会计凭证
 rules:
-  - "发货过账前确认拣配数量与序列号。"
+  - 发货过账前确认拣配数量与序列号。
 painPoints:
-  - "过账后冲销会产生反向物料凭证。"
+  - 过账后冲销会产生反向物料凭证。
 objects:
-  - "tcode:VL02N"
-  - "table:LIKP"
-  - "table:MSEG"
+  - tcode:VL02N
+  - table:LIKP
+  - table:MSEG
 snippets:
   - abap-ewm-delivery-status
 crossModule:
@@ -38,4 +39,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

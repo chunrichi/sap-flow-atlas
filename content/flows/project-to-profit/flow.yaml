@@ -34,8 +34,11 @@ stages:
     primaryModule: co
 processes:
   - ps-project-execution
+  - ps-setup
+  - ps-budget
+  - ps-settlement
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

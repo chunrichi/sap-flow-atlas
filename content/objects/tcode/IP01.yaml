@@ -1,0 +1,20 @@
+id: tcode:IP01
+type: tcode
+technicalName: IP01
+title:
+  zh: 创建维护计划
+  en: Create Maintenance Plan
+module: pm
+summary:
+  zh: 定义维护频率、任务清单与触发策略。
+  en: Defines maintenance frequency, task lists and scheduling strategy.
+relations:
+  - target: table:MPLA
+    kind: writes
+  - target: table:MPOS
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

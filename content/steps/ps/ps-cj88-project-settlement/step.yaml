@@ -8,6 +8,7 @@ modules:
   - ps
 processes:
   - ps-project-execution
+  - ps-settlement
 flows:
   - project-to-profit
 tcode: CJ88
@@ -21,14 +22,14 @@ inputs:
 outputs:
   - 结算凭证
 rules:
-  - "结算规则必须覆盖全部 WBS 成本。"
+  - 结算规则必须覆盖全部 WBS 成本。
 painPoints:
-  - "结算后未清余额需手工处理。"
+  - 结算后未清余额需手工处理。
 objects:
-  - "tcode:CJ88"
-  - "table:PROJ"
-  - "table:COSP"
-  - "table:COSS"
+  - tcode:CJ88
+  - table:PROJ
+  - table:COSP
+  - table:COSS
 snippets: []
 crossModule:
   - module: co
@@ -38,4 +39,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

@@ -1,0 +1,17 @@
+id: table:PA2005
+type: table
+technicalName: PA2005
+title:
+  zh: 加班
+  en: Overtime
+module: hr
+tableClass: transparent
+summary:
+  zh: 保存加班与时间账户记录。
+  en: Stores overtime and time account records.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

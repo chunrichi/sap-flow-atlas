@@ -1,0 +1,44 @@
+id: pp-ca01-routing
+type: step
+title:
+  zh: 创建工艺路线
+  en: Create Routing
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-routing
+flows:
+  - plan-to-produce
+tcode: CA01
+summary:
+  zh: 为物料定义工序、工作中心与标准工时。
+  en: Defines operations, work centers and standard times for a material.
+inputs:
+  - 物料
+  - 工厂
+  - 工序
+  - 工作中心
+  - 标准工时
+outputs:
+  - 工艺路线
+  - 工序
+rules:
+  - 工艺路线必须覆盖 BOM 组件的加工工序。
+  - 工时单位必须与工作中心公式一致。
+painPoints:
+  - 工序漏维护导致成本低估。
+  - 变更未更新有效期，生产仍用旧版本。
+objects:
+  - tcode:CA01
+  - table:PLKO
+  - table:PLPO
+  - table:PLAS
+  - table:CRHD
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

@@ -33,8 +33,11 @@ stages:
     primaryModule: fi
 processes:
   - fi-asset-accounting
+  - mm-asset-request
+  - fi-asset-depreciation
+  - fi-asset-retirement
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

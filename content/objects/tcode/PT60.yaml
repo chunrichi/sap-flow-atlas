@@ -1,0 +1,22 @@
+id: tcode:PT60
+type: tcode
+technicalName: PT60
+title:
+  zh: 时间评估
+  en: Time Evaluation
+module: hr
+summary:
+  zh: 评估考勤与加班，生成绩效工资相关时间数据。
+  en: Evaluates attendance and overtime to produce time data for payroll.
+relations:
+  - target: table:PA2001
+    kind: reads
+  - target: table:PA2002
+    kind: reads
+  - target: table:PA2005
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

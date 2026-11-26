@@ -1,0 +1,42 @@
+id: fi-reporting
+type: process
+title:
+  zh: 财务报告与钻取
+  en: Financial Reporting and Drilldown
+module: fi
+flow: record-to-report
+stage: reporting
+summary:
+  zh: 从财务报表、总账余额到行项目明细的报表链路。
+  en: The reporting chain from financial statements and G/L balances to line item detail.
+variant: core
+steps:
+  - fi-f01-financial-statements
+  - fi-faglb03-gl-balances
+  - fi-fagll03-gl-line-items
+edges:
+  - from: fi-f01-financial-statements
+    to: fi-faglb03-gl-balances
+    kind: sequence
+    label:
+      zh: 报表钻取余额
+      en: Drill to balances
+  - from: fi-faglb03-gl-balances
+    to: fi-fagll03-gl-line-items
+    kind: sequence
+    label:
+      zh: 余额钻取行项目
+      en: Drill to line items
+roles:
+  - 总账会计
+  - 财务经理
+  - 审计
+outcomes:
+  - 财务报表
+  - 余额表
+  - 行项目明细
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

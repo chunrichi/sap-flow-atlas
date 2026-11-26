@@ -1,0 +1,17 @@
+id: table:TSTC
+type: table
+technicalName: TSTC
+title:
+  zh: 事务码表
+  en: Transaction Code Table
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存事务码与程序、屏幕的对应关系。
+  en: Stores the mapping between transaction codes and programs or screens.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,17 @@
+id: table:PLAS
+type: table
+technicalName: PLAS
+title:
+  zh: 任务清单选择
+  en: Task List Selection
+module: pp
+tableClass: transparent
+summary:
+  zh: 保存任务清单（工艺路线）的选择与分配信息。
+  en: Stores selection and assignment data for task lists and routings.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

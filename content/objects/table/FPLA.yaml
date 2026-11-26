@@ -1,0 +1,17 @@
+id: table:FPLA
+type: table
+technicalName: FPLA
+title:
+  zh: 开票计划
+  en: Billing Plan
+module: cs
+tableClass: transparent
+summary:
+  zh: 保存开票计划抬头与规则，如周期、金额与付款条件。
+  en: Stores billing plan headers and rules such as cycle, amount and payment terms.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

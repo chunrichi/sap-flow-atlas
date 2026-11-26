@@ -13,12 +13,15 @@ scope:
   - ABAP
   - 增强
   - 接口
+  - 报表与 CDS
+  - 性能
   - 权限
   - 传输
+  - 数据迁移
 keyFlows:
   - develop-to-deploy
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

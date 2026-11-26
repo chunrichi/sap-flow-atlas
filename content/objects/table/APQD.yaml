@@ -1,0 +1,17 @@
+id: table:APQD
+type: table
+technicalName: APQD
+title:
+  zh: 批输入队列数据
+  en: Batch Input Queue Data
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存批输入会话的数据与日志。
+  en: Stores batch input session data and logs.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

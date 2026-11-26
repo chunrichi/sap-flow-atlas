@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-asset-accounting
+  - fi-asset-depreciation
 flows:
   - acquire-to-retire
 tcode: AW01N
@@ -21,19 +22,18 @@ outputs:
   - 资产价值明细
   - 折旧计划
 rules:
-  - "核对资产价值、折旧计划与总账余额。"
+  - 核对资产价值、折旧计划与总账余额。
 painPoints:
-  - "手工调整未反映在折旧计划会造成报表差异。"
+  - 手工调整未反映在折旧计划会造成报表差异。
 objects:
-  - "tcode:AW01N"
-  - "table:ANLA"
-  - "table:ANLC"
-  - "table:ANLP"
+  - tcode:AW01N
+  - table:ANLA
+  - table:ANLC
+  - table:ANLP
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

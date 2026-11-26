@@ -8,8 +8,11 @@ modules:
   - fi
 processes:
   - fi-accounts-receivable
+  - fi-ar-collection
+  - fi-service-collection
 flows:
   - order-to-cash
+  - service-to-cash
 tcode: F-32
 summary:
   zh: 把收款与发票进行清账，关闭客户未清项。
@@ -22,19 +25,18 @@ outputs:
   - 清账凭证
   - 未清余额
 rules:
-  - "清账金额必须与未清项匹配或按规则处理差异。"
+  - 清账金额必须与未清项匹配或按规则处理差异。
 painPoints:
-  - "部分清账会留下残余未清项。"
+  - 部分清账会留下残余未清项。
 objects:
-  - "tcode:F-32"
-  - "table:BSID"
-  - "table:BSAD"
-  - "table:BSEG"
+  - tcode:F-32
+  - table:BSID
+  - table:BSAD
+  - table:BSEG
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

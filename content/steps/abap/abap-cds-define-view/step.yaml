@@ -1,0 +1,43 @@
+id: abap-cds-define-view
+type: step
+title:
+  zh: 定义 CDS 视图
+  en: Define CDS View
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-reporting
+flows:
+  - develop-to-deploy
+summary:
+  zh: 用 CDS 定义语义数据模型，供 Fiori、OData 与分析复用。
+  en: Defines a semantic data model with CDS for reuse by Fiori, OData and analytics.
+inputs:
+  - 视图名
+  - 数据源
+  - 关联
+  - 注解
+outputs:
+  - CDS 视图
+rules:
+  - 视图必须声明注解与权限控制。
+  - 关联基数错误会产生重复行。
+painPoints:
+  - 缺少 DCL 权限，越权暴露数据。
+  - 关联未加过滤导致笛卡尔积。
+objects:
+  - cds:I_SalesOrder
+  - table:DD02L
+  - table:TADIR
+snippets: []
+crossModule:
+  - module: sd
+    relation: data-model
+    note: 示例视图复用 SD 销售订单的语义模型。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

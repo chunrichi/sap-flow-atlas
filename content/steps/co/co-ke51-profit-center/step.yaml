@@ -1,0 +1,41 @@
+id: co-ke51-profit-center
+type: step
+title:
+  zh: 创建利润中心
+  en: Create Profit Center
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-profit-center
+flows:
+  - record-to-report
+tcode: KE51
+summary:
+  zh: 定义利润中心及其负责人、有效期与所属控制范围。
+  en: Defines a profit center with owner, validity and controlling area.
+inputs:
+  - 利润中心编码
+  - 名称
+  - 负责人
+  - 有效期
+  - 控制范围
+outputs:
+  - 利润中心主数据
+rules:
+  - 编码在控制范围内唯一，必须分配至标准层级。
+  - 有效期不能与现有利润中心重叠。
+painPoints:
+  - 层级未分配导致报表缺失。
+  - 负责人变更未同步审批。
+objects:
+  - tcode:KE51
+  - table:CEPC
+  - table:CEPCT
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

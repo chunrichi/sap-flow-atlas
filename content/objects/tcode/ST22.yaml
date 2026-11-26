@@ -1,0 +1,18 @@
+id: tcode:ST22
+type: tcode
+technicalName: ST22
+title:
+  zh: 短转储分析
+  en: ABAP Dump Analysis
+module: abap
+summary:
+  zh: 查看运行时错误、调用栈与上下文。
+  en: Displays runtime errors, call stacks and context.
+relations:
+  - target: table:SNAP
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

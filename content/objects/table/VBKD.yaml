@@ -1,0 +1,19 @@
+id: table:VBKD
+type: table
+technicalName: VBKD
+title:
+  zh: 销售业务数据
+  en: Sales Document Business Data
+module: sd
+tableClass: transparent
+summary:
+  zh: 保存订单、报价的付款条件、贸易条款与交货条款等业务数据。
+  en: Stores payment terms, incoterms and delivery terms for sales documents.
+relations:
+  - target: table:VBAK
+    kind: belongs-to
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -78,6 +78,11 @@ export function Legend() {
         <span className="flex items-center gap-1"><i className="h-px w-4 border-t border-dashed border-blue-400" /> 交接</span>
         <span className="flex items-center gap-1"><i className="h-px w-4 border-t border-dotted border-violet-400" /> 参与</span>
       </div>
+      <div className="mt-1 flex items-center gap-3 text-[9px] text-slate-500">
+        <span className="flex items-center gap-1"><i className="h-2.5 w-2.5 rounded-[3px] border border-dashed border-amber-400 bg-amber-50" /> 可选流程</span>
+        <span className="flex items-center gap-1"><i className="h-2.5 w-2.5 rounded-[3px] border border-dashed border-rose-400 bg-rose-50" /> 例外路径</span>
+        <span className="flex items-center gap-1"><i className="h-2 w-2 rounded-full border border-dashed border-amber-400" /> 条件步骤</span>
+      </div>
     </div>
   );
 }
@@ -129,7 +134,7 @@ export function FlowMenu() {
         aria-label="价值流目录"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
-        className="panel flex items-center gap-2 rounded-2xl px-3 py-2 text-[10px] font-medium text-slate-600 transition-colors hover:text-slate-900"
+        className="flex h-8 items-center gap-2 rounded-lg border border-slate-200 bg-white px-2.5 text-[11px] font-medium text-slate-500 transition-colors hover:bg-slate-50"
       >
         <GitBranch className="h-3.5 w-3.5 text-sky-600" />
         <span className="hidden sm:inline">价值流</span>

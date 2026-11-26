@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-accounts-payable
+  - fi-payment
 flows:
   - procure-to-pay
 tcode: F-53
@@ -23,19 +24,22 @@ outputs:
   - 付款凭证
   - 清账结果
 rules:
-  - "手工付款需选择正确的银行账户与付款方式。"
+  - 手工付款需选择正确的银行账户与付款方式。
 painPoints:
   - 部分付款会留下残余未清项。
 objects:
-  - "tcode:F-53"
-  - "table:BSIK"
-  - "table:BKPF"
-  - "table:BSEG"
+  - tcode:F-53
+  - table:BSIK
+  - table:BKPF
+  - table:BSEG
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 自动付款未覆盖供应商、或需要临时手工付款时才执行。
+  en: Only for vendors not covered by the automatic run or when an ad-hoc manual payment is needed.

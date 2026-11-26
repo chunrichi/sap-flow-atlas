@@ -1,0 +1,17 @@
+id: table:/SCWM/ORDIM_C
+type: table
+technicalName: /SCWM/ORDIM_C
+title:
+  zh: 仓库任务
+  en: Warehouse Task
+module: ewm
+tableClass: transparent
+summary:
+  zh: 保存仓库任务的目标仓位、数量与执行状态。
+  en: Stores warehouse task destination bins, quantities and execution status.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

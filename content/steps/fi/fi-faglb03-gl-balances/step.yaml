@@ -1,0 +1,40 @@
+id: fi-faglb03-gl-balances
+type: step
+title:
+  zh: 查看总账余额
+  en: Display G/L Balances
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-reporting
+flows:
+  - record-to-report
+tcode: FAGLB03
+summary:
+  zh: 按科目与期间查看总账余额与期初期末发生额。
+  en: Displays G/L account balances with opening, closing and period activity.
+inputs:
+  - 科目
+  - 公司代码
+  - 期间
+outputs:
+  - 期初/期末余额
+  - 借贷发生额
+rules:
+  - 余额来自已过账凭证，未清期间需单独说明。
+  - 外币余额需按报表汇率折算。
+painPoints:
+  - 科目层级选择错误导致汇总偏差。
+  - 跨年查询未切换期间。
+objects:
+  - tcode:FAGLB03
+  - table:ACDOCA
+  - tcode:F.01
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

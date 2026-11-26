@@ -1,0 +1,49 @@
+id: ewm-inbound
+type: process
+title:
+  zh: EWM 入库作业
+  en: EWM Inbound Processing
+module: ewm
+flow: procure-to-pay
+stage: receipt
+summary:
+  zh: 从入库交货、收货过账、上架到监控的仓库入库链路。
+  en: The warehouse inbound chain from inbound delivery and goods receipt to putaway and monitoring.
+variant: core
+steps:
+  - ewm-prdi-inbound-delivery
+  - ewm-gr-post-inbound
+  - ewm-put-putaway
+  - ewm-mon-inbound-monitor
+edges:
+  - from: ewm-prdi-inbound-delivery
+    to: ewm-gr-post-inbound
+    kind: sequence
+    label:
+      zh: 收货过账
+      en: Post goods receipt
+  - from: ewm-gr-post-inbound
+    to: ewm-put-putaway
+    kind: sequence
+    label:
+      zh: 上架
+      en: Putaway
+  - from: ewm-put-putaway
+    to: ewm-mon-inbound-monitor
+    kind: sequence
+    label:
+      zh: 监控进度
+      en: Monitor progress
+roles:
+  - 仓库管理员
+  - 收货员
+  - 上架员
+outcomes:
+  - 入库交货
+  - 收货凭证
+  - 上架库存
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

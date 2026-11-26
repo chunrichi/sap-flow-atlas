@@ -1,0 +1,40 @@
+id: co-ko88-settle-order
+type: step
+title:
+  zh: 结算维护订单
+  en: Settle Maintenance Order
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-order-settlement
+flows:
+  - maintain-to-availability
+tcode: KO88
+summary:
+  zh: 把维护订单归集的成本结算到成本中心或资产。
+  en: Settles costs collected on a maintenance order to cost centers or assets.
+inputs:
+  - 维护订单
+  - 结算期间
+outputs:
+  - 结算凭证
+  - 成本中心/资产成本
+rules:
+  - 维护订单必须已技术完成。
+  - 结算规则在订单类型中定义，不能逐单随意更改。
+painPoints:
+  - 订单未关闭导致结算失败。
+  - 跨期结算影响期间成本。
+objects:
+  - tcode:KO88
+  - table:AUFK
+  - table:AFKO
+  - table:COEP
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

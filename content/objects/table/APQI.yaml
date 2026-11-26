@@ -1,0 +1,17 @@
+id: table:APQI
+type: table
+technicalName: APQI
+title:
+  zh: 批输入队列索引
+  en: Batch Input Queue Index
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存批输入会话的队列索引与状态。
+  en: Stores batch input session queue index and status.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

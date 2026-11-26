@@ -12,6 +12,7 @@ summary:
 scope:
   - 入库
   - 出库
+  - 波次与拣配
   - 仓库任务
   - 库存盘点
 keyFlows:
@@ -21,4 +22,4 @@ status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

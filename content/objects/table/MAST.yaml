@@ -1,0 +1,17 @@
+id: table:MAST
+type: table
+technicalName: MAST
+title:
+  zh: 物料 BOM 分配
+  en: Material to BOM Assignment
+module: pp
+tableClass: transparent
+summary:
+  zh: 把物料、工厂与 BOM 用途关联到具体 BOM。
+  en: Links material, plant and BOM usage to a specific BOM.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

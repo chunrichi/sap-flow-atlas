@@ -1,0 +1,40 @@
+id: co-ko01-internal-order
+type: step
+title:
+  zh: 创建内部订单
+  en: Create Internal Order
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-internal-order
+flows:
+  - record-to-report
+tcode: KO01
+summary:
+  zh: 建立用于归集内部项目或活动费用的订单。
+  en: Creates an internal order to collect costs for internal projects or activities.
+inputs:
+  - 订单类型
+  - 描述
+  - 负责成本中心
+  - 有效期
+outputs:
+  - 内部订单号
+rules:
+  - 订单类型决定结算规则与预算控制。
+  - 必须指定负责对象，否则无法归集成本。
+painPoints:
+  - 订单类型选错导致无法结算。
+  - 预算未维护导致超支不拦截。
+objects:
+  - tcode:KO01
+  - table:AUFK
+  - table:CSKS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

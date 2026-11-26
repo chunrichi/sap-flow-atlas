@@ -1,0 +1,38 @@
+id: hr-ppose-org-structure
+type: step
+title:
+  zh: 查看组织结构
+  en: Display Organization Structure
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-org
+flows:
+  - hire-to-retire
+tcode: PPOSE
+summary:
+  zh: 以组织架构图查看汇报关系与岗位占用。
+  en: Displays reporting lines and position occupancy as an organization chart.
+inputs:
+  - 组织范围
+  - 评估路径
+outputs:
+  - 组织架构图
+rules:
+  - 显示受评估路径与权限控制。
+  - 历史日期查询需切换评估基准。
+painPoints:
+  - 评估路径错误导致结构缺失。
+  - 历史日期与当前结构混淆。
+objects:
+  - tcode:PPOSE
+  - table:HRP1000
+  - table:HRP1001
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

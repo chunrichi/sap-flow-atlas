@@ -1,0 +1,23 @@
+id: tcode:VA11
+type: tcode
+technicalName: VA11
+title:
+  zh: 创建询价
+  en: Create Inquiry
+module: sd
+summary:
+  zh: 录入客户询价，记录物料、数量与需求日期，作为报价的起点。
+  en: Records a customer inquiry with materials, quantities and requested dates; the starting point for a quotation.
+relations:
+  - target: table:VBAK
+    kind: writes
+  - target: table:VBAP
+    kind: writes
+  - target: tcode:VA21
+    kind: related
+    note: 询价可转为报价。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

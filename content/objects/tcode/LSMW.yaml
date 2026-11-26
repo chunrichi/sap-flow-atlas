@@ -1,0 +1,18 @@
+id: tcode:LSMW
+type: tcode
+technicalName: LSMW
+title:
+  zh: 旧系统迁移工作台
+  en: Legacy System Migration Workbench
+module: abap
+summary:
+  zh: 定义迁移对象、字段映射与导入步骤。
+  en: Defines migration objects, field mapping and import steps.
+relations:
+  - target: tcode:SM35
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

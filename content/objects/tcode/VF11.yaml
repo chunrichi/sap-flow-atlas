@@ -1,0 +1,22 @@
+id: tcode:VF11
+type: tcode
+technicalName: VF11
+title:
+  zh: 取消发票
+  en: Cancel Billing Document
+module: sd
+summary:
+  zh: 对错误发票做取消，生成冲销凭证并恢复应收。
+  en: Cancels an incorrect billing document, creates a reversal document and restores receivables.
+relations:
+  - target: table:VBRK
+    kind: writes
+  - target: table:VBRP
+    kind: writes
+  - target: tcode:VF03
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

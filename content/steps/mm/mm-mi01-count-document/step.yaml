@@ -22,18 +22,21 @@ inputs:
 outputs:
   - 盘点凭证号
 rules:
-  - "盘点期间冻结相关库存移动。"
+  - 盘点期间冻结相关库存移动。
 painPoints:
-  - "盘点凭证未冻结会造成账实差异。"
+  - 盘点凭证未冻结会造成账实差异。
 objects:
-  - "tcode:MI01"
-  - "table:MARD"
-  - "table:MSEG"
+  - tcode:MI01
+  - table:MARD
+  - table:MSEG
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 到达盘点周期或触发循环盘点时才创建盘点凭证。
+  en: Only when a physical inventory cycle is due or cycle counting is triggered.

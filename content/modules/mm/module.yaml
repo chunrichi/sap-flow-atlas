@@ -11,15 +11,19 @@ summary:
   en: Purchasing, inventory, material master and invoice verification, the shared upstream of supply chain and finance.
 scope:
   - 采购申请
+  - 询价寻源
   - 采购订单
   - 收货
   - 库存
+  - 委外加工
+  - 资产采购
   - 发票校验
 keyFlows:
   - procure-to-pay
   - plan-to-produce
+  - acquire-to-retire
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

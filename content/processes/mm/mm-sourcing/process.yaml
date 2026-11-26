@@ -1,0 +1,52 @@
+id: mm-sourcing
+type: process
+title:
+  zh: 询价与货源确定
+  en: RFQ and Source Determination
+module: mm
+flow: procure-to-pay
+stage: purchasing
+summary:
+  zh: 从发出询价、维护报价到比价选源的寻源链路。
+  en: The sourcing chain from RFQ issuance and quotation maintenance to price comparison and vendor selection.
+variant: optional
+trigger:
+  zh: 新物料、新供应商或需要比价与框架协议时才执行；已有货源清单和合同价可直接下单。
+  en: Only for new materials, new vendors or when price comparison and framework agreements are required; existing source lists and contract prices allow direct ordering.
+steps:
+  - mm-me41-create-rfq
+  - mm-me47-maintain-quotation
+  - mm-me49-compare-quotations
+  - mm-me21n-create-purchase-order
+edges:
+  - from: mm-me41-create-rfq
+    to: mm-me47-maintain-quotation
+    kind: sequence
+    label:
+      zh: 供应商报价
+      en: Vendor quote
+  - from: mm-me47-maintain-quotation
+    to: mm-me49-compare-quotations
+    kind: sequence
+    label:
+      zh: 比较报价
+      en: Compare quotes
+  - from: mm-me49-compare-quotations
+    to: mm-me21n-create-purchase-order
+    kind: sequence
+    label:
+      zh: 选定供应商
+      en: Select vendor
+roles:
+  - 采购员
+  - 采购经理
+  - 成本会计
+outcomes:
+  - 询价单
+  - 报价比较
+  - 采购订单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

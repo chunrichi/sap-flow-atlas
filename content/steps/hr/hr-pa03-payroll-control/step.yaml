@@ -1,0 +1,38 @@
+id: hr-pa03-payroll-control
+type: step
+title:
+  zh: 维护薪酬控制记录
+  en: Maintain Payroll Control Record
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-payroll
+flows:
+  - hire-to-retire
+tcode: PA03
+summary:
+  zh: 维护工资核算范围、期间与运行状态。
+  en: Maintains payroll area, period and run status.
+inputs:
+  - 工资核算范围
+  - 期间
+outputs:
+  - 控制记录状态
+rules:
+  - 控制记录决定期间是否可修改。
+  - 释放后不能回退，只能按更正流程处理。
+painPoints:
+  - 期间未释放就运行导致数据不一致。
+  - 多个范围并行时状态不同步。
+objects:
+  - tcode:PA03
+  - table:T549A
+  - table:PA0001
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

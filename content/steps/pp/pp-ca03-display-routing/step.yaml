@@ -1,0 +1,41 @@
+id: pp-ca03-display-routing
+type: step
+title:
+  zh: 查看工艺路线
+  en: Display Routing
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-routing
+flows:
+  - plan-to-produce
+tcode: CA03
+summary:
+  zh: 查看工艺路线的工序、组件分配与变更状态。
+  en: Displays routing operations, component assignment and change status.
+inputs:
+  - 物料
+  - 工厂
+outputs:
+  - 工序
+  - 组件分配
+  - 变更状态
+rules:
+  - 显示前需选择正确的任务清单用途与有效期。
+  - 多版本并存时需确认当前生效版本。
+painPoints:
+  - 多版本工艺路线混淆。
+  - 组件分配缺失导致发料错误。
+objects:
+  - tcode:CA03
+  - table:PLKO
+  - table:PLPO
+  - table:PLAS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

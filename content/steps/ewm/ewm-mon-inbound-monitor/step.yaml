@@ -1,0 +1,39 @@
+id: ewm-mon-inbound-monitor
+type: step
+title:
+  zh: 监控入库进度
+  en: Monitor Inbound Progress
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-inbound
+flows:
+  - procure-to-pay
+tcode: /SCWM/MON
+summary:
+  zh: 在仓库监控器中查看入库单据、仓库任务与异常。
+  en: Monitors inbound documents, warehouse tasks and exceptions in the warehouse monitor.
+inputs:
+  - 仓库
+  - 单据范围
+outputs:
+  - 入库进度
+  - 异常任务
+rules:
+  - 监控器只显示当前仓库与权限范围。
+  - 异常任务必须有处理人。
+painPoints:
+  - 任务积压未及时发现。
+  - 异常任务缺少跟进。
+objects:
+  - tcode:/SCWM/MON
+  - table:/SCWM/ORDIM_C
+  - table:/SCWM/ORDIM_O
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

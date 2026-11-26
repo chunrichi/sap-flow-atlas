@@ -1,0 +1,22 @@
+id: tcode:KOB1
+type: tcode
+technicalName: KOB1
+title:
+  zh: 订单实际成本
+  en: Order Actual Costs
+module: co
+summary:
+  zh: 查看内部订单的实际成本、承诺与预算消耗。
+  en: Shows actual costs, commitments and budget consumption of an internal order.
+relations:
+  - target: table:COEP
+    kind: reads
+  - target: table:COSP
+    kind: reads
+  - target: table:COSS
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

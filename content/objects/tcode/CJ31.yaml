@@ -1,0 +1,20 @@
+id: tcode:CJ31
+type: tcode
+technicalName: CJ31
+title:
+  zh: 显示预算
+  en: Display Budget
+module: ps
+summary:
+  zh: 查看项目或 WBS 的原始预算、追加与可用预算。
+  en: Displays original budget, supplements and available budget for a project or WBS.
+relations:
+  - target: table:PROJ
+    kind: reads
+  - target: table:PRPS
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

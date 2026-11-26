@@ -8,6 +8,7 @@ modules:
   - ps
 processes:
   - ps-project-execution
+  - ps-budget
 flows:
   - project-to-profit
 tcode: CJ30
@@ -21,19 +22,18 @@ inputs:
 outputs:
   - 预算记录
 rules:
-  - "预算按年度/WBS 分配并启用可用性控制。"
+  - 预算按年度/WBS 分配并启用可用性控制。
 painPoints:
-  - "超预算未拦截会导致年末调整。"
+  - 超预算未拦截会导致年末调整。
 objects:
-  - "tcode:CJ30"
-  - "table:PROJ"
-  - "table:PRPS"
-  - "table:COSP"
+  - tcode:CJ30
+  - table:PROJ
+  - table:PRPS
+  - table:COSP
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

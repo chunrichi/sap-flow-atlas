@@ -1,0 +1,43 @@
+id: mm-me57-process-requisitions
+type: step
+title:
+  zh: 分配采购申请
+  en: Assign Purchase Requisitions
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-demand
+flows:
+  - procure-to-pay
+tcode: ME57
+summary:
+  zh: 将未处理的采购申请分配给采购员，并转为询价或采购订单。
+  en: Assigns open purchase requisitions to buyers and converts them into RFQs or purchase orders.
+inputs:
+  - 采购申请
+  - 采购组
+  - 供应商
+outputs:
+  - 已分配申请
+  - 询价或订单草稿
+rules:
+  - 只能分配未处理的采购申请。
+  - 分配后采购组与货源随之确定，不能随意改回。
+painPoints:
+  - 申请描述不完整导致无法选择供应商。
+  - 重复分配产生重复订单。
+objects:
+  - tcode:ME57
+  - table:EBAN
+  - table:EKKO
+  - tcode:ME41
+  - tcode:ME21N
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-purchase-order

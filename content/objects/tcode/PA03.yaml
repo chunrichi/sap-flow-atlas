@@ -1,0 +1,20 @@
+id: tcode:PA03
+type: tcode
+technicalName: PA03
+title:
+  zh: 薪酬控制记录
+  en: Payroll Control Record
+module: hr
+summary:
+  zh: 维护工资核算范围、期间与运行状态。
+  en: Maintains payroll area, period and run status.
+relations:
+  - target: table:T549A
+    kind: writes
+  - target: tcode:PC00_M99_CALC
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

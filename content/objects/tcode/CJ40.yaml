@@ -1,0 +1,20 @@
+id: tcode:CJ40
+type: tcode
+technicalName: CJ40
+title:
+  zh: 维护计划成本
+  en: Maintain Plan Costs
+module: ps
+summary:
+  zh: 按版本维护项目计划成本与年度分摊。
+  en: Maintains project plan costs and yearly distribution by version.
+relations:
+  - target: table:COSP
+    kind: writes
+  - target: table:PRPS
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

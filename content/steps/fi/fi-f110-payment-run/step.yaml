@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-accounts-payable
+  - fi-payment
 flows:
   - procure-to-pay
 tcode: F110
@@ -29,11 +30,11 @@ rules:
 painPoints:
   - 银行主数据不完整会导致付款文件生成失败。
 objects:
-  - "tcode:F110"
-  - "table:BSIK"
-  - "table:BSAK"
-  - "table:BKPF"
-  - "table:BSEG"
+  - tcode:F110
+  - table:BSIK
+  - table:BSAK
+  - table:BKPF
+  - table:BSEG
 snippets: []
 crossModule:
   - module: mm
@@ -43,4 +44,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 启用自动付款程序并生成付款建议时才执行；可用手工付款替代。
+  en: Only when the automatic payment program is enabled and a proposal is generated; manual payment is an alternative.

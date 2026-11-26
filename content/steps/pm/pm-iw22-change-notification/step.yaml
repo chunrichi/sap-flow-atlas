@@ -1,0 +1,41 @@
+id: pm-iw22-change-notification
+type: step
+title:
+  zh: 修改维护通知
+  en: Change Maintenance Notification
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-notification
+flows:
+  - maintain-to-availability
+tcode: IW22
+summary:
+  zh: 补充故障描述、原因与措施，推进通知处理。
+  en: Adds fault description, causes and actions to progress a notification.
+inputs:
+  - 维护通知
+  - 故障描述
+  - 原因
+  - 措施
+outputs:
+  - 更新后的通知
+rules:
+  - 通知状态决定可编辑字段。
+  - 已完成的通知需重新打开才能修改。
+painPoints:
+  - 故障描述过于笼统，无法分析。
+  - 原因代码缺失，统计无依据。
+objects:
+  - tcode:IW22
+  - table:QMEL
+  - table:IHPA
+  - table:ILOA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

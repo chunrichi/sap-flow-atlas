@@ -1,0 +1,49 @@
+id: hr-payroll
+type: process
+title:
+  zh: 薪酬核算与过账
+  en: Payroll Calculation and Posting
+module: hr
+flow: hire-to-retire
+stage: cost
+summary:
+  zh: 从人事主数据、控制记录、薪酬核算到过账。
+  en: From HR master data and control record through payroll calculation to posting.
+variant: core
+steps:
+  - hr-pa30-maintain-master-data
+  - hr-pa03-payroll-control
+  - hr-pc00-calc-payroll
+  - hr-pc00-post-payroll
+edges:
+  - from: hr-pa30-maintain-master-data
+    to: hr-pa03-payroll-control
+    kind: sequence
+    label:
+      zh: 释放控制记录
+      en: Release control record
+  - from: hr-pa03-payroll-control
+    to: hr-pc00-calc-payroll
+    kind: sequence
+    label:
+      zh: 运行核算
+      en: Run calculation
+  - from: hr-pc00-calc-payroll
+    to: hr-pc00-post-payroll
+    kind: sequence
+    label:
+      zh: 薪酬过账
+      en: Post payroll
+roles:
+  - 薪酬专员
+  - HR 专员
+  - 财务经理
+outcomes:
+  - 薪酬结果
+  - 工资凭证
+  - 应付职工薪酬
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

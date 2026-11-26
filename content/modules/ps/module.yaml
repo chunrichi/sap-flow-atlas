@@ -10,14 +10,17 @@ summary:
   zh: WBS、网络、项目预算与结算，管理长周期、跨部门的项目型业务。
   en: WBS, networks, project budgets and settlement for long-running, cross-functional project business.
 scope:
+  - 项目立项
   - WBS
   - 网络
   - 项目预算
-  - 结算
+  - 计划成本
+  - 项目结算
+  - 结果分析
 keyFlows:
   - project-to-profit
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

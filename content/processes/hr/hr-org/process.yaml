@@ -1,0 +1,42 @@
+id: hr-org
+type: process
+title:
+  zh: 组织与岗位管理
+  en: Organization and Position Management
+module: hr
+flow: hire-to-retire
+stage: organize
+summary:
+  zh: 从组织对象、组织架构到岗位占用的组织管理链路。
+  en: The organization chain from org objects and structure to position occupancy.
+variant: core
+steps:
+  - hr-pp01-org-object
+  - hr-ppome-org-structure
+  - hr-ppose-org-structure
+edges:
+  - from: hr-pp01-org-object
+    to: hr-ppome-org-structure
+    kind: sequence
+    label:
+      zh: 维护架构
+      en: Maintain structure
+  - from: hr-ppome-org-structure
+    to: hr-ppose-org-structure
+    kind: sequence
+    label:
+      zh: 查看结构
+      en: Review structure
+roles:
+  - HR 专员
+  - 部门经理
+  - HR 总监
+outcomes:
+  - 组织单位
+  - 岗位
+  - 组织架构图
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

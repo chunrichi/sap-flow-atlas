@@ -1,0 +1,18 @@
+id: tcode:PT50
+type: tcode
+technicalName: PT50
+title:
+  zh: 维护加班
+  en: Maintain Overtime
+module: hr
+summary:
+  zh: 录入加班、补休与时间账户变动。
+  en: Records overtime, time off in lieu and time account changes.
+relations:
+  - target: table:PA2005
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

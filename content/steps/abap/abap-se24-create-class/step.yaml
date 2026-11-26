@@ -1,0 +1,41 @@
+id: abap-se24-create-class
+type: step
+title:
+  zh: 创建 ABAP 类
+  en: Create ABAP Class
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-reporting
+flows:
+  - develop-to-deploy
+tcode: SE24
+summary:
+  zh: 定义全局类的接口、方法与异常，供报表与接口复用。
+  en: Defines global class interfaces, methods and exceptions for reuse by reports and interfaces.
+inputs:
+  - 类名
+  - 接口
+  - 方法
+  - 包
+outputs:
+  - 全局类
+rules:
+  - 类必须实现接口契约。
+  - 异常必须显式处理，不能空捕获。
+painPoints:
+  - 公有属性破坏封装。
+  - 缺少单元测试，回归成本高。
+objects:
+  - tcode:SE24
+  - table:SEOCLASS
+  - table:TADIR
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

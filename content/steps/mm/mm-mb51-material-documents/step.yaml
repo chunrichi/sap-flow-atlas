@@ -8,8 +8,10 @@ modules:
   - mm
 processes:
   - mm-inventory-management
+  - mm-production-supply
 flows:
   - procure-to-pay
+  - plan-to-produce
 tcode: MB51
 summary:
   zh: 按物料、移动类型、日期与工厂查询物料凭证明细。
@@ -21,18 +23,17 @@ inputs:
 outputs:
   - 物料凭证清单
 rules:
-  - "按移动类型与期间核对，避免全表扫描。"
+  - 按移动类型与期间核对，避免全表扫描。
 painPoints:
-  - "凭证量大时需限制工厂/物料范围。"
+  - 凭证量大时需限制工厂/物料范围。
 objects:
-  - "tcode:MB51"
-  - "table:MSEG"
-  - "table:MKPF"
+  - tcode:MB51
+  - table:MSEG
+  - table:MKPF
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

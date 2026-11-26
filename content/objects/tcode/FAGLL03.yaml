@@ -1,0 +1,20 @@
+id: tcode:FAGLL03
+type: tcode
+technicalName: FAGLL03
+title:
+  zh: 总账行项目
+  en: G/L Line Items
+module: fi
+summary:
+  zh: 查看总账科目的行项目明细与凭证参考。
+  en: Displays G/L line item details and document references.
+relations:
+  - target: table:ACDOCA
+    kind: reads
+  - target: table:BSEG
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

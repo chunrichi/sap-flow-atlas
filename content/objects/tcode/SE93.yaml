@@ -1,4 +1,4 @@
-id: "tcode:SE93"
+id: tcode:SE93
 type: tcode
 technicalName: SE93
 title:
@@ -6,13 +6,16 @@ title:
   en: Transaction Maintenance
 module: abap
 summary:
-  zh: 查看事务码对应的程序、屏幕与权限对象。
-  en: Shows the program, screen and authorization object behind a transaction code.
+  zh: 查看或维护事务码对应的程序、屏幕与权限对象。
+  en: Displays or maintains the program, screen and authorization object behind a transaction code.
 relations:
-  - target: "tcode:VA01"
+  - target: table:TSTC
+    kind: writes
+  - target: tcode:VA01
     kind: related
+    note: VA01 是事务码对象的典型示例。
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

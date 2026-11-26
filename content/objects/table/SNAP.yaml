@@ -1,0 +1,17 @@
+id: table:SNAP
+type: table
+technicalName: SNAP
+title:
+  zh: 短转储快照
+  en: ABAP Dump Snapshot
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存 ABAP 运行时错误的上下文与调用栈快照。
+  en: Stores context and call stack snapshots of ABAP runtime errors.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

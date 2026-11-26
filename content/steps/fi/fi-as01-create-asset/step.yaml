@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-asset-accounting
+  - mm-asset-request
 flows:
   - acquire-to-retire
 tcode: AS01
@@ -26,15 +27,14 @@ rules:
 painPoints:
   - 资产类别选错会导致折旧年限与科目错误。
 objects:
-  - "tcode:AS01"
-  - "table:ANLA"
-  - "table:ANLB"
-  - "table:ANLC"
+  - tcode:AS01
+  - table:ANLA
+  - table:ANLB
+  - table:ANLC
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

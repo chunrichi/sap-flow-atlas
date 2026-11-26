@@ -1,0 +1,49 @@
+id: pm-preventive
+type: process
+title:
+  zh: 预防性维护计划
+  en: Preventive Maintenance Planning
+module: pm
+flow: maintain-to-availability
+stage: plan
+summary:
+  zh: 从维护计划、排程、到期监控到生成维护订单。
+  en: From maintenance plan and scheduling through deadline monitoring to order creation.
+variant: core
+steps:
+  - pm-ip01-maintenance-plan
+  - pm-ip10-schedule-plan
+  - pm-ip30-deadline-monitor
+  - pm-iw31-maintenance-order
+edges:
+  - from: pm-ip01-maintenance-plan
+    to: pm-ip10-schedule-plan
+    kind: sequence
+    label:
+      zh: 计划排程
+      en: Schedule plan
+  - from: pm-ip10-schedule-plan
+    to: pm-ip30-deadline-monitor
+    kind: sequence
+    label:
+      zh: 到期监控
+      en: Monitor deadlines
+  - from: pm-ip30-deadline-monitor
+    to: pm-iw31-maintenance-order
+    kind: sequence
+    label:
+      zh: 生成订单
+      en: Create order
+roles:
+  - 维护计划员
+  - 维修工程师
+  - 成本会计
+outcomes:
+  - 维护计划
+  - 到期清单
+  - 维护订单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

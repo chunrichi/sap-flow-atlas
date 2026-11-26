@@ -1,0 +1,17 @@
+id: table:TRDIR
+type: table
+technicalName: TRDIR
+title:
+  zh: ABAP 程序目录
+  en: ABAP Program Directory
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存 ABAP 报表、模块池与函数组的程序属性。
+  en: Stores program attributes for ABAP reports, module pools and function groups.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

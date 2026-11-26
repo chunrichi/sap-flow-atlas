@@ -1,0 +1,40 @@
+id: hr-pp01-org-object
+type: step
+title:
+  zh: 维护组织对象
+  en: Maintain Organization Object
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-org
+flows:
+  - hire-to-retire
+tcode: PP01
+summary:
+  zh: 创建或维护组织单位、岗位与职务等对象。
+  en: Creates or maintains organization units, positions and jobs.
+inputs:
+  - 组织单位
+  - 岗位
+  - 职务
+  - 上级
+outputs:
+  - 组织对象
+rules:
+  - 组织对象必须有有效期与上级。
+  - 岗位必须归属组织单位。
+painPoints:
+  - 有效期重叠导致组织架构异常。
+  - 岗位未分配职务，无法推导默认属性。
+objects:
+  - tcode:PP01
+  - table:HRP1000
+  - table:HRP1001
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

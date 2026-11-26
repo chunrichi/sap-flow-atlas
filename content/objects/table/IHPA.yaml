@@ -1,0 +1,17 @@
+id: table:IHPA
+type: table
+technicalName: IHPA
+title:
+  zh: 维护合作伙伴
+  en: Maintenance Partner
+module: pm
+tableClass: transparent
+summary:
+  zh: 保存设备与通知的合作伙伴角色，如责任人、供应商。
+  en: Stores partner roles for equipment and notifications, such as owner or vendor.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

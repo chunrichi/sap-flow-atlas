@@ -1,0 +1,40 @@
+id: abap-stms-transport
+type: step
+title:
+  zh: 导入传输请求
+  en: Import Transport Request
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-transport
+flows:
+  - develop-to-deploy
+tcode: STMS
+summary:
+  zh: 按系统层级导入传输请求，并检查依赖与返回码。
+  en: Imports transport requests along the system landscape and checks dependencies and return codes.
+inputs:
+  - 传输请求
+  - 目标系统
+outputs:
+  - 已导入对象
+rules:
+  - 必须按开发→测试→生产的顺序导入。
+  - 依赖对象缺失时禁止跳过。
+painPoints:
+  - 跳过测试系统直接上生产。
+  - 依赖对象缺失导致运行时错误。
+objects:
+  - tcode:STMS
+  - table:E070
+  - table:E071
+  - tcode:SE01
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

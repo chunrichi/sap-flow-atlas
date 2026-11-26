@@ -1,0 +1,45 @@
+id: ps-cn21-network
+type: step
+title:
+  zh: 创建网络
+  en: Create Network
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-setup
+flows:
+  - project-to-profit
+tcode: CN21
+summary:
+  zh: 为项目建立网络与活动，承载工序、关系和日期。
+  en: Creates networks and activities for a project with operations, relationships and dates.
+inputs:
+  - 项目定义
+  - 活动
+  - 工期
+  - 关系
+outputs:
+  - 网络
+  - 活动
+rules:
+  - 网络活动必须挂接 WBS 元素。
+  - 活动关系不能成环。
+painPoints:
+  - 活动未挂 WBS 导致成本无法归集。
+  - 关系维护错误导致排程失真。
+objects:
+  - tcode:CN21
+  - table:AUFK
+  - table:AFKO
+  - table:PROJ
+snippets: []
+crossModule:
+  - module: co
+    relation: costing
+    note: 活动确认的工时与费用进入 CO 项目成本。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

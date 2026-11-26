@@ -1,0 +1,20 @@
+id: tcode:KO02
+type: tcode
+technicalName: KO02
+title:
+  zh: 修改内部订单
+  en: Change Internal Order
+module: co
+summary:
+  zh: 调整内部订单的预算、状态与结算规则。
+  en: Adjusts budget, status and settlement rules of an internal order.
+relations:
+  - target: table:AUFK
+    kind: writes
+  - target: tcode:KO01
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

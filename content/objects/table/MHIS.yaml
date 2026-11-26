@@ -1,0 +1,17 @@
+id: table:MHIS
+type: table
+technicalName: MHIS
+title:
+  zh: 维护历史
+  en: Maintenance History
+module: pm
+tableClass: transparent
+summary:
+  zh: 保存维护计划的调用与完成历史。
+  en: Stores call and completion history of maintenance plans.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

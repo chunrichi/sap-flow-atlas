@@ -1,0 +1,52 @@
+id: fi-asset-retirement
+type: process
+title:
+  zh: 资产报废与转移
+  en: Asset Retirement and Transfer
+module: fi
+flow: acquire-to-retire
+stage: retire
+summary:
+  zh: 从查看资产到有收入报废、无收入报废或资产转移的退役链路。
+  en: The retirement chain from asset review to retirement with revenue, scrapping or transfer.
+variant: optional
+trigger:
+  zh: 资产损坏、出售、报废或在成本中心/公司代码间转移时才执行；正常折旧周期不触发。
+  en: Only when an asset is damaged, sold, scrapped or transferred between cost centers or company codes; routine depreciation does not trigger it.
+steps:
+  - fi-as03-display-asset
+  - fi-abaon-retirement
+  - fi-abavn-retirement-scrap
+  - fi-abt1n-transfer-asset
+edges:
+  - from: fi-as03-display-asset
+    to: fi-abaon-retirement
+    kind: sequence
+    label:
+      zh: 有收入报废
+      en: Retirement with revenue
+  - from: fi-as03-display-asset
+    to: fi-abavn-retirement-scrap
+    kind: sequence
+    label:
+      zh: 无收入报废
+      en: Retirement by scrapping
+  - from: fi-as03-display-asset
+    to: fi-abt1n-transfer-asset
+    kind: sequence
+    label:
+      zh: 资产转移
+      en: Asset transfer
+roles:
+  - 资产会计
+  - 财务经理
+  - 采购员
+outcomes:
+  - 报废凭证
+  - 转移凭证
+  - 资产减少
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

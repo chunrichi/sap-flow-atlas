@@ -8,6 +8,7 @@ modules:
   - ps
 processes:
   - ps-project-execution
+  - ps-setup
 flows:
   - project-to-profit
 tcode: CJ01
@@ -21,17 +22,16 @@ inputs:
 outputs:
   - 项目定义
 rules:
-  - "项目类型决定编号范围与结算规则。"
+  - 项目类型决定编号范围与结算规则。
 painPoints:
-  - "项目定义与公司代码不匹配会导致过账失败。"
+  - 项目定义与公司代码不匹配会导致过账失败。
 objects:
-  - "tcode:CJ01"
-  - "table:PROJ"
+  - tcode:CJ01
+  - table:PROJ
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

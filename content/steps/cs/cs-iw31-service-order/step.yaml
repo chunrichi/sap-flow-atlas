@@ -8,6 +8,8 @@ modules:
   - cs
 processes:
   - cs-service-order
+  - cs-notification
+  - cs-contract
 flows:
   - service-to-cash
 tcode: IW31
@@ -22,20 +24,19 @@ inputs:
 outputs:
   - 服务订单号
 rules:
-  - "服务订单类型决定结算规则与开票类型。"
+  - 服务订单类型决定结算规则与开票类型。
 painPoints:
-  - "订单类型选错会导致无法开票或结算。"
+  - 订单类型选错会导致无法开票或结算。
 objects:
-  - "tcode:IW31"
-  - "table:AUFK"
-  - "table:AFIH"
-  - "table:EQUI"
+  - tcode:IW31
+  - table:AUFK
+  - table:AFIH
+  - table:EQUI
 snippets:
   - abap-cs-service-orders
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

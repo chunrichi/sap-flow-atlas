@@ -20,18 +20,21 @@ inputs:
 outputs:
   - 性能报告
 rules:
-  - "组合 SQL 与 ABAP trace 定位端到端瓶颈。"
+  - 组合 SQL 与 ABAP trace 定位端到端瓶颈。
 painPoints:
-  - "只测单用户可能低估并发问题。"
+  - 只测单用户可能低估并发问题。
 objects:
-  - "tcode:ST12"
-  - "table:TADIR"
+  - tcode:ST12
+  - table:TADIR
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - abap-cheat-sheets
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 需要定位运行时耗时、内存或数据库瓶颈时才执行。
+  en: Only when runtime, memory or database bottlenecks must be located.

@@ -1,8 +1,8 @@
 id: pp-md04-mrp-list
 type: step
 title:
-  zh: 查看 MRP 清单
-  en: Review MRP List
+  zh: 查看库存需求清单
+  en: Review Stock/Requirements List
 primaryModule: pp
 modules:
   - pp
@@ -20,20 +20,19 @@ inputs:
 outputs:
   - 库存需求清单
 rules:
-  - "按日期顺序检查库存/需求缺口。"
-  - "优先处理红色例外消息。"
+  - 按日期顺序检查库存/需求缺口。
+  - 优先处理红色例外消息。
 painPoints:
-  - "例外消息未处理会放大计划波动。"
+  - 例外消息未处理会放大计划波动。
 objects:
-  - "tcode:MD04"
-  - "table:PLAF"
-  - "table:RESB"
-  - "table:MARC"
+  - tcode:MD04
+  - table:PLAF
+  - table:RESB
+  - table:MARC
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

@@ -11,8 +11,12 @@ modules:
   - fi
 processes:
   - mm-procurement
+  - mm-production-supply
+  - mm-asset-request
 flows:
   - procure-to-pay
+  - plan-to-produce
+  - acquire-to-retire
 tcode: MIGO
 summary:
   zh: 按采购订单或生产订单收货，生成物料凭证并更新库存。
@@ -33,14 +37,13 @@ painPoints:
   - 收货数量与发票数量不一致会导致发票校验阻塞。
   - 移动类型选错会造成库存与科目错位。
 objects:
-  - "tcode:MIGO"
-  - "table:MSEG"
-  - "bapi:BAPI_GOODSMVT_CREATE"
-  - "enhancement:MB_DOCUMENT_BADI"
-  - "cds:I_MaterialDocumentItem"
-  - "odata:API_MATERIAL_DOCUMENT_SRV"
-snippets:
-  []
+  - tcode:MIGO
+  - table:MSEG
+  - bapi:BAPI_GOODSMVT_CREATE
+  - enhancement:MB_DOCUMENT_BADI
+  - cds:I_MaterialDocumentItem
+  - odata:API_MATERIAL_DOCUMENT_SRV
+snippets: []
 crossModule:
   - module: sd
     relation: handoff
@@ -56,4 +59,4 @@ sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
   - api-material-document
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

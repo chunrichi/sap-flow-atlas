@@ -8,6 +8,7 @@ modules:
   - pp
 processes:
   - pp-production-order
+  - pp-capacity
 flows:
   - plan-to-produce
 tcode: CO02
@@ -19,19 +20,18 @@ inputs:
 outputs:
   - 已下达订单
 rules:
-  - "下达前检查组件可用性与订单日期。"
-  - "下达后不允许随意改 BOM/工艺路线。"
+  - 下达前检查组件可用性与订单日期。
+  - 下达后不允许随意改 BOM/工艺路线。
 painPoints:
   - 组件缺料会导致下达失败或后续发料异常。
 objects:
-  - "tcode:CO02"
-  - "table:AUFK"
-  - "table:AFKO"
+  - tcode:CO02
+  - table:AUFK
+  - table:AFKO
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

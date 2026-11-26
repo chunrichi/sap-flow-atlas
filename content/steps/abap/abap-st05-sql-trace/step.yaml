@@ -22,16 +22,19 @@ outputs:
 rules:
   - 只在测试或受控环境开启 trace，避免性能影响。
 painPoints:
-  - "trace 文件过大时难以定位，需按用户/时间过滤。"
+  - trace 文件过大时难以定位，需按用户/时间过滤。
 objects:
-  - "tcode:ST05"
-  - "table:TADIR"
+  - tcode:ST05
+  - table:TADIR
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - abap-cheat-sheets
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 怀疑 SQL 性能问题且需要抓取数据库访问轨迹时才执行。
+  en: Only when SQL performance issues are suspected and database access traces are needed.

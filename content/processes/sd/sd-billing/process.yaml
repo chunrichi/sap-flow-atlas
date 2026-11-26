@@ -1,0 +1,49 @@
+id: sd-billing
+type: process
+title:
+  zh: 开票与发票处理
+  en: Billing and Invoicing
+module: sd
+flow: order-to-cash
+stage: billing
+summary:
+  zh: 从开票到期清单、生成发票到核对与冲销的开票链路。
+  en: The billing chain from the due list and invoice creation to review and cancellation.
+variant: core
+steps:
+  - sd-vf04-billing-due-list
+  - sd-vf01-create-billing
+  - sd-vf03-display-billing
+  - sd-vf11-cancel-billing
+edges:
+  - from: sd-vf04-billing-due-list
+    to: sd-vf01-create-billing
+    kind: sequence
+    label:
+      zh: 批量开票
+      en: Create invoice
+  - from: sd-vf01-create-billing
+    to: sd-vf03-display-billing
+    kind: sequence
+    label:
+      zh: 核对发票
+      en: Review invoice
+  - from: sd-vf03-display-billing
+    to: sd-vf11-cancel-billing
+    kind: sequence
+    label:
+      zh: 异常冲销
+      en: Cancel invoice
+roles:
+  - 开票员
+  - 应收会计
+  - 销售内勤
+outcomes:
+  - 发票
+  - 会计凭证
+  - 应收账款
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

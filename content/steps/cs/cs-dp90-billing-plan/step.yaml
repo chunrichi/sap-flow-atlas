@@ -1,0 +1,42 @@
+id: cs-dp90-billing-plan
+type: step
+title:
+  zh: 维护开票计划
+  en: Maintain Billing Plan
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-contract
+flows:
+  - service-to-cash
+tcode: DP90
+summary:
+  zh: 定义服务合同的周期性开票日期与金额。
+  en: Defines periodic billing dates and amounts for a service contract.
+inputs:
+  - 服务合同
+  - 开票周期
+  - 金额
+  - 起止日期
+outputs:
+  - 开票计划
+rules:
+  - 开票计划金额合计必须等于合同金额。
+  - 日期不能重叠。
+painPoints:
+  - 计划金额与合同不一致。
+  - 周期与会计期间错配。
+objects:
+  - tcode:DP90
+  - table:FPLA
+  - table:FPLT
+  - table:VBAK
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

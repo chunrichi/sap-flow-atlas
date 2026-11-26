@@ -1,0 +1,40 @@
+id: abap-st22-short-dump
+type: step
+title:
+  zh: 分析短转储
+  en: Analyze ABAP Dump
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-testing
+flows:
+  - develop-to-deploy
+tcode: ST22
+summary:
+  zh: 查看运行时错误、调用栈与上下文，定位程序缺陷。
+  en: Displays runtime errors, call stacks and context to locate program defects.
+inputs:
+  - 时间范围
+  - 用户
+  - 程序
+outputs:
+  - 转储详情
+  - 调用栈
+rules:
+  - 转储需按频率与影响分级。
+  - 生产转储必须闭环处理。
+painPoints:
+  - 只看摘要不看调用栈。
+  - 重复转储未合并，掩盖根因。
+objects:
+  - tcode:ST22
+  - table:SNAP
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

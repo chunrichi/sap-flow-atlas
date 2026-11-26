@@ -1,0 +1,20 @@
+id: tcode:KO8G
+type: tcode
+technicalName: KO8G
+title:
+  zh: 批量结算
+  en: Settlement Run
+module: co
+summary:
+  zh: 批量结算订单到成本中心、资产或获利段。
+  en: Settles orders in batches to cost centers, assets or profitability segments.
+relations:
+  - target: table:AUFK
+    kind: reads
+  - target: table:COEP
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

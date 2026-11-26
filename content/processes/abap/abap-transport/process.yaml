@@ -1,0 +1,42 @@
+id: abap-transport
+type: process
+title:
+  zh: 传输与上线
+  en: Transport and Go-Live
+module: abap
+flow: develop-to-deploy
+stage: transport
+summary:
+  zh: 从事务码注册、传输请求收集到目标系统导入。
+  en: From transaction registration and transport collection to target system import.
+variant: core
+steps:
+  - abap-se93-create-tcode
+  - abap-se01-transport
+  - abap-stms-transport
+edges:
+  - from: abap-se93-create-tcode
+    to: abap-se01-transport
+    kind: sequence
+    label:
+      zh: 收集传输
+      en: Collect transport
+  - from: abap-se01-transport
+    to: abap-stms-transport
+    kind: sequence
+    label:
+      zh: 导入目标系统
+      en: Import to target
+roles:
+  - ABAP 开发
+  - Basis
+  - 发布经理
+outcomes:
+  - 事务码
+  - 传输请求
+  - 生产上线
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

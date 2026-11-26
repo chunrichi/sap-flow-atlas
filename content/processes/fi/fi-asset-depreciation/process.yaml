@@ -1,0 +1,40 @@
+id: fi-asset-depreciation
+type: process
+title:
+  zh: 折旧与资产月末
+  en: Depreciation and Asset Period End
+module: fi
+flow: acquire-to-retire
+stage: depreciate
+summary:
+  zh: 从运行折旧、资产浏览器到资产明细复核的月末折旧链路。
+  en: The period-end depreciation chain from depreciation run and asset explorer to asset detail review.
+variant: core
+steps:
+  - fi-afab-depreciation
+  - fi-aw01n-asset-explorer
+  - fi-as03-display-asset
+edges:
+  - from: fi-afab-depreciation
+    to: fi-aw01n-asset-explorer
+    kind: sequence
+    label:
+      zh: 运行折旧
+      en: Run depreciation
+  - from: fi-aw01n-asset-explorer
+    to: fi-as03-display-asset
+    kind: sequence
+    label:
+      zh: 资产浏览器
+      en: Asset explorer
+roles:
+  - 资产会计
+  - 财务经理
+outcomes:
+  - 折旧凭证
+  - 资产账面价值
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

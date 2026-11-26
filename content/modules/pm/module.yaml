@@ -12,6 +12,7 @@ summary:
 scope:
   - 设备
   - 功能位置
+  - 维护通知
   - 维护订单
   - 预防性维护
 keyFlows:
@@ -20,4 +21,4 @@ status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

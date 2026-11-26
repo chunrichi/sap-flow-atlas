@@ -1,0 +1,48 @@
+id: co-profit-center
+type: process
+title:
+  zh: 利润中心会计
+  en: Profit Center Accounting
+module: co
+flow: record-to-report
+stage: analysis
+summary:
+  zh: 从利润中心主数据、成本过账到利润中心报表的分析链路。
+  en: The analysis chain from profit center master data and cost posting to profit center reporting.
+variant: core
+steps:
+  - co-ke51-profit-center
+  - co-ke52-profit-center-change
+  - co-kb11n-cost-posting
+  - co-ke30-profit-center-report
+edges:
+  - from: co-ke51-profit-center
+    to: co-ke52-profit-center-change
+    kind: sequence
+    label:
+      zh: 维护利润中心
+      en: Maintain profit center
+  - from: co-ke52-profit-center-change
+    to: co-kb11n-cost-posting
+    kind: sequence
+    label:
+      zh: 成本过账
+      en: Post costs
+  - from: co-kb11n-cost-posting
+    to: co-ke30-profit-center-report
+    kind: sequence
+    label:
+      zh: 利润中心报表
+      en: Profit center report
+roles:
+  - 管理会计
+  - 财务分析师
+  - 部门经理
+outcomes:
+  - 利润中心
+  - 利润中心报表
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

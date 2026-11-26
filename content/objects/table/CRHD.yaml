@@ -1,0 +1,17 @@
+id: table:CRHD
+type: table
+technicalName: CRHD
+title:
+  zh: 工作中心抬头
+  en: Work Center Header
+module: pp
+tableClass: transparent
+summary:
+  zh: 保存工作中心的基本数据、工厂与能力归属。
+  en: Stores work center basic data, plant and capacity assignment.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

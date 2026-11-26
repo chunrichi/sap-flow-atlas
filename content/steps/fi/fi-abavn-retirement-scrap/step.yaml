@@ -1,0 +1,44 @@
+id: fi-abavn-retirement-scrap
+type: step
+title:
+  zh: 资产报废
+  en: Retire Asset by Scrapping
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-asset-retirement
+flows:
+  - acquire-to-retire
+tcode: ABAVN
+summary:
+  zh: 无收入报废资产，冲减资产原值与累计折旧。
+  en: Retires an asset without revenue, reducing acquisition cost and accumulated depreciation.
+inputs:
+  - 资产编号
+  - 报废日期
+  - 报废原因
+outputs:
+  - 报废凭证
+  - 资产减少
+rules:
+  - 报废数量不能超过资产数量。
+  - 已提足折旧与未提足折旧的报废处理不同。
+painPoints:
+  - 报废未同步实物处置，导致账实不符。
+  - 跨期报废影响折旧与期间损益。
+objects:
+  - tcode:ABAVN
+  - table:ANLA
+  - table:ANLC
+  - table:ACDOCA
+snippets: []
+crossModule:
+  - module: mm
+    relation: asset-lifecycle
+    note: 实物处置与采购/库存流程中的资产标签需要同步。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

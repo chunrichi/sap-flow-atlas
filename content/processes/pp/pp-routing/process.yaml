@@ -1,0 +1,49 @@
+id: pp-routing
+type: process
+title:
+  zh: 工艺路线与工作中心
+  en: Routing and Work Center
+module: pp
+flow: plan-to-produce
+stage: plan
+summary:
+  zh: 从工作中心、BOM 到工艺路线的生产主数据准备链路。
+  en: The production master data chain from work centers and BOM to routings.
+variant: core
+steps:
+  - pp-cr01-work-center
+  - pp-cs01-bom
+  - pp-ca01-routing
+  - pp-ca03-display-routing
+edges:
+  - from: pp-cr01-work-center
+    to: pp-cs01-bom
+    kind: sequence
+    label:
+      zh: 准备 BOM
+      en: Prepare BOM
+  - from: pp-cs01-bom
+    to: pp-ca01-routing
+    kind: sequence
+    label:
+      zh: 定义工序
+      en: Define operations
+  - from: pp-ca01-routing
+    to: pp-ca03-display-routing
+    kind: sequence
+    label:
+      zh: 查看版本
+      en: Review version
+roles:
+  - 生产计划员
+  - 工艺工程师
+  - 成本会计
+outcomes:
+  - 工作中心
+  - BOM
+  - 工艺路线
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

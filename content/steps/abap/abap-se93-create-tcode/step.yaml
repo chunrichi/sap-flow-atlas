@@ -1,0 +1,41 @@
+id: abap-se93-create-tcode
+type: step
+title:
+  zh: 创建事务码
+  en: Create Transaction Code
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-transport
+flows:
+  - develop-to-deploy
+tcode: SE93
+summary:
+  zh: 把程序、屏幕或服务绑定为事务码，交给业务用户使用。
+  en: Binds a program, screen or service to a transaction for business users.
+inputs:
+  - 事务码
+  - 程序/屏幕
+  - 描述
+  - 包
+outputs:
+  - 事务码
+rules:
+  - 事务码必须唯一并分配包。
+  - 权限对象需要同步维护。
+painPoints:
+  - 事务码与程序不一致。
+  - 未加入角色菜单，用户看不到入口。
+objects:
+  - tcode:SE93
+  - table:TSTC
+  - table:TADIR
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

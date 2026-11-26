@@ -1,0 +1,20 @@
+id: tcode:ME41
+type: tcode
+technicalName: ME41
+title:
+  zh: 创建询价
+  en: Create RFQ
+module: mm
+summary:
+  zh: 向多个供应商发出询价请求，记录物料、数量与报价截止日期。
+  en: Sends requests for quotation to multiple vendors with materials, quantities and deadlines.
+relations:
+  - target: table:EKKO
+    kind: writes
+  - target: table:EKPO
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

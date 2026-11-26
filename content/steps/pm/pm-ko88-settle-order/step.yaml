@@ -20,13 +20,13 @@ inputs:
 outputs:
   - 结算凭证
 rules:
-  - "结算前确认订单已技术完成。"
+  - 结算前确认订单已技术完成。
 painPoints:
-  - "未完成订单结算会留下余额。"
+  - 未完成订单结算会留下余额。
 objects:
-  - "tcode:KO88"
-  - "table:AUFK"
-  - "table:COEP"
+  - tcode:KO88
+  - table:AUFK
+  - table:COEP
 snippets: []
 crossModule:
   - module: co
@@ -36,4 +36,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

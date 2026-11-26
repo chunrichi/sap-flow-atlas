@@ -3,12 +3,14 @@ import { Handle, Position, type NodeProps } from "@xyflow/react";
 import { ArrowUpRight, Braces, GitBranch, Info, Layers3 } from "lucide-react";
 import {
   content,
+  isConditionalProcess,
   modulesById,
   objectsById,
   objectTypeLabels,
   objectTypeShort,
   objectsForStep,
   processesById,
+  processVariantShort,
   stepsById,
   statusLabels,
   text,
@@ -196,12 +198,25 @@ export function ProcessNode(props: NodeProps) {
   ).size;
   const color = colorForModule(module);
 
+  const conditional = isConditionalProcess(process);
   return (
-    <NodeShell data={data} color={color} label={`${text(process.title)} 流程`}>
+    <NodeShell
+      data={data}
+      color={color}
+      label={`${text(process.title)} 流程`}
+      className={conditional ? (process.variant === "exception" ? "node-exception" : "node-optional") : undefined}
+    >
       <div className="flex h-full flex-col p-4 pl-5">
         <div className="flex items-center justify-between gap-2">
-          <span className="rounded-md bg-slate-50 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide text-slate-500">
-            {module?.abbr} · {process.stage}
+          <span className="flex min-w-0 items-center gap-1.5">
+            <span className="rounded-md bg-slate-50 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide text-slate-500">
+              {module?.abbr} · {process.stage}
+            </span>
+            {conditional ? (
+              <span className={process.variant === "exception" ? "variant-badge variant-badge-exception" : "variant-badge variant-badge-optional"}>
+                {processVariantShort[process.variant] ?? process.variant}
+              </span>
+            ) : null}
           </span>
           <StatusDot status={process.status} />
         </div>
@@ -238,7 +253,12 @@ export function StepNode(props: NodeProps) {
   const color = colorForModule(module);
 
   return (
-    <NodeShell data={data} color={color} label={`${text(step.title)} 步骤`}>
+    <NodeShell
+      data={data}
+      color={color}
+      label={`${text(step.title)} 步骤`}
+      className={step.optional ? "node-optional-step" : undefined}
+    >
       <div className="flex h-full flex-col p-3.5 pl-4">
         <div className="flex items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-2">
@@ -255,6 +275,7 @@ export function StepNode(props: NodeProps) {
             ) : (
               <span className="text-[9px] text-slate-400">STEP</span>
             )}
+            {step.optional ? <span className="variant-badge variant-badge-optional">条件</span> : null}
           </div>
           <StatusDot status={step.status} />
         </div>

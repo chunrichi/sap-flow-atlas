@@ -1,0 +1,41 @@
+id: mm-me49-compare-quotations
+type: step
+title:
+  zh: 比较报价
+  en: Compare Quotations
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-sourcing
+flows:
+  - procure-to-pay
+tcode: ME49
+summary:
+  zh: 汇总多家供应商报价，比较价格、交货期与条件差异。
+  en: Compares quotations from multiple vendors on price, delivery time and conditions.
+inputs:
+  - 询价单
+  - 多家报价
+outputs:
+  - 价格比较结果
+  - 推荐供应商
+rules:
+  - 比较需统一币种、单位与交货条件。
+  - 最低价不一定是总成本最低，需考虑运费与质量。
+painPoints:
+  - 忽略运费与关税导致错误决策。
+  - 报价行缺失使比较不完整。
+objects:
+  - tcode:ME49
+  - table:EKKO
+  - table:EKPO
+  - tcode:ME21N
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-purchase-order

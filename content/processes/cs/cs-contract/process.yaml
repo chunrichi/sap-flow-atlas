@@ -1,0 +1,52 @@
+id: cs-contract
+type: process
+title:
+  zh: 服务合同与计划
+  en: Service Contract and Plan
+module: cs
+flow: service-to-cash
+stage: execute
+summary:
+  zh: 从服务合同、合同变更、开票计划到生成服务订单。
+  en: From service contract and changes to billing plan and generated service orders.
+variant: optional
+trigger:
+  zh: 客户签订年度或周期服务合同、需要按计划生成服务订单或开票时才执行；一次性服务可直接建单。
+  en: Only when an annual or periodic service contract drives service orders or billing; one-off services can be created directly.
+steps:
+  - cs-va41-service-contract
+  - cs-va42-service-contract-change
+  - cs-dp90-billing-plan
+  - cs-iw31-service-order
+edges:
+  - from: cs-va41-service-contract
+    to: cs-va42-service-contract-change
+    kind: sequence
+    label:
+      zh: 合同变更
+      en: Change contract
+  - from: cs-va42-service-contract-change
+    to: cs-dp90-billing-plan
+    kind: sequence
+    label:
+      zh: 开票计划
+      en: Billing plan
+  - from: cs-dp90-billing-plan
+    to: cs-iw31-service-order
+    kind: sequence
+    label:
+      zh: 生成服务订单
+      en: Create service order
+roles:
+  - 销售代表
+  - 服务经理
+  - 应收会计
+outcomes:
+  - 服务合同
+  - 开票计划
+  - 服务订单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

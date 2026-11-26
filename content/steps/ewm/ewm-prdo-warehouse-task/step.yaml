@@ -8,6 +8,7 @@ modules:
   - ewm
 processes:
   - ewm-outbound
+  - ewm-wave
 flows:
   - order-to-cash
 tcode: /SCWM/PRDO
@@ -21,12 +22,12 @@ inputs:
 outputs:
   - 仓库任务
 rules:
-  - "仓库任务按拣配策略与库存类型生成。"
+  - 仓库任务按拣配策略与库存类型生成。
 painPoints:
-  - "库存不足往往在创建任务时才暴露。"
+  - 库存不足往往在创建任务时才暴露。
 objects:
-  - "tcode:/SCWM/PRDO"
-  - "table:LIKP"
+  - tcode:/SCWM/PRDO
+  - table:LIKP
 snippets: []
 crossModule:
   - module: sd
@@ -36,4 +37,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

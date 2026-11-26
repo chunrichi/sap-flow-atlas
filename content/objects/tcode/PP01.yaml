@@ -1,0 +1,20 @@
+id: tcode:PP01
+type: tcode
+technicalName: PP01
+title:
+  zh: 维护组织对象
+  en: Maintain Organization Object
+module: hr
+summary:
+  zh: 创建或维护组织单位、岗位与职务等对象。
+  en: Creates or maintains organization units, positions and jobs.
+relations:
+  - target: table:HRP1000
+    kind: writes
+  - target: table:HRP1001
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

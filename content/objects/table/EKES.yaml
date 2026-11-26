@@ -1,0 +1,17 @@
+id: table:EKES
+type: table
+technicalName: EKES
+title:
+  zh: 供应商确认
+  en: Vendor Confirmation
+module: mm
+tableClass: transparent
+summary:
+  zh: 保存供应商对采购订单或询价的确认数量与交货日期。
+  en: Stores vendor-confirmed quantities and delivery dates for purchase orders or RFQs.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,20 @@
+id: tcode:ME57
+type: tcode
+technicalName: ME57
+title:
+  zh: 分配采购申请
+  en: Assign Purchase Requisitions
+module: mm
+summary:
+  zh: 将未处理的采购申请分配给采购员，并转为询价或采购订单。
+  en: Assigns open purchase requisitions to buyers and converts them to RFQs or purchase orders.
+relations:
+  - target: table:EBAN
+    kind: reads
+  - target: table:EKKO
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,20 @@
+id: tcode:STMS
+type: tcode
+technicalName: STMS
+title:
+  zh: 传输管理
+  en: Transport Management System
+module: abap
+summary:
+  zh: 查看、导入与跟踪传输请求在各系统的状态。
+  en: Displays, imports and tracks transport requests across systems.
+relations:
+  - target: table:E070
+    kind: reads
+  - target: tcode:SE01
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

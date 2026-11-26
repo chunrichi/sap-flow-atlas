@@ -1,0 +1,49 @@
+id: mm-asset-request
+type: process
+title:
+  zh: 资产采购申请
+  en: Asset Purchase Request
+module: mm
+flow: acquire-to-retire
+stage: request
+summary:
+  zh: 从资产采购申请、下单、到货验收到创建资产主数据。
+  en: From asset purchase request and ordering through receipt to asset master creation.
+variant: core
+steps:
+  - mm-me51n-create-purchase-requisition
+  - mm-me21n-create-purchase-order
+  - mm-migo-post-goods-receipt
+  - fi-as01-create-asset
+edges:
+  - from: mm-me51n-create-purchase-requisition
+    to: mm-me21n-create-purchase-order
+    kind: sequence
+    label:
+      zh: 转采购订单
+      en: Convert to PO
+  - from: mm-me21n-create-purchase-order
+    to: mm-migo-post-goods-receipt
+    kind: sequence
+    label:
+      zh: 到货验收
+      en: Goods receipt
+  - from: mm-migo-post-goods-receipt
+    to: fi-as01-create-asset
+    kind: sequence
+    label:
+      zh: 创建资产
+      en: Create asset
+roles:
+  - 资产会计
+  - 采购员
+  - 仓库管理员
+outcomes:
+  - 采购申请
+  - 采购订单
+  - 资产主数据
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

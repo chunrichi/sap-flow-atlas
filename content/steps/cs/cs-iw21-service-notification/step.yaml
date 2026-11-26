@@ -1,0 +1,42 @@
+id: cs-iw21-service-notification
+type: step
+title:
+  zh: 创建服务通知
+  en: Create Service Notification
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-notification
+flows:
+  - service-to-cash
+tcode: IW21
+summary:
+  zh: 记录客户报修、设备故障与响应优先级，作为派工依据。
+  en: Records customer service requests, equipment faults and response priority as the basis for dispatching.
+inputs:
+  - 客户
+  - 设备
+  - 故障描述
+  - 优先级
+outputs:
+  - 服务通知
+rules:
+  - 通知必须关联客户与设备。
+  - 优先级决定响应时限。
+painPoints:
+  - 设备主数据缺失，无法建单。
+  - 故障描述不清导致派工错误。
+objects:
+  - tcode:IW21
+  - table:QMEL
+  - table:IHPA
+  - table:ILOA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

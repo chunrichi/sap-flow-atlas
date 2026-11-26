@@ -1,0 +1,17 @@
+id: table:QMFE
+type: table
+technicalName: QMFE
+title:
+  zh: 通知项目
+  en: Notification Items
+module: qm
+tableClass: transparent
+summary:
+  zh: 保存质量通知的缺陷项目、缺陷代码与数量。
+  en: Stores defect items, defect codes and quantities of a quality notification.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

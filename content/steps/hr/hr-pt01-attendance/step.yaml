@@ -1,0 +1,44 @@
+id: hr-pt01-attendance
+type: step
+title:
+  zh: 录入考勤
+  en: Record Attendance
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-time
+flows:
+  - hire-to-retire
+tcode: PT01
+summary:
+  zh: 录入员工出勤、缺勤与替代时间。
+  en: Records attendances, absences and substitutions for employees.
+optional: true
+condition:
+  zh: 按小时计薪、倒班或需要考勤扣减的岗位才执行；固定月薪且不考勤的岗位可简化。
+  en: Only for hourly, shift-based or attendance-driven roles; fixed-salary roles without time tracking can skip it.
+inputs:
+  - 员工
+  - 日期
+  - 考勤类型
+  - 工时
+outputs:
+  - 考勤记录
+rules:
+  - 考勤类型必须与员工时间管理状态匹配。
+  - 同一员工同一天不允许重叠记录。
+painPoints:
+  - 补录跨月导致时间评估偏差。
+  - 缺勤与考勤记录冲突。
+objects:
+  - tcode:PT01
+  - table:PA2001
+  - table:PA2002
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

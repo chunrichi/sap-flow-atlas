@@ -8,6 +8,7 @@ modules:
   - sd
 processes:
   - sd-order-management
+  - sd-presales
 flows:
   - order-to-cash
 tcode: VA01
@@ -33,13 +34,13 @@ painPoints:
   - 客户主数据不完整会导致订单无法保存。
   - 信用检查失败时订单进入冻结状态。
 objects:
-  - "tcode:VA01"
-  - "table:VBAK"
-  - "table:VBAP"
-  - "bapi:BAPI_SALESORDER_CREATEFROMDAT2"
-  - "enhancement:MV45AFZZ"
-  - "cds:I_SalesOrder"
-  - "odata:API_SALES_ORDER_SRV"
+  - tcode:VA01
+  - table:VBAK
+  - table:VBAP
+  - bapi:BAPI_SALESORDER_CREATEFROMDAT2
+  - enhancement:MV45AFZZ
+  - cds:I_SalesOrder
+  - odata:API_SALES_ORDER_SRV
 snippets:
   - abap-bapi-create-sales-order
   - abap-user-exit-save-document
@@ -52,4 +53,4 @@ sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
   - api-sales-order
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

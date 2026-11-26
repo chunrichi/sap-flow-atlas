@@ -49,8 +49,13 @@ processes:
   - sd-credit-management
   - sd-returns
   - ewm-outbound
+  - fi-accounts-receivable
+  - sd-presales
+  - sd-billing
+  - ewm-wave
+  - fi-ar-collection
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

@@ -1,0 +1,52 @@
+id: co-internal-order
+type: process
+title:
+  zh: 内部订单
+  en: Internal Orders
+module: co
+flow: record-to-report
+stage: closing
+summary:
+  zh: 从创建内部订单、维护预算到实际成本与结算的归集链路。
+  en: The collection chain from internal order creation and budget maintenance to actual costs and settlement.
+variant: optional
+trigger:
+  zh: 需要按内部项目/活动归集费用并结算到成本中心或资产时才执行；常规费用可直接记成本中心。
+  en: Only when costs must be collected by internal project or activity and settled to cost centers or assets; routine costs can post to cost centers directly.
+steps:
+  - co-ko01-internal-order
+  - co-ko02-change-order
+  - co-kob1-order-actuals
+  - co-ko88-settle-internal-order
+edges:
+  - from: co-ko01-internal-order
+    to: co-ko02-change-order
+    kind: sequence
+    label:
+      zh: 调整订单
+      en: Change order
+  - from: co-ko02-change-order
+    to: co-kob1-order-actuals
+    kind: sequence
+    label:
+      zh: 查看实际成本
+      en: Check actual costs
+  - from: co-kob1-order-actuals
+    to: co-ko88-settle-internal-order
+    kind: sequence
+    label:
+      zh: 结算
+      en: Settle
+roles:
+  - 管理会计
+  - 成本会计
+  - 项目经理
+outcomes:
+  - 内部订单
+  - 实际成本
+  - 结算凭证
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

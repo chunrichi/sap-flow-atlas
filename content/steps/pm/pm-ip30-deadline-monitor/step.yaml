@@ -1,0 +1,39 @@
+id: pm-ip30-deadline-monitor
+type: step
+title:
+  zh: 监控维护到期
+  en: Monitor Maintenance Deadlines
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-preventive
+flows:
+  - maintain-to-availability
+tcode: IP30
+summary:
+  zh: 按日期窗口查看到期或逾期的维护计划。
+  en: Shows due or overdue maintenance plans within a date window.
+inputs:
+  - 日期窗口
+  - 计划范围
+outputs:
+  - 到期/逾期清单
+rules:
+  - 只显示窗口内的计划。
+  - 逾期计划需要升级处理。
+painPoints:
+  - 窗口设置过窄漏掉到期计划。
+  - 逾期未生成订单。
+objects:
+  - tcode:IP30
+  - table:MPLA
+  - table:MHIS
+  - tcode:IW31
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

@@ -18,11 +18,12 @@
 | `sources/` | 来源库 | `sources/sources.yaml` |
 | `assets/` | 内容图片 | `assets/<entity-id>/...` |
 
-## 三条硬规则
+## 四条硬规则
 
 1. **事实只写一次。** 同一 `step` 被 SD、EWM、O2C 引用时，只保留一份 `step.yaml`；场景用 `ref` 指向它。
 2. **对象 ID 就是 `<type>:<technicalName>`。** 例如 `table:VBAK`、`bapi:BAPI_SALESORDER_CREATEFROMDAT2`。引用对象时直接写这个 ID。
 3. **没有来源不升级。** `status` 从 `draft` → `reviewed` → `verified`，每次升级都要补 `sources`。
+4. **条件必须显式。** 条件流程写 `variant: optional | exception` + `trigger`；条件步骤写 `optional: true` + `condition`。不要用摘要暗示“可选”，否则画布无法用虚线区分。
 
 ## 最小示例
 
@@ -64,7 +65,8 @@ updatedAt: 2026-11-24
 
 ## 当前示例
 
-- 模块：12 个；价值流：10 条；模块流程：24 个；步骤：108 个；对象：185 个；代码：14 段；场景：5 个（含 ABAP 开发地图与 D2D）。
+- 模块：12 个；价值流：10 条（45 个阶段全部有流程）；模块流程：59 个（15 可选 + 1 例外）；步骤：184 个（26 条件步骤）；对象：280 个（T-Code 157、表 108、BAPI 5、CDS 4、增强 3、OData 3）；代码：14 段；场景：5 个（含 ABAP 开发地图与 D2D）。
+- 条件流程在界面中以虚线 + 「可选/例外」徽标 + 触发条件呈现；完整清单见 [`docs/12-content-map.md`](../docs/12-content-map.md)，数字用 `pnpm content:report` 重新生成。
 - 示例用于验证结构，`status` 多为 `draft` / `reviewed`，尚未逐条由 SAP 顾问复核。
 
 ## 不要放这里

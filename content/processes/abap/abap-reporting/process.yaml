@@ -1,0 +1,50 @@
+id: abap-reporting
+type: process
+title:
+  zh: 报表与 CDS 开发
+  en: Report and CDS Development
+module: abap
+flow: develop-to-deploy
+stage: implement
+summary:
+  zh: 从表结构、CDS 视图、ABAP 类到报表程序的开发链路。
+  en: The development chain from table structure and CDS views to ABAP classes and reports.
+variant: core
+steps:
+  - abap-se11-create-table
+  - abap-cds-define-view
+  - abap-se24-create-class
+  - abap-se38-create-report
+edges:
+  - from: abap-se11-create-table
+    to: abap-cds-define-view
+    kind: sequence
+    label:
+      zh: 定义 CDS
+      en: Define CDS
+  - from: abap-cds-define-view
+    to: abap-se24-create-class
+    kind: sequence
+    label:
+      zh: 封装类
+      en: Encapsulate class
+  - from: abap-se24-create-class
+    to: abap-se38-create-report
+    kind: sequence
+    label:
+      zh: 创建报表
+      en: Create report
+roles:
+  - ABAP 开发
+  - 功能顾问
+  - 数据架构师
+outcomes:
+  - 表/结构
+  - CDS 视图
+  - ABAP 类
+  - 报表
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

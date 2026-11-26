@@ -1,0 +1,17 @@
+id: table:QMSM
+type: table
+technicalName: QMSM
+title:
+  zh: 通知任务
+  en: Notification Tasks
+module: qm
+tableClass: transparent
+summary:
+  zh: 保存质量通知的任务、负责人与完成日期。
+  en: Stores notification tasks, owners and completion dates.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

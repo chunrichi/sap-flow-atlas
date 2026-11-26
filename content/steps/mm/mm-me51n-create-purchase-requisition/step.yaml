@@ -9,8 +9,13 @@ modules:
   - pp
 processes:
   - mm-procurement
+  - mm-demand
+  - mm-production-supply
+  - mm-asset-request
 flows:
   - procure-to-pay
+  - plan-to-produce
+  - acquire-to-retire
 tcode: ME51N
 summary:
   zh: 内部需求或 MRP 结果转为采购申请，等待采购员转单。
@@ -30,10 +35,9 @@ painPoints:
   - 需求日期早于供应商交期时，MRP 会持续报警。
   - 重复申请会造成重复采购。
 objects:
-  - "tcode:ME51N"
-  - "table:EBAN"
-snippets:
-  []
+  - tcode:ME51N
+  - table:EBAN
+snippets: []
 crossModule:
   - module: pp
     relation: handoff
@@ -42,4 +46,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

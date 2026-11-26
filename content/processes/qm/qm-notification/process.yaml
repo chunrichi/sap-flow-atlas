@@ -1,0 +1,52 @@
+id: qm-notification
+type: process
+title:
+  zh: 质量通知与纠正措施
+  en: Quality Notification and Corrective Actions
+module: qm
+flow: plan-to-produce
+stage: inspect
+summary:
+  zh: 从使用决策、创建质量通知到处理与关闭的异常质量链路。
+  en: The abnormal quality chain from usage decision and notification creation to processing and closure.
+variant: optional
+trigger:
+  zh: 来料、过程或客户投诉出现质量异常，或需要纠正措施时才执行；正常检验合格不触发。
+  en: Only when incoming, process or customer complaints raise quality issues or corrective actions are needed; normal inspection pass does not trigger it.
+steps:
+  - qm-qa11-usage-decision
+  - qm-qm01-quality-notification
+  - qm-qm02-process-notification
+  - qm-qm03-complete-notification
+edges:
+  - from: qm-qa11-usage-decision
+    to: qm-qm01-quality-notification
+    kind: sequence
+    label:
+      zh: 记录通知
+      en: Record notification
+  - from: qm-qm01-quality-notification
+    to: qm-qm02-process-notification
+    kind: sequence
+    label:
+      zh: 处理措施
+      en: Process actions
+  - from: qm-qm02-process-notification
+    to: qm-qm03-complete-notification
+    kind: sequence
+    label:
+      zh: 关闭通知
+      en: Close notification
+roles:
+  - 质量工程师
+  - 质检员
+  - 供应商质量工程师
+outcomes:
+  - 质量通知
+  - 缺陷记录
+  - 纠正措施
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

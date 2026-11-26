@@ -45,4 +45,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+variant: optional
+trigger:
+  zh: 生产需要委外加工、由供应商提供加工服务时才执行；自制或外购成品不经过该流程。
+  en: Only when production is outsourced to a vendor for processing; in-house or purchased finished goods do not use it.

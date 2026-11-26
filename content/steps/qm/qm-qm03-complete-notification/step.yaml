@@ -1,0 +1,40 @@
+id: qm-qm03-complete-notification
+type: step
+title:
+  zh: 关闭质量通知
+  en: Complete Quality Notification
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-notification
+flows:
+  - plan-to-produce
+tcode: QM03
+summary:
+  zh: 确认措施有效后关闭通知，保留质量记录。
+  en: Closes the notification after actions are verified and keeps the quality record.
+inputs:
+  - 质量通知
+  - 措施完成证据
+outputs:
+  - 关闭的通知
+  - 质量记录
+rules:
+  - 关闭前必须完成所有强制任务。
+  - 关闭后修改需重新打开通知。
+painPoints:
+  - 未验证措施有效性就关闭。
+  - 重复通知未合并，统计重复。
+objects:
+  - tcode:QM03
+  - table:QMEL
+  - table:QMSM
+  - table:QALS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

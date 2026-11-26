@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-general-ledger
+  - fi-reporting
 flows:
   - record-to-report
 tcode: F.01
@@ -21,15 +22,15 @@ inputs:
 outputs:
   - 财务报表
 rules:
-  - "报表前完成期间关账与内部对账。"
-  - "确认报表版本、公司代码与期间。"
+  - 报表前完成期间关账与内部对账。
+  - 确认报表版本、公司代码与期间。
 painPoints:
-  - "汇率评估或结转未完成会导致报表不平。"
+  - 汇率评估或结转未完成会导致报表不平。
 objects:
-  - "tcode:F.01"
-  - "table:ACDOCA"
-  - "table:BKPF"
-  - "table:BSEG"
+  - tcode:F.01
+  - table:ACDOCA
+  - table:BKPF
+  - table:BSEG
 snippets: []
 crossModule:
   - module: co
@@ -39,4 +40,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

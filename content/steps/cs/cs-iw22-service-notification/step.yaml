@@ -1,0 +1,41 @@
+id: cs-iw22-service-notification
+type: step
+title:
+  zh: 处理服务通知
+  en: Process Service Notification
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-notification
+flows:
+  - service-to-cash
+tcode: IW22
+summary:
+  zh: 补充诊断、措施与工时，推进服务通知闭环。
+  en: Adds diagnosis, actions and effort to close the service notification loop.
+inputs:
+  - 服务通知
+  - 诊断
+  - 措施
+  - 工时
+outputs:
+  - 更新后的通知
+rules:
+  - 通知状态与订单创建联动。
+  - 完成前必须记录诊断与措施。
+painPoints:
+  - 未记录诊断导致知识无法复用。
+  - 工时未确认影响计费。
+objects:
+  - tcode:IW22
+  - table:QMEL
+  - table:IHPA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

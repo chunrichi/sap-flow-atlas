@@ -13,6 +13,7 @@ scope:
   - 检验计划
   - 检验批
   - 质量通知
+  - 纠正措施
 keyFlows:
   - plan-to-produce
   - procure-to-pay
@@ -20,4 +21,4 @@ status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

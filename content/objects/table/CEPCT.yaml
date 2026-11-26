@@ -1,0 +1,17 @@
+id: table:CEPCT
+type: table
+technicalName: CEPCT
+title:
+  zh: 利润中心文本
+  en: Profit Center Texts
+module: co
+tableClass: text
+summary:
+  zh: 保存利润中心的语言相关名称与描述。
+  en: Stores language-dependent profit center names and descriptions.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

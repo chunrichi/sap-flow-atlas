@@ -1,0 +1,17 @@
+id: table:SEOCLASS
+type: table
+technicalName: SEOCLASS
+title:
+  zh: ABAP 类元数据
+  en: ABAP Class Metadata
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存类、接口与方法的元数据。
+  en: Stores metadata for classes, interfaces and methods.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

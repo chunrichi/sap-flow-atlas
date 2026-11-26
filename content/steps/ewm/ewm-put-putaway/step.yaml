@@ -1,0 +1,38 @@
+id: ewm-put-putaway
+type: step
+title:
+  zh: 上架
+  en: Putaway
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-inbound
+flows:
+  - procure-to-pay
+tcode: /SCWM/PUT
+summary:
+  zh: 将收货库存上架到目标仓位，完成入库作业。
+  en: Puts away received stock to destination bins to complete inbound execution.
+inputs:
+  - 仓库任务
+  - 目标仓位
+outputs:
+  - 上架完成
+  - 库存更新
+rules:
+  - 目标仓位必须可用且符合存储类型。
+  - 危险品需要特殊仓位与存储条件。
+painPoints:
+  - 仓位已满导致任务挂起。
+  - 上架差异未处理，库存不准。
+objects:
+  - tcode:/SCWM/PUT
+  - table:/SCWM/ORDIM_C
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

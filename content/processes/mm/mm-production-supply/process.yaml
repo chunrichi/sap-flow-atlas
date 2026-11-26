@@ -1,0 +1,49 @@
+id: mm-production-supply
+type: process
+title:
+  zh: 生产备料与采购
+  en: Production Material Supply
+module: mm
+flow: plan-to-produce
+stage: procure
+summary:
+  zh: 按生产需求创建采购申请、下单、收货并查询物料凭证。
+  en: Creates requisitions, orders, receipts and checks material documents for production demand.
+variant: core
+steps:
+  - mm-me51n-create-purchase-requisition
+  - mm-me21n-create-purchase-order
+  - mm-migo-post-goods-receipt
+  - mm-mb51-material-documents
+edges:
+  - from: mm-me51n-create-purchase-requisition
+    to: mm-me21n-create-purchase-order
+    kind: sequence
+    label:
+      zh: 转采购订单
+      en: Convert to PO
+  - from: mm-me21n-create-purchase-order
+    to: mm-migo-post-goods-receipt
+    kind: sequence
+    label:
+      zh: 收货入库
+      en: Post goods receipt
+  - from: mm-migo-post-goods-receipt
+    to: mm-mb51-material-documents
+    kind: sequence
+    label:
+      zh: 查询凭证
+      en: Check documents
+roles:
+  - 物料计划员
+  - 采购员
+  - 仓库管理员
+outcomes:
+  - 采购申请
+  - 采购订单
+  - 收货凭证
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

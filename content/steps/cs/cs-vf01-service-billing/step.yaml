@@ -8,6 +8,7 @@ modules:
   - cs
 processes:
   - cs-service-order
+  - sd-service-billing
 flows:
   - service-to-cash
 tcode: VF01
@@ -21,12 +22,12 @@ inputs:
 outputs:
   - 服务发票
 rules:
-  - "开票前确认服务确认已释放。"
+  - 开票前确认服务确认已释放。
 painPoints:
-  - "未确认就开票会导致收入与成本不匹配。"
+  - 未确认就开票会导致收入与成本不匹配。
 objects:
-  - "tcode:VF01"
-  - "table:VBRK"
+  - tcode:VF01
+  - table:VBRK
 snippets: []
 crossModule:
   - module: fi
@@ -36,4 +37,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

@@ -1,0 +1,42 @@
+id: sd-service-billing
+type: process
+title:
+  zh: 服务开票与发票处理
+  en: Service Billing and Invoicing
+module: sd
+flow: service-to-cash
+stage: bill
+summary:
+  zh: 服务确认后的开票、发票核对与异常冲销。
+  en: Billing after service confirmation, invoice review and exception cancellation.
+variant: core
+steps:
+  - cs-vf01-service-billing
+  - sd-vf03-display-billing
+  - sd-vf11-cancel-billing
+edges:
+  - from: cs-vf01-service-billing
+    to: sd-vf03-display-billing
+    kind: sequence
+    label:
+      zh: 核对发票
+      en: Review invoice
+  - from: sd-vf03-display-billing
+    to: sd-vf11-cancel-billing
+    kind: sequence
+    label:
+      zh: 异常冲销
+      en: Cancel invoice
+roles:
+  - 开票员
+  - 服务经理
+  - 应收会计
+outcomes:
+  - 服务发票
+  - 会计凭证
+  - 应收
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

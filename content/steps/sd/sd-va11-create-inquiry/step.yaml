@@ -1,0 +1,48 @@
+id: sd-va11-create-inquiry
+type: step
+title:
+  zh: 创建询价
+  en: Create Inquiry
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-presales
+flows:
+  - order-to-cash
+tcode: VA11
+summary:
+  zh: 录入客户询价，记录物料、数量与需求日期，作为报价的起点。
+  en: Records a customer inquiry with materials, quantities and requested dates as the starting point for a quotation.
+inputs:
+  - 客户
+  - 物料
+  - 数量
+  - 需求日期
+  - 销售组织
+outputs:
+  - 询价单号
+  - 有效期
+  - 询价状态
+rules:
+  - 询价必须引用有效的客户与物料主数据。
+  - 有效期决定后续报价可引用的时间窗口。
+painPoints:
+  - 询价未维护有效期，报价无法引用。
+  - 客户主数据不完整会阻塞保存。
+objects:
+  - tcode:VA11
+  - table:VBAK
+  - table:VBAP
+  - table:KNA1
+snippets: []
+crossModule:
+  - module: mm
+    relation: master-data
+    note: 询价物料与交货日期依赖 MM 物料主数据。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

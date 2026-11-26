@@ -1,0 +1,18 @@
+id: tcode:CM21
+type: tcode
+technicalName: CM21
+title:
+  zh: 能力计划
+  en: Capacity Planning
+module: pp
+summary:
+  zh: 在计划表中调整能力需求与可用能力。
+  en: Adjusts capacity requirements and available capacity in the planning table.
+relations:
+  - target: table:KBED
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

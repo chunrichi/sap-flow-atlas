@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-asset-accounting
+  - fi-asset-retirement
 flows:
   - acquire-to-retire
 tcode: ABAON
@@ -22,20 +23,19 @@ outputs:
   - 报废凭证
   - 处置损益
 rules:
-  - "报废前确认资产已提足折旧或计算处置损益。"
-  - "跨期间报废要同步调整折旧。"
+  - 报废前确认资产已提足折旧或计算处置损益。
+  - 跨期间报废要同步调整折旧。
 painPoints:
-  - "报废凭证过账后才发现资产仍有账面价值，需要额外调整。"
+  - 报废凭证过账后才发现资产仍有账面价值，需要额外调整。
 objects:
-  - "tcode:ABAON"
-  - "table:ANLA"
-  - "table:ANLC"
-  - "table:ACDOCA"
+  - tcode:ABAON
+  - table:ANLA
+  - table:ANLC
+  - table:ACDOCA
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

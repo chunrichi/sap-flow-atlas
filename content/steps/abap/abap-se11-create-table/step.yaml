@@ -1,0 +1,42 @@
+id: abap-se11-create-table
+type: step
+title:
+  zh: 创建表或结构
+  en: Create Table or Structure
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-reporting
+flows:
+  - develop-to-deploy
+tcode: SE11
+summary:
+  zh: 定义数据库表、结构与字段类型，并生成运行时对象。
+  en: Defines database tables, structures and field types and generates runtime objects.
+inputs:
+  - 表名
+  - 字段
+  - 数据类型
+  - 包
+outputs:
+  - 数据库表/结构
+rules:
+  - 表必须有客户端字段与主键。
+  - 结构变更需评估向下兼容。
+painPoints:
+  - 直接改生产表结构导致升级冲突。
+  - 字段长度不足造成截断。
+objects:
+  - tcode:SE11
+  - table:DD02L
+  - table:DD03L
+  - table:TADIR
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

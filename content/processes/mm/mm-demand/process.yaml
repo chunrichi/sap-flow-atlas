@@ -1,0 +1,49 @@
+id: mm-demand
+type: process
+title:
+  zh: 需求与采购申请
+  en: Demand and Purchase Requisition
+module: mm
+flow: procure-to-pay
+stage: demand
+summary:
+  zh: 从供需清单、采购申请到分配采购员的请购链路。
+  en: The requisition chain from stock/requirements review to purchase requisition assignment.
+variant: core
+steps:
+  - mm-md04-stock-requirements
+  - mm-me51n-create-purchase-requisition
+  - mm-me57-process-requisitions
+  - mm-me21n-create-purchase-order
+edges:
+  - from: mm-md04-stock-requirements
+    to: mm-me51n-create-purchase-requisition
+    kind: sequence
+    label:
+      zh: 创建采购申请
+      en: Create requisition
+  - from: mm-me51n-create-purchase-requisition
+    to: mm-me57-process-requisitions
+    kind: sequence
+    label:
+      zh: 分配申请
+      en: Assign requisition
+  - from: mm-me57-process-requisitions
+    to: mm-me21n-create-purchase-order
+    kind: sequence
+    label:
+      zh: 转采购订单
+      en: Convert to PO
+roles:
+  - 物料计划员
+  - 采购员
+  - 仓库管理员
+outcomes:
+  - 采购申请
+  - 已分配申请
+  - 采购订单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

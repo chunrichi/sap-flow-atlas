@@ -221,6 +221,21 @@ async function main() {
   for (const proc of processes) {
     resolve(`module:${proc.module}`, `process ${proc.id}`);
     resolve(`flow:${proc.flow}`, `process ${proc.id}`);
+    if (proc.variant !== "core" && !proc.trigger) {
+      errors.push(`process ${proc.id}: ${proc.variant} 流程必须写 trigger（何时进入该路径）`);
+    }
+    if (proc.variant === "core" && proc.trigger) {
+      warnings.push(`process ${proc.id}: 核心流程无需 trigger`);
+    }
+    const ownerFlow = flowsById.get(proc.flow);
+    if (ownerFlow) {
+      if (!ownerFlow.processes.includes(proc.id)) {
+        errors.push(`process ${proc.id}: 所属 flow ${proc.flow} 的 processes 未包含该流程`);
+      }
+      if (!ownerFlow.stages.some((stage) => stage.id === proc.stage)) {
+        errors.push(`process ${proc.id}: stage ${proc.stage} 不属于 flow ${proc.flow}`);
+      }
+    }
     for (const stepId of proc.steps) {
       if (!resolve(`step:${stepId}`, `process ${proc.id}`)) continue;
       const step = stepsById.get(stepId);
@@ -235,6 +250,12 @@ async function main() {
     checkSources(proc.sources, `process ${proc.id}`);
   }
   for (const step of steps) {
+    if (step.optional && !step.condition) {
+      errors.push(`step ${step.id}: optional 步骤必须写 condition（触发条件）`);
+    }
+    if (!step.optional && step.condition) {
+      warnings.push(`step ${step.id}: 非可选步骤写了 condition，可能漏标 optional`);
+    }
     for (const mod of step.modules) resolve(`module:${mod}`, `step ${step.id}`);
     for (const procId of step.processes) {
       if (!resolve(`process:${procId}`, `step ${step.id}`)) continue;

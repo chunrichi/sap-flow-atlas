@@ -1,0 +1,22 @@
+id: tcode:QM02
+type: tcode
+technicalName: QM02
+title:
+  zh: 处理质量通知
+  en: Process Quality Notification
+module: qm
+summary:
+  zh: 记录缺陷、原因、任务与措施，推动纠正措施闭环。
+  en: Records defects, causes, tasks and actions to close the corrective-action loop.
+relations:
+  - target: table:QMEL
+    kind: writes
+  - target: table:QMFE
+    kind: writes
+  - target: table:QMSM
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

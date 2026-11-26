@@ -1,0 +1,43 @@
+id: co-kob1-order-actuals
+type: step
+title:
+  zh: 查看订单实际成本
+  en: Check Order Actual Costs
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-internal-order
+  - co-order-settlement
+flows:
+  - record-to-report
+  - maintain-to-availability
+tcode: KOB1
+summary:
+  zh: 查看内部订单或维护订单的实际成本、承诺与预算消耗。
+  en: Shows actual costs, commitments and budget consumption of internal or maintenance orders.
+inputs:
+  - 订单号
+  - 期间
+outputs:
+  - 实际成本
+  - 承诺
+  - 预算消耗
+rules:
+  - 实际成本来自 FI/CO 过账，承诺来自未清采购订单。
+  - 跨期成本需按期间查看。
+painPoints:
+  - 承诺未及时更新，预算判断失真。
+  - 跨期成本归属错误。
+objects:
+  - tcode:KOB1
+  - table:COEP
+  - table:COSP
+  - table:COSS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

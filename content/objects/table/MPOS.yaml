@@ -1,0 +1,17 @@
+id: table:MPOS
+type: table
+technicalName: MPOS
+title:
+  zh: 维护项目
+  en: Maintenance Item
+module: pm
+tableClass: transparent
+summary:
+  zh: 保存维护计划下的维护项目、对象与任务清单。
+  en: Stores maintenance items, objects and task lists under a maintenance plan.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

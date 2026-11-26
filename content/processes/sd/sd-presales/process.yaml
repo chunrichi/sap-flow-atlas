@@ -1,0 +1,52 @@
+id: sd-presales
+type: process
+title:
+  zh: 售前询价与报价
+  en: Presales Inquiry and Quotation
+module: sd
+flow: order-to-cash
+stage: order
+summary:
+  zh: 从客户询价、报价到报价转订单的售前链路。
+  en: The presales chain from customer inquiry and quotation to order conversion.
+variant: optional
+trigger:
+  zh: 客户需要正式报价、多供应商比价或价格审批时才进入；现货订单可直接创建销售订单。
+  en: Only when a formal quotation, vendor comparison or price approval is needed; spot orders can create a sales order directly.
+steps:
+  - sd-va11-create-inquiry
+  - sd-va21-create-quotation
+  - sd-va23-track-quotation
+  - sd-va01-create-sales-order
+edges:
+  - from: sd-va11-create-inquiry
+    to: sd-va21-create-quotation
+    kind: sequence
+    label:
+      zh: 创建报价
+      en: Create quotation
+  - from: sd-va21-create-quotation
+    to: sd-va23-track-quotation
+    kind: sequence
+    label:
+      zh: 跟进报价
+      en: Track quotation
+  - from: sd-va23-track-quotation
+    to: sd-va01-create-sales-order
+    kind: sequence
+    label:
+      zh: 报价转订单
+      en: Convert to order
+roles:
+  - 销售代表
+  - 销售经理
+  - 定价专员
+outcomes:
+  - 询价单
+  - 报价单
+  - 销售订单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

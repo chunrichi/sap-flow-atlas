@@ -1,0 +1,22 @@
+id: tcode:ME47
+type: tcode
+technicalName: ME47
+title:
+  zh: 维护报价
+  en: Maintain Quotation
+module: mm
+summary:
+  zh: 录入供应商报价的价格、交货期与条件，形成可比较的报价行。
+  en: Records vendor quotation prices, delivery times and conditions for comparison.
+relations:
+  - target: table:EKKO
+    kind: writes
+  - target: table:EKPO
+    kind: writes
+  - target: table:EKES
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

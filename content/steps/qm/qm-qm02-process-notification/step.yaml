@@ -1,0 +1,45 @@
+id: qm-qm02-process-notification
+type: step
+title:
+  zh: 处理质量通知
+  en: Process Quality Notification
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-notification
+flows:
+  - plan-to-produce
+tcode: QM02
+summary:
+  zh: 记录缺陷、原因、任务与措施，推动纠正措施闭环。
+  en: Records defects, causes, tasks and actions to close the corrective-action loop.
+inputs:
+  - 质量通知
+  - 缺陷代码
+  - 原因
+  - 任务
+outputs:
+  - 缺陷记录
+  - 措施任务
+rules:
+  - 通知必须关联检验批或物料。
+  - 措施完成前不能关闭通知。
+painPoints:
+  - 缺陷代码不统一导致统计失真。
+  - 措施无负责人导致逾期。
+objects:
+  - tcode:QM02
+  - table:QMEL
+  - table:QMFE
+  - table:QMSM
+snippets: []
+crossModule:
+  - module: mm
+    relation: quality
+    note: 来料与供应商相关通知需要回写供应商质量管理。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

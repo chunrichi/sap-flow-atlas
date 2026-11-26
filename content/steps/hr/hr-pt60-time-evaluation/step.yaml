@@ -1,0 +1,43 @@
+id: hr-pt60-time-evaluation
+type: step
+title:
+  zh: 运行时间评估
+  en: Run Time Evaluation
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-time
+flows:
+  - hire-to-retire
+tcode: PT60
+summary:
+  zh: 评估考勤与加班，生成绩效工资相关时间数据。
+  en: Evaluates attendance and overtime to produce time data for payroll.
+optional: true
+condition:
+  zh: 薪酬依赖时间评估结果（如加班费、缺勤扣款）时才执行；月薪制可直接跳过。
+  en: Only when payroll depends on time evaluation results such as overtime pay or absence deductions; monthly salary can skip it.
+inputs:
+  - 员工范围
+  - 评估期间
+outputs:
+  - 时间评估结果
+rules:
+  - 评估前需完成考勤与加班录入。
+  - 错误员工需单独重跑。
+painPoints:
+  - 评估规则变更未回归测试。
+  - 错误日志被忽略，薪酬带错。
+objects:
+  - tcode:PT60
+  - table:PA2001
+  - table:PA2002
+  - table:PA2005
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

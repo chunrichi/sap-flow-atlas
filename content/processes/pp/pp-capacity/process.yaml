@@ -1,0 +1,52 @@
+id: pp-capacity
+type: process
+title:
+  zh: 能力计划与排产
+  en: Capacity Planning and Scheduling
+module: pp
+flow: plan-to-produce
+stage: produce
+summary:
+  zh: 从能力负荷、能力计划、能力平衡到下达生产订单。
+  en: From capacity load and planning to leveling and production order release.
+variant: optional
+trigger:
+  zh: 存在产能瓶颈、交期冲突或需要有限排产时才执行；无限能力排产可直接下达订单。
+  en: Only with capacity bottlenecks, delivery conflicts or finite scheduling; infinite-capacity planning can release orders directly.
+steps:
+  - pp-cm01-capacity-load
+  - pp-cm21-capacity-planning
+  - pp-cm25-capacity-leveling
+  - pp-co02-release-order
+edges:
+  - from: pp-cm01-capacity-load
+    to: pp-cm21-capacity-planning
+    kind: sequence
+    label:
+      zh: 能力计划
+      en: Capacity planning
+  - from: pp-cm21-capacity-planning
+    to: pp-cm25-capacity-leveling
+    kind: sequence
+    label:
+      zh: 平衡瓶颈
+      en: Level bottleneck
+  - from: pp-cm25-capacity-leveling
+    to: pp-co02-release-order
+    kind: sequence
+    label:
+      zh: 下达订单
+      en: Release order
+roles:
+  - 生产计划员
+  - 车间主管
+  - 能力计划员
+outcomes:
+  - 能力负荷
+  - 平衡结果
+  - 已下达订单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

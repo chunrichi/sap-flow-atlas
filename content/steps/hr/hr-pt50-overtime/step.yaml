@@ -1,0 +1,43 @@
+id: hr-pt50-overtime
+type: step
+title:
+  zh: 维护加班
+  en: Maintain Overtime
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-time
+flows:
+  - hire-to-retire
+tcode: PT50
+summary:
+  zh: 录入加班、补休与时间账户变动。
+  en: Records overtime, time off in lieu and time account changes.
+optional: true
+condition:
+  zh: 有加班审批、补休或时间账户结余的岗位才需要；标准工时制可直接按考勤核算。
+  en: Only for roles with overtime approval, time off in lieu or time account balances; standard hours can be handled from attendance.
+inputs:
+  - 员工
+  - 日期
+  - 加班类型
+  - 时长
+outputs:
+  - 加班记录
+rules:
+  - 加班需审批。
+  - 补休与加班不能重复计算。
+painPoints:
+  - 加班类型错误导致费率错误。
+  - 跨期补录影响已结算薪资。
+objects:
+  - tcode:PT50
+  - table:PA2005
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

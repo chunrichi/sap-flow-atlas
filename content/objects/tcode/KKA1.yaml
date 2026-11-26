@@ -1,0 +1,20 @@
+id: tcode:KKA1
+type: tcode
+technicalName: KKA1
+title:
+  zh: 结果分析
+  en: Results Analysis
+module: ps
+summary:
+  zh: 计算在建项目的完工百分比、收入与成本确认。
+  en: Calculates percentage of completion, revenue and cost recognition for projects.
+relations:
+  - target: table:COEP
+    kind: writes
+  - target: tcode:CJ88
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

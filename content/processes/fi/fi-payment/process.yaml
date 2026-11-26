@@ -1,0 +1,49 @@
+id: fi-payment
+type: process
+title:
+  zh: 付款运行与清账
+  en: Payment Run and Clearing
+module: fi
+flow: procure-to-pay
+stage: payment
+summary:
+  zh: 从自动付款运行、手工付款到供应商清账与余额核对。
+  en: From automatic payment runs and manual payments to vendor clearing and balance review.
+variant: core
+steps:
+  - fi-f110-payment-run
+  - fi-f53-manual-payment
+  - fi-f44-clear-vendor
+  - fi-fbl1n-vendor-balance
+edges:
+  - from: fi-f110-payment-run
+    to: fi-f53-manual-payment
+    kind: sequence
+    label:
+      zh: 付款运行
+      en: Payment run
+  - from: fi-f53-manual-payment
+    to: fi-f44-clear-vendor
+    kind: sequence
+    label:
+      zh: 手工付款
+      en: Manual payment
+  - from: fi-f44-clear-vendor
+    to: fi-fbl1n-vendor-balance
+    kind: sequence
+    label:
+      zh: 供应商清账
+      en: Clear vendor
+roles:
+  - 应付会计
+  - 出纳
+  - 财务经理
+outcomes:
+  - 付款凭证
+  - 清账结果
+  - 供应商余额
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

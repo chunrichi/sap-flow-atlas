@@ -1,0 +1,44 @@
+id: abap-ltmc-migrate
+type: step
+title:
+  zh: 使用迁移 Cockpit
+  en: Use Migration Cockpit
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-migration
+flows:
+  - develop-to-deploy
+tcode: LTMC
+summary:
+  zh: 在 S/4HANA 中按迁移对象导入主数据与业务数据。
+  en: Imports master and business data by migration object in S/4HANA.
+optional: true
+condition:
+  zh: S/4HANA 迁移项目使用迁移 Cockpit 时才执行；老系统仍可能使用 LSMW。
+  en: Only for S/4HANA migration projects using the Migration Cockpit; legacy programs may still use LSMW.
+inputs:
+  - 迁移项目
+  - 迁移对象
+  - 模板文件
+outputs:
+  - 迁移结果
+  - 错误文件
+rules:
+  - 迁移对象必须激活。
+  - 数据必须通过校验与模拟运行。
+painPoints:
+  - 模板版本不匹配。
+  - 跳过模拟运行直接导入。
+objects:
+  - tcode:LTMC
+  - tcode:SM35
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

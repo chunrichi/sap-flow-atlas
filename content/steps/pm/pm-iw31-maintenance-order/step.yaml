@@ -8,6 +8,7 @@ modules:
   - pm
 processes:
   - pm-maintenance-order
+  - pm-preventive
 flows:
   - maintain-to-availability
 tcode: IW31
@@ -22,20 +23,19 @@ inputs:
 outputs:
   - 维护订单号
 rules:
-  - "订单类型决定结算规则与成本中心。"
+  - 订单类型决定结算规则与成本中心。
 painPoints:
-  - "订单类型选错会导致结算失败。"
+  - 订单类型选错会导致结算失败。
 objects:
-  - "tcode:IW31"
-  - "table:AUFK"
-  - "table:AFIH"
-  - "table:EQUI"
+  - tcode:IW31
+  - table:AUFK
+  - table:AFIH
+  - table:EQUI
 snippets:
   - abap-pm-order-equipment
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

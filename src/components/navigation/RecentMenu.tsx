@@ -29,11 +29,11 @@ export function RecentMenu() {
         aria-label="最近访问"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
-        className="panel flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[9px] font-medium text-slate-400 transition-colors hover:text-slate-700"
+        className="flex h-8 items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 text-[11px] font-medium text-slate-500 transition-colors hover:bg-slate-50"
       >
         <History className="h-3 w-3" />
         <span className="hidden sm:inline">最近</span>
-        <span className="rounded bg-slate-100 px-1 text-[8px] text-slate-400">{entries.length}</span>
+        <span className="rounded bg-slate-100 px-1 text-[9px] text-slate-400">{entries.length}</span>
       </button>
       {open ? (
         <>

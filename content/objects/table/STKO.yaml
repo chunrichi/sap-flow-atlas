@@ -1,0 +1,17 @@
+id: table:STKO
+type: table
+technicalName: STKO
+title:
+  zh: BOM 抬头
+  en: BOM Header
+module: pp
+tableClass: transparent
+summary:
+  zh: 保存 BOM 抬头数据，如物料、工厂、用途与有效期。
+  en: Stores BOM header data such as material, plant, usage and validity.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

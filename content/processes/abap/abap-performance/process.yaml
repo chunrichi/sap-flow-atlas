@@ -45,4 +45,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+variant: optional
+trigger:
+  zh: 出现性能问题、超时或需要主动优化时才执行；常规功能开发不经过性能分析。
+  en: Only for performance issues, timeouts or proactive tuning; regular feature development does not run performance analysis.

@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-asset-accounting
+  - fi-asset-depreciation
 flows:
   - acquire-to-retire
 tcode: AFAB
@@ -26,15 +27,14 @@ rules:
 painPoints:
   - 折旧码错误会导致折旧金额与税务口径不一致。
 objects:
-  - "tcode:AFAB"
-  - "table:ANLC"
-  - "table:ANLP"
-  - "table:ACDOCA"
+  - tcode:AFAB
+  - table:ANLC
+  - table:ANLP
+  - table:ACDOCA
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

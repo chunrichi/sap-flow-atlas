@@ -1,0 +1,40 @@
+id: abap-atc-check
+type: step
+title:
+  zh: 运行 ATC 检查
+  en: Run ABAP Test Cockpit
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-testing
+flows:
+  - develop-to-deploy
+tcode: ATC
+summary:
+  zh: 对开发对象执行静态检查与质量门禁，拦截语法、性能与 Clean Core 问题。
+  en: Runs static checks and quality gates on development objects for syntax, performance and clean-core issues.
+inputs:
+  - 对象范围
+  - 检查变式
+outputs:
+  - 检查结果
+  - 质量门禁状态
+rules:
+  - 严重级别以上的问题必须修复。
+  - 豁免需要审批并记录原因。
+painPoints:
+  - 检查变式过期，漏掉新规则。
+  - 基线未更新，历史问题反复出现。
+objects:
+  - tcode:ATC
+  - tcode:SCI
+  - table:TADIR
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

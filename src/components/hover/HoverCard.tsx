@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { ArrowRight, Code2, ExternalLink, GitBranch, ListTree, Pin, PinOff, X } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
+  flowsById,
   modulesById,
   objectTypeLabels,
   objectsById,
@@ -174,7 +175,7 @@ function ProcessHover({ processId, close }: { processId: string; close: () => vo
           <span className="h-2.5 w-2.5 rounded-full" style={{ background: module?.color }} />
           <div>
             <div className="text-[13px] font-semibold text-slate-900">{text(process.title)}</div>
-            <div className="text-[9px] text-slate-400">{module?.abbr} · {process.stage}</div>
+            <div className="text-[9px] text-slate-400">{module?.abbr} · {flowsById.get(process.flow)?.stages.find((stage) => stage.id === process.stage)?.title.zh ?? process.stage}</div>
           </div>
         </div>
         <span className={cn("rounded-full px-1.5 py-0.5 text-[8px]", STATUS_CLASS[process.status])}>

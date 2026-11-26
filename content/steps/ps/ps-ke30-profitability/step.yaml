@@ -1,0 +1,39 @@
+id: ps-ke30-profitability
+type: step
+title:
+  zh: 查看项目获利分析
+  en: Review Project Profitability
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-settlement
+flows:
+  - project-to-profit
+tcode: KE30
+summary:
+  zh: 按项目或利润中心查看收入、成本与贡献边际。
+  en: Reviews revenue, cost and contribution margin by project or profit center.
+inputs:
+  - 项目/利润中心
+  - 期间
+outputs:
+  - 项目获利报表
+rules:
+  - 获利段来自结算规则。
+  - 收入与成本必须同口径。
+painPoints:
+  - 结算规则缺失导致无法归属。
+  - 内部交易未抵消。
+objects:
+  - tcode:KE30
+  - table:CEPC
+  - table:ACDOCA
+  - tcode:CJ88
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

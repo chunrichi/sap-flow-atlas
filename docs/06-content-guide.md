@@ -60,6 +60,27 @@
 - 分支用多条边表达，不要用文字描述分支；
 - 跨模块交接用 `kind: handoff`，并在 step 的 `crossModule` 中写清关系。
 
+### 4.1 主干、可选与例外
+
+写之前先判断这条流程在业务上是否“每次都会走”：
+
+| 判断 | 写法 | 例子 |
+| --- | --- | --- |
+| 每个业务周期都会经过 | `variant: core`（默认） | 开票、收货、生产订单执行 |
+| 满足条件才走，主路径可跳过 | `variant: optional` + `trigger` | 信用管理、委外加工、能力计划 |
+| 从主路径分叉处理偏差 | `variant: exception` + `trigger` | 退货与贷项、发票冲销、冻结释放 |
+
+`trigger` 必须回答两件事：**什么条件下进入**、**不满足时走哪条路**。例如：
+
+```yaml
+variant: optional
+trigger:
+  zh: 客户启用信用管理且订单超过信用限额或触发冻结时才进入；未启用信用管理的订单直接放行。
+  en: Only when credit management is active and the order exceeds the limit or gets blocked; orders without credit management pass directly.
+```
+
+界面会把它渲染成琥珀色（可选）或玫红色（例外）虚线卡片，并在卡片与页头直接显示触发条件。不要用 `summary` 代替 `trigger`：前者解释“是什么”，后者解释“什么时候才走”。
+
 ## 5. 新增一个步骤（Step）
 
 1. 创建 `content/steps/<primary-module>/<step-id>/step.yaml`；
@@ -75,6 +96,24 @@
 - 标题用动宾结构（创建销售订单，而不是「销售订单」）；
 - 不要在一个 Step 里塞多个 T-Code；如果一个动作有多个入口，在 `objects` 里列出，并在正文说明差异；
 - 没有 T-Code 的步骤（如 ATP 检查）`tcode` 可省略，但必须有对象或说明。
+
+### 5.1 条件步骤
+
+当流程整体是主干、只有某个动作按条件执行时，用步骤级标记：
+
+```yaml
+optional: true
+condition:
+  zh: 物料启用可用性检查且订单类型触发 ATP 时才执行；未启用检查的物料直接通过。
+  en: Only when availability check is active for the material and the order type triggers ATP.
+```
+
+规则：
+
+- `optional: true` 必须有 `condition`，否则构建失败；
+- 条件要写“触发 + 跳过后的结果”，不要只写“可选”；
+- 如果一个步骤只在某条可选流程里出现，优先标在流程上（`variant`），不必重复标步骤；
+- 条件步骤在 Track、画布与底部流程带显示为虚线/「条件步骤」，不要用颜色以外的方式（如删减步骤编号）表达，保持序号稳定。
 
 ## 6. 新增一个开发对象（Object）
 
@@ -171,6 +210,8 @@ sources:
 - 把 AI 生成的解释当作官方事实。
 
 建议流程：AI 生成 `draft` → 脚本校验 → 人工对照来源 → 改 `reviewed` → 交叉验证后 `verified`。
+
+补完一批内容后，用 `pnpm content:report` 检查模块/阶段覆盖、条件流程与条件步骤清单；`pnpm content:validate` 只做结构校验，不替代人工复核。
 
 ## 12. 提交前检查清单
 

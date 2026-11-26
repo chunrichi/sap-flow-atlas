@@ -8,8 +8,11 @@ modules:
   - fi
 processes:
   - fi-accounts-receivable
+  - fi-ar-collection
+  - fi-service-collection
 flows:
   - order-to-cash
+  - service-to-cash
 tcode: F150
 summary:
   zh: 按逾期天数与催款级别生成催款函。
@@ -22,19 +25,22 @@ outputs:
   - 催款函
   - 催款日志
 rules:
-  - "催款级别与逾期天数必须匹配。"
-  - "先确认客户催款程序与联系人。"
+  - 催款级别与逾期天数必须匹配。
+  - 先确认客户催款程序与联系人。
 painPoints:
-  - "客户主数据缺少催款程序不会生成催款函。"
+  - 客户主数据缺少催款程序不会生成催款函。
 objects:
-  - "tcode:F150"
-  - "table:BSID"
-  - "table:KNA1"
+  - tcode:F150
+  - table:BSID
+  - table:KNA1
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 客户存在逾期应收且需要发起催款时才执行；正常账期内不催款。
+  en: Only when overdue receivables require dunning; accounts within terms are not dunned.

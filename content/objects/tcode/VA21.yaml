@@ -1,0 +1,22 @@
+id: tcode:VA21
+type: tcode
+technicalName: VA21
+title:
+  zh: 创建报价
+  en: Create Quotation
+module: sd
+summary:
+  zh: 基于询价或直接创建报价，引用定价条件并向客户承诺价格与有效期。
+  en: Creates a quotation from an inquiry or directly, referencing pricing conditions and validity dates.
+relations:
+  - target: table:VBAK
+    kind: writes
+  - target: table:VBAP
+    kind: writes
+  - target: table:PRCD_ELEMENTS
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

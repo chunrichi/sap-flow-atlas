@@ -1,0 +1,40 @@
+id: co-ko88-settle-internal-order
+type: step
+title:
+  zh: 结算内部订单
+  en: Settle Internal Order
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-internal-order
+flows:
+  - record-to-report
+tcode: KO88
+summary:
+  zh: 把内部订单归集的成本结算到接收对象。
+  en: Settles costs collected on an internal order to receiver objects.
+inputs:
+  - 内部订单
+  - 结算期间
+outputs:
+  - 结算凭证
+  - 接收对象成本
+rules:
+  - 结算规则必须完整，接收对象必须有效。
+  - 已结算期间不能重复结算。
+painPoints:
+  - 接收对象无效导致结算失败。
+  - 结算后订单余额不为零。
+objects:
+  - tcode:KO88
+  - table:AUFK
+  - table:COEP
+  - tcode:KO8G
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

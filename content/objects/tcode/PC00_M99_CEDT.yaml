@@ -1,0 +1,20 @@
+id: tcode:PC00_M99_CEDT
+type: tcode
+technicalName: PC00_M99_CEDT
+title:
+  zh: 薪酬过账
+  en: Payroll Posting
+module: hr
+summary:
+  zh: 将薪酬结果过账到 FI/CO，形成工资费用与负债。
+  en: Posts payroll results to FI/CO, creating wage expenses and liabilities.
+relations:
+  - target: table:ACDOCA
+    kind: writes
+  - target: table:PA0008
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

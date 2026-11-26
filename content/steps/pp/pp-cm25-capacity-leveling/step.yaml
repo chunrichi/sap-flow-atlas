@@ -1,0 +1,43 @@
+id: pp-cm25-capacity-leveling
+type: step
+title:
+  zh: 能力平衡
+  en: Capacity Leveling
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-capacity
+flows:
+  - plan-to-produce
+tcode: CM25
+summary:
+  zh: 通过调整日期或数量平衡能力瓶颈。
+  en: Levels capacity bottlenecks by shifting dates or quantities.
+optional: true
+condition:
+  zh: 出现明确瓶颈工作中心且需要自动或半自动平衡时；常规排产不需要。
+  en: Only when a clear bottleneck work center needs automatic or semi-automatic leveling; routine scheduling does not.
+inputs:
+  - 瓶颈工作中心
+  - 订单范围
+  - 平衡策略
+outputs:
+  - 调整后的日期与数量
+rules:
+  - 平衡策略必须与交期优先级一致。
+  - 不能破坏工艺路线的工序约束。
+painPoints:
+  - 过度前推导致库存积压。
+  - 忽略瓶颈工序造成新的冲突。
+objects:
+  - tcode:CM25
+  - table:KBED
+  - tcode:CO02
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

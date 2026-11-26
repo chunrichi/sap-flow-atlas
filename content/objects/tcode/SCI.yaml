@@ -1,0 +1,18 @@
+id: tcode:SCI
+type: tcode
+technicalName: SCI
+title:
+  zh: 代码检查器
+  en: Code Inspector
+module: abap
+summary:
+  zh: 按检查变式扫描 ABAP 对象，发现性能与规范问题。
+  en: Scans ABAP objects by check variant to find performance and convention issues.
+relations:
+  - target: tcode:ATC
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

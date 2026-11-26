@@ -1,0 +1,37 @@
+id: co-ko02-change-order
+type: step
+title:
+  zh: 修改内部订单
+  en: Change Internal Order
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-internal-order
+flows:
+  - record-to-report
+tcode: KO02
+summary:
+  zh: 调整内部订单的预算、状态与结算规则。
+  en: Adjusts budget, status and settlement rules of an internal order.
+inputs:
+  - 内部订单
+  - 变更字段
+outputs:
+  - 更新后的订单
+rules:
+  - 已结算订单再修改需先反结算。
+  - 状态变更影响订单是否可继续过账。
+painPoints:
+  - 关闭订单后仍继续过账。
+  - 预算追加未走审批。
+objects:
+  - tcode:KO02
+  - table:AUFK
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

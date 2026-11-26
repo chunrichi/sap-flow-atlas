@@ -1,0 +1,44 @@
+id: pp-cm21-capacity-planning
+type: step
+title:
+  zh: 能力计划
+  en: Capacity Planning
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-capacity
+flows:
+  - plan-to-produce
+tcode: CM21
+summary:
+  zh: 在计划表中调整能力需求与可用能力。
+  en: Adjusts capacity requirements and available capacity in the planning table.
+optional: true
+condition:
+  zh: 存在产能瓶颈、交期冲突或需要有限排产时才执行；无限能力排产可直接下达订单。
+  en: Only when capacity bottlenecks, delivery conflicts or finite scheduling are relevant; infinite-capacity planning can release orders directly.
+inputs:
+  - 工作中心
+  - 计划表
+  - 能力需求
+outputs:
+  - 能力分配
+  - 调整建议
+rules:
+  - 计划表按期间汇总能力需求。
+  - 调整需保持工序先后关系。
+painPoints:
+  - 只调能力不调物料齐套，排产无效。
+  - 手工调整无留痕。
+objects:
+  - tcode:CM21
+  - table:KBED
+  - table:CRHD
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

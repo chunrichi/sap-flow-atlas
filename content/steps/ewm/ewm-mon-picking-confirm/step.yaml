@@ -8,6 +8,7 @@ modules:
   - ewm
 processes:
   - ewm-outbound
+  - ewm-wave
 flows:
   - order-to-cash
 tcode: /SCWM/MON
@@ -21,17 +22,16 @@ outputs:
   - 确认记录
   - 库存状态
 rules:
-  - "拣配差异必须在发货过账前处理。"
+  - 拣配差异必须在发货过账前处理。
 painPoints:
   - 拣配差异需要在发货过账前处理。
 objects:
-  - "tcode:/SCWM/MON"
-  - "table:LIKP"
+  - tcode:/SCWM/MON
+  - table:LIKP
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

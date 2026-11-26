@@ -1,0 +1,39 @@
+id: pp-cm01-capacity-load
+type: step
+title:
+  zh: 查看能力负荷
+  en: Check Capacity Load
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-capacity
+flows:
+  - plan-to-produce
+tcode: CM01
+summary:
+  zh: 按工作中心查看已分配与可用能力。
+  en: Shows assigned and available capacity by work center.
+inputs:
+  - 工作中心
+  - 日期范围
+outputs:
+  - 能力负荷
+  - 可用能力
+rules:
+  - 负荷来自生产订单与计划订单。
+  - 可用能力按班次与工厂日历计算。
+painPoints:
+  - 工厂日历未维护导致能力虚高。
+  - 订单日期漂移使负荷失真。
+objects:
+  - tcode:CM01
+  - table:KBED
+  - table:CRHD
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

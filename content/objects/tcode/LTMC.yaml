@@ -1,0 +1,18 @@
+id: tcode:LTMC
+type: tcode
+technicalName: LTMC
+title:
+  zh: 迁移 Cockpit
+  en: Migration Cockpit
+module: abap
+summary:
+  zh: 在 S/4HANA 中按迁移对象导入主数据与业务数据。
+  en: Imports master and business data by migration object in S/4HANA.
+relations:
+  - target: tcode:SM35
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

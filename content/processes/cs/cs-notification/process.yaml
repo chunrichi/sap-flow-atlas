@@ -1,0 +1,49 @@
+id: cs-notification
+type: process
+title:
+  zh: 服务通知与派工
+  en: Service Notification and Dispatch
+module: cs
+flow: service-to-cash
+stage: request
+summary:
+  zh: 从服务通知、处理诊断到创建服务订单并确认工时。
+  en: From service notification and diagnosis to service order creation and effort confirmation.
+variant: core
+steps:
+  - cs-iw21-service-notification
+  - cs-iw22-service-notification
+  - cs-iw31-service-order
+  - cs-iw41-service-confirmation
+edges:
+  - from: cs-iw21-service-notification
+    to: cs-iw22-service-notification
+    kind: sequence
+    label:
+      zh: 处理通知
+      en: Process notification
+  - from: cs-iw22-service-notification
+    to: cs-iw31-service-order
+    kind: sequence
+    label:
+      zh: 创建服务订单
+      en: Create service order
+  - from: cs-iw31-service-order
+    to: cs-iw41-service-confirmation
+    kind: sequence
+    label:
+      zh: 服务确认
+      en: Confirm service
+roles:
+  - 服务工程师
+  - 服务经理
+  - 客服
+outcomes:
+  - 服务通知
+  - 服务订单
+  - 服务确认
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

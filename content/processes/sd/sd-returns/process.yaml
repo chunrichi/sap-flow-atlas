@@ -45,4 +45,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+variant: exception
+trigger:
+  zh: 客户退货、拒收、错发或需要贷项凭证时才执行；正向销售与发货不经过该流程。
+  en: Only for customer returns, rejections, wrong shipments or credit memos; regular sales and delivery do not use it.

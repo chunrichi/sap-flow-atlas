@@ -1,6 +1,5 @@
-import { Command, Layers3, Search } from "lucide-react";
+import { Command, Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import { content } from "@/content/data";
 import { Breadcrumbs, type BreadcrumbItem } from "./Breadcrumbs";
 
 export function Header({
@@ -28,15 +27,6 @@ export function Header({
       <span className="hidden h-6 w-px bg-slate-200 md:block" />
       <Breadcrumbs items={breadcrumbs} className="hidden min-w-0 flex-1 md:flex" />
       <div className="flex-1 md:hidden" />
-
-      <div className="hidden items-center gap-2 rounded-full border border-slate-200 bg-slate-50/80 px-3 py-1.5 text-[11px] text-slate-500 xl:flex">
-        <Layers3 className="h-3.5 w-3.5 text-slate-400" />
-        <span>{content.stats.modules} 模块</span>
-        <span className="text-slate-300">·</span>
-        <span>{content.stats.steps} 步骤</span>
-        <span className="text-slate-300">·</span>
-        <span>{content.stats.objects} 对象</span>
-      </div>
 
       <button
         type="button"

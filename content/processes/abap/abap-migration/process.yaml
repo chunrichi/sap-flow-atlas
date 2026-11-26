@@ -1,0 +1,45 @@
+id: abap-migration
+type: process
+title:
+  zh: 数据迁移与批量导入
+  en: Data Migration and Batch Import
+module: abap
+flow: develop-to-deploy
+stage: implement
+summary:
+  zh: 从迁移对象配置、批输入会话到迁移 Cockpit 的数据迁移链路。
+  en: The migration chain from migration object setup and batch input sessions to the Migration Cockpit.
+variant: optional
+trigger:
+  zh: 上线、合并或主数据切换需要批量导入历史数据时才执行；日常业务录入不经过该流程。
+  en: Only for cutover, mergers or master-data migration requiring bulk historical data loads; daily entry does not use it.
+steps:
+  - abap-lsmw-migration
+  - abap-sm35-batch-input
+  - abap-ltmc-migrate
+edges:
+  - from: abap-lsmw-migration
+    to: abap-sm35-batch-input
+    kind: sequence
+    label:
+      zh: 批输入导入
+      en: Batch input import
+  - from: abap-lsmw-migration
+    to: abap-ltmc-migrate
+    kind: sequence
+    label:
+      zh: 迁移 Cockpit
+      en: Migration Cockpit
+roles:
+  - 数据迁移顾问
+  - ABAP 开发
+  - 业务数据 Owner
+outcomes:
+  - 迁移对象
+  - 批输入会话
+  - 迁移结果
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

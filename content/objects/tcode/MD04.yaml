@@ -1,16 +1,24 @@
-id: "tcode:MD04"
+id: tcode:MD04
 type: tcode
 technicalName: MD04
 title:
-  zh: 查看 MRP 清单
-  en: Review MRP List
-module: pp
+  zh: 库存需求清单
+  en: Stock/Requirements List
+module: mm
 summary:
-  zh: 查看物料的库存/需求清单，追踪计划订单、采购申请与例外。
-  en: Reviews stock/requirements list, tracking planned orders, requisitions and exceptions.
-relations: []
+  zh: 按物料查看库存、需求、采购与生产订单的实时供需平衡。
+  en: Shows real-time stock, demand, purchase and production orders for a material.
+relations:
+  - target: table:MARC
+    kind: reads
+  - target: table:MARD
+    kind: reads
+  - target: table:PLAF
+    kind: reads
+  - target: table:EBAN
+    kind: reads
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

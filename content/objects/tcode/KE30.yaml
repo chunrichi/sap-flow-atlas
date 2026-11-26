@@ -1,0 +1,20 @@
+id: tcode:KE30
+type: tcode
+technicalName: KE30
+title:
+  zh: 利润中心报表
+  en: Profit Center Report
+module: co
+summary:
+  zh: 按利润中心查看收入、成本与贡献边际。
+  en: Reports revenue, cost and contribution margin by profit center.
+relations:
+  - target: table:CEPC
+    kind: reads
+  - target: table:ACDOCA
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

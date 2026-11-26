@@ -8,6 +8,7 @@ modules:
   - ps
 processes:
   - ps-project-execution
+  - ps-setup
 flows:
   - project-to-profit
 tcode: CJ20N
@@ -22,16 +23,15 @@ outputs:
 rules:
   - WBS 必须覆盖项目范围且层级清晰。
 painPoints:
-  - "WBS 层级变更会影响预算与结算归集。"
+  - WBS 层级变更会影响预算与结算归集。
 objects:
-  - "tcode:CJ20N"
-  - "table:PROJ"
-  - "table:PRPS"
+  - tcode:CJ20N
+  - table:PROJ
+  - table:PRPS
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

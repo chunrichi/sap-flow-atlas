@@ -1,0 +1,42 @@
+id: pm-ip01-maintenance-plan
+type: step
+title:
+  zh: 创建维护计划
+  en: Create Maintenance Plan
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-preventive
+flows:
+  - maintain-to-availability
+tcode: IP01
+summary:
+  zh: 定义维护频率、任务清单与触发策略。
+  en: Defines maintenance frequency, task lists and scheduling strategy.
+inputs:
+  - 维护计划
+  - 设备/功能位置
+  - 周期
+  - 任务清单
+outputs:
+  - 维护计划号
+  - 维护项目
+rules:
+  - 维护计划必须绑定维护策略与维护对象。
+  - 周期单位必须一致。
+painPoints:
+  - 任务清单未发布，计划无法调用。
+  - 周期设置错误造成过度维护。
+objects:
+  - tcode:IP01
+  - table:MPLA
+  - table:MPOS
+  - table:ILOA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

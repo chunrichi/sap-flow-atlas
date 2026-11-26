@@ -8,6 +8,8 @@ modules:
   - hr
 processes:
   - hr-onboarding
+  - hr-payroll
+  - hr-time
 flows:
   - hire-to-retire
 tcode: PA30
@@ -20,22 +22,21 @@ inputs:
 outputs:
   - 更新后的人事主数据
 rules:
-  - "主数据变更必须保留生效日期与原因。"
-  - "组织分配变更要同步成本中心。"
+  - 主数据变更必须保留生效日期与原因。
+  - 组织分配变更要同步成本中心。
 painPoints:
-  - "直接改历史记录会破坏薪酬追溯。"
+  - 直接改历史记录会破坏薪酬追溯。
 objects:
-  - "tcode:PA30"
-  - "table:PA0001"
-  - "table:PA0002"
-  - "table:PA0008"
-  - "table:T510"
+  - tcode:PA30
+  - table:PA0001
+  - table:PA0002
+  - table:PA0008
+  - table:T510
 snippets:
   - abap-hr-org-assignment
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

@@ -10,8 +10,11 @@ modules:
 processes:
   - sd-order-management
   - fi-accounts-receivable
+  - fi-ar-collection
+  - fi-service-collection
 flows:
   - order-to-cash
+  - service-to-cash
 tcode: F-28
 summary:
   zh: 登记客户收款并清销应收账款，完成 O2C 的资金闭环。
@@ -32,13 +35,12 @@ painPoints:
   - 银行流水与发票号不匹配时，手工清账工作量大。
   - 部分清账会留下残余未清项，影响账龄分析。
 objects:
-  - "tcode:F-28"
-  - "table:BKPF"
-  - "table:BSEG"
-  - "table:ACDOCA"
-  - "cds:I_JournalEntry"
-snippets:
-  []
+  - tcode:F-28
+  - table:BKPF
+  - table:BSEG
+  - table:ACDOCA
+  - cds:I_JournalEntry
+snippets: []
 crossModule:
   - module: sd
     relation: accounting-impact
@@ -47,4 +49,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

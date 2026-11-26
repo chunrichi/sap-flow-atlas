@@ -1,0 +1,20 @@
+id: tcode:VA42
+type: tcode
+technicalName: VA42
+title:
+  zh: 修改服务合同
+  en: Change Service Contract
+module: cs
+summary:
+  zh: 调整合同条款、服务范围与有效期。
+  en: Adjusts contract terms, service scope and validity.
+relations:
+  - target: table:VBAK
+    kind: writes
+  - target: tcode:VA41
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

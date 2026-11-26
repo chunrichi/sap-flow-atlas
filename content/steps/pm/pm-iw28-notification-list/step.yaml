@@ -1,0 +1,40 @@
+id: pm-iw28-notification-list
+type: step
+title:
+  zh: 查看维护通知清单
+  en: Maintenance Notification List
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-notification
+flows:
+  - maintain-to-availability
+tcode: IW28
+summary:
+  zh: 按设备、功能位置与状态筛选维护通知。
+  en: Filters maintenance notifications by equipment, functional location and status.
+inputs:
+  - 设备
+  - 功能位置
+  - 状态
+  - 日期
+outputs:
+  - 通知清单
+rules:
+  - 清单按选择条件过滤，条件过宽会影响性能。
+  - 未清通知需要定期清理。
+painPoints:
+  - 选择条件过宽导致性能问题。
+  - 状态未及时更新。
+objects:
+  - tcode:IW28
+  - table:QMEL
+  - table:ILOA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

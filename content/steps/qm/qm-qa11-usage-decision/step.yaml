@@ -8,6 +8,7 @@ modules:
   - qm
 processes:
   - qm-inspection
+  - qm-notification
 flows:
   - plan-to-produce
 tcode: QA11
@@ -21,13 +22,13 @@ outputs:
   - 使用决策
   - 库存状态
 rules:
-  - "使用决策必须与检验结果一致。"
+  - 使用决策必须与检验结果一致。
 painPoints:
-  - "拒收未及时冻结库存会被误发。"
+  - 拒收未及时冻结库存会被误发。
 objects:
-  - "tcode:QA11"
-  - "table:QAVE"
-  - "table:QALS"
+  - tcode:QA11
+  - table:QAVE
+  - table:QALS
 snippets:
   - abap-qm-inspection-lots
 crossModule:
@@ -38,4 +39,4 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

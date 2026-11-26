@@ -9,6 +9,7 @@ modules:
   - fi
 processes:
   - sd-order-management
+  - sd-billing
 flows:
   - order-to-cash
 tcode: VF01
@@ -30,10 +31,9 @@ painPoints:
   - 定价条件缺失会导致发票金额为 0。
   - 跨期开票需要处理收入与成本的期间匹配。
 objects:
-  - "tcode:VF01"
-  - "table:VBRK"
-snippets:
-  []
+  - tcode:VF01
+  - table:VBRK
+snippets: []
 crossModule:
   - module: fi
     relation: accounting-impact
@@ -43,4 +43,4 @@ sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
   - api-billing-document
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

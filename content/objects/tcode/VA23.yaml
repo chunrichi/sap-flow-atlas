@@ -1,0 +1,20 @@
+id: tcode:VA23
+type: tcode
+technicalName: VA23
+title:
+  zh: 显示报价
+  en: Display Quotation
+module: sd
+summary:
+  zh: 查询报价的状态、有效期与后续订单引用关系。
+  en: Displays quotation status, validity and follow-up document references.
+relations:
+  - target: table:VBAK
+    kind: reads
+  - target: tcode:VA21
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

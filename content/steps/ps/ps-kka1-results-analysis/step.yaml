@@ -1,0 +1,40 @@
+id: ps-kka1-results-analysis
+type: step
+title:
+  zh: 执行结果分析
+  en: Run Results Analysis
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-settlement
+flows:
+  - project-to-profit
+tcode: KKA1
+summary:
+  zh: 计算在建项目的完工百分比、收入与成本确认。
+  en: Calculates percentage of completion, revenue and cost recognition for projects.
+inputs:
+  - 项目
+  - 期间
+  - 结果分析版本
+outputs:
+  - 完工百分比
+  - 收入/成本确认
+rules:
+  - 结果分析基于计划成本与实际成本。
+  - 确认方法在各期间必须一致。
+painPoints:
+  - 完工进度主观导致收入波动。
+  - 跨期未重算，确认金额失真。
+objects:
+  - tcode:KKA1
+  - table:COEP
+  - table:PRPS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

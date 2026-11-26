@@ -1,0 +1,18 @@
+id: tcode:CR01
+type: tcode
+technicalName: CR01
+title:
+  zh: 创建工作中心
+  en: Create Work Center
+module: pp
+summary:
+  zh: 定义工作中心的能力、成本中心与公式，供工艺路线与生产订单引用。
+  en: Defines capacity, cost center and formulas for a work center used by routings and orders.
+relations:
+  - target: table:CRHD
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-accounts-payable
+  - fi-payment
 flows:
   - procure-to-pay
 tcode: FBL1N
@@ -22,18 +23,17 @@ outputs:
   - 未清项目
   - 账龄
 rules:
-  - "对账前确认公司代码、供应商与期间。"
+  - 对账前确认公司代码、供应商与期间。
 painPoints:
-  - "未清与已清项目混看会误判账龄。"
+  - 未清与已清项目混看会误判账龄。
 objects:
-  - "tcode:FBL1N"
-  - "table:BSIK"
-  - "table:BSAK"
+  - tcode:FBL1N
+  - table:BSIK
+  - table:BSAK
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

@@ -1,0 +1,42 @@
+id: fi-as03-display-asset
+type: step
+title:
+  zh: 查看资产
+  en: Display Asset
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-asset-depreciation
+  - fi-asset-retirement
+flows:
+  - acquire-to-retire
+tcode: AS03
+summary:
+  zh: 查看资产主数据、折旧范围与已过账业务。
+  en: Displays asset master data, depreciation areas and posted transactions.
+inputs:
+  - 资产编号
+  - 公司代码
+outputs:
+  - 资产主数据
+  - 折旧范围
+  - 已过账业务
+rules:
+  - 资产编号在公司代码内唯一。
+  - 折旧范围决定账面价值与税务价值的差异。
+painPoints:
+  - 资产分类错误导致折旧年限错误。
+  - 跨公司代码查询时混淆资产归属。
+objects:
+  - tcode:AS03
+  - table:ANLA
+  - table:ANLB
+  - table:ANLC
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

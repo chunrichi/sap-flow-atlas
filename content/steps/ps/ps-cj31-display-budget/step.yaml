@@ -1,0 +1,39 @@
+id: ps-cj31-display-budget
+type: step
+title:
+  zh: 查看项目预算
+  en: Display Project Budget
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-budget
+flows:
+  - project-to-profit
+tcode: CJ31
+summary:
+  zh: 查看项目或 WBS 的原始预算、追加与可用预算。
+  en: Displays original budget, supplements and available budget for a project or WBS.
+inputs:
+  - 项目/WBS
+  - 预算版本
+outputs:
+  - 预算余额
+  - 追加记录
+rules:
+  - 预算按年度与版本管理。
+  - 可用预算 = 原始预算 + 追加 - 已分配。
+painPoints:
+  - 版本选择错误导致误判。
+  - 预算未下达，执行层看不到额度。
+objects:
+  - tcode:CJ31
+  - table:PROJ
+  - table:PRPS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

@@ -32,10 +32,9 @@ painPoints:
   - ATP 结果与库存报表不一致，通常来自未清的预留或计划订单。
   - 跨工厂调拨的在途库存容易被忽略。
 objects:
-  - "tcode:CO09"
-  - "table:VBEP"
-snippets:
-  []
+  - tcode:CO09
+  - table:VBEP
+snippets: []
 crossModule:
   - module: pp
     relation: shared-object
@@ -44,4 +43,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 物料启用可用性检查且订单类型触发 ATP 时才执行；未启用检查的物料直接通过。
+  en: Only when availability check is active for the material and the order type triggers ATP; materials without the check pass directly.

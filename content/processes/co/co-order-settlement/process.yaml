@@ -1,0 +1,41 @@
+id: co-order-settlement
+type: process
+title:
+  zh: 订单结算与成本复核
+  en: Order Settlement and Cost Review
+module: co
+flow: maintain-to-availability
+stage: settle
+summary:
+  zh: 从维护订单结算、批量结算到成本复核的月末链路。
+  en: The period-end chain from maintenance order settlement and batch runs to cost review.
+variant: core
+steps:
+  - co-ko88-settle-order
+  - co-ko8g-settlement-run
+  - co-kob1-order-actuals
+edges:
+  - from: co-ko88-settle-order
+    to: co-ko8g-settlement-run
+    kind: sequence
+    label:
+      zh: 批量结算
+      en: Batch settlement
+  - from: co-ko8g-settlement-run
+    to: co-kob1-order-actuals
+    kind: sequence
+    label:
+      zh: 复核成本
+      en: Review costs
+roles:
+  - 成本会计
+  - 维护经理
+  - 财务经理
+outcomes:
+  - 结算凭证
+  - 成本中心成本
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

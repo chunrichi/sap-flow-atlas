@@ -1,0 +1,17 @@
+id: table:/SCWM/ORDIM_O
+type: table
+technicalName: /SCWM/ORDIM_O
+title:
+  zh: 仓库订单
+  en: Warehouse Order
+module: ewm
+tableClass: transparent
+summary:
+  zh: 保存仓库订单抬头与任务分组，用于波次与拣配。
+  en: Stores warehouse order headers and task groupings used by waves and picking.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

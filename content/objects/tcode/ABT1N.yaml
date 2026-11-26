@@ -1,0 +1,20 @@
+id: tcode:ABT1N
+type: tcode
+technicalName: ABT1N
+title:
+  zh: 资产转移
+  en: Transfer Asset
+module: fi
+summary:
+  zh: 在成本中心、功能位置或公司代码之间转移资产。
+  en: Transfers assets between cost centers, functional locations or company codes.
+relations:
+  - target: table:ANLA
+    kind: writes
+  - target: table:ANLC
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,20 @@
+id: tcode:PT01
+type: tcode
+technicalName: PT01
+title:
+  zh: 录入考勤
+  en: Record Attendance
+module: hr
+summary:
+  zh: 录入员工出勤、缺勤与替代时间。
+  en: Records attendances, absences and substitutions for employees.
+relations:
+  - target: table:PA2001
+    kind: writes
+  - target: table:PA2002
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

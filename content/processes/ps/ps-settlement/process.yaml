@@ -1,0 +1,49 @@
+id: ps-settlement
+type: process
+title:
+  zh: 项目结算与获利分析
+  en: Project Settlement and Profitability
+module: ps
+flow: project-to-profit
+stage: settle
+summary:
+  zh: 从项目实际过账、结果分析、结算到获利分析。
+  en: From project actual posting and results analysis to settlement and profitability review.
+variant: core
+steps:
+  - ps-fb60-project-posting
+  - ps-kka1-results-analysis
+  - ps-cj88-project-settlement
+  - ps-ke30-profitability
+edges:
+  - from: ps-fb60-project-posting
+    to: ps-kka1-results-analysis
+    kind: sequence
+    label:
+      zh: 结果分析
+      en: Results analysis
+  - from: ps-kka1-results-analysis
+    to: ps-cj88-project-settlement
+    kind: sequence
+    label:
+      zh: 项目结算
+      en: Settle project
+  - from: ps-cj88-project-settlement
+    to: ps-ke30-profitability
+    kind: sequence
+    label:
+      zh: 获利分析
+      en: Profitability review
+roles:
+  - 项目会计
+  - 成本控制
+  - 财务经理
+outcomes:
+  - 项目结算
+  - 结果分析
+  - 获利报表
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

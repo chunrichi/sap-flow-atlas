@@ -26,15 +26,15 @@ rules:
 painPoints:
   - 成本对象缺失会导致 CO 分摊不到。
 objects:
-  - "tcode:FB50"
-  - "table:BKPF"
-  - "table:BSEG"
-  - "table:ACDOCA"
-  - "cds:I_JournalEntry"
+  - tcode:FB50
+  - table:BKPF
+  - table:BSEG
+  - table:ACDOCA
+  - cds:I_JournalEntry
+  - bapi:BAPI_ACC_DOCUMENT_POST
 snippets:
   - abap-fi-post-gl
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:

@@ -1,0 +1,20 @@
+id: tcode:FAGLB03
+type: tcode
+technicalName: FAGLB03
+title:
+  zh: 总账余额显示
+  en: G/L Account Balances
+module: fi
+summary:
+  zh: 按科目与期间查看总账余额与期初期末。
+  en: Shows G/L account balances and opening/closing amounts by period.
+relations:
+  - target: table:ACDOCA
+    kind: reads
+  - target: tcode:F.01
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

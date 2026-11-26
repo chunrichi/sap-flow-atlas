@@ -1,0 +1,20 @@
+id: tcode:IP30
+type: tcode
+technicalName: IP30
+title:
+  zh: 维护计划截止监控
+  en: Maintenance Plan Deadline Monitoring
+module: pm
+summary:
+  zh: 按日期窗口查看到期或逾期的维护计划。
+  en: Shows due or overdue maintenance plans within a date window.
+relations:
+  - target: table:MPLA
+    kind: reads
+  - target: table:MHIS
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

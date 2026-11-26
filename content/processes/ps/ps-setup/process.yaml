@@ -1,0 +1,42 @@
+id: ps-setup
+type: process
+title:
+  zh: 项目立项与结构
+  en: Project Setup and Structure
+module: ps
+flow: project-to-profit
+stage: plan
+summary:
+  zh: 从项目定义、WBS 结构到网络活动的项目搭建链路。
+  en: The project setup chain from project definition and WBS to network activities.
+variant: core
+steps:
+  - ps-cj01-project-definition
+  - ps-cj20n-wbs
+  - ps-cn21-network
+edges:
+  - from: ps-cj01-project-definition
+    to: ps-cj20n-wbs
+    kind: sequence
+    label:
+      zh: 维护 WBS
+      en: Maintain WBS
+  - from: ps-cj20n-wbs
+    to: ps-cn21-network
+    kind: sequence
+    label:
+      zh: 创建网络
+      en: Create network
+roles:
+  - 项目经理
+  - 项目会计
+  - 计划工程师
+outcomes:
+  - 项目定义
+  - WBS
+  - 网络
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

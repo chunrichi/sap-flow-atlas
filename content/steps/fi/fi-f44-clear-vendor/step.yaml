@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-accounts-payable
+  - fi-payment
 flows:
   - procure-to-pay
 tcode: F-44
@@ -24,17 +25,16 @@ outputs:
 rules:
   - 清账金额必须与未清项匹配或按规则处理差异。
 painPoints:
-  - "付款与发票的币种/汇率差异未处理会留下余额。"
+  - 付款与发票的币种/汇率差异未处理会留下余额。
 objects:
-  - "tcode:F-44"
-  - "table:BSIK"
-  - "table:BSAK"
-  - "table:BSEG"
+  - tcode:F-44
+  - table:BSIK
+  - table:BSAK
+  - table:BSEG
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

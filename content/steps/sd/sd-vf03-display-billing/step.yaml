@@ -1,0 +1,44 @@
+id: sd-vf03-display-billing
+type: step
+title:
+  zh: 查看发票
+  en: Display Billing Document
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-billing
+  - sd-service-billing
+flows:
+  - order-to-cash
+  - service-to-cash
+tcode: VF03
+summary:
+  zh: 查看发票抬头、行项目、定价与会计凭证状态，作为对账依据。
+  en: Displays billing header, items, pricing and accounting document status for reconciliation.
+inputs:
+  - 发票号
+outputs:
+  - 发票抬头
+  - 行项目
+  - 定价
+  - 会计凭证号
+rules:
+  - 发票状态由冲销与付款状态共同决定。
+  - 会计凭证过账后不能直接修改，只能冲销重开。
+painPoints:
+  - 发票与交货数量不一致时难以定位。
+  - 定价行被手工覆盖后不易追溯。
+objects:
+  - tcode:VF03
+  - table:VBRK
+  - table:VBRP
+  - table:ACDOCA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-billing-document

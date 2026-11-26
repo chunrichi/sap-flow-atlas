@@ -1,0 +1,20 @@
+id: tcode:CM01
+type: tcode
+technicalName: CM01
+title:
+  zh: 能力负荷
+  en: Capacity Load
+module: pp
+summary:
+  zh: 按工作中心查看已分配与可用能力。
+  en: Shows assigned and available capacity by work center.
+relations:
+  - target: table:KBED
+    kind: reads
+  - target: table:CRHD
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

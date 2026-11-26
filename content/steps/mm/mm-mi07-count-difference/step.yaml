@@ -21,13 +21,13 @@ outputs:
   - 差异凭证
   - 库存调整
 rules:
-  - "差异过账前复核实盘数与原因。"
+  - 差异过账前复核实盘数与原因。
 painPoints:
-  - "直接过账大额差异会触发审计。"
+  - 直接过账大额差异会触发审计。
 objects:
-  - "tcode:MI07"
-  - "table:MSEG"
-  - "table:MKPF"
+  - tcode:MI07
+  - table:MSEG
+  - table:MKPF
 snippets: []
 crossModule:
   - module: fi
@@ -37,4 +37,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 盘点存在差异且需要调账时才执行；无差异盘点直接关闭。
+  en: Only when counting differences require adjustment; counts without differences close directly.

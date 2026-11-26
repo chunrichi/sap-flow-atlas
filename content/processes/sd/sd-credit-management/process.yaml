@@ -45,4 +45,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+variant: optional
+trigger:
+  zh: 客户启用信用管理且订单超过信用限额或触发冻结时才进入；未启用信用管理的订单直接放行。
+  en: Only when credit management is active and an order exceeds the limit or gets blocked; orders without credit management pass directly.

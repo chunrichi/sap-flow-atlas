@@ -1,0 +1,40 @@
+id: hr-pc00-calc-payroll
+type: step
+title:
+  zh: 运行薪酬核算
+  en: Run Payroll Calculation
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-payroll
+flows:
+  - hire-to-retire
+tcode: PC00_M99_CALC
+summary:
+  zh: 按范围运行工资核算，计算薪资、扣款与税。
+  en: Runs payroll for a scope and calculates salary, deductions and taxes.
+inputs:
+  - 工资核算范围
+  - 期间
+  - 员工范围
+outputs:
+  - 薪酬结果
+rules:
+  - 必须先释放控制记录。
+  - 错误员工需单独重跑，不能整批回滚。
+painPoints:
+  - 主数据缺失导致计算错误。
+  - 回溯计算影响已过账期间。
+objects:
+  - tcode:PC00_M99_CALC
+  - table:PA0008
+  - table:T510
+  - table:T549A
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

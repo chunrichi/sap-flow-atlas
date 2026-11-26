@@ -1,0 +1,44 @@
+id: mm-me41-create-rfq
+type: step
+title:
+  zh: 创建询价
+  en: Create RFQ
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-sourcing
+flows:
+  - procure-to-pay
+tcode: ME41
+summary:
+  zh: 向多个供应商发出询价请求，记录物料、数量与报价截止日期。
+  en: Sends requests for quotation to multiple vendors with materials, quantities and quotation deadlines.
+inputs:
+  - 物料
+  - 数量
+  - 供应商
+  - 报价截止日
+outputs:
+  - 询价单号
+  - 待报价行
+rules:
+  - 询价可以引用采购申请，减少重复录入。
+  - 截止日期后不再接受报价。
+painPoints:
+  - 供应商未维护采购视图，无法发送询价。
+  - 截止日期时区处理不一致。
+objects:
+  - tcode:ME41
+  - table:EKKO
+  - table:EKPO
+  - table:EKES
+  - tcode:ME47
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-purchase-order

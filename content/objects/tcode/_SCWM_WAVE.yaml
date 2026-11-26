@@ -1,0 +1,20 @@
+id: tcode:/SCWM/WAVE
+type: tcode
+technicalName: /SCWM/WAVE
+title:
+  zh: 波次管理
+  en: Wave Management
+module: ewm
+summary:
+  zh: 按路线、承运商或时间窗合并出库需求生成波次。
+  en: Groups outbound demands into waves by route, carrier or time window.
+relations:
+  - target: table:/SCWM/ORDIM_O
+    kind: writes
+  - target: tcode:/SCWM/MON
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,18 @@
+id: tcode:IW23
+type: tcode
+technicalName: IW23
+title:
+  zh: 显示维护通知
+  en: Display Maintenance Notification
+module: pm
+summary:
+  zh: 查看通知历史、状态与关联订单。
+  en: Displays notification history, status and linked orders.
+relations:
+  - target: table:QMEL
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -1,0 +1,43 @@
+id: pp-cr01-work-center
+type: step
+title:
+  zh: 创建工作中心
+  en: Create Work Center
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-routing
+flows:
+  - plan-to-produce
+tcode: CR01
+summary:
+  zh: 定义工作中心的能力、成本中心与公式，供工艺路线与生产订单引用。
+  en: Defines capacity, cost center and formulas for a work center used by routings and production orders.
+inputs:
+  - 工作中心
+  - 工厂
+  - 成本中心
+  - 能力参数
+outputs:
+  - 工作中心主数据
+rules:
+  - 工作中心必须分配工厂与成本中心。
+  - 能力参数决定排产与工时费计算。
+painPoints:
+  - 成本中心错误导致工时费归集错误。
+  - 能力未维护导致排产失真。
+objects:
+  - tcode:CR01
+  - table:CRHD
+  - table:CSKS
+snippets: []
+crossModule:
+  - module: co
+    relation: costing
+    note: 工作中心的成本中心与作业价格决定工序成本。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

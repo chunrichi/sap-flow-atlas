@@ -8,8 +8,14 @@ modules:
   - mm
 processes:
   - mm-procurement
+  - mm-demand
+  - mm-sourcing
+  - mm-production-supply
+  - mm-asset-request
 flows:
   - procure-to-pay
+  - plan-to-produce
+  - acquire-to-retire
 tcode: ME21N
 summary:
   zh: 把采购申请转为具有供应商、价格与交期的采购订单。
@@ -31,15 +37,14 @@ painPoints:
   - 供应商主数据冻结会导致订单无法保存。
   - 价格单位不一致会造成金额错误。
 objects:
-  - "tcode:ME21N"
-  - "table:EKKO"
-  - "table:EKPO"
-  - "bapi:BAPI_PO_CREATE1"
-  - "enhancement:ME_PROCESS_PO_CUST"
-  - "cds:I_PurchaseOrder"
-  - "odata:API_PURCHASEORDER_PROCESS_SRV"
-snippets:
-  []
+  - tcode:ME21N
+  - table:EKKO
+  - table:EKPO
+  - bapi:BAPI_PO_CREATE1
+  - enhancement:ME_PROCESS_PO_CUST
+  - cds:I_PurchaseOrder
+  - odata:API_PURCHASEORDER_PROCESS_SRV
+snippets: []
 crossModule:
   - module: fi
     relation: accounting-impact
@@ -49,4 +54,4 @@ sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
   - api-purchase-order
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

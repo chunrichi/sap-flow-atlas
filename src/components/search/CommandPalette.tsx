@@ -81,6 +81,13 @@ export function CommandPalette() {
             没有找到匹配内容。试试模块缩写（SD）、T-Code（VA01）或表名（VBAK）。
           </Command.Empty>
 
+          <Command.Group heading="索引">
+            <Command.Item value="对象索引 objects 开发对象 表 BAPI T-Code" onSelect={() => go('/objects')}>
+              <Boxes className="h-3.5 w-3.5 shrink-0 text-sky-500" />
+              <span className="min-w-0 flex-1 truncate"><span className="font-medium text-slate-800">开发对象索引</span><span className="ml-2 text-[11px] text-slate-400">185 个对象</span></span>
+            </Command.Item>
+          </Command.Group>
+
           <Command.Group heading="模块">
             {content.modules.map((module) => (
               <Command.Item

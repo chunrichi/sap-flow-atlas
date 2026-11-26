@@ -1,0 +1,52 @@
+id: pm-notification
+type: process
+title:
+  zh: 维护通知处理
+  en: Maintenance Notification Handling
+module: pm
+flow: maintain-to-availability
+stage: notify
+summary:
+  zh: 从创建维护通知、补充诊断到通知清单与历史查看。
+  en: From maintenance notification creation and diagnosis to list and history review.
+variant: optional
+trigger:
+  zh: 设备故障、点检异常或客户报修时先建通知；计划性维护可直接创建维护订单。
+  en: Create a notification for equipment failures, inspection anomalies or customer reports; planned maintenance can create orders directly.
+steps:
+  - pm-iw21-maintenance-notification
+  - pm-iw22-change-notification
+  - pm-iw28-notification-list
+  - pm-iw23-display-notification
+edges:
+  - from: pm-iw21-maintenance-notification
+    to: pm-iw22-change-notification
+    kind: sequence
+    label:
+      zh: 处理通知
+      en: Process notification
+  - from: pm-iw22-change-notification
+    to: pm-iw28-notification-list
+    kind: sequence
+    label:
+      zh: 通知清单
+      en: Notification list
+  - from: pm-iw28-notification-list
+    to: pm-iw23-display-notification
+    kind: sequence
+    label:
+      zh: 查看历史
+      en: Review history
+roles:
+  - 维修工程师
+  - 维护计划员
+  - 生产主管
+outcomes:
+  - 维护通知
+  - 故障记录
+  - 维修措施
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

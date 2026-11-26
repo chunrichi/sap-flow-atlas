@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -14,7 +13,9 @@ import {
   GitBranch,
   Link2,
   ListTree,
+  MapPin,
   Network,
+  Pin,
   X,
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -27,6 +28,7 @@ import {
   objectsById,
   objectsForStep,
   processForStep,
+  processSteps,
   processesById,
   scenesById,
   sceneRoute,
@@ -47,7 +49,7 @@ import type {
 } from "@/content/schemas";
 import { annotationSet, codeLines, tokenizeAbap } from "@/lib/abap";
 import { cn } from "@/lib/cn";
-import { useFocusTrap } from "@/lib/useFocusTrap";
+import { objectRelationsBidirectional } from "@/lib/workspace";
 
 const STATUS_CLASS: Record<string, string> = {
   draft: "bg-slate-100 text-slate-500",
@@ -429,6 +431,8 @@ function ObjectOverview({ object }: { object: ContentObject }) {
   const module = modulesById.get(object.module);
   const steps = stepsForObject(object);
   const snippets = snippetsForObject(object);
+  const relations = objectRelationsBidirectional(object);
+  const relationCount = relations.incoming.length + relations.outgoing.length;
   return (
     <div>
       <p className="text-[12px] leading-relaxed text-slate-600">{text(object.summary)}</p>
@@ -439,7 +443,7 @@ function ObjectOverview({ object }: { object: ContentObject }) {
         {object.package ? <span className="rounded-md bg-slate-50 px-2 py-1 font-mono text-[9px] text-slate-500">包 {object.package}</span> : null}
       </div>
       <div className="mt-4 grid grid-cols-3 gap-2">
-        <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-2.5 text-center"><div className="text-[16px] font-semibold text-slate-800">{object.relations.length}</div><div className="text-[8px] text-slate-400">关系</div></div>
+        <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-2.5 text-center"><div className="text-[16px] font-semibold text-slate-800">{relationCount}</div><div className="text-[8px] text-slate-400">关系</div></div>
         <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-2.5 text-center"><div className="text-[16px] font-semibold text-slate-800">{steps.length}</div><div className="text-[8px] text-slate-400">使用步骤</div></div>
         <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-2.5 text-center"><div className="text-[16px] font-semibold text-slate-800">{snippets.length}</div><div className="text-[8px] text-slate-400">代码片段</div></div>
       </div>
@@ -456,32 +460,44 @@ function ObjectOverview({ object }: { object: ContentObject }) {
 
 function ObjectRelations({ object }: { object: ContentObject }) {
   const navigate = useNavigate();
-  const location = useLocation();
   const openObject = (id: string) => {
     const target = objectsById.get(id);
     if (target) navigate(`${objectRoute(target)}&tab=overview`);
   };
-  if (!object.relations.length) return <EmptyState title="还没有关系" hint="在 object.yaml 的 relations 中补充 calls / reads / writes / enhances 等关系。" />;
+  const relations = objectRelationsBidirectional(object);
+  if (!relations.incoming.length && !relations.outgoing.length) {
+    return <EmptyState title="还没有关系" hint="在 object.yaml 的 relations 中补充 calls / reads / writes / enhances 等关系。" />;
+  }
   return (
-    <div className="space-y-2">
-      {object.relations.map((relation) => {
-        const target = objectsById.get(relation.target);
-        return (
-          <button
-            key={`${relation.kind}-${relation.target}`}
-            type="button"
-            onClick={() => target && openObject(target.id)}
-            className="flex w-full items-start gap-2 rounded-xl border border-slate-100 bg-white p-2.5 text-left hover:border-blue-200 hover:bg-blue-50/30"
-          >
-            <span className="rounded-md bg-slate-900 px-1.5 py-0.5 font-mono text-[8px] text-white">{relation.kind}</span>
-            <span className="min-w-0 flex-1">
-              <span className="block truncate font-mono text-[10px] font-medium text-slate-700">{target?.technicalName ?? relation.target}</span>
-              <span className="mt-0.5 block text-[9px] text-slate-400">{target ? text(target.title) : "目标未收录"}{relation.note ? ` · ${relation.note}` : ""}</span>
-            </span>
-            {target ? <ArrowRight className="mt-0.5 h-3 w-3 shrink-0 text-slate-300" /> : null}
-          </button>
-        );
-      })}
+    <div className="space-y-4">
+      {relations.outgoing.length ? (
+        <section>
+          <div className="mb-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-400">依赖 · {relations.outgoing.length}</div>
+          <div className="space-y-1.5">
+            {relations.outgoing.map((relation) => (
+              <button key={`out-${relation.kind}-${relation.object.id}`} type="button" onClick={() => openObject(relation.object.id)} className="flex w-full items-start gap-2 rounded-xl border border-slate-100 bg-white p-2.5 text-left hover:border-blue-200 hover:bg-blue-50/30">
+                <span className="rounded-md bg-slate-900 px-1.5 py-0.5 font-mono text-[8px] text-white">{relation.kind}</span>
+                <span className="min-w-0 flex-1"><span className="block truncate font-mono text-[10px] font-medium text-slate-700">{relation.object.technicalName}</span><span className="mt-0.5 block text-[9px] text-slate-400">{text(relation.object.title)}{relation.note ? ` · ${relation.note}` : ""}</span></span>
+                <ArrowRight className="mt-0.5 h-3 w-3 shrink-0 text-slate-300" />
+              </button>
+            ))}
+          </div>
+        </section>
+      ) : null}
+      {relations.incoming.length ? (
+        <section>
+          <div className="mb-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-400">被引用 · {relations.incoming.length}</div>
+          <div className="space-y-1.5">
+            {relations.incoming.map((relation) => (
+              <button key={`in-${relation.kind}-${relation.object.id}`} type="button" onClick={() => openObject(relation.object.id)} className="flex w-full items-start gap-2 rounded-xl border border-slate-100 bg-white p-2.5 text-left hover:border-blue-200 hover:bg-blue-50/30">
+                <span className="rounded-md bg-sky-50 px-1.5 py-0.5 font-mono text-[8px] text-sky-700">被 {relation.kind}</span>
+                <span className="min-w-0 flex-1"><span className="block truncate font-mono text-[10px] font-medium text-slate-700">{relation.object.technicalName}</span><span className="mt-0.5 block text-[9px] text-slate-400">{text(relation.object.title)}</span></span>
+                <ArrowRight className="mt-0.5 h-3 w-3 shrink-0 text-slate-300" />
+              </button>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }
@@ -532,99 +548,155 @@ function ObjectBody({ object, tab }: { object: ContentObject; tab: string }) {
   return <ObjectOverview object={object} />;
 }
 
-export function Inspector() {
+export function DetailDock({ mode, width }: { mode: 'peek' | 'pin'; width: number | string }) {
   const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const stepId = params.get("step");
-  const objectId = params.get("object");
+  const stepId = params.get('step');
+  const objectId = params.get('object');
   const step = stepId ? stepsById.get(stepId) : undefined;
   const object = objectId ? objectsById.get(objectId) : undefined;
   const active = object ?? step;
   const isObject = Boolean(object);
   const tabs = isObject ? OBJECT_TABS : STEP_TABS;
-  const requestedTab = params.get("tab") ?? "overview";
-  const tab = tabs.some((item) => item.key === requestedTab) ? requestedTab : "overview";
-  const panelRef = useRef<HTMLElement | null>(null);
-  const closeRef = useRef<HTMLButtonElement | null>(null);
-  useFocusTrap(panelRef, Boolean(active), closeRef);
+  const requestedTab = params.get('tab') ?? 'overview';
+  const tab = tabs.some((item) => item.key === requestedTab) ? requestedTab : 'overview';
+  const story = params.get('story');
+  const [copied, setCopied] = useState(false);
 
-  const close = useCallback(() => {
+  const patch = useCallback((updates: Record<string, string | null>) => {
     const next = new URLSearchParams(location.search);
-    next.delete("step");
-    next.delete("object");
-    next.delete("tab");
+    for (const [key, value] of Object.entries(updates)) {
+      if (value === null || value === '') next.delete(key);
+      else next.set(key, value);
+    }
     const search = next.toString();
-    navigate({ pathname: location.pathname, search: search ? `?${search}` : "" }, { replace: true });
+    navigate({ pathname: location.pathname, search: search ? `?${search}` : '' }, { replace: true });
   }, [location.pathname, location.search, navigate]);
 
-  const setTab = useCallback((key: string) => {
-    const next = new URLSearchParams(location.search);
-    next.set("tab", key);
-    navigate({ pathname: location.pathname, search: `?${next.toString()}` }, { replace: true });
-  }, [location.pathname, location.search, navigate]);
+  const close = useCallback(() => patch({ step: null, object: null, tab: null, dock: null }), [patch]);
+  const setTab = useCallback((key: string) => patch({ tab: key }), [patch]);
+  const pin = useCallback(() => patch({ dock: 'pin' }), [patch]);
+  const openMap = useCallback(() => patch({ view: 'map', dock: 'pin' }), [patch]);
+  const openLineage = useCallback(() => patch({ view: 'lineage', dock: 'pin' }), [patch]);
+  const openObject = useCallback((id: string) => patch({ step: null, object: id, tab: 'overview', dock: 'pin' }), [patch]);
+  const openStep = useCallback((id: string) => patch({ step: id, object: null, tab: 'overview', dock: 'pin' }), [patch]);
+  const openStepScene = useCallback((id: string) => {
+    const target = stepsById.get(id);
+    if (target) navigate(`${stepRoute(target)}&view=track&dock=pin`);
+  }, [navigate]);
 
   useEffect(() => {
     if (!active) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
+      if (event.key === 'Escape') close();
     };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [active, close]);
 
-  const title = active ? text(active.title) : "";
-  const kindLabel = isObject ? (object ? objectTypeLabels[object.type] ?? object.type : "对象") : "流程步骤";
-  const moduleId = active && "primaryModule" in active ? active.primaryModule : active?.module;
+  if (story || !active) return null;
+
+  const title = text(active.title);
+  const kindLabel = isObject ? (object ? objectTypeLabels[object.type] ?? object.type : '对象') : '流程步骤';
+  const moduleId = active && 'primaryModule' in active ? active.primaryModule : active?.module;
   const module = moduleId ? modulesById.get(moduleId) : undefined;
+  const process = step ? processForStep(step) : undefined;
+  const stepList = process ? processSteps(process) : [];
+  const stepIndex = step ? stepList.findIndex((item) => item.id === step.id) : -1;
+  const prevStep = stepIndex > 0 ? stepList[stepIndex - 1] : undefined;
+  const nextStep = stepIndex >= 0 && stepIndex < stepList.length - 1 ? stepList[stepIndex + 1] : undefined;
+  const objectSteps = object ? stepsForObject(object) : [];
+  const peeking = mode === 'peek';
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   return (
-    <AnimatePresence>
-      {active ? (
-        <motion.aside
-          key={`${isObject ? "object" : "step"}-${active.id}`}
-          ref={panelRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${title} 详情`}
-          tabIndex={-1}
-          initial={{ x: 36, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: 36, opacity: 0 }}
-          transition={{ duration: 0.22, ease: [0.2, 0.8, 0.2, 1] }}
-          className="panel fixed bottom-4 right-4 top-20 z-40 flex flex-col overflow-hidden rounded-3xl bg-white/95"
-          style={{ width: "min(480px, calc(100vw - 32px))" }}
-        >
-          <div className="flex items-start gap-3 border-b border-slate-100 px-4 py-3.5">
-            <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: module?.color ?? "#2563eb" }} />
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-2 text-[9px] uppercase tracking-[0.12em] text-slate-400">
-                <span>{kindLabel}</span>
-                <span>·</span>
-                <span>{module?.abbr ?? "SAP"}</span>
-                <span className={cn("rounded-full px-1.5 py-0.5 text-[8px] normal-case tracking-normal", active.status ? STATUS_CLASS[active.status] : "")}>
-                  {active.status ? statusLabels[active.status] : "草稿"}
-                </span>
-              </div>
-              <div className="mt-1 truncate text-[15px] font-semibold tracking-tight text-slate-900">{title}</div>
-              <div className="mt-0.5 flex items-center gap-1.5 text-[10px] text-slate-400">
-                {"tcode" in active && active.tcode ? <span className="rounded bg-slate-100 px-1 font-mono text-slate-500">{active.tcode}</span> : null}
-                {"technicalName" in active ? <span className="truncate font-mono">{active.technicalName}</span> : null}
-                <span>·</span>
-                <span>{active.sapVersion}</span>
+    <aside
+      role="complementary"
+      aria-label={`${title} 详情`}
+      className={cn(
+        'detail-dock dock-in flex h-full min-h-0 shrink-0 flex-col overflow-hidden border-l border-slate-200 bg-white/95 shadow-[-12px_0_40px_-32px_rgba(15,23,42,0.45)]',
+        peeking ? 'bg-white' : '',
+      )}
+      style={{ width: typeof width === 'number' ? `${width}px` : width }}
+    >
+      <div className="flex items-start gap-2.5 border-b border-slate-100 px-3 py-3">
+        <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: module?.color ?? '#2563eb' }} />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.12em] text-slate-400">
+            <span>{kindLabel}</span>
+            <span>·</span>
+            <span>{module?.abbr ?? 'SAP'}</span>
+            <span className={cn('rounded-full px-1.5 py-0.5 text-[8px] normal-case tracking-normal', active.status ? STATUS_CLASS[active.status] : '')}>
+              {active.status ? statusLabels[active.status] : '草稿'}
+            </span>
+          </div>
+          <div className="mt-0.5 truncate text-[15px] font-semibold tracking-tight text-slate-900">{title}</div>
+          <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] text-slate-400">
+            {'tcode' in active && active.tcode ? <span className="rounded bg-slate-100 px-1 font-mono text-slate-500">{active.tcode}</span> : null}
+            {'technicalName' in active ? <span className="truncate font-mono">{active.technicalName}</span> : null}
+            <span>·</span>
+            <span>{active.sapVersion}</span>
+          </div>
+        </div>
+        <div className="flex shrink-0 items-center gap-0.5">
+          {peeking ? <button type="button" onClick={pin} aria-label="固定详情" className="grid h-7 w-7 place-items-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-slate-700"><Pin className="h-3.5 w-3.5" /></button> : null}
+          <button type="button" onClick={close} aria-label="关闭详情" className="grid h-7 w-7 place-items-center rounded-md border border-slate-200 bg-white text-slate-400 hover:bg-slate-50 hover:text-slate-700"><X className="h-3.5 w-3.5" /></button>
+        </div>
+      </div>
+
+      {peeking ? (
+        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
+          <p className="text-[12px] leading-relaxed text-slate-600">{text(active.summary)}</p>
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {'tcode' in active && active.tcode ? <span className="rounded bg-blue-50 px-2 py-1 font-mono text-[10px] text-blue-600">{active.tcode}</span> : null}
+            {'technicalName' in active ? <span className="rounded bg-slate-50 px-2 py-1 font-mono text-[10px] text-slate-500">{active.technicalName}</span> : null}
+            <span className="rounded bg-slate-50 px-2 py-1 text-[10px] text-slate-500">{module?.abbr}</span>
+            {step ? <span className="rounded bg-slate-50 px-2 py-1 text-[10px] text-slate-500">{objectsForStep(step).length} 对象</span> : null}
+            {object ? <span className="rounded bg-slate-50 px-2 py-1 text-[10px] text-slate-500">{objectSteps.length} 处使用</span> : null}
+          </div>
+          {step ? (
+            <div className="mt-4">
+              <div className="text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-400">开发对象</div>
+              <div className="mt-1.5 flex flex-wrap gap-1">
+                {objectsForStep(step).slice(0, 6).map((item) => (
+                  <button key={item.id} type="button" onClick={() => openObject(item.id)} className="rounded-md border border-slate-200 bg-white px-1.5 py-1 font-mono text-[10px] text-slate-500 hover:border-blue-200 hover:text-blue-700">{item.technicalName}</button>
+                ))}
               </div>
             </div>
-            <button
-              ref={closeRef}
-              type="button"
-              onClick={close}
-              aria-label="关闭详情"
-              className="grid h-7 w-7 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-400 hover:bg-slate-50 hover:text-slate-700"
-            >
-              <X className="h-3.5 w-3.5" />
-            </button>
+          ) : null}
+          {object ? (
+            <div className="mt-4">
+              <div className="text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-400">使用位置</div>
+              <div className="mt-1.5 space-y-1">
+                {objectSteps.slice(0, 4).map((item) => (
+                  <button key={item.id} type="button" onClick={() => openStepScene(item.id)} className="flex w-full items-center gap-2 rounded-lg border border-slate-100 px-2 py-1.5 text-left hover:border-blue-200">
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+                    <span className="min-w-0 flex-1 truncate text-[10px] text-slate-600">{text(item.title)}</span>
+                    <ChevronRight className="h-3 w-3 text-slate-300" />
+                  </button>
+                ))}
+                {!objectSteps.length ? <span className="text-[10px] text-slate-400">还没有被步骤引用</span> : null}
+              </div>
+            </div>
+          ) : null}
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            <button type="button" onClick={pin} className="flex h-8 items-center gap-1 rounded-lg bg-slate-900 px-2.5 text-[10px] font-medium text-white hover:bg-slate-700">固定详情 <Pin className="h-3 w-3" /></button>
+            <button type="button" onClick={openMap} className="flex h-8 items-center gap-1 rounded-lg border border-slate-200 px-2.5 text-[10px] text-slate-500 hover:bg-slate-50"><MapPin className="h-3 w-3" /> 在图中定位</button>
+            {object ? <button type="button" onClick={openLineage} className="flex h-8 items-center gap-1 rounded-lg border border-slate-200 px-2.5 text-[10px] text-slate-500 hover:bg-slate-50"><Network className="h-3 w-3" /> 对象脉络</button> : null}
           </div>
-
+        </div>
+      ) : (
+        <>
           <div role="tablist" aria-label="详情分类" className="flex shrink-0 gap-1 overflow-x-auto border-b border-slate-100 px-3 py-2">
             {tabs.map((item) => (
               <button
@@ -634,25 +706,38 @@ export function Inspector() {
                 aria-selected={tab === item.key}
                 onClick={() => setTab(item.key)}
                 className={cn(
-                  "whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[10px] transition-colors",
-                  tab === item.key ? "bg-slate-900 font-medium text-white" : "text-slate-500 hover:bg-slate-50 hover:text-slate-800",
+                  'whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[11px] transition-colors',
+                  tab === item.key ? 'bg-slate-900 font-medium text-white' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800',
                 )}
               >
                 {item.label}
               </button>
             ))}
           </div>
-
           <div role="tabpanel" aria-label={tabs.find((item) => item.key === tab)?.label} className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
             {isObject && object ? <ObjectBody object={object} tab={tab} /> : null}
             {!isObject && step ? <StepBody step={step} tab={tab} /> : null}
-            <div className="mt-5 flex items-center gap-1 border-t border-slate-100 pt-2 text-[8px] text-slate-300">
-              <BookOpen className="h-2.5 w-2.5" /> 内容来自 content/，可继续补充
+            <div className="mt-5 flex items-center gap-1 border-t border-slate-100 pt-2 text-[9px] text-slate-300">
+              <BookOpen className="h-3 w-3" /> 内容来自 content/，可继续补充
               <span className="ml-auto font-mono">ID {active.id}</span>
             </div>
           </div>
-        </motion.aside>
-      ) : null}
-    </AnimatePresence>
+          <div className="flex shrink-0 items-center gap-1.5 border-t border-slate-100 px-3 py-2">
+            {step ? (
+              <>
+                <button type="button" onClick={() => prevStep && openStep(prevStep.id)} disabled={!prevStep} className="flex h-8 items-center gap-1 rounded-lg border border-slate-200 px-2 text-[10px] text-slate-500 hover:bg-slate-50 disabled:opacity-40"><ArrowLeft className="h-3 w-3" /> 上一步</button>
+                <span className="text-[9px] text-slate-400">{stepIndex + 1} / {stepList.length}</span>
+                <button type="button" onClick={() => nextStep && openStep(nextStep.id)} disabled={!nextStep} className="flex h-8 items-center gap-1 rounded-lg border border-slate-200 px-2 text-[10px] text-slate-500 hover:bg-slate-50 disabled:opacity-40">下一步 <ArrowRight className="h-3 w-3" /></button>
+              </>
+            ) : (
+              <button type="button" onClick={openLineage} className="flex h-8 items-center gap-1 rounded-lg border border-slate-200 px-2 text-[10px] text-slate-500 hover:bg-slate-50"><Network className="h-3 w-3" /> 对象脉络</button>
+            )}
+            <button type="button" onClick={openMap} className="flex h-8 items-center gap-1 rounded-lg border border-slate-200 px-2 text-[10px] text-slate-500 hover:bg-slate-50"><MapPin className="h-3 w-3" /> 定位</button>
+            <button type="button" onClick={copyLink} className="ml-auto flex h-8 items-center gap-1 rounded-lg border border-slate-200 px-2 text-[10px] text-slate-500 hover:bg-slate-50">{copied ? '已复制' : '复制链接'}</button>
+            <button type="button" onClick={close} className="grid h-8 w-8 place-items-center rounded-lg border border-slate-200 text-slate-400 hover:bg-slate-50" aria-label="关闭详情"><X className="h-3.5 w-3.5" /></button>
+          </div>
+        </>
+      )}
+    </aside>
   );
 }

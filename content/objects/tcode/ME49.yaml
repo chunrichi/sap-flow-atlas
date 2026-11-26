@@ -1,0 +1,22 @@
+id: tcode:ME49
+type: tcode
+technicalName: ME49
+title:
+  zh: 价格比较
+  en: Price Comparison
+module: mm
+summary:
+  zh: 汇总多家供应商报价，比较价格、交货期与条件差异。
+  en: Compares quotations from multiple vendors on price, delivery time and conditions.
+relations:
+  - target: table:EKKO
+    kind: reads
+  - target: table:EKPO
+    kind: reads
+  - target: tcode:ME47
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

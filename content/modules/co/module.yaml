@@ -13,12 +13,15 @@ scope:
   - 成本中心
   - 产品成本
   - 利润中心
+  - 内部订单
+  - 订单结算
   - 获利分析
 keyFlows:
   - record-to-report
   - plan-to-produce
+  - maintain-to-availability
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

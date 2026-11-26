@@ -1,0 +1,17 @@
+id: table:FPLT
+type: table
+technicalName: FPLT
+title:
+  zh: 开票计划日期
+  en: Billing Plan Dates
+module: cs
+tableClass: transparent
+summary:
+  zh: 保存开票计划的分期日期与金额。
+  en: Stores billing plan dates and amounts per installment.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

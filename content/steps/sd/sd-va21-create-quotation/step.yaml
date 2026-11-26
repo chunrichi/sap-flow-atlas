@@ -1,0 +1,45 @@
+id: sd-va21-create-quotation
+type: step
+title:
+  zh: 创建报价
+  en: Create Quotation
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-presales
+flows:
+  - order-to-cash
+tcode: VA21
+summary:
+  zh: 基于询价或直接创建报价，引用定价条件并向客户承诺价格与有效期。
+  en: Creates a quotation from an inquiry or directly, referencing pricing conditions and committing price and validity.
+inputs:
+  - 询价单
+  - 价格条件
+  - 有效期
+  - 交货期
+outputs:
+  - 报价单号
+  - 报价价格
+  - 有效期
+rules:
+  - 报价价格由条件技术决定，手工改价必须记录原因。
+  - 报价过期后不能直接转为订单。
+painPoints:
+  - 条件记录缺失会带出 0 价格。
+  - 手工改价未记录原因会引发审计问题。
+objects:
+  - tcode:VA21
+  - table:VBAK
+  - table:VBAP
+  - table:PRCD_ELEMENTS
+  - tcode:VK11
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

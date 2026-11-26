@@ -1,0 +1,38 @@
+id: co-ke52-profit-center-change
+type: step
+title:
+  zh: 修改利润中心
+  en: Change Profit Center
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-profit-center
+flows:
+  - record-to-report
+tcode: KE52
+summary:
+  zh: 修改利润中心的名称、负责人或有效期。
+  en: Changes profit center name, owner or validity.
+inputs:
+  - 利润中心
+  - 变更字段
+outputs:
+  - 更新后的主数据
+rules:
+  - 已发生业务的历史归属不随主数据修改而重算。
+  - 关键字段变更需保留审计痕迹。
+painPoints:
+  - 直接修改编码导致历史数据断裂。
+  - 修改有效期使旧凭证无法归类。
+objects:
+  - tcode:KE52
+  - table:CEPC
+  - table:CEPCT
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

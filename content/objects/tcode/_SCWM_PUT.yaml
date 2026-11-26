@@ -1,0 +1,18 @@
+id: tcode:/SCWM/PUT
+type: tcode
+technicalName: /SCWM/PUT
+title:
+  zh: 上架
+  en: Putaway
+module: ewm
+summary:
+  zh: 将收货库存上架到目标仓位，完成入库作业。
+  en: Puts away received stock to destination bins to complete inbound execution.
+relations:
+  - target: table:/SCWM/ORDIM_C
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

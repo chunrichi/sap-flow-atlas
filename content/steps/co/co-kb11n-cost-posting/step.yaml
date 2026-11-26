@@ -8,6 +8,7 @@ modules:
   - co
 processes:
   - co-cost-center
+  - co-profit-center
 flows:
   - record-to-report
 tcode: KB11N
@@ -22,19 +23,18 @@ inputs:
 outputs:
   - CO 凭证
 rules:
-  - "重过账必须保留发送方/接收方与成本要素。"
+  - 重过账必须保留发送方/接收方与成本要素。
 painPoints:
-  - "只调金额不调成本对象会造成报表错位。"
+  - 只调金额不调成本对象会造成报表错位。
 objects:
-  - "tcode:KB11N"
-  - "table:COSP"
-  - "table:COSS"
-  - "table:ACDOCA"
+  - tcode:KB11N
+  - table:COSP
+  - table:COSS
+  - table:ACDOCA
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

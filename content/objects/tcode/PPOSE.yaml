@@ -1,0 +1,20 @@
+id: tcode:PPOSE
+type: tcode
+technicalName: PPOSE
+title:
+  zh: 显示组织结构
+  en: Display Organization Structure
+module: hr
+summary:
+  zh: 以组织架构图查看汇报关系与岗位占用。
+  en: Displays reporting lines and position occupancy as an organization chart.
+relations:
+  - target: table:HRP1000
+    kind: reads
+  - target: table:HRP1001
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

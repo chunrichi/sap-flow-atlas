@@ -1,0 +1,22 @@
+id: tcode:CA01
+type: tcode
+technicalName: CA01
+title:
+  zh: 创建工艺路线
+  en: Create Routing
+module: pp
+summary:
+  zh: 为物料定义工序、工作中心与标准工时。
+  en: Defines operations, work centers and standard times for a material.
+relations:
+  - target: table:PLKO
+    kind: writes
+  - target: table:PLPO
+    kind: writes
+  - target: table:PLAS
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

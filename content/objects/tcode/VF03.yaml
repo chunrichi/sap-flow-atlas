@@ -1,0 +1,20 @@
+id: tcode:VF03
+type: tcode
+technicalName: VF03
+title:
+  zh: 显示发票
+  en: Display Billing Document
+module: sd
+summary:
+  zh: 查看发票抬头、行项目、定价与会计凭证状态。
+  en: Displays billing header, items, pricing and accounting document status.
+relations:
+  - target: table:VBRK
+    kind: reads
+  - target: table:VBRP
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

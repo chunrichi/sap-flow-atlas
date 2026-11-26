@@ -1,0 +1,23 @@
+id: tcode:VF04
+type: tcode
+technicalName: VF04
+title:
+  zh: 开票到期清单
+  en: Billing Due List
+module: sd
+summary:
+  zh: 汇总可开票的交货、订单与退货，批量生成发票。
+  en: Collects deliveries, orders and returns due for billing and creates invoices in batches.
+relations:
+  - target: table:VBRK
+    kind: writes
+  - target: table:VBRP
+    kind: writes
+  - target: tcode:VF01
+    kind: related
+    note: 清单中逐项生成发票。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

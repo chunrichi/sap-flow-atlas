@@ -1,0 +1,20 @@
+id: tcode:DP90
+type: tcode
+technicalName: DP90
+title:
+  zh: 维护开票计划
+  en: Maintain Billing Plan
+module: cs
+summary:
+  zh: 定义服务合同的周期性开票日期与金额。
+  en: Defines periodic billing dates and amounts for a service contract.
+relations:
+  - target: table:FPLA
+    kind: writes
+  - target: table:FPLT
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

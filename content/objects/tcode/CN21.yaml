@@ -1,0 +1,22 @@
+id: tcode:CN21
+type: tcode
+technicalName: CN21
+title:
+  zh: 创建网络
+  en: Create Network
+module: ps
+summary:
+  zh: 为项目建立网络与活动，承载工序、关系和日期。
+  en: Creates networks and activities for a project with operations, relationships and dates.
+relations:
+  - target: table:AUFK
+    kind: writes
+  - target: table:AFKO
+    kind: writes
+  - target: table:PROJ
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

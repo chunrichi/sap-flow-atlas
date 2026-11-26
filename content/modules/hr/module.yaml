@@ -14,10 +14,11 @@ scope:
   - 人事
   - 时间
   - 薪酬
+  - 薪酬过账
 keyFlows:
   - hire-to-retire
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26

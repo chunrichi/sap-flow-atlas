@@ -1,0 +1,43 @@
+id: ewm-gr-post-inbound
+type: step
+title:
+  zh: 收货过账
+  en: Post Goods Receipt
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-inbound
+flows:
+  - procure-to-pay
+tcode: /SCWM/GR
+summary:
+  zh: 对入库交货做收货，生成仓库任务并更新库存。
+  en: Posts goods receipt for inbound deliveries, creating warehouse tasks and updating stock.
+inputs:
+  - 入库交货
+  - 收货数量
+outputs:
+  - 收货凭证
+  - 仓库任务
+rules:
+  - 收货数量不能超过交货数量。
+  - 差异需走例外处理，不能直接覆盖。
+painPoints:
+  - 收货未过账导致库存不可用。
+  - 批次或序列号未采集。
+objects:
+  - tcode:/SCWM/GR
+  - table:/SCWM/ORDIM_C
+  - table:MSEG
+  - tcode:/SCWM/PUT
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 收货在 FI 生成库存与应付暂估凭证。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

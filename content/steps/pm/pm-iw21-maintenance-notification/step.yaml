@@ -8,6 +8,7 @@ modules:
   - pm
 processes:
   - pm-maintenance-order
+  - pm-notification
 flows:
   - maintain-to-availability
 tcode: IW21
@@ -21,19 +22,22 @@ inputs:
 outputs:
   - 维护通知
 rules:
-  - "通知优先级与故障类别决定响应时限。"
+  - 通知优先级与故障类别决定响应时限。
 painPoints:
-  - "故障描述不清会导致派工错误。"
+  - 故障描述不清会导致派工错误。
 objects:
-  - "tcode:IW21"
-  - "table:QMEL"
-  - "table:EQUI"
-  - "table:IFLOT"
+  - tcode:IW21
+  - table:QMEL
+  - table:EQUI
+  - table:IFLOT
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 设备故障、点检异常或客户报修时才创建维护通知；计划性维护直接建单。
+  en: Create a maintenance notification only for equipment failures, inspection anomalies or customer reports; planned maintenance creates orders directly.

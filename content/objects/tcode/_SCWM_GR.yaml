@@ -1,0 +1,20 @@
+id: tcode:/SCWM/GR
+type: tcode
+technicalName: /SCWM/GR
+title:
+  zh: 收货
+  en: Goods Receipt
+module: ewm
+summary:
+  zh: 对入库交货做收货，生成仓库任务并更新库存。
+  en: Posts goods receipt for inbound deliveries, creating warehouse tasks and updating stock.
+relations:
+  - target: table:/SCWM/ORDIM_C
+    kind: writes
+  - target: tcode:/SCWM/PUT
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

@@ -160,6 +160,8 @@ title:
 module: sd
 flow: order-to-cash
 stage: order
+# core：主干流程；optional：条件触发；exception：异常/纠偏路径
+variant: core
 summary:
   zh: 从创建销售订单、可用性检查，到交货、开票与收款的 SD 核心流程。
   en: The core SD flow from sales order creation and ATP to delivery, billing and payment.
@@ -196,6 +198,15 @@ updatedAt: 2026-11-24
 
 约束：`edges` 的端点必须出现在 `steps` 中；流程默认必须无环，确需回退 / 重做的环用 `kind: loop` 显式标注。
 
+条件流程必须写 `trigger`，说明“什么时候才走这条路”；画布与轨道用虚线 + 徽标区分，不改变主干流程的排序：
+
+```yaml
+variant: optional   # 或 exception
+trigger:
+  zh: 客户启用信用管理且订单超限或触发冻结时才进入。
+  en: Only when credit management is active and the order is over limit or blocked.
+```
+
 ### 4.4 Step
 
 ```yaml
@@ -209,6 +220,8 @@ modules: [sd]
 processes: [sd-order-management]
 flows: [order-to-cash]
 tcode: VA01
+# 条件步骤：optional: true 时必须写 condition
+optional: false
 summary:
   zh: 销售订单的入口，确定客户、物料、数量、价格与交货日期。
   en: Entry point for a sales order: customer, material, quantity, pricing and delivery date.
@@ -237,6 +250,15 @@ status: reviewed
 sapVersion: S/4HANA 2023
 sources: [sap-help-sales-order, sap-help-va01]
 updatedAt: 2026-11-24
+```
+
+条件步骤示例（同一流程内可跳过，但流程整体仍是主干）：
+
+```yaml
+optional: true
+condition:
+  zh: 物料启用可用性检查且订单类型触发 ATP 时才执行。
+  en: Only when availability check is active and the order type triggers ATP.
 ```
 
 ### 4.5 Object
@@ -413,18 +435,20 @@ updatedAt: 2026-11-24
 
 ## 7. 校验规则
 
-`scripts/validate-content.ts` 必须覆盖：
+`scripts/build-content.ts` 必须覆盖：
 
 1. **唯一性**：所有实体 ID 全局唯一（对象按命名空间唯一）；
 2. **引用完整性**：`sources`、`objects`、`snippets`、`processes`、`flows`、`steps` 均可解析；
-3. **反向一致性**：`process.steps` 与 `step.processes` 双向一致；`flow.processes` 与 `process.flow` 一致；
+3. **反向一致性**：`process.steps` 与 `step.processes` 双向一致；`flow.processes` 包含 `process.flow` 的流程；`process.stage` 属于该 flow 的阶段；
 4. **场景完整性**：节点 `ref` 可解析；边端点存在；坐标与尺寸为有限数字；
 5. **流程合理性**：默认无环；`loop` 边必须有说明；每个步骤至少有 1 个前驱或后继（首尾除外）；
 6. **对象规范**：`id` 前缀与 `type` 一致；`technicalName` 与文件名一致；
 7. **代码规范**：`snippet.file` 存在；`annotations.lines` 不越界；
 8. **来源规范**：`source.url` 是 https；`accessedAt` 是 ISO 日期；`verified` 至少 1 条 `official-*` 来源；
 9. **文案规范**：`title.zh` / `summary.zh` 非空；长度限制；不含 HTML；
-10. **链接规范**：Markdown 内部链接指向存在的文件。
+10. **链接规范**：Markdown 内部链接指向存在的文件；
+11. **条件流程**：`variant` 非 `core` 时必须写 `trigger`（中英至少中文非空）；
+12. **条件步骤**：`optional: true` 时必须写 `condition`；非可选步骤不应残留 `condition`（warn）。
 
 错误分级：`error` 阻止构建，`warn` 输出报告；CI 对 `error` 失败，对 `warn` 只提示。
 

@@ -1,0 +1,17 @@
+id: table:PA2001
+type: table
+technicalName: PA2001
+title:
+  zh: 考勤
+  en: Attendance
+module: hr
+tableClass: transparent
+summary:
+  zh: 保存员工考勤记录与时间类型。
+  en: Stores employee attendance records and time types.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

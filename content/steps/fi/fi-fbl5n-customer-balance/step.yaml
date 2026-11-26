@@ -8,8 +8,11 @@ modules:
   - fi
 processes:
   - fi-accounts-receivable
+  - fi-ar-collection
+  - fi-service-collection
 flows:
   - order-to-cash
+  - service-to-cash
 tcode: FBL5N
 summary:
   zh: 按客户查看未清、已清项目与账龄。
@@ -22,18 +25,17 @@ outputs:
   - 未清项目
   - 账龄
 rules:
-  - "账龄口径与催款程序保持一致。"
+  - 账龄口径与催款程序保持一致。
 painPoints:
-  - "客户合并/拆分会影响历史余额对比。"
+  - 客户合并/拆分会影响历史余额对比。
 objects:
-  - "tcode:FBL5N"
-  - "table:BSID"
-  - "table:BSAD"
+  - tcode:FBL5N
+  - table:BSID
+  - table:BSAD
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

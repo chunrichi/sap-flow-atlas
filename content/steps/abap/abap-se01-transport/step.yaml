@@ -8,6 +8,7 @@ modules:
   - abap
 processes:
   - abap-enhancement
+  - abap-transport
 flows:
   - develop-to-deploy
 tcode: SE01
@@ -22,17 +23,16 @@ outputs:
 rules:
   - 传输请求必须包含完整依赖对象。
 painPoints:
-  - "跨系统传输缺少依赖对象会导致导入失败。"
+  - 跨系统传输缺少依赖对象会导致导入失败。
 objects:
-  - "tcode:SE01"
-  - "table:E070"
-  - "table:E071"
+  - tcode:SE01
+  - table:E070
+  - table:E071
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - abap-cheat-sheets
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

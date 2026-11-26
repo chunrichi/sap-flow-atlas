@@ -111,6 +111,27 @@ input {
     #ffffff;
 }
 
+
+.detail-dock {
+  animation: dock-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes dock-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-dock {
+    animation: none;
+  }
+}
 .hover-card {
   animation: hover-in 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-origin: left center;
@@ -218,6 +239,45 @@ input {
 .node-card.node-dimmed:hover,
 .node-card.node-dimmed:focus-visible {
   opacity: 0.7;
+}
+
+.node-card.node-optional {
+  border-style: dashed;
+  border-color: #fbbf24;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 235, 0.9), rgba(255, 255, 255, 0.96));
+}
+
+.node-card.node-exception {
+  border-style: dashed;
+  border-color: #fb7185;
+  background:
+    linear-gradient(180deg, rgba(255, 241, 242, 0.9), rgba(255, 255, 255, 0.96));
+}
+
+.node-card.node-optional-step {
+  border-style: dashed;
+  border-color: #fcd34d;
+}
+
+.variant-badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px dashed #fbbf24;
+  background: #fffbeb;
+  padding: 1px 6px;
+  font-size: 9px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #b45309;
+}
+
+.variant-badge-exception {
+  border-color: #fb7185;
+  background: #fff1f2;
+  color: #be123c;
 }
 
 .code-surface {
@@ -371,4 +431,54 @@ input {
   ::view-transition-group(*) {
     animation-duration: 1ms;
   }
+}
+/* Typography scale: 10 / 11 / 12 / 14 / 16 / 20
+   All arbitrary text-[*px] utilities collapse into these six steps. */
+:root {
+  --type-micro: 10px;
+  --type-meta: 11px;
+  --type-body: 12px;
+  --type-emphasis: 14px;
+  --type-title: 16px;
+  --type-page: 20px;
+}
+
+body {
+  font-size: var(--type-body);
+  line-height: 1.5;
+}
+
+.text-\[8px\],
+.text-\[9px\] {
+  font-size: var(--type-micro);
+  line-height: 1.4;
+}
+
+.text-\[10px\] {
+  font-size: var(--type-meta);
+  line-height: 1.45;
+}
+
+.text-\[11px\],
+.text-\[12px\] {
+  font-size: var(--type-body);
+  line-height: 1.5;
+}
+
+.text-\[13px\],
+.text-\[14px\] {
+  font-size: var(--type-emphasis);
+  line-height: 1.45;
+}
+
+.text-\[15px\],
+.text-\[16px\],
+.text-\[17px\] {
+  font-size: var(--type-title);
+  line-height: 1.35;
+}
+
+.text-\[20px\] {
+  font-size: var(--type-page);
+  line-height: 1.25;
 }

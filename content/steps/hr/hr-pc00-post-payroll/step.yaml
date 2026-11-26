@@ -1,0 +1,39 @@
+id: hr-pc00-post-payroll
+type: step
+title:
+  zh: 薪酬过账
+  en: Post Payroll
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-payroll
+flows:
+  - hire-to-retire
+tcode: PC00_M99_CEDT
+summary:
+  zh: 将薪酬结果过账到 FI/CO，形成工资费用与应付职工薪酬。
+  en: Posts payroll results to FI/CO, creating wage expenses and employee liabilities.
+inputs:
+  - 薪酬结果
+  - 过账期间
+outputs:
+  - 工资费用凭证
+  - 应付职工薪酬
+rules:
+  - 过账前需完成薪酬核算。
+  - 会计期间必须打开。
+painPoints:
+  - 科目映射缺失导致过账失败。
+  - 重复过账造成双倍费用。
+objects:
+  - tcode:PC00_M99_CEDT
+  - table:ACDOCA
+  - table:PA0008
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

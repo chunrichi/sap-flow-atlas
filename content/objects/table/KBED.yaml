@@ -1,0 +1,17 @@
+id: table:KBED
+type: table
+technicalName: KBED
+title:
+  zh: 能力需求
+  en: Capacity Requirements
+module: pp
+tableClass: transparent
+summary:
+  zh: 保存工序产生的能力需求与可用能力分配。
+  en: Stores capacity requirements from operations and capacity assignments.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

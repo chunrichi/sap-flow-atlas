@@ -1,0 +1,49 @@
+id: fi-service-collection
+type: process
+title:
+  zh: 服务应收与收款
+  en: Service Receivables and Collection
+module: fi
+flow: service-to-cash
+stage: collect
+summary:
+  zh: 服务开票后的收款、清账、催款与余额分析。
+  en: Collection, clearing, dunning and balance analysis after service billing.
+variant: core
+steps:
+  - fi-f28-post-incoming-payment
+  - fi-f32-clear-customer
+  - fi-f150-dunning
+  - fi-fbl5n-customer-balance
+edges:
+  - from: fi-f28-post-incoming-payment
+    to: fi-f32-clear-customer
+    kind: sequence
+    label:
+      zh: 录入收款
+      en: Post incoming payment
+  - from: fi-f32-clear-customer
+    to: fi-f150-dunning
+    kind: sequence
+    label:
+      zh: 客户清账
+      en: Clear customer
+  - from: fi-f150-dunning
+    to: fi-fbl5n-customer-balance
+    kind: sequence
+    label:
+      zh: 催款与余额
+      en: Dunning and balance
+roles:
+  - 应收会计
+  - 服务经理
+  - 出纳
+outcomes:
+  - 服务收款
+  - 清账结果
+  - 催款记录
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

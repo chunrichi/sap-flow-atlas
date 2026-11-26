@@ -1,0 +1,20 @@
+id: tcode:IP10
+type: tcode
+technicalName: IP10
+title:
+  zh: 维护计划排程
+  en: Schedule Maintenance Plan
+module: pm
+summary:
+  zh: 为维护计划生成到期日期与调用对象。
+  en: Generates due dates and call objects for maintenance plans.
+relations:
+  - target: table:MPLA
+    kind: writes
+  - target: table:MHIS
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

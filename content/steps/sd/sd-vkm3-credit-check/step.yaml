@@ -24,17 +24,20 @@ outputs:
 rules:
   - 信用检查在订单保存、交货等节点触发，结果决定后续是否可继续。
 painPoints:
-  - "信用检查通过后额度变化不会自动重检，需要重新释放。"
+  - 信用检查通过后额度变化不会自动重检，需要重新释放。
 objects:
-  - "tcode:VKM3"
-  - "table:KNKK"
-  - "table:BSID"
-  - "table:VBAK"
+  - tcode:VKM3
+  - table:KNKK
+  - table:BSID
+  - table:VBAK
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+optional: true
+condition:
+  zh: 客户启用信用管理且订单金额超过信用限额时才触发。
+  en: Only when credit management is active for the customer and the order exceeds the credit limit.

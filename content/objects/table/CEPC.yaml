@@ -1,0 +1,17 @@
+id: table:CEPC
+type: table
+technicalName: CEPC
+title:
+  zh: 利润中心主数据
+  en: Profit Center Master
+module: co
+tableClass: transparent
+summary:
+  zh: 保存利润中心主数据及其层级归属。
+  en: Stores profit center master data and hierarchy assignment.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

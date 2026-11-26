@@ -1,0 +1,20 @@
+id: tcode:PC00_M99_CALC
+type: tcode
+technicalName: PC00_M99_CALC
+title:
+  zh: 薪酬核算
+  en: Payroll Calculation
+module: hr
+summary:
+  zh: 运行工资核算并计算薪资、扣款与税。
+  en: Runs payroll calculation for salary, deductions and taxes.
+relations:
+  - target: table:PA0008
+    kind: reads
+  - target: table:T549A
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

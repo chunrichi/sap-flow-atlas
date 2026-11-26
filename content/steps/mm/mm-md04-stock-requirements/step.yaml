@@ -1,0 +1,46 @@
+id: mm-md04-stock-requirements
+type: step
+title:
+  zh: 查看库存需求清单
+  en: Check Stock/Requirements
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-demand
+flows:
+  - procure-to-pay
+tcode: MD04
+summary:
+  zh: 按物料查看库存、需求、采购与生产订单的实时供需平衡。
+  en: Checks real-time supply and demand for a material across stock, demand, purchasing and production.
+inputs:
+  - 物料
+  - 工厂
+  - 需求日期
+outputs:
+  - 供需清单
+  - 短缺/过剩信号
+rules:
+  - MRP 元素按日期排序，库存与未清单据共同决定净需求。
+  - 需求日期维护错误会直接改变采购建议。
+painPoints:
+  - 未清预留过多使清单噪声大。
+  - 跨工厂需求未汇总，误判短缺。
+objects:
+  - tcode:MD04
+  - table:MARC
+  - table:MARD
+  - table:PLAF
+  - table:EBAN
+snippets: []
+crossModule:
+  - module: pp
+    relation: demand
+    note: 清单中的计划订单与生产需求来自 PP 的 MRP 运行。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-purchase-order

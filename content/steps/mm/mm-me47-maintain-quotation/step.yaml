@@ -1,0 +1,43 @@
+id: mm-me47-maintain-quotation
+type: step
+title:
+  zh: 维护报价
+  en: Maintain Quotation
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-sourcing
+flows:
+  - procure-to-pay
+tcode: ME47
+summary:
+  zh: 录入供应商报价的价格、交货期与条件，形成可比较的报价行。
+  en: Records vendor quotation prices, delivery times and conditions as comparable quotation items.
+inputs:
+  - 询价单
+  - 供应商报价
+  - 交货期
+outputs:
+  - 报价行
+  - 价格与条件
+rules:
+  - 报价必须引用询价行。
+  - 含税与不含税口径必须统一。
+painPoints:
+  - 汇率与单位不一致导致比价失真。
+  - 报价有效期未维护。
+objects:
+  - tcode:ME47
+  - table:EKKO
+  - table:EKPO
+  - table:EKES
+  - tcode:ME49
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-purchase-order

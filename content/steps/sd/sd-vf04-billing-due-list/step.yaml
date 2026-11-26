@@ -1,0 +1,47 @@
+id: sd-vf04-billing-due-list
+type: step
+title:
+  zh: 处理开票到期清单
+  en: Process Billing Due List
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-billing
+flows:
+  - order-to-cash
+tcode: VF04
+summary:
+  zh: 汇总可开票的交货、订单与退货，批量生成发票。
+  en: Collects deliveries, orders and returns due for billing and generates invoices in batches.
+inputs:
+  - 开票日期
+  - 销售组织
+  - 交货单
+outputs:
+  - 到期清单
+  - 发票草稿
+rules:
+  - 只有已完成发货或已确认的交货才能进入清单。
+  - 开票日期决定收入归属的会计期间。
+painPoints:
+  - 交货未过账导致清单为空。
+  - 跨期开票造成收入与成本错配。
+objects:
+  - tcode:VF04
+  - table:VBRK
+  - table:VBRP
+  - table:LIKP
+  - table:LIPS
+  - tcode:VF01
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 开票过账后在 FI 生成应收与收入凭证。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-billing-document

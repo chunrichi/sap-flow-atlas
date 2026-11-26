@@ -1,0 +1,49 @@
+id: abap-testing
+type: process
+title:
+  zh: 测试与质量门禁
+  en: Testing and Quality Gates
+module: abap
+flow: develop-to-deploy
+stage: test
+summary:
+  zh: 从 ATC 静态检查、单元测试到短转储分析。
+  en: From ATC static checks and unit testing to dump analysis.
+variant: core
+steps:
+  - abap-atc-check
+  - abap-se38-test-exit
+  - abap-se37-test-function
+  - abap-st22-short-dump
+edges:
+  - from: abap-atc-check
+    to: abap-se38-test-exit
+    kind: sequence
+    label:
+      zh: 单元测试
+      en: Unit test
+  - from: abap-se38-test-exit
+    to: abap-se37-test-function
+    kind: sequence
+    label:
+      zh: 函数测试
+      en: Function test
+  - from: abap-se37-test-function
+    to: abap-st22-short-dump
+    kind: sequence
+    label:
+      zh: 异常分析
+      en: Analyze dump
+roles:
+  - ABAP 开发
+  - 测试工程师
+  - 功能顾问
+outcomes:
+  - ATC 结果
+  - 测试记录
+  - 转储分析
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

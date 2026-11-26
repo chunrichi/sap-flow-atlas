@@ -1,0 +1,41 @@
+id: fi-fagll03-gl-line-items
+type: step
+title:
+  zh: 查看总账行项目
+  en: Display G/L Line Items
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-reporting
+flows:
+  - record-to-report
+tcode: FAGLL03
+summary:
+  zh: 查看总账科目的行项目明细与凭证参考。
+  en: Displays G/L line item details and document references.
+inputs:
+  - 科目
+  - 公司代码
+  - 日期范围
+outputs:
+  - 行项目明细
+  - 凭证参考
+rules:
+  - 行项目可按凭证类型与业务范围筛选。
+  - 冲销凭证成对出现，核对时需配对查看。
+painPoints:
+  - 大数据量查询超时。
+  - 跨年查询需要切换期间。
+objects:
+  - tcode:FAGLL03
+  - table:ACDOCA
+  - table:BSEG
+  - tcode:FB08
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

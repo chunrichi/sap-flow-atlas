@@ -1,0 +1,52 @@
+id: hr-time
+type: process
+title:
+  zh: 时间管理与考勤
+  en: Time Management and Attendance
+module: hr
+flow: hire-to-retire
+stage: administer
+summary:
+  zh: 从考勤录入、加班维护到时间评估。
+  en: From attendance and overtime entry to time evaluation.
+variant: optional
+trigger:
+  zh: 按小时计薪、有加班/倒班/缺勤扣减或需要时间评估时才执行；固定月薪且不考勤的岗位可简化。
+  en: Only for hourly, shift-based, overtime or absence-driven roles that need time evaluation; fixed-salary roles without time tracking can skip it.
+steps:
+  - hr-pa30-maintain-master-data
+  - hr-pt01-attendance
+  - hr-pt50-overtime
+  - hr-pt60-time-evaluation
+edges:
+  - from: hr-pa30-maintain-master-data
+    to: hr-pt01-attendance
+    kind: sequence
+    label:
+      zh: 录入考勤
+      en: Record attendance
+  - from: hr-pt01-attendance
+    to: hr-pt50-overtime
+    kind: sequence
+    label:
+      zh: 维护加班
+      en: Maintain overtime
+  - from: hr-pt50-overtime
+    to: hr-pt60-time-evaluation
+    kind: sequence
+    label:
+      zh: 时间评估
+      en: Time evaluation
+roles:
+  - 考勤员
+  - HR 专员
+  - 薪酬专员
+outcomes:
+  - 考勤记录
+  - 加班记录
+  - 时间评估结果
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

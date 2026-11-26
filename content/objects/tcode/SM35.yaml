@@ -1,0 +1,20 @@
+id: tcode:SM35
+type: tcode
+technicalName: SM35
+title:
+  zh: 批输入会话
+  en: Batch Input Sessions
+module: abap
+summary:
+  zh: 监控、调试与执行批输入会话。
+  en: Monitors, debugs and executes batch input sessions.
+relations:
+  - target: table:APQI
+    kind: reads
+  - target: table:APQD
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

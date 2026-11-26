@@ -1,0 +1,48 @@
+id: abap-lsmw-migration
+type: step
+title:
+  zh: 配置迁移对象
+  en: Configure Migration Object
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-migration
+flows:
+  - develop-to-deploy
+tcode: LSMW
+summary:
+  zh: 定义迁移对象、源文件结构与字段映射。
+  en: Defines migration objects, source file structure and field mapping.
+optional: true
+condition:
+  zh: 上线、合并或主数据切换需要批量导入历史数据时才执行；日常业务录入不经过该步骤。
+  en: Only for cutover, mergers or master-data migration requiring bulk historical data loads; daily entry does not use it.
+inputs:
+  - 迁移对象
+  - 源文件
+  - 字段映射
+outputs:
+  - 批输入会话/IDoc
+rules:
+  - 先小批量验证再全量。
+  - 字段映射必须覆盖必填字段。
+painPoints:
+  - 源数据质量差，失败率高。
+  - 金额与单位未换算。
+objects:
+  - tcode:LSMW
+  - tcode:SM35
+  - table:APQI
+  - table:APQD
+snippets: []
+crossModule:
+  - module: mm
+    relation: data-migration
+    note: 示例迁移对象覆盖物料与供应商主数据。
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets

@@ -1,0 +1,40 @@
+id: pm-ip10-schedule-plan
+type: step
+title:
+  zh: 维护计划排程
+  en: Schedule Maintenance Plan
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-preventive
+flows:
+  - maintain-to-availability
+tcode: IP10
+summary:
+  zh: 为维护计划生成到期日期与调用对象。
+  en: Generates due dates and call objects for maintenance plans.
+inputs:
+  - 维护计划
+  - 开始日期
+  - 提前期
+outputs:
+  - 到期日期
+  - 调用对象
+rules:
+  - 排程按工厂日历计算。
+  - 提前期决定订单生成时间。
+painPoints:
+  - 工厂日历未更新导致日期偏移。
+  - 批量排程覆盖手工调整。
+objects:
+  - tcode:IP10
+  - table:MPLA
+  - table:MHIS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

@@ -1,0 +1,49 @@
+id: ps-budget
+type: process
+title:
+  zh: 项目预算与计划成本
+  en: Project Budget and Plan Cost
+module: ps
+flow: project-to-profit
+stage: budget
+summary:
+  zh: 从原始预算、预算查看、计划成本到预算追加。
+  en: From original budget and budget review to plan costs and supplements.
+variant: core
+steps:
+  - ps-cj30-project-budget
+  - ps-cj31-display-budget
+  - ps-cj40-plan-cost
+  - ps-cj32-budget-supplement
+edges:
+  - from: ps-cj30-project-budget
+    to: ps-cj31-display-budget
+    kind: sequence
+    label:
+      zh: 查看预算
+      en: Review budget
+  - from: ps-cj31-display-budget
+    to: ps-cj40-plan-cost
+    kind: sequence
+    label:
+      zh: 维护计划成本
+      en: Maintain plan cost
+  - from: ps-cj40-plan-cost
+    to: ps-cj32-budget-supplement
+    kind: sequence
+    label:
+      zh: 预算追加
+      en: Budget supplement
+roles:
+  - 项目会计
+  - 项目经理
+  - 成本控制
+outcomes:
+  - 原始预算
+  - 计划成本
+  - 追加预算
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

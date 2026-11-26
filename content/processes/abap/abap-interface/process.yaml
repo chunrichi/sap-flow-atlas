@@ -52,4 +52,8 @@ status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26
+variant: optional
+trigger:
+  zh: 需要与外部系统或非 SAP 系统交换数据时才执行；纯内部增强与报表不经过接口流程。
+  en: Only when data is exchanged with external or non-SAP systems; internal enhancements and reports do not use it.

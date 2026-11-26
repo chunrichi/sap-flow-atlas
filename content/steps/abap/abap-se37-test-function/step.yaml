@@ -1,0 +1,41 @@
+id: abap-se37-test-function
+type: step
+title:
+  zh: 测试函数模块
+  en: Test Function Module
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-testing
+flows:
+  - develop-to-deploy
+tcode: SE37
+summary:
+  zh: 在函数构建器中用测试序列验证函数模块的输入、输出与异常分支。
+  en: Uses test sequences in the Function Builder to verify function module inputs, outputs and exception branches.
+inputs:
+  - 函数模块
+  - 测试参数
+  - 预期结果
+outputs:
+  - 测试结果
+  - 调用日志
+rules:
+  - 函数模块必须已激活，且依赖对象可用。
+  - 测试需覆盖正常与异常分支，不能只跑成功路径。
+painPoints:
+  - 只测成功路径，异常处理未被验证。
+  - 在生产系统用真实数据测试，污染业务数据。
+objects:
+  - tcode:SE37
+  - table:TFDIR
+  - table:TRDIR
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+  - abap-cheat-sheets
+updatedAt: 2026-11-26

@@ -1,0 +1,22 @@
+id: tcode:AS03
+type: tcode
+technicalName: AS03
+title:
+  zh: 显示资产
+  en: Display Asset
+module: fi
+summary:
+  zh: 查看资产主数据、折旧范围与已过账业务。
+  en: Displays asset master data, depreciation areas and posted transactions.
+relations:
+  - target: table:ANLA
+    kind: reads
+  - target: table:ANLB
+    kind: reads
+  - target: table:ANLC
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

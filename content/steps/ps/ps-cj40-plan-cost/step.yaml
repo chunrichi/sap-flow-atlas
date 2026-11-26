@@ -1,0 +1,39 @@
+id: ps-cj40-plan-cost
+type: step
+title:
+  zh: 维护项目计划成本
+  en: Maintain Project Plan Costs
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-budget
+flows:
+  - project-to-profit
+tcode: CJ40
+summary:
+  zh: 按版本维护项目计划成本与年度分摊。
+  en: Maintains project plan costs and yearly distribution by version.
+inputs:
+  - 项目
+  - 计划版本
+  - 年度金额
+outputs:
+  - 计划成本
+rules:
+  - 计划成本按成本要素与年度分摊。
+  - 不同版本不能混用。
+painPoints:
+  - 计划与预算口径不一致。
+  - 未按 WBS 分摊，无法控制。
+objects:
+  - tcode:CJ40
+  - table:COSP
+  - table:PRPS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

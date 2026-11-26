@@ -8,6 +8,7 @@ modules:
   - hr
 processes:
   - hr-onboarding
+  - hr-org
 flows:
   - hire-to-retire
 tcode: PPOME
@@ -21,18 +22,17 @@ inputs:
 outputs:
   - 组织架构
 rules:
-  - "组织变更需同时维护岗位与汇报关系。"
+  - 组织变更需同时维护岗位与汇报关系。
 painPoints:
-  - "只改组织单位不改岗位会造成编制不一致。"
+  - 只改组织单位不改岗位会造成编制不一致。
 objects:
-  - "tcode:PPOME"
-  - "table:HRP1000"
-  - "table:HRP1001"
+  - tcode:PPOME
+  - table:HRP1000
+  - table:HRP1001
 snippets: []
-crossModule:
-  []
+crossModule: []
 status: draft
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-25
+updatedAt: 2026-11-26

@@ -1,0 +1,18 @@
+id: tcode:/SCWM/PRDI
+type: tcode
+technicalName: /SCWM/PRDI
+title:
+  zh: 创建入库交货
+  en: Create Inbound Delivery
+module: ewm
+summary:
+  zh: 在 EWM 中创建或接收入库交货单，作为收货与上架的依据。
+  en: Creates or receives inbound deliveries in EWM as the basis for goods receipt and putaway.
+relations:
+  - target: table:/SCWM/ORDIM_O
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

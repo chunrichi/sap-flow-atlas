@@ -1,0 +1,20 @@
+id: tcode:IW22
+type: tcode
+technicalName: IW22
+title:
+  zh: 修改维护通知
+  en: Change Maintenance Notification
+module: pm
+summary:
+  zh: 补充故障描述、原因与措施，推进通知处理。
+  en: Adds fault description, causes and actions to progress a notification.
+relations:
+  - target: table:QMEL
+    kind: writes
+  - target: table:IHPA
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

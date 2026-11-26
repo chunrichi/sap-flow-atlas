@@ -1,0 +1,17 @@
+id: table:STPO
+type: table
+technicalName: STPO
+title:
+  zh: BOM 行项目
+  en: BOM Item
+module: pp
+tableClass: transparent
+summary:
+  zh: 保存 BOM 组件、数量、单位与项目类别。
+  en: Stores BOM components, quantities, units and item categories.
+relations: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

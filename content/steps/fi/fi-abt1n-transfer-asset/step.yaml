@@ -1,0 +1,41 @@
+id: fi-abt1n-transfer-asset
+type: step
+title:
+  zh: 资产转移
+  en: Transfer Asset
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-asset-retirement
+flows:
+  - acquire-to-retire
+tcode: ABT1N
+summary:
+  zh: 在成本中心、功能位置或公司代码之间转移资产。
+  en: Transfers assets between cost centers, functional locations or company codes.
+inputs:
+  - 资产编号
+  - 接收成本中心或资产
+  - 转移日期
+outputs:
+  - 转移凭证
+  - 新的资产归属
+rules:
+  - 转移双方的公司代码与折旧范围必须兼容。
+  - 转移后折旧继续按剩余年限计算。
+painPoints:
+  - 转移未更新成本中心，导致费用归属错误。
+  - 重复转移产生负值或重复折旧。
+objects:
+  - tcode:ABT1N
+  - table:ANLA
+  - table:ANLC
+  - table:CSKS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana

@@ -1,0 +1,23 @@
+id: tcode:ABAVN
+type: tcode
+technicalName: ABAVN
+title:
+  zh: 资产报废
+  en: Retire Asset by Scrapping
+module: fi
+summary:
+  zh: 无收入报废资产，冲减资产原值与累计折旧。
+  en: Retires an asset without revenue, reducing acquisition cost and accumulated depreciation.
+relations:
+  - target: table:ANLA
+    kind: writes
+  - target: table:ANLC
+    kind: writes
+  - target: tcode:ABAON
+    kind: related
+    note: 有收入报废使用 ABAON。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: 2026-11-26

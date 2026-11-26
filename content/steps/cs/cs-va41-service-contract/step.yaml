@@ -1,0 +1,47 @@
+id: cs-va41-service-contract
+type: step
+title:
+  zh: 创建服务合同
+  en: Create Service Contract
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-contract
+flows:
+  - service-to-cash
+tcode: VA41
+summary:
+  zh: 建立含服务范围、周期与开票计划的合同。
+  en: Creates a contract with service scope, cycles and a billing plan.
+optional: true
+condition:
+  zh: 客户签订年度或周期服务合同、需要按计划生成服务订单或开票时才执行；一次性服务可直接建单。
+  en: Only when a customer signs an annual or periodic service contract that drives service orders or billing; one-off services can be created directly.
+inputs:
+  - 客户
+  - 合同类型
+  - 服务范围
+  - 有效期
+outputs:
+  - 服务合同
+rules:
+  - 合同必须引用客户与物料/服务。
+  - 有效期决定开票周期。
+painPoints:
+  - 合同类型选错导致无法生成服务订单。
+  - 价格条件缺失导致开票金额为零。
+objects:
+  - tcode:VA41
+  - table:VBAK
+  - table:VBAP
+  - table:VBKD
+  - table:FPLA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+updatedAt: 2026-11-26
+sources:
+  - sap-help-s4hana
+  - api-sales-order

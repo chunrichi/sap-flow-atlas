@@ -10,16 +10,19 @@ summary:
   zh: 从售前、销售订单、定价与可用性检查，到交货、开票与收款的完整销售链路。
   en: The end-to-end sales chain from pre-sales and sales orders to pricing, delivery, billing and payment.
 scope:
+  - 售前询价报价
   - 销售订单
   - 定价
   - 可用性检查
   - 交货
   - 开票
   - 信用管理
+  - 退货与贷项
 keyFlows:
   - order-to-cash
+  - service-to-cash
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:
   - sap-help-s4hana
-updatedAt: 2026-11-24
+updatedAt: 2026-11-26
