@@ -1,0 +1,41 @@
+id: hr-pa30-final-pay
+type: step
+title:
+  zh: 维护离职结算数据
+  en: Maintain Final Pay Data
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-offboarding
+flows:
+  - hire-to-retire
+tcode: PA30
+summary:
+  zh: 维护离职员工的末次薪酬、年假折算、奖金与扣款数据。
+  en: Maintains final pay, leave encashment, bonus and deductions for the departing employee.
+inputs:
+  - 员工
+  - 离职日期
+  - 薪酬项
+  - 银行信息
+outputs:
+  - 末次薪酬数据
+  - 扣款明细
+rules:
+  - 年假折算与奖金按公司政策执行。
+  - 银行信息必须有效，否则末次薪酬退回。
+painPoints:
+  - 年假未折算，离职后产生争议。
+  - 银行账号已注销，末次薪酬发放失败。
+objects:
+  - tcode:PA30
+  - table:PA0008
+  - table:PA0009
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

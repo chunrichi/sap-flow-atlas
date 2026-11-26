@@ -9,6 +9,7 @@ modules:
 processes:
   - hr-onboarding
   - hr-org
+  - hr-organizational-change
 flows:
   - hire-to-retire
 tcode: PPOME

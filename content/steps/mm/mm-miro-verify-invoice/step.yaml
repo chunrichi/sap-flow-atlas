@@ -10,6 +10,7 @@ modules:
 processes:
   - mm-procurement
   - fi-accounts-payable
+  - fi-invoice-block
 flows:
   - procure-to-pay
 tcode: MIRO
@@ -35,6 +36,7 @@ objects:
   - "tcode:MIRO"
   - "table:RBKP"
   - "bapi:BAPI_INCINV_CREATE"
+  - bapi:BAPI_INCOMINGINVOICE_CREATE
 snippets:
   []
 crossModule:

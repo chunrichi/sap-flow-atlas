@@ -1,0 +1,19 @@
+id: cds:I_Equipment
+type: cds
+technicalName: I_Equipment
+title:
+  zh: 设备接口视图
+  en: Equipment Interface View
+module: pm
+viewType: interface
+summary:
+  zh: 设备主数据的接口视图，供服务、维护与 API 复用。
+  en: Interface view for equipment master data reused by service, maintenance and APIs.
+relations:
+  - target: table:EQUI
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,21 @@
+id: table:AFVC
+type: table
+technicalName: AFVC
+title:
+  zh: 订单/网络活动
+  en: Order and Network Operations
+module: pp
+tableClass: transparent
+summary:
+  zh: 保存生产订单与项目网络的活动、工作中心与工期。
+  en: Stores operations, work centers and durations for production orders and project networks.
+relations:
+  - target: tcode:CN25
+    kind: readBy
+  - target: tcode:CN22
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

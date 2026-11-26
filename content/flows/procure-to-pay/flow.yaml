@@ -47,6 +47,10 @@ processes:
   - mm-sourcing
   - fi-payment
   - ewm-inbound
+  - mm-goods-receipt
+  - mm-vendor-returns
+  - ewm-physical-inventory
+  - fi-invoice-block
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:

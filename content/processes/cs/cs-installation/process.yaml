@@ -1,0 +1,52 @@
+id: cs-installation
+type: process
+title:
+  zh: 设备安装与移交
+  en: Equipment Installation and Handover
+module: cs
+flow: service-to-cash
+stage: execute
+summary:
+  zh: 从设备主数据创建、现场安装到服务工单确认的设备交付链路。
+  en: The equipment delivery chain from master data creation and on-site installation to service order confirmation.
+variant: optional
+trigger:
+  zh: 新设备交付、搬迁或客户现场安装/更换时才执行；纯维修不经过。
+  en: Only for new equipment delivery, relocation or on-site installation or replacement; pure repair does not use it.
+steps:
+  - cs-ie01-create-equipment
+  - cs-ie02-install-equipment
+  - cs-iw31-service-order
+  - cs-iw41-service-confirmation
+edges:
+  - from: cs-ie01-create-equipment
+    to: cs-ie02-install-equipment
+    kind: sequence
+    label:
+      zh: 安装设备
+      en: Install equipment
+  - from: cs-ie02-install-equipment
+    to: cs-iw31-service-order
+    kind: sequence
+    label:
+      zh: 创建安装工单
+      en: Create installation order
+  - from: cs-iw31-service-order
+    to: cs-iw41-service-confirmation
+    kind: sequence
+    label:
+      zh: 移交确认
+      en: Confirm handover
+roles:
+  - 服务工程师
+  - 设备管理员
+  - 客服
+outcomes:
+  - 设备主数据
+  - 安装记录
+  - 服务工单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

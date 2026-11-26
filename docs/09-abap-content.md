@@ -186,7 +186,7 @@ edges:
 - **接口**：WE30 / WE20 / SEGW / WE02 / SM58，IDoc、OData、RFC 监控；
 - **性能**：ST05 / SAT / ST12 + SE38 代码优化；
 - **传输**：SE01 / STMS / E070 / E071；
-- **代码**：14 段可读示例，覆盖 Open SQL、BAPI、用户出口、IDoc、成本与项目查询。
+- **代码**：19 段可读示例，覆盖 Open SQL、BAPI、用户出口、IDoc、OData、授权、后台作业、工作流、成本与项目查询。
 
 ## 9. 后续可以加的 ABAP 视图
 

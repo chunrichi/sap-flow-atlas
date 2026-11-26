@@ -1,0 +1,27 @@
+id: abap-authority-check
+type: snippet
+language: abap
+title:
+  zh: 在代码中做授权检查
+  en: Check Authorization in ABAP
+objects:
+  - tcode:SU53
+  - table:AGR_1251
+  - tcode:VA01
+file: abap/authority-check.abap
+summary:
+  zh: 对事务码与销售范围做 AUTHORITY-CHECK，失败时用 SU53 定位缺失的权限对象。
+  en: Runs AUTHORITY-CHECK on transaction and sales area and uses SU53 to locate missing authorization objects on failure.
+annotations:
+  - lines: 1-7
+    note: 检查事务码 S_TCODE。
+  - lines: 9-17
+    note: 检查销售组织 V_VBAK_VKO 的三个字段。
+  - lines: 19-20
+    note: 成功提示；失败时把对象与字段交给 SU53。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

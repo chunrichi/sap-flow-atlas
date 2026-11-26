@@ -1,0 +1,19 @@
+id: odata:API_BILLING_DOCUMENT_SRV
+type: odata
+technicalName: API_BILLING_DOCUMENT_SRV
+title:
+  zh: 开票凭证 OData 服务
+  en: Billing Document OData Service
+module: sd
+serviceVersion: v2
+summary:
+  zh: 开票凭证的 OData V2 服务，支持读取、创建与取消。
+  en: OData V2 service for billing documents supporting read, create and cancel.
+relations:
+  - target: cds:I_BillingDocument
+    kind: basedOn
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

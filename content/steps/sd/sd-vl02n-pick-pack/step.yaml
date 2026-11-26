@@ -1,0 +1,46 @@
+id: sd-vl02n-pick-pack
+type: step
+title:
+  zh: 拣配与包装
+  en: Picking and Packing
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-delivery-processing
+flows:
+  - order-to-cash
+tcode: VL02N
+summary:
+  zh: 在交货单中拣配库存、指定批次或序列号，并完成包装与发货准备。
+  en: Picks stock in the delivery, assigns batches or serial numbers and completes packing for goods issue.
+inputs:
+  - 交货单
+  - 拣配数量
+  - 批次/序列号
+  - 包装信息
+outputs:
+  - 拣配状态
+  - 包装数据
+  - 发货准备
+rules:
+  - 批次与序列号必须与库存一致。
+  - 拣配差异要在发货过账前处理，过账后只能冲销。
+painPoints:
+  - 批次拆分导致拣配数量不足。
+  - 包装数据未维护会阻塞发货。
+objects:
+  - tcode:VL02N
+  - table:LIPS
+  - table:VBUP
+  - enhancement:MV50AFZ1
+snippets: []
+crossModule:
+  - module: ewm
+    relation: shared-object
+    note: 拣配结果决定 EWM 仓库任务与发货过账。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

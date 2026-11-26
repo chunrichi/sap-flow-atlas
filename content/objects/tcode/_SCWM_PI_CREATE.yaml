@@ -1,0 +1,20 @@
+type: tcode
+module: ewm
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+id: tcode:/SCWM/PI_CREATE
+technicalName: /SCWM/PI_CREATE
+title:
+  zh: 创建盘点凭证
+  en: Create Physical Inventory Document
+summary:
+  zh: 按库位、物料或批次创建 EWM 盘点凭证并冻结盘点期间库存变动。
+  en: Creates an EWM physical inventory document by bin, material or batch and freezes stock changes during counting.
+relations:
+  - target: table:/SCWM/QUAN
+    kind: reads
+  - target: process:ewm-physical-inventory
+    kind: usedBy

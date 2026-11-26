@@ -1,0 +1,44 @@
+id: ps-cn25-confirm-network
+type: step
+title:
+  zh: 确认网络活动
+  en: Confirm Network Activities
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-resource-planning
+flows:
+  - project-to-profit
+tcode: CN25
+summary:
+  zh: 对网络活动做进度与工时确认，回写实际成本。
+  en: Confirms network activity progress and hours, updating actual costs.
+inputs:
+  - 网络活动
+  - 确认工时
+  - 完成比例
+outputs:
+  - 活动确认
+  - 实际成本
+rules:
+  - 确认数量不能超过计划数量。
+  - 确认后回写实际成本，影响项目结算与获利分析。
+painPoints:
+  - 确认跨期，导致实际成本落在错误期间。
+  - 只确认工时未确认进度，挣值分析失真。
+objects:
+  - tcode:CN25
+  - table:AFVC
+  - table:PROJ
+  - table:COEP
+snippets: []
+crossModule:
+  - module: co
+    relation: settlement
+    note: 活动确认回写实际成本，进入项目结算。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

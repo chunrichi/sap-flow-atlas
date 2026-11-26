@@ -1,0 +1,19 @@
+id: table:IMRG
+type: table
+technicalName: IMRG
+title:
+  zh: 测量凭证
+  en: Measurement Document
+module: pm
+tableClass: transparent
+summary:
+  zh: 保存测量点读数、时间戳与超限标志。
+  en: Stores measuring point readings, timestamps and limit indicators.
+relations:
+  - target: tcode:IK11
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

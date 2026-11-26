@@ -1,0 +1,29 @@
+id: abap-job-submit
+type: snippet
+language: abap
+title:
+  zh: 提交后台作业
+  en: Submit a Background Job
+objects:
+  - tcode:SM36
+  - job:Z_MRP_NIGHTLY
+  - table:TBTCO
+file: abap/job-submit.abap
+summary:
+  zh: 用 JOB_OPEN、SUBMIT VIA JOB 与 JOB_CLOSE 提交夜间 MRP 作业，并处理各阶段异常。
+  en: Submits the nightly MRP job with JOB_OPEN, SUBMIT VIA JOB and JOB_CLOSE, handling exceptions at each stage.
+annotations:
+  - lines: 1-3
+    note: 作业名与报表程序；生产环境建议从配置读取。
+  - lines: 5-18
+    note: 打开作业，失败时直接返回。
+  - lines: 20-22
+    note: 把报表作为作业步骤提交。
+  - lines: 24-40
+    note: 立即启动并关闭作业，处理异常。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

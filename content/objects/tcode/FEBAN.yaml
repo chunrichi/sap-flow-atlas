@@ -1,0 +1,22 @@
+id: tcode:FEBAN
+type: tcode
+technicalName: FEBAN
+title:
+  zh: 银行对账单后续处理
+  en: Bank Statement Postprocessing
+module: fi
+summary:
+  zh: 对银行对账单项目做清账、过账或挂起处理。
+  en: Clears, posts or parks bank statement items during postprocessing.
+relations:
+  - target: table:FEBKO
+    kind: reads
+  - target: table:FEBEP
+    kind: reads
+  - target: process:fi-bank-reconciliation
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

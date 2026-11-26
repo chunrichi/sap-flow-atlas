@@ -1,0 +1,32 @@
+id: abap-idoc-orders-inbound
+type: snippet
+language: abap
+title:
+  zh: 处理入站 ORDERS05 IDoc
+  en: Process Inbound ORDERS05 IDoc
+objects:
+  - idoc:ORDERS05
+  - table:EDIDC
+  - table:EDID4
+  - tcode:WE02
+file: abap/idoc-orders-inbound.abap
+summary:
+  zh: 读取 IDoc 控制记录与数据段，检查状态后交给入站处理函数，是接口排查与补发的起点。
+  en: Reads the IDoc control record and data segments, checks the status and hands it to inbound processing, a starting point for interface monitoring and replay.
+annotations:
+  - lines: 1-2
+    note: 输入参数：IDoc 编号。
+  - lines: 4-12
+    note: 读取控制记录；不存在时直接返回。
+  - lines: 14-17
+    note: 只有状态 64 才可交给入站处理。
+  - lines: 19-24
+    note: 读取数据段，保留段名与段数据。
+  - lines: 26-36
+    note: 调用入站函数并处理异常。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

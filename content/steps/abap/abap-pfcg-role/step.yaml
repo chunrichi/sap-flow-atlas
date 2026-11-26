@@ -1,0 +1,40 @@
+id: abap-pfcg-role
+type: step
+title:
+  zh: 维护角色
+  en: Maintain Role
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-authorization
+flows:
+  - develop-to-deploy
+tcode: PFCG
+summary:
+  zh: 维护角色菜单、权限对象与用户分配。
+  en: Maintains role menus, authorization objects and user assignments.
+inputs:
+  - 角色名
+  - 菜单
+  - 权限对象
+outputs:
+  - 角色
+  - 权限参数文件
+rules:
+  - 按最小权限原则分配。
+  - 角色变更需走传输，不能只在生产手工改。
+painPoints:
+  - 角色复制后权限过大，未做裁剪。
+  - 生产手工改角色，测试与生产不一致。
+objects:
+  - tcode:PFCG
+  - table:AGR_1251
+  - table:AGR_USERS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

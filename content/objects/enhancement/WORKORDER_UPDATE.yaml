@@ -1,0 +1,19 @@
+id: enhancement:WORKORDER_UPDATE
+type: enhancement
+technicalName: WORKORDER_UPDATE
+title:
+  zh: 维护订单 BAdI
+  en: Maintenance Order BAdI
+module: pm
+subtype: badi
+summary:
+  zh: 维护/服务订单保存与状态变更时的 BAdI，可校验工序与成本。
+  en: BAdI during maintenance and service order save or status change for operation and cost checks.
+relations:
+  - target: tcode:IW31
+    kind: enhances
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

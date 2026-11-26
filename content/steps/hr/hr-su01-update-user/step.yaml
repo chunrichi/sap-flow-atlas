@@ -1,0 +1,40 @@
+id: hr-su01-update-user
+type: step
+title:
+  zh: 更新系统用户权限
+  en: Update System User Access
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-organizational-change
+flows:
+  - hire-to-retire
+tcode: SU01
+summary:
+  zh: 按新岗位调整用户角色与有效期，撤销不再需要的权限。
+  en: Adjusts user roles and validity for the new position and removes unnecessary access.
+inputs:
+  - 用户
+  - 角色
+  - 有效期
+outputs:
+  - 用户角色分配
+  - 权限变更记录
+rules:
+  - 角色按岗位最小权限分配。
+  - 转岗后及时撤销旧岗位权限。
+painPoints:
+  - 只加新角色，未撤销旧权限，形成权限累积。
+  - 生效日期与人事事件不一致，出现空窗期。
+objects:
+  - tcode:SU01
+  - table:USR02
+  - table:AGR_USERS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

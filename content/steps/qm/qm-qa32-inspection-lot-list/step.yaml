@@ -1,0 +1,44 @@
+id: qm-qa32-inspection-lot-list
+type: step
+title:
+  zh: 查看检验批清单
+  en: Review Inspection Lot List
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-inspection-result
+flows:
+  - plan-to-produce
+tcode: QA32
+summary:
+  zh: 按物料、工厂与状态筛选检验批，集中录入结果或做使用决策。
+  en: Filters inspection lots by material, plant and status for centralized results or usage decisions.
+inputs:
+  - 物料
+  - 工厂
+  - 检验批状态
+outputs:
+  - 检验批清单
+  - 待决策批次
+rules:
+  - 批量决策前要逐批核对关键特性。
+  - 已决策批次只读，修改需先重置决策。
+painPoints:
+  - 批量决策把不合格批次误放行。
+  - 状态筛选遗漏待检批次，库存长期冻结。
+objects:
+  - tcode:QA32
+  - table:QALS
+  - table:QAVE
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+optional: true
+condition:
+  zh: 只在需要批量筛选检验批时执行；单批可直接在 QA01/QA11 处理。
+  en: Only when filtering inspection lots in bulk; a single lot can be handled in QA01/QA11.

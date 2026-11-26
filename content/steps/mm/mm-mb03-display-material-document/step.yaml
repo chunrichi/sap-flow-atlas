@@ -1,0 +1,51 @@
+id: mm-mb03-display-material-document
+type: step
+title:
+  zh: 查看物料凭证
+  en: Display Material Document
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-goods-receipt
+flows:
+  - procure-to-pay
+tcode: MB03
+summary:
+  zh: 查看收货物料凭证的抬头、行项目与库存过账结果，必要时发起冲销。
+  en: Reviews material document header, items and stock postings and initiates a reversal when needed.
+inputs:
+  - 物料凭证号
+  - 年度
+outputs:
+  - 凭证抬头
+  - 行项目
+  - 冲销状态
+rules:
+  - 冲销必须引用原凭证，不能单独新建反向凭证。
+  - 已后续处理的凭证不能直接冲销。
+painPoints:
+  - 收货数量与采购订单不一致时，需同时看物料凭证与发票。
+  - 跨年冲销要核对年度与期间。
+objects:
+  - tcode:MB03
+  - table:MKPF
+  - table:MSEG
+  - bapi:BAPI_GOODSMVT_CANCEL
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 收货过账生成 FI 会计凭证。
+  - module: qm
+    relation: inspection
+    note: 收货可触发检验批与质量检验。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+optional: true
+condition:
+  zh: 只在需要查看或冲销物料凭证时执行；正常收货可跳过。
+  en: Only when reviewing or reversing a material document; normal receipts can skip it.

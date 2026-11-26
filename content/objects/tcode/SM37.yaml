@@ -1,0 +1,20 @@
+id: tcode:SM37
+type: tcode
+technicalName: SM37
+title:
+  zh: 监控后台作业
+  en: Background Job Monitor
+module: abap
+summary:
+  zh: 查看作业状态、日志与运行时长，支持重启与删除。
+  en: Monitors job status, logs and runtimes, with restart and delete actions.
+relations:
+  - target: table:TBTCO
+    kind: reads
+  - target: job:Z_MRP_NIGHTLY
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

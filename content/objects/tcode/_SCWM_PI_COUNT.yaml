@@ -1,0 +1,20 @@
+type: tcode
+module: ewm
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+id: tcode:/SCWM/PI_COUNT
+technicalName: /SCWM/PI_COUNT
+title:
+  zh: 录入盘点结果
+  en: Enter Physical Inventory Count
+summary:
+  zh: 录入实盘数量并生成盘点差异。
+  en: Records physical counts and generates inventory differences.
+relations:
+  - target: table:/SCWM/QUAN
+    kind: reads
+  - target: process:ewm-physical-inventory
+    kind: usedBy

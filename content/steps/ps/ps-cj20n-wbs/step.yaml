@@ -9,6 +9,7 @@ modules:
 processes:
   - ps-project-execution
   - ps-setup
+  - ps-resource-planning
 flows:
   - project-to-profit
 tcode: CJ20N

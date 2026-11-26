@@ -1,0 +1,39 @@
+id: abap-su24-auth-check
+type: step
+title:
+  zh: 维护权限检查
+  en: Maintain Authorization Checks
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-authorization
+flows:
+  - develop-to-deploy
+tcode: SU24
+summary:
+  zh: 维护事务码的权限对象检查值与建议值。
+  en: Maintains authorization object check values and proposals for transactions.
+inputs:
+  - 事务码
+  - 权限对象
+  - 检查值
+outputs:
+  - 权限检查配置
+rules:
+  - 检查值要与业务字段一致。
+  - 修改前评估对其他角色的影响。
+painPoints:
+  - 检查值过宽，权限形同虚设。
+  - 检查值缺失，用户频繁遇到授权失败。
+objects:
+  - tcode:SU24
+  - table:AGR_1251
+  - tcode:PFCG
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,41 @@
+id: co-profitability-analysis
+type: process
+title:
+  zh: 获利分析与边际贡献
+  en: Profitability Analysis and Contribution Margin
+module: co
+flow: record-to-report
+stage: analysis
+summary:
+  zh: 按客户、产品与区域查看获利段、边际贡献与盈利能力。
+  en: Reviews profitability segments, contribution margin and profitability by customer, product and region.
+steps:
+  - co-ke24-profitability-line-items
+  - co-kea0-profitability-analysis
+  - co-ke30-profit-center-report
+edges:
+  - from: co-ke24-profitability-line-items
+    to: co-kea0-profitability-analysis
+    kind: sequence
+    label:
+      zh: 汇总获利段
+      en: Aggregate segments
+  - from: co-kea0-profitability-analysis
+    to: co-ke30-profit-center-report
+    kind: sequence
+    label:
+      zh: 对照利润中心
+      en: Compare profit centers
+roles:
+  - 管理会计
+  - 销售经理
+  - 财务经理
+outcomes:
+  - 获利段报表
+  - 边际贡献
+  - 客户/产品盈利分析
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

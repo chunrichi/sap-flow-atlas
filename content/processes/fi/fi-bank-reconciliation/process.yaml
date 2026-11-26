@@ -1,0 +1,48 @@
+id: fi-bank-reconciliation
+type: process
+title:
+  zh: 银行对账
+  en: Bank Reconciliation
+module: fi
+flow: record-to-report
+stage: posting
+summary:
+  zh: 从银行对账单导入、后续处理到总账过账与行项目核对的资金对账链路。
+  en: The bank reconciliation chain from statement import and postprocessing to GL posting and line item review.
+steps:
+  - fi-ff67-manual-bank-statement
+  - fi-feban-postprocess-statement
+  - fi-fb50-gl-journal
+  - fi-fagll03-gl-line-items
+edges:
+  - from: fi-ff67-manual-bank-statement
+    to: fi-feban-postprocess-statement
+    kind: sequence
+    label:
+      zh: 处理对账单
+      en: Postprocess statement
+  - from: fi-feban-postprocess-statement
+    to: fi-fb50-gl-journal
+    kind: sequence
+    label:
+      zh: 调整过账
+      en: Post adjustments
+  - from: fi-fb50-gl-journal
+    to: fi-fagll03-gl-line-items
+    kind: sequence
+    label:
+      zh: 核对行项目
+      en: Review line items
+roles:
+  - 出纳
+  - 总账会计
+  - 财务经理
+outcomes:
+  - 银行对账单
+  - 清账结果
+  - 未达账项
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

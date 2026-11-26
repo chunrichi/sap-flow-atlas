@@ -1,0 +1,29 @@
+id: abap-workflow-start
+type: snippet
+language: abap
+title:
+  zh: 启动工作流实例
+  en: Start a Workflow Instance
+objects:
+  - tcode:SWDD
+  - table:SWWWIHEAD
+  - function:SAP_WAPI_START_WORKFLOW
+file: abap/workflow-start.abap
+summary:
+  zh: 用容器元素传入订单号与金额，启动工作流模板并拿到工作项编号。
+  en: Starts a workflow template with order and amount container elements and returns the work item ID.
+annotations:
+  - lines: 1-3
+    note: 声明容器与工作项变量。
+  - lines: 5-11
+    note: 填充 ORDER_ID 与 AMOUNT 两个容器元素。
+  - lines: 13-21
+    note: 启动工作流，返回工作项编号。
+  - lines: 23-29
+    note: 异常处理；成功后在 SBWP 查看待办。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

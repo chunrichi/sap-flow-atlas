@@ -8,6 +8,7 @@ modules:
   - co
 processes:
   - co-profit-center
+  - co-profitability-analysis
 flows:
   - record-to-report
 tcode: KE30

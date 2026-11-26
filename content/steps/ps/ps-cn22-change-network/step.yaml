@@ -1,0 +1,42 @@
+id: ps-cn22-change-network
+type: step
+title:
+  zh: 修改网络
+  en: Change Network
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-resource-planning
+flows:
+  - project-to-profit
+tcode: CN22
+summary:
+  zh: 修改项目网络的活动、关系、工期与资源分配。
+  en: Changes activities, relationships, durations and resource assignments of the project network.
+inputs:
+  - 项目号
+  - 网络号
+  - 活动
+  - 资源
+outputs:
+  - 更新后的网络
+  - 资源分配
+rules:
+  - 活动关系必须与 WBS 结构一致。
+  - 变更会影响预算、进度与能力负荷，需同步评估。
+painPoints:
+  - 活动关系成环，导致排程失败。
+  - 只改工期不改资源，能力负荷仍然超载。
+objects:
+  - tcode:CN22
+  - table:PROJ
+  - table:AFVC
+  - table:PRPS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

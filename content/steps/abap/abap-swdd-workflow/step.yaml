@@ -1,0 +1,41 @@
+id: abap-swdd-workflow
+type: step
+title:
+  zh: 定义工作流模板
+  en: Define Workflow Template
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-workflow
+flows:
+  - develop-to-deploy
+tcode: SWDD
+summary:
+  zh: 定义工作流步骤、参与者、条件与容器元素。
+  en: Defines workflow steps, agents, conditions and container elements.
+inputs:
+  - 业务对象
+  - 触发事件
+  - 审批层级
+outputs:
+  - 工作流模板
+  - 容器元素
+rules:
+  - 步骤参与者必须是有效用户或组织对象。
+  - 异常分支与超时升级要一并设计。
+painPoints:
+  - 只设计正常路径，退回/超时无处理人。
+  - 容器元素缺失，审批人看不到关键字段。
+objects:
+  - tcode:SWDD
+  - table:SWWWIHEAD
+  - function:SAP_WAPI_START_WORKFLOW
+snippets:
+  - abap-workflow-start
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

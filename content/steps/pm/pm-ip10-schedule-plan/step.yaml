@@ -8,6 +8,7 @@ modules:
   - pm
 processes:
   - pm-preventive
+  - pm-calibration
 flows:
   - maintain-to-availability
 tcode: IP10

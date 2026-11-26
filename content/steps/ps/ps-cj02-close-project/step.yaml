@@ -1,0 +1,46 @@
+id: ps-cj02-close-project
+type: step
+title:
+  zh: 关闭项目
+  en: Close Project
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-project-close
+flows:
+  - project-to-profit
+tcode: CJ02
+summary:
+  zh: 设置项目关闭/锁定标志，禁止新过账并保留决算数据。
+  en: Sets project close and lock indicators, blocks new postings and preserves final accounts.
+inputs:
+  - 项目号
+  - 关闭日期
+  - 关闭原因
+outputs:
+  - 关闭状态
+  - 锁定标志
+rules:
+  - 关闭前必须完成结算、预算清理与未清项处理。
+  - 关闭后禁止新过账，后续调整需走专项流程。
+painPoints:
+  - 未清采购订单未关闭，项目关闭后仍有发票进来。
+  - 关闭操作缺少审批留痕。
+objects:
+  - tcode:CJ02
+  - table:PROJ
+  - table:PRPS
+snippets: []
+crossModule:
+  - module: co
+    relation: settlement
+    note: 项目关闭后进入决算与获利分析。
+  - module: fi
+    relation: accounting-impact
+    note: 关闭前需确认所有财务过账完成。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

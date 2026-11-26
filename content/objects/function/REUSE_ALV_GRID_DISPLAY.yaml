@@ -1,0 +1,21 @@
+id: function:REUSE_ALV_GRID_DISPLAY
+type: function
+technicalName: REUSE_ALV_GRID_DISPLAY
+title:
+  zh: ALV 网格显示
+  en: ALV Grid Display
+module: abap
+functionGroup: SLVC
+summary:
+  zh: 以函数方式输出 ALV 网格报表，配置字段目录与布局。
+  en: Displays an ALV grid report via function module with field catalog and layout.
+relations:
+  - target: class:CL_SALV_TABLE
+    kind: related
+  - target: tcode:SE38
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

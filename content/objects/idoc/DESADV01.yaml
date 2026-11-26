@@ -1,0 +1,21 @@
+id: idoc:DESADV01
+type: idoc
+technicalName: DESADV01
+title:
+  zh: 发货通知 IDoc
+  en: Despatch Advice IDoc
+module: sd
+messageType: DESADV
+summary:
+  zh: 发货通知的 IDoc 基本类型，消息类型 DESADV。
+  en: IDoc basic type for despatch advice with message type DESADV.
+relations:
+  - target: table:EDIDC
+    kind: related
+  - target: table:EDID4
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

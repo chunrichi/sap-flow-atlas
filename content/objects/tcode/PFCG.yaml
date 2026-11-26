@@ -1,0 +1,20 @@
+id: tcode:PFCG
+type: tcode
+technicalName: PFCG
+title:
+  zh: 角色维护
+  en: Role Maintenance
+module: abap
+summary:
+  zh: 维护角色、菜单、权限对象与用户分配。
+  en: Maintains roles, menus, authorization objects and user assignments.
+relations:
+  - target: table:AGR_1251
+    kind: writes
+  - target: table:AGR_USERS
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,20 @@
+id: tcode:CS11
+type: tcode
+technicalName: CS11
+title:
+  zh: BOM 展开
+  en: BOM Explosion
+module: pp
+summary:
+  zh: 从成品向下展开多层 BOM，检查组件与替代料。
+  en: Explodes multi-level BOMs downwards to inspect components and alternatives.
+relations:
+  - target: table:MAST
+    kind: reads
+  - target: table:STPO
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -9,6 +9,8 @@
     "content:validate": "tsx scripts/build-content.ts --check",
     "content:report": "tsx scripts/content-report.ts",
     "precontent:report": "pnpm content:build",
+    "content:catalog": "tsx scripts/content-catalog.ts",
+    "precontent:catalog": "pnpm content:build",
     "pretypecheck": "pnpm content:build",
     "typecheck": "tsc --noEmit",
     "pretest": "pnpm content:build",

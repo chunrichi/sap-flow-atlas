@@ -1,0 +1,43 @@
+id: sd-vl03n-display-delivery
+type: step
+title:
+  zh: 查看交货与发货状态
+  en: Display Delivery and Shipping Status
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-delivery-processing
+flows:
+  - order-to-cash
+tcode: VL03N
+summary:
+  zh: 查看交货单的拣配、包装与发货状态，并沿凭证流确认前后序单据。
+  en: Displays picking, packing and goods issue status and follows the document flow to predecessor and successor documents.
+inputs:
+  - 交货单号
+outputs:
+  - 交货状态
+  - 凭证流
+  - 未清数量
+rules:
+  - 发货过账后交货单只读，差异需用冲销或后续凭证处理。
+  - 凭证流可反查订单、发票与物料凭证。
+painPoints:
+  - 状态显示与实际库存不一致，通常来自未过账的拣配或冲销。
+  - 只看交货单状态容易忽略未清的发票或收款。
+objects:
+  - tcode:VL03N
+  - table:LIKP
+  - table:VBFA
+  - table:VBUP
+snippets: []
+crossModule:
+  - module: ewm
+    relation: handoff
+    note: 交货状态同步到仓库执行与发货确认。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,52 @@
+id: qm-lot-rejection
+type: process
+title:
+  zh: 检验批拒收与处置
+  en: Inspection Lot Rejection
+module: qm
+flow: plan-to-produce
+stage: inspect
+summary:
+  zh: 检验批拒收后创建质量通知、处理纠正措施并冻结或报废库存。
+  en: After rejecting an inspection lot, creates a quality notification, processes corrective actions and blocks or scraps stock.
+variant: exception
+trigger:
+  zh: 检验批判定拒收、需要冻结/报废库存并启动纠正措施时才进入；合格批次直接入库。
+  en: Only when a lot is rejected and stock must be blocked or scrapped and corrective actions started; accepted lots go directly to stock.
+steps:
+  - qm-qa11-usage-decision
+  - qm-qm01-quality-notification
+  - qm-qm02-process-notification
+  - mm-mb1b-transfer-posting
+edges:
+  - from: qm-qa11-usage-decision
+    to: qm-qm01-quality-notification
+    kind: handoff
+    label:
+      zh: 启动质量通知
+      en: Create quality notification
+  - from: qm-qm01-quality-notification
+    to: qm-qm02-process-notification
+    kind: sequence
+    label:
+      zh: 处理纠正措施
+      en: Process corrective actions
+  - from: qm-qm02-process-notification
+    to: mm-mb1b-transfer-posting
+    kind: handoff
+    label:
+      zh: 库存处置
+      en: Handle stock
+roles:
+  - 质量工程师
+  - 仓库管理员
+  - 采购员
+outcomes:
+  - 拒收决策
+  - 报废/冻结库存
+  - 质量通知
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

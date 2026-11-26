@@ -11,10 +11,10 @@ describe("content graph", () => {
   it("has enough depth for a usable atlas", () => {
     expect(content.modules.length).toBeGreaterThanOrEqual(12);
     expect(content.flows.length).toBeGreaterThanOrEqual(8);
-    expect(content.processes.length).toBeGreaterThanOrEqual(50);
-    expect(content.steps.length).toBeGreaterThanOrEqual(170);
-    expect(content.objects.length).toBeGreaterThanOrEqual(260);
-    expect(content.snippets.length).toBeGreaterThanOrEqual(12);
+    expect(content.processes.length).toBeGreaterThanOrEqual(80);
+    expect(content.steps.length).toBeGreaterThanOrEqual(230);
+    expect(content.objects.length).toBeGreaterThanOrEqual(350);
+    expect(content.snippets.length).toBeGreaterThanOrEqual(18);
     expect(content.scenes.length).toBeGreaterThanOrEqual(5);
   });
 
@@ -109,14 +109,14 @@ describe("content graph", () => {
 
   it("marks conditional processes and optional steps with triggers", () => {
     const conditional = content.processes.filter((process) => process.variant !== "core");
-    expect(conditional.length).toBeGreaterThan(10);
+    expect(conditional.length).toBeGreaterThan(20);
     for (const process of conditional) {
       expect(process.trigger, `${process.id} trigger`).toBeTruthy();
       expect(process.trigger!.zh.length, `${process.id} trigger zh`).toBeGreaterThan(4);
     }
     expect(content.processes.some((process) => process.variant === "exception")).toBe(true);
     const optionalSteps = content.steps.filter((step) => step.optional);
-    expect(optionalSteps.length).toBeGreaterThan(20);
+    expect(optionalSteps.length).toBeGreaterThan(30);
     for (const step of optionalSteps) {
       expect(step.condition, `${step.id} condition`).toBeTruthy();
     }
@@ -130,6 +130,13 @@ describe("content graph", () => {
           .some((process) => process?.stage === stage.id);
         expect(covered, `${flow.id} / ${stage.id}`).toBe(true);
       }
+    }
+  });
+
+  it("covers every declared object type", () => {
+    const types = new Set<string>(content.objects.map((object) => object.type));
+    for (const type of ["tcode", "table", "bapi", "cds", "odata", "enhancement", "class", "function", "idoc", "fiori", "report", "job"]) {
+      expect(types.has(type), type).toBe(true);
     }
   });
 

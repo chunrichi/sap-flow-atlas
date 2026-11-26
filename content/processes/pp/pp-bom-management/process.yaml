@@ -1,0 +1,48 @@
+id: pp-bom-management
+type: process
+title:
+  zh: 物料清单管理
+  en: Bill of Material Management
+module: pp
+flow: plan-to-produce
+stage: plan
+summary:
+  zh: 从创建、修改、查看到多层展开的 BOM 主数据链路，为 MRP 与生产订单提供组件结构。
+  en: The BOM master data chain from creation and change to display and multi-level explosion for MRP and production orders.
+steps:
+  - pp-cs01-bom
+  - pp-cs02-change-bom
+  - pp-cs03-display-bom
+  - pp-cs11-bom-explosion
+edges:
+  - from: pp-cs01-bom
+    to: pp-cs02-change-bom
+    kind: sequence
+    label:
+      zh: 维护变更
+      en: Maintain changes
+  - from: pp-cs02-change-bom
+    to: pp-cs03-display-bom
+    kind: sequence
+    label:
+      zh: 查看结构
+      en: Review structure
+  - from: pp-cs03-display-bom
+    to: pp-cs11-bom-explosion
+    kind: sequence
+    label:
+      zh: 多层展开
+      en: Explode multi-level
+roles:
+  - 生产计划员
+  - 工艺工程师
+  - 主数据专员
+outcomes:
+  - BOM 抬头/行项目
+  - BOM 展开结果
+  - 组件清单
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

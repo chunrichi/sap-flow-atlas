@@ -1,0 +1,22 @@
+id: tcode:VL06O
+type: tcode
+technicalName: VL06O
+title:
+  zh: 交货到期清单
+  en: Delivery Due List
+module: sd
+summary:
+  zh: 按日期、装运点和路线筛选待交货的销售订单，批量创建交货。
+  en: Filters sales orders due for delivery by date, shipping point and route, and creates deliveries in bulk.
+relations:
+  - target: table:LIKP
+    kind: reads
+  - target: table:VBFA
+    kind: reads
+  - target: process:sd-delivery-processing
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

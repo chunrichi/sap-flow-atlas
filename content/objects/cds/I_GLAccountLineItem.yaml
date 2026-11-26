@@ -1,0 +1,21 @@
+id: cds:I_GLAccountLineItem
+type: cds
+technicalName: I_GLAccountLineItem
+title:
+  zh: 总账行项目接口视图
+  en: GL Account Line Item Interface View
+module: fi
+viewType: interface
+summary:
+  zh: 总账行项目的接口视图，供财务报表、钻取与 API 复用。
+  en: Interface view for GL line items reused by financial reports, drill-down and APIs.
+relations:
+  - target: table:BSEG
+    kind: reads
+  - target: table:ACDOCA
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

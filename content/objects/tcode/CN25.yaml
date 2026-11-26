@@ -1,0 +1,20 @@
+id: tcode:CN25
+type: tcode
+technicalName: CN25
+title:
+  zh: 确认网络活动
+  en: Confirm Network Activities
+module: ps
+summary:
+  zh: 对网络活动做进度与工时确认，回写实际成本。
+  en: Confirms network activity progress and hours, updating actual costs.
+relations:
+  - target: table:AFVC
+    kind: writes
+  - target: table:PROJ
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

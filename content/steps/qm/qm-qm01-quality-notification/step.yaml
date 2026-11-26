@@ -9,6 +9,7 @@ modules:
 processes:
   - qm-inspection
   - qm-notification
+  - qm-lot-rejection
 flows:
   - plan-to-produce
 tcode: QM01
@@ -29,6 +30,8 @@ painPoints:
 objects:
   - tcode:QM01
   - table:QMEL
+  - table:VIQMEL
+  - cds:I_Equipment
 snippets: []
 crossModule: []
 status: draft

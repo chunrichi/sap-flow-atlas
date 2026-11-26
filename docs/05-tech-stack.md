@@ -117,6 +117,8 @@ Router → SceneLoader（动态 import JSON）
 
 Phase 2 实测（2026-11-25，`pnpm build`）：主包 280KB gzip（含 108 步骤 / 185 对象 / 14 段代码、导航树、MiniMap、钉住 Hover、O2C 故事、流程对比与最近访问），检查器异步 chunk 54KB gzip，CSS 11KB gzip；内容规模上来后仍可接受，后续可再拆内容 chunk。
 
+> 第二轮内容扩充后（2026-11-26）主包约 367KB gzip（238 步骤 / 365 对象 / 19 段代码），CSS 13KB gzip。体积主要随 `content.json` 增长；继续扩充时优先把内容拆成按模块懒加载的 chunk，而不是继续加大首屏 bundle。
+
 ### 5.3 优化清单
 
 - Motion 使用 `LazyMotion` + `domAnimation`，避免全量引入；

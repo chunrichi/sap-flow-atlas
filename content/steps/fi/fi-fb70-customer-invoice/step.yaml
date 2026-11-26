@@ -34,6 +34,8 @@ objects:
   - "table:BSID"
   - "table:KNA1"
   - "cds:I_JournalEntry"
+  - cds:I_BusinessPartner
+  - odata:API_BUSINESS_PARTNER
 snippets: []
 crossModule:
   - module: sd

@@ -1,0 +1,20 @@
+id: tcode:KE24
+type: tcode
+technicalName: KE24
+title:
+  zh: 获利段行项目
+  en: Profitability Segment Line Items
+module: co
+summary:
+  zh: 查看 CO-PA 行项目明细，下钻到凭证与获利段。
+  en: Displays CO-PA line items and drills down to documents and profitability segments.
+relations:
+  - target: table:CEPC
+    kind: reads
+  - target: table:COEP
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

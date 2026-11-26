@@ -1,0 +1,19 @@
+id: cds:I_Product
+type: cds
+technicalName: I_Product
+title:
+  zh: 产品主数据接口视图
+  en: Product Interface View
+module: mm
+viewType: interface
+summary:
+  zh: 物料/产品主数据的接口视图，供采购、BOM 与 API 复用。
+  en: Interface view for material and product master data reused by purchasing, BOM and APIs.
+relations:
+  - target: table:MARC
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

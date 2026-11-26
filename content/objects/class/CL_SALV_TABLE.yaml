@@ -1,0 +1,20 @@
+id: class:CL_SALV_TABLE
+type: class
+technicalName: CL_SALV_TABLE
+title:
+  zh: SALV 表格类
+  en: SALV Table Class
+module: abap
+summary:
+  zh: 面向对象的 ALV 表格类，用于快速构建可排序、可导出的报表。
+  en: Object-oriented ALV table class for sortable, exportable reports.
+relations:
+  - target: tcode:SE38
+    kind: related
+  - target: function:REUSE_ALV_GRID_DISPLAY
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

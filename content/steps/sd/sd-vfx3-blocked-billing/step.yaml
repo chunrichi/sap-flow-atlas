@@ -1,0 +1,44 @@
+id: sd-vfx3-blocked-billing
+type: step
+title:
+  zh: 查看冻结发票
+  en: Review Blocked Billing Documents
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-billing-exception
+flows:
+  - order-to-cash
+tcode: VFX3
+summary:
+  zh: 查看因开票冻结、会计期间关闭或主数据问题而未过账的发票。
+  en: Reviews billing documents blocked by billing blocks, closed posting periods or master data issues.
+inputs:
+  - 公司代码
+  - 开票日期
+  - 冻结原因
+outputs:
+  - 冻结发票清单
+  - 阻塞原因
+rules:
+  - 冻结原因必须逐条处理，批量放行前先确认价格与税。
+  - 跨期发票要先确认会计期间是否允许过账。
+painPoints:
+  - 期间关闭导致发票积压，月底集中处理容易错漏。
+  - 冻结原因未记录，复核人无法判断是否可放行。
+objects:
+  - tcode:VFX3
+  - table:VBRK
+  - table:VBRP
+  - cds:I_BillingDocument
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 冻结与冲销最终影响应收和会计期间。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

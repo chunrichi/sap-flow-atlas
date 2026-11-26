@@ -1,0 +1,47 @@
+id: fi-ff67-manual-bank-statement
+type: step
+title:
+  zh: 录入银行对账单
+  en: Enter Manual Bank Statement
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-bank-reconciliation
+flows:
+  - record-to-report
+tcode: FF67
+summary:
+  zh: 录入或导入银行对账单，形成待处理的对账项目。
+  en: Enters or imports bank statements to create reconciliation items.
+inputs:
+  - 银行账户
+  - 对账单期间
+  - 期初/期末余额
+  - 对账单文件
+outputs:
+  - 对账单抬头
+  - 对账单行项目
+rules:
+  - 对账单金额合计必须与银行余额一致。
+  - 重复导入前先检查已有对账单，避免重复清账。
+painPoints:
+  - 文件格式与银行不一致导致导入失败。
+  - 期初余额未维护，后续对账无法自动平衡。
+objects:
+  - tcode:FF67
+  - table:FEBKO
+  - table:FEBEP
+snippets: []
+crossModule:
+  - module: sd
+    relation: clearing
+    note: 银行流水用于客户收款清账。
+  - module: mm
+    relation: clearing
+    note: 银行流水用于供应商付款清账。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

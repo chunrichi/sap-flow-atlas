@@ -9,6 +9,8 @@ modules:
 processes:
   - cs-service-order
   - cs-notification
+  - cs-warranty
+  - cs-installation
 flows:
   - service-to-cash
 tcode: IW41

@@ -1,0 +1,40 @@
+id: ps-cj03-display-project
+type: step
+title:
+  zh: 查看项目与结算状态
+  en: Display Project and Settlement Status
+primaryModule: ps
+modules:
+  - ps
+processes:
+  - ps-project-close
+flows:
+  - project-to-profit
+tcode: CJ03
+summary:
+  zh: 查看项目结构、预算、实际成本与结算状态，确认是否具备关闭条件。
+  en: Reviews project structure, budget, actual costs and settlement status to confirm close readiness.
+inputs:
+  - 项目号
+outputs:
+  - 项目结构
+  - 预算/实际
+  - 结算状态
+rules:
+  - 只读查看，不修改项目数据。
+  - 关闭前要确认所有 WBS 已结算且无未清承诺。
+painPoints:
+  - 只看项目定义，忽略 WBS 层未清项。
+  - 预算与实际差异未解释就关闭项目。
+objects:
+  - tcode:CJ03
+  - table:PROJ
+  - table:PRPS
+  - table:COSP
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,20 @@
+id: tcode:IK13
+type: tcode
+technicalName: IK13
+title:
+  zh: 显示测量凭证
+  en: Display Measurement Document
+module: pm
+summary:
+  zh: 查看测量点的历史读数与超限告警。
+  en: Displays measurement history and limit warnings for measuring points.
+relations:
+  - target: table:IMRG
+    kind: reads
+  - target: table:EQUI
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

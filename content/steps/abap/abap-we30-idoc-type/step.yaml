@@ -27,7 +27,12 @@ objects:
   - "tcode:WE30"
   - "table:EDIDC"
   - "table:TADIR"
-snippets: []
+  - idoc:ORDERS05
+  - idoc:INVOIC02
+  - idoc:DESADV01
+  - function:CONVERSION_EXIT_ALPHA_INPUT
+snippets:
+  - abap-idoc-orders-inbound
 crossModule:
   []
 status: draft

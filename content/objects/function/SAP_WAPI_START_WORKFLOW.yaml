@@ -1,0 +1,21 @@
+id: function:SAP_WAPI_START_WORKFLOW
+type: function
+technicalName: SAP_WAPI_START_WORKFLOW
+title:
+  zh: 启动工作流
+  en: Start Workflow
+module: abap
+functionGroup: SWR
+summary:
+  zh: 以工作流模板和容器数据启动工作流实例。
+  en: Starts a workflow instance with a template and container data.
+relations:
+  - target: tcode:SWDD
+    kind: related
+  - target: table:SWWWIHEAD
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

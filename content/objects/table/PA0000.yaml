@@ -1,0 +1,19 @@
+id: table:PA0000
+type: table
+technicalName: PA0000
+title:
+  zh: 人事事件
+  en: Personnel Actions
+module: hr
+tableClass: transparent
+summary:
+  zh: 保存入职、转岗、离职等人事事件及生效日期。
+  en: Stores hire, transfer and termination personnel actions with effective dates.
+relations:
+  - target: tcode:PA40
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

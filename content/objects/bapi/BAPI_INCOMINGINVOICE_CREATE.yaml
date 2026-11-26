@@ -1,0 +1,20 @@
+id: bapi:BAPI_INCOMINGINVOICE_CREATE
+type: bapi
+technicalName: BAPI_INCOMINGINVOICE_CREATE
+title:
+  zh: 创建来票 BAPI
+  en: Create Incoming Invoice BAPI
+module: mm
+summary:
+  zh: 按采购订单或收货创建供应商发票，支持冻结原因。
+  en: Creates vendor invoices from purchase orders or goods receipts, with blocking reasons.
+relations:
+  - target: table:RBKP
+    kind: writes
+  - target: table:RSEG
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

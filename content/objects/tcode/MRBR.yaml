@@ -1,0 +1,20 @@
+id: tcode:MRBR
+type: tcode
+technicalName: MRBR
+title:
+  zh: 释放冻结发票
+  en: Release Blocked Invoices
+module: fi
+summary:
+  zh: 复核并释放因价格、数量或税差被冻结的发票。
+  en: Reviews and releases invoices blocked by price, quantity or tax differences.
+relations:
+  - target: table:RBKP
+    kind: reads
+  - target: process:fi-invoice-block
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

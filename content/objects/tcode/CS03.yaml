@@ -1,0 +1,22 @@
+id: tcode:CS03
+type: tcode
+technicalName: CS03
+title:
+  zh: 显示物料清单
+  en: Display Bill of Material
+module: pp
+summary:
+  zh: 按工厂与用途查看多层 BOM 结构与组件。
+  en: Displays multi-level BOM structure and components by plant and usage.
+relations:
+  - target: table:MAST
+    kind: reads
+  - target: table:STKO
+    kind: reads
+  - target: table:STPO
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

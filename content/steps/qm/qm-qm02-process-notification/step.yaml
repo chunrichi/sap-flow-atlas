@@ -8,6 +8,7 @@ modules:
   - qm
 processes:
   - qm-notification
+  - qm-lot-rejection
 flows:
   - plan-to-produce
 tcode: QM02

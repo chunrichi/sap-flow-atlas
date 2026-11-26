@@ -54,6 +54,9 @@ processes:
   - sd-billing
   - ewm-wave
   - fi-ar-collection
+  - sd-delivery-processing
+  - sd-billing-exception
+  - ewm-replenishment
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:

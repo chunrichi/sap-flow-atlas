@@ -1,0 +1,43 @@
+id: ewm-repl-run
+type: step
+title:
+  zh: 运行补货
+  en: Run Replenishment
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-replenishment
+flows:
+  - order-to-cash
+tcode: /SCWM/REPL
+summary:
+  zh: 运行补货策略，为低于阈值的拣配区生成补货仓库任务。
+  en: Runs the replenishment strategy to create warehouse tasks for picking areas below threshold.
+inputs:
+  - 仓库
+  - 拣配区
+  - 补货阈值
+outputs:
+  - 补货任务
+  - 建议数量
+rules:
+  - 补货策略与最小/最大库存决定任务数量。
+  - 冻结库存不参与补货。
+painPoints:
+  - 阈值过低导致频繁补货，过高则占用拣配区容量。
+  - 补货任务未确认会阻塞后续波次。
+objects:
+  - tcode:/SCWM/REPL
+  - table:/SCWM/QUAN
+  - table:/SCWM/ORDIM_C
+snippets: []
+crossModule:
+  - module: sd
+    relation: fulfillment
+    note: 补货保障波次拣配与销售订单履约。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

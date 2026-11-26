@@ -1,0 +1,48 @@
+id: hr-offboarding
+type: process
+title:
+  zh: 员工离职与账号停用
+  en: Employee Offboarding and User Deactivation
+module: hr
+flow: hire-to-retire
+stage: administer
+summary:
+  zh: 从离职人事事件、末次薪酬到系统账号停用的离职闭环。
+  en: The offboarding loop from termination action and final pay to system user deactivation.
+steps:
+  - hr-pa40-termination
+  - hr-pa30-final-pay
+  - hr-pc00-final-payroll
+  - hr-su01-lock-user
+edges:
+  - from: hr-pa40-termination
+    to: hr-pa30-final-pay
+    kind: sequence
+    label:
+      zh: 离职结算
+      en: Final settlement
+  - from: hr-pa30-final-pay
+    to: hr-pc00-final-payroll
+    kind: sequence
+    label:
+      zh: 末次薪酬
+      en: Final payroll
+  - from: hr-pc00-final-payroll
+    to: hr-su01-lock-user
+    kind: handoff
+    label:
+      zh: 停用账号
+      en: Deactivate user
+roles:
+  - HR 专员
+  - 薪酬专员
+  - IT 管理员
+outcomes:
+  - 离职状态
+  - 末次薪酬
+  - 账号停用
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

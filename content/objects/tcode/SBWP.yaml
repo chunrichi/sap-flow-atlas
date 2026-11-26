@@ -1,0 +1,20 @@
+id: tcode:SBWP
+type: tcode
+technicalName: SBWP
+title:
+  zh: 工作流收件箱
+  en: Business Workplace
+module: abap
+summary:
+  zh: 处理工作流待办、审批与通知。
+  en: Processes workflow work items, approvals and notifications.
+relations:
+  - target: table:SWWWIHEAD
+    kind: reads
+  - target: tcode:SWDD
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

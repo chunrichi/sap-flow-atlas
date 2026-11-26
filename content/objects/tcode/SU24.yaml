@@ -1,0 +1,20 @@
+id: tcode:SU24
+type: tcode
+technicalName: SU24
+title:
+  zh: 权限检查维护
+  en: Authorization Check Maintenance
+module: abap
+summary:
+  zh: 维护事务码的权限对象检查值与建议值。
+  en: Maintains authorization object check values and proposals for transactions.
+relations:
+  - target: table:AGR_1251
+    kind: related
+  - target: tcode:PFCG
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

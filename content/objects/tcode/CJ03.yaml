@@ -1,0 +1,20 @@
+id: tcode:CJ03
+type: tcode
+technicalName: CJ03
+title:
+  zh: 显示项目
+  en: Display Project
+module: ps
+summary:
+  zh: 查看项目结构、预算、实际成本与结算状态。
+  en: Displays project structure, budget, actual costs and settlement status.
+relations:
+  - target: table:PROJ
+    kind: reads
+  - target: table:PRPS
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

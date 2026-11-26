@@ -1,0 +1,20 @@
+id: bapi:BAPI_PO_CHANGE
+type: bapi
+technicalName: BAPI_PO_CHANGE
+title:
+  zh: 修改采购订单 BAPI
+  en: Change Purchase Order BAPI
+module: mm
+summary:
+  zh: 修改采购订单的抬头、行项目、交货计划与价格。
+  en: Changes header, items, delivery schedule and prices of a purchase order.
+relations:
+  - target: table:EKKO
+    kind: writes
+  - target: table:EKPO
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

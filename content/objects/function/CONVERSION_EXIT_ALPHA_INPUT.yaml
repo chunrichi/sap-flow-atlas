@@ -1,0 +1,21 @@
+id: function:CONVERSION_EXIT_ALPHA_INPUT
+type: function
+technicalName: CONVERSION_EXIT_ALPHA_INPUT
+title:
+  zh: 前导零转换（输入）
+  en: Alpha Conversion (Input)
+module: abap
+functionGroup: SDHI
+summary:
+  zh: 为外部输入补前导零，常用于客户、物料与供应商编号。
+  en: Adds leading zeros to external input, commonly for customer, material and vendor numbers.
+relations:
+  - target: table:KNA1
+    kind: related
+  - target: table:MARC
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

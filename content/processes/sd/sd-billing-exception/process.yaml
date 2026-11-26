@@ -1,0 +1,52 @@
+id: sd-billing-exception
+type: process
+title:
+  zh: 开票冻结与冲销重开
+  en: Billing Exception and Reissue
+module: sd
+flow: order-to-cash
+stage: billing
+summary:
+  zh: 处理冻结、开错或被客户拒收的发票：查看阻塞原因、冲销原发票并重开。
+  en: Handles blocked, incorrect or rejected invoices by reviewing blocks, cancelling the original and reissuing.
+variant: exception
+trigger:
+  zh: 发票被冻结、开错或客户拒收，需要冲销重开时才进入；正常开票走 sd-billing。
+  en: Only when an invoice is blocked, incorrect or rejected and must be cancelled and reissued; normal billing follows sd-billing.
+steps:
+  - sd-vfx3-blocked-billing
+  - sd-vf11-cancel-billing
+  - sd-vf01-create-billing
+  - sd-vf03-display-billing
+edges:
+  - from: sd-vfx3-blocked-billing
+    to: sd-vf11-cancel-billing
+    kind: handoff
+    label:
+      zh: 冲销原发票
+      en: Cancel original invoice
+  - from: sd-vf11-cancel-billing
+    to: sd-vf01-create-billing
+    kind: sequence
+    label:
+      zh: 重开发票
+      en: Reissue invoice
+  - from: sd-vf01-create-billing
+    to: sd-vf03-display-billing
+    kind: sequence
+    label:
+      zh: 核对新发票
+      en: Verify new invoice
+roles:
+  - 开票员
+  - 应收会计
+  - 销售经理
+outcomes:
+  - 冻结发票清单
+  - 冲销凭证
+  - 重开发票
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

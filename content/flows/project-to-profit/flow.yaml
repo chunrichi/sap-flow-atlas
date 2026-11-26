@@ -37,6 +37,8 @@ processes:
   - ps-setup
   - ps-budget
   - ps-settlement
+  - ps-resource-planning
+  - ps-project-close
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:

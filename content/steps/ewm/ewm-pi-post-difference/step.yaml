@@ -1,0 +1,42 @@
+id: ewm-pi-post-difference
+type: step
+title:
+  zh: 过账盘点差异
+  en: Post Inventory Differences
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-physical-inventory
+flows:
+  - procure-to-pay
+tcode: /SCWM/PI_PROCESS
+summary:
+  zh: 过账盘点差异，调整 EWM 库存并生成后续凭证。
+  en: Posts count differences, adjusts EWM stock and creates follow-up documents.
+inputs:
+  - 差异清单
+  - 过账日期
+outputs:
+  - 库存调整
+  - 差异凭证
+rules:
+  - 差异过账会改变可用库存。
+  - 需与财务盘点结果核对后再过账。
+painPoints:
+  - 差异过账后才发现盘点错误，需要反向调整。
+  - 跨期过账会影响期间库存与成本。
+objects:
+  - tcode:/SCWM/PI_PROCESS
+  - table:/SCWM/QUAN
+  - table:/SCWM/ORDIM_C
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 盘点差异影响库存账与财务调整。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

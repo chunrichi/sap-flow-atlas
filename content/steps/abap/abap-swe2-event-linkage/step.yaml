@@ -1,0 +1,40 @@
+id: abap-swe2-event-linkage
+type: step
+title:
+  zh: 配置事件绑定
+  en: Configure Event Linkage
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-workflow
+flows:
+  - develop-to-deploy
+tcode: SWE2
+summary:
+  zh: 把业务对象事件绑定到工作流模板或接收方。
+  en: Links business object events to workflow templates or receivers.
+inputs:
+  - 对象类型
+  - 事件
+  - 接收方
+outputs:
+  - 事件绑定
+  - 触发记录
+rules:
+  - 同一事件避免重复绑定导致多次触发。
+  - 事件绑定要检查循环触发。
+painPoints:
+  - 重复绑定导致一次业务操作生成多条待办。
+  - 事件未启用，流程永远不触发。
+objects:
+  - tcode:SWE2
+  - table:SWWWIHEAD
+  - tcode:SWDD
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

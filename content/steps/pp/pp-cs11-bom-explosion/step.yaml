@@ -1,0 +1,44 @@
+id: pp-cs11-bom-explosion
+type: step
+title:
+  zh: BOM 展开
+  en: BOM Explosion
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-bom-management
+flows:
+  - plan-to-produce
+tcode: CS11
+summary:
+  zh: 从成品向下展开多层 BOM，检查组件、替代料与虚拟件。
+  en: Explodes multi-level BOMs downwards to inspect components, alternatives and phantom assemblies.
+inputs:
+  - 成品
+  - 展开层级
+  - 工厂
+outputs:
+  - 组件清单
+  - 替代料
+  - 展开结果
+rules:
+  - 虚拟件需继续展开，不能当作可采购组件。
+  - 展开结果要与库存/采购在途对照。
+painPoints:
+  - 把虚拟件当采购件，导致缺料。
+  - 替代料未展开，低估组件需求。
+objects:
+  - tcode:CS11
+  - table:MAST
+  - table:STPO
+snippets: []
+crossModule:
+  - module: mm
+    relation: demand
+    note: 组件需求传递给采购与 MRP。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,44 @@
+id: pp-md05-mrp-list
+type: step
+title:
+  zh: 查看 MRP 清单
+  en: Review MRP List
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-mrp-exceptions
+flows:
+  - plan-to-produce
+tcode: MD05
+summary:
+  zh: 查看 MRP 运行后的计划订单、采购申请与例外消息。
+  en: Displays planned orders, purchase requisitions and exception messages after MRP.
+inputs:
+  - 物料
+  - 工厂
+  - MRP 区域
+outputs:
+  - MRP 清单
+  - 例外消息
+rules:
+  - 清单基于最近一次 MRP 运行结果。
+  - 例外消息需逐条处理，不能只改计划数量。
+painPoints:
+  - MRP 清单未刷新就做决策，计划与库存脱节。
+  - 只处理缺料，忽略提前/推迟建议。
+objects:
+  - tcode:MD05
+  - table:PLAF
+  - table:RESB
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+optional: true
+condition:
+  zh: 只在需要查看 MRP 清单或例外消息时执行；可直接在 MD04 中处理单物料。
+  en: Only when reviewing the MRP list or exception messages; a single material can be handled in MD04.

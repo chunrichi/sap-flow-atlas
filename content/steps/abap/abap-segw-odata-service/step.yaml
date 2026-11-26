@@ -8,6 +8,7 @@ modules:
   - abap
 processes:
   - abap-interface
+  - abap-odata-service
 flows:
   - develop-to-deploy
 tcode: SEGW

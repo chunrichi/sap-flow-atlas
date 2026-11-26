@@ -1,0 +1,19 @@
+id: enhancement:MV50AFZ1
+type: enhancement
+technicalName: MV50AFZ1
+title:
+  zh: 交货用户出口
+  en: Delivery User Exit Include
+module: sd
+subtype: user-exit
+summary:
+  zh: 交货保存与发货过账时的用户出口 include，可校验拣配、包装与序列号。
+  en: User exit include during delivery save and goods issue, used for picking, packing and serial number checks.
+relations:
+  - target: tcode:VL02N
+    kind: enhances
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

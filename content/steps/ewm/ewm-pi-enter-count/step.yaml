@@ -1,0 +1,38 @@
+id: ewm-pi-enter-count
+type: step
+title:
+  zh: 录入盘点结果
+  en: Enter Physical Counts
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-physical-inventory
+flows:
+  - procure-to-pay
+tcode: /SCWM/PI_COUNT
+summary:
+  zh: 录入实盘数量并生成盘点差异。
+  en: Records physical counts and generates inventory differences.
+inputs:
+  - 盘点凭证
+  - 实盘数量
+outputs:
+  - 差异清单
+  - 盘点状态
+rules:
+  - 实盘数量必须与盘点单位一致。
+  - 差异需复核后才能过账。
+painPoints:
+  - 计量单位不一致导致差异误判。
+  - 盘点人员未按库位扫描，批次容易串位。
+objects:
+  - tcode:/SCWM/PI_COUNT
+  - table:/SCWM/QUAN
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

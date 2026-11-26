@@ -1,0 +1,19 @@
+id: table:RSEG
+type: table
+technicalName: RSEG
+title:
+  zh: 发票校验行项目
+  en: Invoice Verification Item
+module: fi
+tableClass: transparent
+summary:
+  zh: 发票校验的行项目表，保存数量、金额、税额与参考采购订单。
+  en: Line item table for invoice verification holding quantity, amount, tax and purchase order references.
+relations:
+  - target: table:RBKP
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

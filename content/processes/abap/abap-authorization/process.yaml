@@ -1,0 +1,48 @@
+id: abap-authorization
+type: process
+title:
+  zh: 权限角色与授权检查
+  en: Authorization Roles and Checks
+module: abap
+flow: develop-to-deploy
+stage: test
+summary:
+  zh: 从角色维护、权限检查配置到用户分配与授权错误分析。
+  en: From role maintenance and authorization check configuration to user assignment and authorization error analysis.
+steps:
+  - abap-pfcg-role
+  - abap-su24-auth-check
+  - abap-su01-assign-role
+  - abap-su53-auth-error
+edges:
+  - from: abap-pfcg-role
+    to: abap-su24-auth-check
+    kind: sequence
+    label:
+      zh: 配置检查
+      en: Configure checks
+  - from: abap-su24-auth-check
+    to: abap-su01-assign-role
+    kind: sequence
+    label:
+      zh: 分配角色
+      en: Assign roles
+  - from: abap-su01-assign-role
+    to: abap-su53-auth-error
+    kind: sequence
+    label:
+      zh: 验证权限
+      en: Verify access
+roles:
+  - ABAP 开发
+  - 权限管理员
+  - 内控
+outcomes:
+  - 角色
+  - 权限对象
+  - 授权错误分析
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,20 @@
+id: tcode:/SCWM/REPL
+type: tcode
+technicalName: /SCWM/REPL
+title:
+  zh: 补货
+  en: Replenishment
+module: ewm
+summary:
+  zh: 按补货策略为拣配区创建补货仓库任务。
+  en: Creates replenishment warehouse tasks for picking areas based on replenishment strategy.
+relations:
+  - target: table:/SCWM/QUAN
+    kind: reads
+  - target: process:ewm-replenishment
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

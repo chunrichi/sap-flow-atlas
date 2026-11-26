@@ -1,0 +1,19 @@
+id: table:PA0009
+type: table
+technicalName: PA0009
+title:
+  zh: 银行信息
+  en: Bank Details
+module: hr
+tableClass: transparent
+summary:
+  zh: 保存员工薪酬发放的银行账户与支付方式。
+  en: Stores employee bank accounts and payment methods for payroll.
+relations:
+  - target: table:PA0008
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

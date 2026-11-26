@@ -1,0 +1,48 @@
+id: qm-inspection-result
+type: process
+title:
+  zh: 检验结果与使用决策
+  en: Inspection Results and Usage Decision
+module: qm
+flow: plan-to-produce
+stage: inspect
+summary:
+  zh: 录入检验结果、批量筛选检验批并做使用决策，决定库存能否使用。
+  en: Records inspection results, filters inspection lots and makes usage decisions that determine stock usability.
+steps:
+  - qm-qe01-record-results
+  - qm-qa32-inspection-lot-list
+  - qm-qa11-usage-decision
+  - qm-qa03-display-inspection-lot
+edges:
+  - from: qm-qe01-record-results
+    to: qm-qa32-inspection-lot-list
+    kind: sequence
+    label:
+      zh: 汇总待决策
+      en: Collect for decision
+  - from: qm-qa32-inspection-lot-list
+    to: qm-qa11-usage-decision
+    kind: sequence
+    label:
+      zh: 逐批决策
+      en: Decide per lot
+  - from: qm-qa11-usage-decision
+    to: qm-qa03-display-inspection-lot
+    kind: sequence
+    label:
+      zh: 复核结果
+      en: Review results
+roles:
+  - 质检员
+  - 质量工程师
+  - 仓库管理员
+outcomes:
+  - 检验结果
+  - 使用决策
+  - 检验批状态
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

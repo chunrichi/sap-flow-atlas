@@ -1,0 +1,44 @@
+id: pm-ik11-measurement-document
+type: step
+title:
+  zh: 录入测量凭证
+  en: Create Measurement Document
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-calibration
+flows:
+  - maintain-to-availability
+tcode: IK11
+summary:
+  zh: 为测量点录入读数，用于校准、磨损与状态监测。
+  en: Records readings for measuring points used in calibration, wear and condition monitoring.
+inputs:
+  - 测量点
+  - 读数
+  - 测量时间
+  - 单位
+outputs:
+  - 测量凭证
+  - 超限告警
+rules:
+  - 读数单位必须与测量点配置一致。
+  - 超限读数需触发通知或工单。
+painPoints:
+  - 读数手工录入错误，导致校准结论失真。
+  - 超限未触发通知，设备带病运行。
+objects:
+  - tcode:IK11
+  - table:IMRG
+  - table:EQUI
+snippets: []
+crossModule:
+  - module: qm
+    relation: calibration
+    note: 测量结果支持质量校准与超限告警。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

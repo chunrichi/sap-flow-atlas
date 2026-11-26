@@ -1,0 +1,20 @@
+id: tcode:SWE2
+type: tcode
+technicalName: SWE2
+title:
+  zh: 事件绑定
+  en: Event Linkage
+module: abap
+summary:
+  zh: 把业务对象事件绑定到接收方或工作流模板。
+  en: Links business object events to receivers or workflow templates.
+relations:
+  - target: table:SWWWIHEAD
+    kind: writes
+  - target: tcode:SWDD
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

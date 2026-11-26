@@ -1,0 +1,41 @@
+id: pp-cs03-display-bom
+type: step
+title:
+  zh: 查看物料清单
+  en: Display Bill of Material
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-bom-management
+flows:
+  - plan-to-produce
+tcode: CS03
+summary:
+  zh: 按工厂与用途查看多层 BOM 结构与组件。
+  en: Displays multi-level BOM structure and components by plant and usage.
+inputs:
+  - 物料
+  - 工厂
+  - BOM 用途
+outputs:
+  - 多层 BOM 结构
+  - 组件清单
+rules:
+  - 只读查看，不修改 BOM。
+  - 展开层级过多时先看单层，再逐层下钻。
+painPoints:
+  - 只看单层 BOM，漏掉下层缺料。
+  - 有效期选择错误，看到已失效的组件。
+objects:
+  - tcode:CS03
+  - table:MAST
+  - table:STKO
+  - table:STPO
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

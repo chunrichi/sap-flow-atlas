@@ -1,0 +1,45 @@
+id: abap-background-job
+type: process
+title:
+  zh: 后台作业与批处理
+  en: Background Jobs and Batch Processing
+module: abap
+flow: develop-to-deploy
+stage: implement
+summary:
+  zh: 定义后台作业、监控运行状态并在失败时分析系统日志。
+  en: Defines background jobs, monitors execution and analyzes the system log on failure.
+variant: optional
+trigger:
+  zh: 定时批处理、月结/日结或海量数据后台执行时才执行；在线事务不经过。
+  en: Only for scheduled batch processing, period close or high-volume background execution; online transactions do not use it.
+steps:
+  - abap-sm36-define-job
+  - abap-sm37-monitor-job
+  - abap-sm21-analyze-job-log
+edges:
+  - from: abap-sm36-define-job
+    to: abap-sm37-monitor-job
+    kind: sequence
+    label:
+      zh: 调度运行
+      en: Schedule and run
+  - from: abap-sm37-monitor-job
+    to: abap-sm21-analyze-job-log
+    kind: sequence
+    label:
+      zh: 失败分析
+      en: Analyze failure
+roles:
+  - ABAP 开发
+  - Basis 管理员
+  - 业务用户
+outcomes:
+  - 后台作业
+  - 作业日志
+  - 调度计划
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

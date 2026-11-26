@@ -1,0 +1,20 @@
+id: report:RVAUFSTA
+type: report
+technicalName: RVAUFSTA
+title:
+  zh: 销售订单分析报表
+  en: Sales Order Analysis Report
+module: sd
+summary:
+  zh: 按订单类型、客户与状态汇总销售订单，用于履约与积压分析。
+  en: Summarizes sales orders by type, customer and status for fulfillment and backlog analysis.
+relations:
+  - target: table:VBAK
+    kind: reads
+  - target: table:VBUP
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

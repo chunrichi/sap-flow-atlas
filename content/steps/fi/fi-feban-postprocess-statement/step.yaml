@@ -1,0 +1,47 @@
+id: fi-feban-postprocess-statement
+type: step
+title:
+  zh: 处理银行对账单
+  en: Postprocess Bank Statement
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-bank-reconciliation
+flows:
+  - record-to-report
+tcode: FEBAN
+summary:
+  zh: 对银行对账单项目做自动清账、手工过账或挂起处理。
+  en: Clears, posts or parks bank statement items during postprocessing.
+inputs:
+  - 对账单行项目
+  - 业务代码
+  - 清账规则
+outputs:
+  - 已清账项目
+  - 未达账项
+rules:
+  - 自动清账规则优先，无法匹配的项目才手工处理。
+  - 未达账项要挂起并注明原因，不能直接删除。
+painPoints:
+  - 客户/供应商参考号缺失，自动清账匹配失败。
+  - 手续费与利息未配置科目，导致过账中断。
+objects:
+  - tcode:FEBAN
+  - table:FEBKO
+  - table:FEBEP
+  - table:BSEG
+snippets: []
+crossModule:
+  - module: sd
+    relation: clearing
+    note: 自动清账影响客户应收。
+  - module: mm
+    relation: clearing
+    note: 自动清账影响供应商应付。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

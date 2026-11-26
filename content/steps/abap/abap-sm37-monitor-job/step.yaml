@@ -1,0 +1,40 @@
+id: abap-sm37-monitor-job
+type: step
+title:
+  zh: 监控后台作业
+  en: Monitor Background Job
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-background-job
+flows:
+  - develop-to-deploy
+tcode: SM37
+summary:
+  zh: 监控作业状态、运行时与日志，处理失败重跑。
+  en: Monitors job status, runtime and logs and handles failure reruns.
+inputs:
+  - 作业名
+  - 日期
+  - 状态
+outputs:
+  - 作业状态
+  - 作业日志
+rules:
+  - 失败先看日志再重跑，不能盲目重复调度。
+  - 重跑前确认前一次是否部分成功。
+painPoints:
+  - 重复调度导致数据重复过账。
+  - 只看状态不看日志，根因未解决。
+objects:
+  - tcode:SM37
+  - table:TBTCO
+  - job:Z_MRP_NIGHTLY
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -9,6 +9,7 @@ modules:
   - ewm
 processes:
   - sd-order-management
+  - sd-delivery-processing
 flows:
   - order-to-cash
 tcode: VL01N

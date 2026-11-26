@@ -1,0 +1,48 @@
+id: hr-organizational-change
+type: process
+title:
+  zh: 组织变更与转岗
+  en: Organizational Change and Transfer
+module: hr
+flow: hire-to-retire
+stage: organize
+summary:
+  zh: 组织调整或员工转岗时，同步更新组织分配、人事事件与系统权限。
+  en: When the organization changes or an employee transfers, updates organizational assignment, personnel actions and system access.
+steps:
+  - hr-ppome-org-structure
+  - hr-pa40-transfer-employee
+  - hr-pa30-maintain-master-data
+  - hr-su01-update-user
+edges:
+  - from: hr-ppome-org-structure
+    to: hr-pa40-transfer-employee
+    kind: sequence
+    label:
+      zh: 调整组织
+      en: Adjust organization
+  - from: hr-pa40-transfer-employee
+    to: hr-pa30-maintain-master-data
+    kind: sequence
+    label:
+      zh: 更新主数据
+      en: Update master data
+  - from: hr-pa30-maintain-master-data
+    to: hr-su01-update-user
+    kind: handoff
+    label:
+      zh: 同步权限
+      en: Update access
+roles:
+  - HR 专员
+  - 部门经理
+  - IT 管理员
+outcomes:
+  - 组织变更
+  - 转岗记录
+  - 权限更新
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

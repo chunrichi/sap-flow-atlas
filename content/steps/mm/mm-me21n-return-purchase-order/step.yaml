@@ -1,0 +1,42 @@
+id: mm-me21n-return-purchase-order
+type: step
+title:
+  zh: 创建退货采购订单
+  en: Create Return Purchase Order
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-vendor-returns
+flows:
+  - procure-to-pay
+tcode: ME21N
+summary:
+  zh: 创建带退货标识的采购订单，标明供应商、退货数量与原因。
+  en: Creates a purchase order with the returns indicator, specifying vendor, return quantity and reason.
+inputs:
+  - 供应商
+  - 物料
+  - 退货数量
+  - 退货原因
+outputs:
+  - 退货采购订单
+  - 退货计划
+rules:
+  - 退货订单必须使用退货标识，价格可与原采购订单比对。
+  - 退货数量不能超过原收货数量。
+painPoints:
+  - 退货订单未关联原收货，后续借项凭证难以匹配。
+  - 退货原因未记录，供应商对账缺少依据。
+objects:
+  - tcode:ME21N
+  - table:EKKO
+  - table:EKPO
+  - enhancement:ME_PROCESS_PO_CUST
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,42 @@
+id: pp-cs02-change-bom
+type: step
+title:
+  zh: 修改物料清单
+  en: Change Bill of Material
+primaryModule: pp
+modules:
+  - pp
+processes:
+  - pp-bom-management
+flows:
+  - plan-to-produce
+tcode: CS02
+summary:
+  zh: 修改 BOM 抬头、组件数量、有效期与替代料。
+  en: Changes BOM header, component quantities, validity and alternative items.
+inputs:
+  - 物料
+  - 工厂
+  - BOM 用途
+  - 组件
+outputs:
+  - BOM 行项目
+  - 有效期
+rules:
+  - BOM 变更需检查有效期与替代料逻辑。
+  - 已用于生产的 BOM 变更需工程变更或新版本。
+painPoints:
+  - 直接改现有 BOM，历史工单的组件用量无法追溯。
+  - 替代料优先级未维护，MRP 选错组件。
+objects:
+  - tcode:CS02
+  - table:MAST
+  - table:STKO
+  - table:STPO
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

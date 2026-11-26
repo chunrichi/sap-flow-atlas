@@ -8,6 +8,7 @@ modules:
   - qm
 processes:
   - qm-inspection
+  - qm-inspection-result
 flows:
   - plan-to-produce
 tcode: QE01

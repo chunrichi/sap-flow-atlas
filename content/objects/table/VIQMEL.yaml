@@ -1,0 +1,19 @@
+id: table:VIQMEL
+type: table
+technicalName: VIQMEL
+title:
+  zh: 通知抬头视图
+  en: Notification Header View
+module: pm
+tableClass: view
+summary:
+  zh: 质量、维护与服务通知的抬头视图，统一读取通知状态。
+  en: Header view for quality, maintenance and service notifications with unified status.
+relations:
+  - target: table:QMEL
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

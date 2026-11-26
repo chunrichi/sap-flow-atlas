@@ -2,7 +2,7 @@
 
 > 面向人的、可缩放的 SAP 多模块知识库：从系统全景下钻到模块工作区、业务流程、流程步骤，再通过 Hover 卡进入开发对象与示例代码。
 
-当前状态：**多视图工作台版**（浅色画布，尚未发布）。已打通 `首页 → 模块 → 流程/轨道 → 步骤 → 详情坞 → ABAP 对象/代码`，并扩到 10 条价值流、59 个模块流程（15 个可选 + 1 个例外）、184 个步骤（26 个条件步骤）、280 个开发对象；交互包含 Map / Track / Matrix / Table 四镜头、底部流程带与阶段轨、Peek/Pin 可调宽详情坞、只匹配过滤、对象索引与对象脉络、任意价值流 Story、A/B 对比、我的视图与移动端 bottom sheet，以及用**虚线 + 触发条件**表达的可选/例外流程。内容仍按 `status` 持续复核。
+当前状态：**多视图工作台版**（浅色画布，尚未发布）。已打通 `首页 → 模块 → 流程/轨道 → 步骤 → 详情坞 → ABAP 对象/代码`，并扩到 10 条价值流、85 个模块流程（21 个可选 + 7 个例外）、238 个步骤（32 个条件步骤）、365 个开发对象；交互包含 Map / Track / Matrix / Table 四镜头、底部流程带与阶段轨、Peek/Pin 可调宽详情坞、只匹配过滤、对象索引与对象脉络、任意价值流 Story、A/B 对比、我的视图与移动端 bottom sheet，以及用**虚线 + 触发条件**表达的可选/例外流程。内容仍按 `status` 持续复核。
 
 | 系统全景 | ABAP 开发地图 |
 | --- | --- |
@@ -25,6 +25,8 @@
 | ![移动端详情坞](docs/assets/workbench/mobile-track.png) | ![故事模式](docs/assets/workbench/story.png) |
 | **可选流程：虚线 + 触发条件** | **模块地图：可选/例外图例** |
 | ![可选流程](docs/assets/workbench/optional-process.png) | ![模块图例](docs/assets/workbench/module-optional.png) |
+| **例外流程：发票冻结与冲销重开** | **FI 模块：12 流程与条件图例** |
+| ![例外流程](docs/assets/workbench/exception-process.png) | ![FI 模块图例](docs/assets/workbench/module-optional-fi.png) |
 
 ---
 
@@ -96,6 +98,7 @@ sap-map-dsh/
 | [10 交互审查](docs/10-interaction-review.md) | 当前交互地图、同类产品对标与下一步优先级 |
 | [11 多视图工作台](docs/11-flexible-workbench-and-benchmarks.md) | 非 SAP 开源对标、多镜头/流程带/详情坞方案与 P0–P2 路线 |
 | [12 流程与对象覆盖](docs/12-content-map.md) | 模块 × 价值流 × 流程 × 步骤 × 对象覆盖、可选/例外清单与下一步 |
+| [13 模块流程与对象明细](docs/13-process-catalog.md) | 按模块列出每个流程的步骤、输入输出、规则与对象；可选/例外用虚线块标出 |
 | [ADR-0001](docs/adr/0001-canonical-graph-and-view-layouts.md) | 为什么「内容图 + 视图布局」而不是按模块复制数据 |
 
 ## 5. 已放入的示例切片
@@ -104,11 +107,11 @@ sap-map-dsh/
 
 - **12 个模块**：SD、MM、FI、CO、PP、QM、PM、EWM、PS、CS、HR、ABAP/Basis
 - **10 条端到端价值流**：O2C、P2P、R2R、Plan-to-Produce、A2R、H2R、S2C、P2Pft、M2A、D2D；**45 个阶段全部有流程覆盖**
-- **59 个模块流程**：每个模块至少 2 个；包含定价、信用、退货、售前报价、开票、需求与寻源、库存、委外、AP/AR/GL/资产、收款/付款、利润中心、内部订单、成本中心、产品成本、MRP、工艺路线、能力计划、生产订单、质检、质量通知、EWM 入库/出库/波次、预防性维护/维护通知、项目立项/预算/结算、服务通知/合同、组织/薪酬/时间、ABAP 增强/接口/性能/报表/测试/传输/迁移
-- **16 个条件流程**：15 个 `optional`（信用管理、售前报价、询价寻源、委外、能力计划、质量通知、维护通知、波次、服务合同、时间管理、资产退役、内部订单、ABAP 接口/性能/迁移）+ 1 个 `exception`（退货与贷项）；在 Track、画布、流程带与图例中以**虚线 + 徽标 + 触发条件**呈现
-- **184 个流程步骤**：其中 26 个条件步骤（ATP、信用检查、盘点、付款运行、催款、预算追加、能力平衡、质量/维护通知、合同、考勤、SQL/运行时跟踪、批量导入等）
-- **280 个开发对象**：T-Code 157、表 108、BAPI 5、CDS 4、增强 3、OData 3；无孤立对象
-- **14 段 ABAP 示例** 与 **5 个画布场景**：universe、ABAP 开发地图、SD 订单流程、O2C、D2D；其余模块/流程由自动布局生成
+- **85 个模块流程**：每个模块至少 4 个；新增交货与发货、开票冻结冲销、收货与供应商退货、发票冻结释放、银行对账、成本分摊、获利分析、BOM、MRP 异常、检验结果/拒收、故障抢修、设备校准、EWM 补货/盘点、项目资源/收尾、保修/安装、组织变更/离职、ABAP OData/工作流/后台作业/权限
+- **28 个条件流程**：21 个 `optional`（信用管理、售前报价、询价寻源、委外、能力计划、质量通知、维护通知/校准、波次/补货、服务合同/保修/安装、时间管理、资产退役、内部订单、ABAP 接口/性能/迁移/工作流/后台作业）+ 7 个 `exception`（退货与贷项、开票冻结冲销、供应商退货、发票冻结释放、MRP 异常、检验批拒收、设备故障），在 Track、画布、流程带与图例中以**虚线 + 徽标 + 触发条件**呈现
+- **238 个流程步骤**：其中 32 个条件步骤（ATP、信用检查、盘点、付款运行、催款、发票冻结、预算追加、能力平衡、MRP 清单、质量/维护通知、合同、考勤、SQL/运行时跟踪、批量导入等）
+- **365 个开发对象**：T-Code 198、表 123、BAPI 10、CDS 9、增强 6、OData 6、函数 3、IDoc 3、类 2、Fiori 2、报表 2、作业 1；无孤立对象
+- **19 段 ABAP 示例** 与 **5 个画布场景**：universe、ABAP 开发地图、SD 订单流程、O2C、D2D；其余模块/流程由自动布局生成
 
 > 预览图覆盖 Map / Hover / 代码等既有交互；多视图工作台（Track / Matrix / Table / Peek-Pin 详情坞）以 [11 号文档](docs/11-flexible-workbench-and-benchmarks.md) 与本地运行版本为准。
 
@@ -124,6 +127,7 @@ sap-map-dsh/
 pnpm install
 pnpm content:validate   # 只校验内容，不写文件
 pnpm content:report     # 覆盖矩阵 / 条件流程与条件步骤 / 缺口检查
+pnpm content:catalog    # 生成 docs/13-process-catalog.md
 pnpm test               # Vitest 内容完整性测试
 pnpm dev                # 先构建 content，再启动 Vite；默认 http://127.0.0.1:4173
 pnpm build              # 内容校验 + tsc + 生产构建
@@ -155,14 +159,14 @@ pnpm preview            # 预览 dist
 - Hover 卡：对象 chips、ABAP 代码预览、跨模块提示；
 - 详情坞：概览 / 开发对象 / 代码 / 跨模块 / 来源（Peek 与 Pin 两态、可拖拽）；
 - 对象聚焦：打开对象检查器时高亮使用它的步骤，淡化无关节点；
-- 184 个步骤均包含业务规则与常见问题；14 段 ABAP 示例覆盖 12 个模块；
+- 238 个步骤均包含业务规则与常见问题；19 段 ABAP 示例覆盖 12 个模块；
 - ABAP 开发地图、D2D 价值流与 Open SQL / BAPI / 用户出口示例；
 - 命令面板（`⌘K` / `Ctrl+K`）与移动端 Track / 表格 / bottom sheet；
 - `prefers-reduced-motion`、URL 深链接、`?shot=1` 截图模式；
-- Vitest 内容测试 + 工作台/Story 派生测试（20 个）+ 阶段覆盖与条件字段校验 + GitHub Actions CI；
+- Vitest 内容测试 + 工作台/Story 派生测试（21 个）+ 阶段覆盖、条件字段与 12 类对象覆盖校验 + GitHub Actions CI；
 - GitHub Pages 部署 workflow（`VITE_BASE` 自动按仓库名设置，默认由 `PAGES_ENABLED` 变量控制）。
 
-下一阶段：SAP 顾问内容复核、来源深链、代码片段补齐、GitHub Pages 发布、真实用户可用性测试与更多角色化视图；184 个步骤的规则/常见问题已补齐，可选/例外流程已建模，后续按 SAP 版本变化维护。
+下一阶段：SAP 顾问内容复核、来源深链、代码片段补齐、GitHub Pages 发布、真实用户可用性测试与更多角色化视图；238 个步骤的规则/常见问题已补齐，可选/例外流程已建模，后续按 SAP 版本变化维护。
 
 ## 7. 发布到 GitHub Pages
 
@@ -179,9 +183,9 @@ pnpm preview            # 预览 dist
 ## 8. 验证
 
 ```bash
-pnpm content:validate   # 12 模块 / 59 流程 / 184 步骤 / 280 对象
+pnpm content:validate   # 12 模块 / 85 流程 / 238 步骤 / 365 对象
 pnpm content:report     # 模块与阶段覆盖、条件流程/步骤、缺口
-pnpm test               # 20 个测试：内容一致性 + 阶段覆盖 + 条件字段 + 过滤/脉络/视图状态/Story
+pnpm test               # 21 个测试：内容一致性 + 阶段覆盖 + 条件字段 + 对象类型 + 过滤/脉络/视图状态/Story
 pnpm typecheck
 pnpm build              # dist/
 ```

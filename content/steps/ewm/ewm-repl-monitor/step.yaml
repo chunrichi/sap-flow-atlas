@@ -1,0 +1,39 @@
+id: ewm-repl-monitor
+type: step
+title:
+  zh: 监控补货任务
+  en: Monitor Replenishment
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-replenishment
+flows:
+  - order-to-cash
+tcode: /SCWM/MON
+summary:
+  zh: 监控补货任务状态与拣配区库存恢复情况。
+  en: Monitors replenishment task status and stock recovery in the picking area.
+inputs:
+  - 仓库
+  - 补货任务
+outputs:
+  - 任务状态
+  - 库存恢复
+rules:
+  - 未确认的补货任务会占用目标库位容量。
+  - 补货完成后要确认拣配区可用库存已恢复。
+painPoints:
+  - 补货任务积压会阻塞波次拣配。
+  - 只看到任务创建，未看到上架确认，容易误判库存。
+objects:
+  - tcode:/SCWM/MON
+  - table:/SCWM/QUAN
+  - table:/SCWM/ORDIM_C
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

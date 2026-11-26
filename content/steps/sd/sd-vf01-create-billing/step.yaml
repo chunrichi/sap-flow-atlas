@@ -10,6 +10,7 @@ modules:
 processes:
   - sd-order-management
   - sd-billing
+  - sd-billing-exception
 flows:
   - order-to-cash
 tcode: VF01
@@ -33,6 +34,10 @@ painPoints:
 objects:
   - tcode:VF01
   - table:VBRK
+  - bapi:BAPI_BILLINGDOC_CREATEFROMDATA
+  - cds:I_BillingDocument
+  - odata:API_BILLING_DOCUMENT_SRV
+  - report:RSNAST00
 snippets: []
 crossModule:
   - module: fi

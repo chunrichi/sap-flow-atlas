@@ -8,8 +8,10 @@ modules:
   - pp
 processes:
   - pp-capacity
+  - ps-resource-planning
 flows:
   - plan-to-produce
+  - project-to-profit
 tcode: CM01
 summary:
   zh: 按工作中心查看已分配与可用能力。

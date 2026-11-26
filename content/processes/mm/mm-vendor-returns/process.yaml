@@ -1,0 +1,52 @@
+id: mm-vendor-returns
+type: process
+title:
+  zh: 供应商退货
+  en: Vendor Returns
+module: mm
+flow: procure-to-pay
+stage: receipt
+summary:
+  zh: 从来料不合格或数量差异出发，创建退货采购订单、退货过账并查询退货凭证。
+  en: From rejected or short deliveries, creates a return purchase order, posts the return and reviews return documents.
+variant: exception
+trigger:
+  zh: 来料不合格、数量差异或供应商召回，需要把库存退回供应商时才执行；正常收货不经过。
+  en: Only when rejected goods, quantity differences or a vendor recall require returning stock; normal receipts do not use it.
+steps:
+  - mm-me21n-return-purchase-order
+  - mm-migo-return-to-vendor
+  - mm-mb03-return-document
+  - mm-mb51-return-documents
+edges:
+  - from: mm-me21n-return-purchase-order
+    to: mm-migo-return-to-vendor
+    kind: handoff
+    label:
+      zh: 按退货订单退回
+      en: Return against return PO
+  - from: mm-migo-return-to-vendor
+    to: mm-mb03-return-document
+    kind: sequence
+    label:
+      zh: 查看退货凭证
+      en: Review return document
+  - from: mm-mb03-return-document
+    to: mm-mb51-return-documents
+    kind: sequence
+    label:
+      zh: 汇总退货
+      en: Summarize returns
+roles:
+  - 采购员
+  - 仓库管理员
+  - 质检员
+outcomes:
+  - 退货采购订单
+  - 退货物料凭证
+  - 供应商借项
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

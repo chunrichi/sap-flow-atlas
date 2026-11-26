@@ -8,6 +8,7 @@ modules:
   - pp
 processes:
   - pp-mrp
+  - pp-mrp-exceptions
 flows:
   - plan-to-produce
 tcode: MD01
@@ -31,6 +32,7 @@ objects:
   - "table:PLAF"
   - "table:RESB"
   - "table:MARC"
+  - job:Z_MRP_NIGHTLY
 snippets: []
 crossModule:
   []

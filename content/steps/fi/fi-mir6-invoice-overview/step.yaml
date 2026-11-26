@@ -1,0 +1,44 @@
+id: fi-mir6-invoice-overview
+type: step
+title:
+  zh: 查看冻结发票
+  en: Review Blocked Invoices
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-invoice-block
+flows:
+  - procure-to-pay
+tcode: MIR6
+summary:
+  zh: 按供应商、公司代码与期间查看冻结发票及阻塞原因。
+  en: Reviews blocked invoices and blocking reasons by vendor, company code and period.
+inputs:
+  - 供应商
+  - 公司代码
+  - 期间
+outputs:
+  - 冻结发票清单
+  - 阻塞原因
+rules:
+  - 冻结原因需逐条处理，批量释放前先核对价格、数量与税。
+  - 跨期发票要先确认会计期间是否允许过账。
+painPoints:
+  - 冻结原因未记录，复核人无法判断是否可释放。
+  - 期间关闭导致发票积压，月底集中处理容易错漏。
+objects:
+  - tcode:MIR6
+  - table:RBKP
+  - table:RSEG
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+optional: true
+condition:
+  zh: 只在需要批量查看冻结发票时执行；单张发票可直接在 MIRO 中处理。
+  en: Only when blocked invoices must be reviewed in bulk; a single invoice can be handled directly in MIRO.

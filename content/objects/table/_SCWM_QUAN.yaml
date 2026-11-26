@@ -1,0 +1,25 @@
+id: table:/SCWM/QUAN
+type: table
+technicalName: /SCWM/QUAN
+title:
+  zh: EWM 库存量化
+  en: EWM Stock Quant
+module: ewm
+tableClass: transparent
+summary:
+  zh: EWM 库存的量化表，保存库位、批次、库存类型与数量。
+  en: EWM stock quant table holding storage bin, batch, stock type and quantity.
+relations:
+  - target: tcode:/SCWM/REPL
+    kind: readBy
+  - target: tcode:/SCWM/PI_CREATE
+    kind: readBy
+  - target: tcode:/SCWM/PI_COUNT
+    kind: readBy
+  - target: tcode:/SCWM/PI_PROCESS
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

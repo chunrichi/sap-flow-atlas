@@ -1,0 +1,45 @@
+id: mm-migo-return-to-vendor
+type: step
+title:
+  zh: 退货发货过账
+  en: Post Return to Vendor
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-vendor-returns
+flows:
+  - procure-to-pay
+tcode: MIGO
+summary:
+  zh: 按退货采购订单过账 161 移动类型，把库存退回供应商。
+  en: Posts movement type 161 against the return purchase order to return stock to the vendor.
+inputs:
+  - 退货采购订单
+  - 物料
+  - 数量
+  - 库存地点
+outputs:
+  - 退货物料凭证
+  - 库存减少
+rules:
+  - 退货数量不能超过原收货数量。
+  - 特殊库存需先转非限制库存；批次与序列号必须可追溯。
+painPoints:
+  - 批次/序列号追溯不完整会导致供应商拒收。
+  - 退货过账后才发现数量错误，需要冲销并重建。
+objects:
+  - tcode:MIGO
+  - table:MKPF
+  - table:MSEG
+  - bapi:BAPI_GOODSMVT_CREATE
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 退货冲减库存与供应商应付。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

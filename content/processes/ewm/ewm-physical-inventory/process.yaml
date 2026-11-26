@@ -1,0 +1,41 @@
+id: ewm-physical-inventory
+type: process
+title:
+  zh: EWM 盘点与差异
+  en: EWM Physical Inventory
+module: ewm
+flow: procure-to-pay
+stage: receipt
+summary:
+  zh: 创建 EWM 盘点凭证、录入实盘数量并过账差异，保证仓库账实一致。
+  en: Creates EWM physical inventory documents, records counts and posts differences to keep warehouse stock accurate.
+steps:
+  - ewm-pi-create-document
+  - ewm-pi-enter-count
+  - ewm-pi-post-difference
+edges:
+  - from: ewm-pi-create-document
+    to: ewm-pi-enter-count
+    kind: sequence
+    label:
+      zh: 录入实盘
+      en: Enter counts
+  - from: ewm-pi-enter-count
+    to: ewm-pi-post-difference
+    kind: sequence
+    label:
+      zh: 过账差异
+      en: Post differences
+roles:
+  - 仓库管理员
+  - 盘点员
+  - 库存会计
+outcomes:
+  - 盘点凭证
+  - 盘点差异
+  - 库存调整
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

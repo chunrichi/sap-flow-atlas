@@ -1,0 +1,52 @@
+id: pp-mrp-exceptions
+type: process
+title:
+  zh: MRP 异常处理
+  en: MRP Exception Handling
+module: pp
+flow: plan-to-produce
+stage: plan
+summary:
+  zh: MRP 运行后处理缺料、提前/推迟建议与取消建议，保证计划可执行。
+  en: Handles shortage, reschedule and cancellation messages after MRP so the plan stays executable.
+variant: exception
+trigger:
+  zh: MRP 运行后出现缺料、提前/推迟或取消建议等异常消息时才进入；无异常的计划直接确认。
+  en: Only when MRP produces shortage, reschedule or cancellation messages; a clean plan is confirmed directly.
+steps:
+  - pp-md01-mrp-run
+  - pp-md06-exception-messages
+  - pp-md04-mrp-list
+  - pp-md05-mrp-list
+edges:
+  - from: pp-md01-mrp-run
+    to: pp-md06-exception-messages
+    kind: sequence
+    label:
+      zh: 读取异常
+      en: Read exceptions
+  - from: pp-md06-exception-messages
+    to: pp-md04-mrp-list
+    kind: sequence
+    label:
+      zh: 逐物料核对
+      en: Check per material
+  - from: pp-md04-mrp-list
+    to: pp-md05-mrp-list
+    kind: sequence
+    label:
+      zh: 查看 MRP 清单
+      en: Review MRP list
+roles:
+  - 生产计划员
+  - 采购员
+  - 计划经理
+outcomes:
+  - 异常清单
+  - 调整后的计划订单
+  - 采购申请
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,21 @@
+id: idoc:INVOIC02
+type: idoc
+technicalName: INVOIC02
+title:
+  zh: 发票 IDoc
+  en: Invoice IDoc
+module: sd
+messageType: INVOIC
+summary:
+  zh: 发票/贷项凭证的 IDoc 基本类型，消息类型 INVOIC。
+  en: IDoc basic type for invoices and credit memos with message type INVOIC.
+relations:
+  - target: table:EDIDC
+    kind: related
+  - target: table:EDID4
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

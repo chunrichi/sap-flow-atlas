@@ -1,0 +1,19 @@
+id: table:VBFA
+type: table
+technicalName: VBFA
+title:
+  zh: 销售凭证流
+  en: Sales Document Flow
+module: sd
+tableClass: transparent
+summary:
+  zh: 记录订单、交货、发票与收款之间的前序/后续凭证关系。
+  en: Stores predecessor and successor relationships between orders, deliveries, invoices and payments.
+relations:
+  - target: tcode:VL03N
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

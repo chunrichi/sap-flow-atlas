@@ -1,0 +1,18 @@
+id: tcode:SM21
+type: tcode
+technicalName: SM21
+title:
+  zh: 系统日志
+  en: System Log
+module: abap
+summary:
+  zh: 分析系统日志中的作业失败、转储与运行时错误。
+  en: Analyzes job failures, dumps and runtime errors in the system log.
+relations:
+  - target: table:TBTCO
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

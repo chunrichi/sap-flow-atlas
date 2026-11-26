@@ -1,0 +1,20 @@
+id: job:Z_MRP_NIGHTLY
+type: job
+technicalName: Z_MRP_NIGHTLY
+title:
+  zh: 夜间 MRP 批处理
+  en: Nightly MRP Batch
+module: pp
+summary:
+  zh: 示例后台作业：夜间运行 MRP 并输出异常清单。
+  en: Example background job that runs MRP overnight and outputs the exception list.
+relations:
+  - target: tcode:SM36
+    kind: related
+  - target: process:abap-background-job
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,19 @@
+id: table:VBUP
+type: table
+technicalName: VBUP
+title:
+  zh: 销售凭证项目状态
+  en: Sales Document Item Status
+module: sd
+tableClass: transparent
+summary:
+  zh: 保存订单、交货与开票行项目的整体与局部状态。
+  en: Stores header and item status for sales documents, deliveries and billing items.
+relations:
+  - target: tcode:VL03N
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

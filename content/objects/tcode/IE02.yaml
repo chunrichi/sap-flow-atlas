@@ -1,0 +1,20 @@
+id: tcode:IE02
+type: tcode
+technicalName: IE02
+title:
+  zh: 修改设备
+  en: Change Equipment
+module: cs
+summary:
+  zh: 维护设备位置、状态、保修与安装信息。
+  en: Maintains equipment location, status, warranty and installation data.
+relations:
+  - target: table:EQUI
+    kind: writes
+  - target: table:IHPA
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

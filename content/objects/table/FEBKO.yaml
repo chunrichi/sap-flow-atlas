@@ -1,0 +1,19 @@
+id: table:FEBKO
+type: table
+technicalName: FEBKO
+title:
+  zh: 银行对账单抬头
+  en: Bank Statement Header
+module: fi
+tableClass: transparent
+summary:
+  zh: 保存银行对账单的银行账户、期间与导入状态。
+  en: Stores bank account, period and import status of bank statements.
+relations:
+  - target: tcode:FF67
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

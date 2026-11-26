@@ -38,6 +38,8 @@ processes:
   - cs-contract
   - sd-service-billing
   - fi-service-collection
+  - cs-warranty
+  - cs-installation
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:

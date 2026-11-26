@@ -37,6 +37,7 @@ painPoints:
 objects:
   - tcode:ME51N
   - table:EBAN
+  - enhancement:ME_PROCESS_REQ_CUST
 snippets: []
 crossModule:
   - module: pp

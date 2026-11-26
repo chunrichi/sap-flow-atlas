@@ -1,0 +1,48 @@
+id: ps-project-close
+type: process
+title:
+  zh: 项目收尾与关闭
+  en: Project Close
+module: ps
+flow: project-to-profit
+stage: settle
+summary:
+  zh: 在结算完成后检查项目结构、关闭项目并保留决算与审计轨迹。
+  en: After settlement, reviews the project structure, closes the project and keeps the final accounts and audit trail.
+steps:
+  - ps-cj88-project-settlement
+  - ps-cj03-display-project
+  - ps-cj02-close-project
+  - ps-ke30-profitability
+edges:
+  - from: ps-cj88-project-settlement
+    to: ps-cj03-display-project
+    kind: sequence
+    label:
+      zh: 核对结算状态
+      en: Review settlement
+  - from: ps-cj03-display-project
+    to: ps-cj02-close-project
+    kind: sequence
+    label:
+      zh: 关闭项目
+      en: Close project
+  - from: ps-cj02-close-project
+    to: ps-ke30-profitability
+    kind: sequence
+    label:
+      zh: 决算分析
+      en: Final analysis
+roles:
+  - 项目经理
+  - 财务控制
+  - 审计
+outcomes:
+  - 项目关闭状态
+  - 结算凭证
+  - 项目决算
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

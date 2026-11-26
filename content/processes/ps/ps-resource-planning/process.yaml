@@ -1,0 +1,55 @@
+id: ps-resource-planning
+type: process
+title:
+  zh: 项目资源与网络计划
+  en: Project Resource and Network Planning
+module: ps
+flow: project-to-profit
+stage: execute
+summary:
+  zh: 维护项目网络、活动关系与资源分配，检查能力负荷并确认活动进度。
+  en: Maintains project networks, activity relationships and resource assignments, checks capacity load and confirms progress.
+steps:
+  - ps-cj20n-wbs
+  - ps-cn21-network
+  - ps-cn22-change-network
+  - pp-cm01-capacity-load
+  - ps-cn25-confirm-network
+edges:
+  - from: ps-cj20n-wbs
+    to: ps-cn21-network
+    kind: sequence
+    label:
+      zh: 建立网络
+      en: Create network
+  - from: ps-cn21-network
+    to: ps-cn22-change-network
+    kind: sequence
+    label:
+      zh: 调整活动
+      en: Adjust activities
+  - from: ps-cn22-change-network
+    to: pp-cm01-capacity-load
+    kind: sequence
+    label:
+      zh: 检查负荷
+      en: Check capacity
+  - from: pp-cm01-capacity-load
+    to: ps-cn25-confirm-network
+    kind: sequence
+    label:
+      zh: 确认进度
+      en: Confirm progress
+roles:
+  - 项目经理
+  - 计划工程师
+  - 资源经理
+outcomes:
+  - 网络计划
+  - 能力负荷
+  - 活动确认
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

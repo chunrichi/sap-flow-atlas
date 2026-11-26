@@ -1,0 +1,22 @@
+id: tcode:MD05
+type: tcode
+technicalName: MD05
+title:
+  zh: MRP 清单
+  en: MRP List
+module: pp
+summary:
+  zh: 查看 MRP 运行后的计划订单、采购申请与例外消息。
+  en: Displays planned orders, purchase requisitions and exception messages after MRP.
+relations:
+  - target: table:PLAF
+    kind: reads
+  - target: table:RESB
+    kind: reads
+  - target: process:pp-mrp-exceptions
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

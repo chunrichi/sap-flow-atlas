@@ -1,0 +1,41 @@
+id: cs-ie02-install-equipment
+type: step
+title:
+  zh: 安装与更换设备
+  en: Install and Replace Equipment
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-installation
+flows:
+  - service-to-cash
+tcode: IE02
+summary:
+  zh: 维护设备安装位置、状态与安装日期，记录搬迁或更换。
+  en: Maintains equipment installation location, status and date, recording relocation or replacement.
+inputs:
+  - 设备
+  - 安装位置
+  - 安装日期
+outputs:
+  - 安装记录
+  - 设备状态
+rules:
+  - 安装位置变更需保留历史，不能覆盖原记录。
+  - 搬迁或更换需同步服务合同与保修信息。
+painPoints:
+  - 直接改位置，历史安装点无法追溯。
+  - 更换设备未更新保修，后续索赔失败。
+objects:
+  - tcode:IE02
+  - table:EQUI
+  - table:ILOA
+  - table:IHPA
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

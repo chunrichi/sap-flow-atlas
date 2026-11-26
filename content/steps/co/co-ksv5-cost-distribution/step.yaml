@@ -1,0 +1,45 @@
+id: co-ksv5-cost-distribution
+type: step
+title:
+  zh: 执行成本分配
+  en: Run Cost Distribution
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-cost-allocation
+flows:
+  - record-to-report
+tcode: KSV5
+summary:
+  zh: 按分配循环把发送方成本中心的费用分配到接收方，不生成评估凭证。
+  en: Distributes sender cost center costs to receivers by cycle without assessment postings.
+inputs:
+  - 分配循环
+  - 发送方
+  - 接收方
+  - 期间
+outputs:
+  - 分配结果
+  - 成本中心报表
+rules:
+  - 分配不生成评估凭证，只重分类原始成本。
+  - 循环需先在测试模式验证接收方比例。
+painPoints:
+  - 接收方统计指标未维护，分配比例为 0。
+  - 分配与评估循环混用，导致成本重复分配。
+objects:
+  - tcode:KSV5
+  - table:COSP
+  - table:COSS
+  - table:CSKS
+snippets: []
+crossModule:
+  - module: fi
+    relation: accounting-impact
+    note: 分配结果进入成本报表与总账对账。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

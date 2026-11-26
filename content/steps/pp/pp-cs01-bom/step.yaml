@@ -8,6 +8,7 @@ modules:
   - pp
 processes:
   - pp-routing
+  - pp-bom-management
 flows:
   - plan-to-produce
 tcode: CS01
@@ -34,6 +35,8 @@ objects:
   - table:STKO
   - table:STPO
   - table:MARC
+  - cds:I_Product
+  - odata:API_PRODUCT_SRV
 snippets: []
 crossModule:
   - module: mm

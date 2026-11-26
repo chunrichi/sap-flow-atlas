@@ -37,6 +37,9 @@ processes:
   - fi-reporting
   - co-profit-center
   - co-internal-order
+  - fi-bank-reconciliation
+  - co-cost-allocation
+  - co-profitability-analysis
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:

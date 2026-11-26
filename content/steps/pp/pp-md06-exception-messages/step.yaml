@@ -8,6 +8,7 @@ modules:
   - pp
 processes:
   - pp-mrp
+  - pp-mrp-exceptions
 flows:
   - plan-to-produce
 tcode: MD06

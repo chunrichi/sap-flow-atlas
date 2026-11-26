@@ -1,0 +1,22 @@
+id: tcode:CS02
+type: tcode
+technicalName: CS02
+title:
+  zh: 修改物料清单
+  en: Change Bill of Material
+module: pp
+summary:
+  zh: 修改 BOM 抬头、行项目、组件数量与有效期。
+  en: Changes BOM header, items, component quantities and validity.
+relations:
+  - target: table:MAST
+    kind: writes
+  - target: table:STKO
+    kind: writes
+  - target: table:STPO
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

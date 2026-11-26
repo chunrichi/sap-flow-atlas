@@ -301,10 +301,12 @@ updatedAt: 2026-11-24
 | `cds` | `viewType`（`interface` / `consumption`） | `I_SalesOrder` |
 | `odata` | `serviceVersion`（`v2` / `v4`） | `API_SALES_ORDER_SRV` |
 | `enhancement` | `subtype`（`user-exit` / `badi` / `enhancement`） | `MV45AFZZ`、`BADI_SD_SALES` |
-| `class` | `isAbstract` | `CL_SALES_ORDER`（示例） |
-| `function` | `functionGroup` | `SD_SALESDOCUMENT_CREATE` |
-| `idoc` | `messageType` | `ORDERS` |
-| `fiori` | `appId` | `Fiori 应用 ID` |
+| `class` | `package` | `CL_SALV_TABLE` |
+| `function` | `functionGroup` | `CONVERSION_EXIT_ALPHA_INPUT` |
+| `idoc` | `messageType` | `ORDERS05`（消息类型 `ORDERS`） |
+| `fiori` | `appId` | `F1873` |
+| `report` | `package` | `RSNAST00` |
+| `job` | `package` | `Z_MRP_NIGHTLY` |
 
 关系 `kind` 枚举：`calls`、`reads`、`writes`、`enhances`、`exposes`、`basedOn`、`partOf`、`triggers`、`related`。
 

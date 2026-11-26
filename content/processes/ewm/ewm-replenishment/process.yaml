@@ -1,0 +1,52 @@
+id: ewm-replenishment
+type: process
+title:
+  zh: 拣配区补货
+  en: Picking Area Replenishment
+module: ewm
+flow: order-to-cash
+stage: shipping
+summary:
+  zh: 当拣配区库存低于阈值时生成补货任务，恢复拣配区库存后再继续波次拣配。
+  en: Creates replenishment tasks when picking area stock falls below the threshold and restores stock before wave picking.
+variant: optional
+trigger:
+  zh: 拣配区库存低于补货阈值或波次拣配需要补货时才执行；库存充足时直接拣配。
+  en: Only when picking area stock is below the replenishment threshold or wave picking needs replenishment; sufficient stock is picked directly.
+steps:
+  - ewm-repl-run
+  - ewm-repl-monitor
+  - ewm-prdo-warehouse-task
+  - ewm-mon-picking-confirm
+edges:
+  - from: ewm-repl-run
+    to: ewm-repl-monitor
+    kind: sequence
+    label:
+      zh: 监控补货任务
+      en: Monitor replenishment
+  - from: ewm-repl-monitor
+    to: ewm-prdo-warehouse-task
+    kind: sequence
+    label:
+      zh: 生成仓库任务
+      en: Create warehouse task
+  - from: ewm-prdo-warehouse-task
+    to: ewm-mon-picking-confirm
+    kind: sequence
+    label:
+      zh: 补货后继续拣配
+      en: Continue picking
+roles:
+  - 仓库主管
+  - 拣配员
+  - 库存计划员
+outcomes:
+  - 补货任务
+  - 库存转移
+  - 拣配区库存恢复
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

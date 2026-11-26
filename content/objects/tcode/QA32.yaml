@@ -1,0 +1,20 @@
+id: tcode:QA32
+type: tcode
+technicalName: QA32
+title:
+  zh: 检验批清单
+  en: Inspection Lot List
+module: qm
+summary:
+  zh: 按物料、工厂与状态筛选检验批，批量录入结果或决策。
+  en: Filters inspection lots by material, plant and status for bulk results or decisions.
+relations:
+  - target: table:QALS
+    kind: reads
+  - target: table:QAVE
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

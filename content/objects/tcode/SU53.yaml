@@ -1,0 +1,20 @@
+id: tcode:SU53
+type: tcode
+technicalName: SU53
+title:
+  zh: 授权错误分析
+  en: Authorization Error Analysis
+module: abap
+summary:
+  zh: 查看用户最近一次权限失败的对象与字段值。
+  en: Displays the objects and field values of the last authorization failure.
+relations:
+  - target: table:AGR_1251
+    kind: reads
+  - target: tcode:PFCG
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

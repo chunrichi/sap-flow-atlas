@@ -1,0 +1,32 @@
+id: abap-odata-client-read
+type: snippet
+language: abap
+title:
+  zh: 用 HTTP 客户端调用 OData
+  en: Call OData with HTTP Client
+objects:
+  - tcode:/IWFND/GW_CLIENT
+  - class:CL_HTTP_CLIENT
+  - odata:API_SALES_ORDER_SRV
+  - cds:I_SalesOrder
+file: abap/odata-client-read.abap
+summary:
+  zh: 通过 HTTP destination 调用销售订单 OData 服务，检查状态码并保留响应体供反序列化。
+  en: Calls the sales order OData service through an HTTP destination, checks the status code and keeps the response body for deserialization.
+annotations:
+  - lines: 1-2
+    note: 构造带 $top 的 OData URL。
+  - lines: 4-8
+    note: 按 destination 创建客户端，关闭登录弹窗。
+  - lines: 10-14
+    note: 发送请求并读取状态与响应体。
+  - lines: 16-19
+    note: 非 200 时直接报错，避免解析脏数据。
+  - lines: 21-24
+    note: 关闭客户端；响应体交给 /ui2/cl_json。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - abap-cheat-sheets
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

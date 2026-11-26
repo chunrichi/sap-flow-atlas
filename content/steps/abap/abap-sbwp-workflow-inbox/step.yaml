@@ -1,0 +1,39 @@
+id: abap-sbwp-workflow-inbox
+type: step
+title:
+  zh: 处理工作流待办
+  en: Process Workflow Inbox
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-workflow
+flows:
+  - develop-to-deploy
+tcode: SBWP
+summary:
+  zh: 在收件箱处理工作流待办、审批、退回与转交。
+  en: Processes workflow work items, approvals, rejections and forwarding in the inbox.
+inputs:
+  - 工作项
+  - 审批意见
+outputs:
+  - 处理结果
+  - 工作项状态
+rules:
+  - 审批人不能是发起人，需配置替代人。
+  - 超时未处理要升级，不能无限挂起。
+painPoints:
+  - 审批人休假未配置替代，流程停摆。
+  - 批量审批误点，缺少二次确认。
+objects:
+  - tcode:SBWP
+  - table:SWWWIHEAD
+  - tcode:SWDD
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

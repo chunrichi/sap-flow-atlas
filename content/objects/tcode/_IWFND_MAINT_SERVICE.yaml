@@ -1,0 +1,20 @@
+id: tcode:/IWFND/MAINT_SERVICE
+type: tcode
+technicalName: /IWFND/MAINT_SERVICE
+title:
+  zh: 注册 OData 服务
+  en: Activate and Maintain Services
+module: abap
+summary:
+  zh: 在 Gateway 中注册、激活并测试 OData 服务。
+  en: Registers, activates and tests OData services in the Gateway.
+relations:
+  - target: odata:API_SALES_ORDER_SRV
+    kind: related
+  - target: process:abap-odata-service
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

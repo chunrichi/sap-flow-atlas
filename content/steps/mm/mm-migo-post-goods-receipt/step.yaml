@@ -13,6 +13,7 @@ processes:
   - mm-procurement
   - mm-production-supply
   - mm-asset-request
+  - mm-goods-receipt
 flows:
   - procure-to-pay
   - plan-to-produce

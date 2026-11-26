@@ -1,0 +1,20 @@
+id: tcode:FF67
+type: tcode
+technicalName: FF67
+title:
+  zh: 手工银行对账单
+  en: Manual Bank Statement
+module: fi
+summary:
+  zh: 录入或导入银行对账单，形成待处理的对账项目。
+  en: Enters or imports bank statements to create reconciliation items.
+relations:
+  - target: table:FEBKO
+    kind: writes
+  - target: table:FEBEP
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

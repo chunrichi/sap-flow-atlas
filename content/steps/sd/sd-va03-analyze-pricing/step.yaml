@@ -28,6 +28,7 @@ objects:
   - "tcode:VA03"
   - "table:VBAK"
   - "table:PRCD_ELEMENTS"
+  - report:RVAUFSTA
 snippets: []
 crossModule:
   []

@@ -1,0 +1,44 @@
+id: abap-sm36-define-job
+type: step
+title:
+  zh: 定义后台作业
+  en: Define Background Job
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-background-job
+flows:
+  - develop-to-deploy
+tcode: SM36
+summary:
+  zh: 定义后台作业的步骤、开始条件与调度周期。
+  en: Defines background job steps, start conditions and scheduling periods.
+inputs:
+  - 程序/变式
+  - 开始条件
+  - 调度周期
+outputs:
+  - 作业定义
+  - 调度计划
+rules:
+  - 作业避开在线高峰与月结窗口。
+  - 变式必须存在且参数完整。
+painPoints:
+  - 变式丢失导致作业启动即失败。
+  - 多个作业同时跑 MRP，互相锁表。
+objects:
+  - tcode:SM36
+  - table:TBTCO
+  - job:Z_MRP_NIGHTLY
+snippets:
+  - abap-job-submit
+crossModule:
+  - module: pp
+    relation: batch
+    note: 夜间 MRP 作业由后台调度驱动计划运行。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

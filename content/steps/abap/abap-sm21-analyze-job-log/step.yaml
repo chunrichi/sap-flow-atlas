@@ -1,0 +1,43 @@
+id: abap-sm21-analyze-job-log
+type: step
+title:
+  zh: 分析系统日志
+  en: Analyze System Log
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-background-job
+flows:
+  - develop-to-deploy
+tcode: SM21
+summary:
+  zh: 在系统日志中定位作业失败、转储与运行时错误。
+  en: Locates job failures, dumps and runtime errors in the system log.
+inputs:
+  - 时间范围
+  - 用户
+  - 作业
+outputs:
+  - 错误日志
+  - 根因线索
+rules:
+  - 先看 SM37 作业日志，再看 SM21 系统日志。
+  - 保留日志与时间戳，便于复盘。
+painPoints:
+  - 日志被覆盖后才排查，缺少证据。
+  - 只看错误消息，不看前后上下文。
+objects:
+  - tcode:SM21
+  - table:TBTCO
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+optional: true
+condition:
+  zh: 只在作业失败或出现运行时错误时执行；正常作业无需分析系统日志。
+  en: Only when a job fails or a runtime error occurs; successful jobs do not need system log analysis.

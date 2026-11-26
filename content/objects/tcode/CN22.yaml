@@ -1,0 +1,20 @@
+id: tcode:CN22
+type: tcode
+technicalName: CN22
+title:
+  zh: 修改网络
+  en: Change Network
+module: ps
+summary:
+  zh: 修改项目网络的活动、关系、工期与资源分配。
+  en: Changes activities, relationships, durations and resource assignments of project networks.
+relations:
+  - target: table:PROJ
+    kind: reads
+  - target: table:AFVC
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

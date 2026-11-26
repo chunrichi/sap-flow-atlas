@@ -1,0 +1,20 @@
+id: tcode:KEA0
+type: tcode
+technicalName: KEA0
+title:
+  zh: 获利分析
+  en: Profitability Analysis
+module: co
+summary:
+  zh: 运行 CO-PA 获利分析报表，按客户、产品与区域查看边际贡献。
+  en: Runs CO-PA profitability reports by customer, product and region for contribution margin.
+relations:
+  - target: table:CEPC
+    kind: reads
+  - target: process:co-profitability-analysis
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,20 @@
+id: tcode:/IWFND/GW_CLIENT
+type: tcode
+technicalName: /IWFND/GW_CLIENT
+title:
+  zh: 测试 OData 服务
+  en: Gateway Client
+module: abap
+summary:
+  zh: 以 HTTP 请求测试 OData 服务的读写与错误码。
+  en: Tests OData service reads, writes and error codes through HTTP requests.
+relations:
+  - target: odata:API_SALES_ORDER_SRV
+    kind: tests
+  - target: class:CL_HTTP_CLIENT
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,20 @@
+id: tcode:SWDD
+type: tcode
+technicalName: SWDD
+title:
+  zh: 工作流构建器
+  en: Workflow Builder
+module: abap
+summary:
+  zh: 定义工作流步骤、参与者、条件与容器元素。
+  en: Defines workflow steps, agents, conditions and container elements.
+relations:
+  - target: table:SWWWIHEAD
+    kind: writes
+  - target: function:SAP_WAPI_START_WORKFLOW
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

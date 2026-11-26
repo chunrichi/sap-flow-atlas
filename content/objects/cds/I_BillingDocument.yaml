@@ -1,0 +1,21 @@
+id: cds:I_BillingDocument
+type: cds
+technicalName: I_BillingDocument
+title:
+  zh: 开票凭证接口视图
+  en: Billing Document Interface View
+module: sd
+viewType: interface
+summary:
+  zh: 开票凭证的接口 CDS 视图，供分析、API 与 Fiori 复用。
+  en: Interface CDS view for billing documents reused by analytics, APIs and Fiori apps.
+relations:
+  - target: table:VBRK
+    kind: reads
+  - target: table:VBRP
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

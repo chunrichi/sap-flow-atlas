@@ -9,6 +9,7 @@ modules:
 processes:
   - cs-service-order
   - sd-service-billing
+  - cs-warranty
 flows:
   - service-to-cash
 tcode: VF01

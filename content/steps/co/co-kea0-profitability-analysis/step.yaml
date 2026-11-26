@@ -1,0 +1,40 @@
+id: co-kea0-profitability-analysis
+type: step
+title:
+  zh: 运行获利分析
+  en: Run Profitability Analysis
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-profitability-analysis
+flows:
+  - record-to-report
+tcode: KEA0
+summary:
+  zh: 按客户、产品、区域与期间运行获利分析报表，查看边际贡献。
+  en: Runs profitability reports by customer, product, region and period to review contribution margin.
+inputs:
+  - 报表类型
+  - 期间
+  - 维度
+outputs:
+  - 边际贡献
+  - 客户/产品盈利分析
+rules:
+  - 报表基于获利段，需先完成收入和成本归集。
+  - 分析结果要与利润中心报表交叉核对。
+painPoints:
+  - 维度选择过多导致报表难以解读。
+  - 收入与成本期间不匹配，边际贡献失真。
+objects:
+  - tcode:KEA0
+  - table:CEPC
+  - table:COEP
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

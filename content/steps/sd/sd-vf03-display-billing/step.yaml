@@ -9,6 +9,7 @@ modules:
 processes:
   - sd-billing
   - sd-service-billing
+  - sd-billing-exception
 flows:
   - order-to-cash
   - service-to-cash
@@ -34,6 +35,7 @@ objects:
   - table:VBRK
   - table:VBRP
   - table:ACDOCA
+  - fiori:F0797
 snippets: []
 crossModule: []
 status: draft

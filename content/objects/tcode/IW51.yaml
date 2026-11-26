@@ -1,0 +1,20 @@
+id: tcode:IW51
+type: tcode
+technicalName: IW51
+title:
+  zh: 创建服务通知
+  en: Create Service Notification
+module: cs
+summary:
+  zh: 创建客户服务通知，记录故障现象、设备与优先级。
+  en: Creates a customer service notification with symptoms, equipment and priority.
+relations:
+  - target: table:VIQMEL
+    kind: writes
+  - target: tcode:IW31
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-reporting
+  - fi-bank-reconciliation
 flows:
   - record-to-report
 tcode: FAGLL03
@@ -32,6 +33,7 @@ objects:
   - table:ACDOCA
   - table:BSEG
   - tcode:FB08
+  - cds:I_GLAccountLineItem
 snippets: []
 crossModule: []
 status: draft

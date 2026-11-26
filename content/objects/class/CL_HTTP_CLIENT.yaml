@@ -1,0 +1,20 @@
+id: class:CL_HTTP_CLIENT
+type: class
+technicalName: CL_HTTP_CLIENT
+title:
+  zh: HTTP 客户端类
+  en: HTTP Client Class
+module: abap
+summary:
+  zh: 创建 HTTP 客户端并调用 REST/OData 服务。
+  en: Creates an HTTP client for REST and OData service calls.
+relations:
+  - target: tcode:/IWFND/GW_CLIENT
+    kind: related
+  - target: cds:I_SalesOrder
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

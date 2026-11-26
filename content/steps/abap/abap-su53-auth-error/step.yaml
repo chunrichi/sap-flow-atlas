@@ -1,0 +1,44 @@
+id: abap-su53-auth-error
+type: step
+title:
+  zh: 分析授权错误
+  en: Analyze Authorization Error
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-authorization
+flows:
+  - develop-to-deploy
+tcode: SU53
+summary:
+  zh: 分析用户最近一次权限失败的对象与字段值，定位缺失角色。
+  en: Analyzes the objects and field values of a user's last authorization failure to locate missing roles.
+inputs:
+  - 用户
+  - 事务码
+  - 时间
+outputs:
+  - 失败对象
+  - 字段值
+rules:
+  - 先复现失败再分析 SU53。
+  - 根据失败对象补角色，不要直接给 SAP_ALL。
+painPoints:
+  - 用 SAP_ALL 绕过问题，留下过度授权。
+  - SU53 被后续操作覆盖，需及时保存。
+objects:
+  - tcode:SU53
+  - table:AGR_1251
+  - table:USR02
+snippets:
+  - abap-authority-check
+crossModule:
+  - module: hr
+    relation: access
+    note: 权限问题常与岗位/组织变更相关。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

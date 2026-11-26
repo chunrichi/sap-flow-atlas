@@ -1,0 +1,19 @@
+id: table:SWWWIHEAD
+type: table
+technicalName: SWWWIHEAD
+title:
+  zh: 工作流工作项抬头
+  en: Workflow Work Item Header
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存工作项状态、参与者、创建与完成时间。
+  en: Stores work item status, agents, creation and completion times.
+relations:
+  - target: tcode:SBWP
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

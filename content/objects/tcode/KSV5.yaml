@@ -1,0 +1,22 @@
+id: tcode:KSV5
+type: tcode
+technicalName: KSV5
+title:
+  zh: 成本分配
+  en: Cost Distribution
+module: co
+summary:
+  zh: 按分配循环把成本中心费用分配到接收方，不生成评估凭证。
+  en: Distributes cost center costs to receivers by cycle without assessment postings.
+relations:
+  - target: table:COSP
+    kind: reads
+  - target: tcode:KSU5
+    kind: related
+  - target: process:co-cost-allocation
+    kind: usedBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

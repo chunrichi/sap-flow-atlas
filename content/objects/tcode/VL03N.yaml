@@ -1,0 +1,22 @@
+id: tcode:VL03N
+type: tcode
+technicalName: VL03N
+title:
+  zh: 显示交货单
+  en: Display Outbound Delivery
+module: sd
+summary:
+  zh: 查看交货单抬头、行项目、拣配与发货状态。
+  en: Displays delivery header, items, picking and goods issue status.
+relations:
+  - target: table:LIKP
+    kind: reads
+  - target: table:LIPS
+    kind: reads
+  - target: tcode:VL02N
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

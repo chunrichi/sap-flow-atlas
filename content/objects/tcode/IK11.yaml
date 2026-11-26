@@ -1,0 +1,20 @@
+id: tcode:IK11
+type: tcode
+technicalName: IK11
+title:
+  zh: 录入测量凭证
+  en: Create Measurement Document
+module: pm
+summary:
+  zh: 为测量点录入读数，用于校准、磨损与状态监测。
+  en: Records readings for measuring points used in calibration, wear and condition monitoring.
+relations:
+  - target: table:IMRG
+    kind: writes
+  - target: table:EQUI
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

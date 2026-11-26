@@ -1,0 +1,21 @@
+id: idoc:ORDERS05
+type: idoc
+technicalName: ORDERS05
+title:
+  zh: 销售订单 IDoc
+  en: Sales Order IDoc
+module: sd
+messageType: ORDERS
+summary:
+  zh: 销售订单的 IDoc 基本类型，消息类型 ORDERS。
+  en: IDoc basic type for sales orders with message type ORDERS.
+relations:
+  - target: table:EDIDC
+    kind: related
+  - target: table:EDID4
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,45 @@
+id: cs-iw51-warranty-notification
+type: step
+title:
+  zh: 创建保修通知
+  en: Create Warranty Notification
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-warranty
+flows:
+  - service-to-cash
+tcode: IW51
+summary:
+  zh: 记录客户报修、设备、故障现象与保修状态，确定服务优先级。
+  en: Records the customer report, equipment, symptoms and warranty status to set service priority.
+inputs:
+  - 客户
+  - 设备
+  - 故障现象
+  - 保修状态
+outputs:
+  - 保修通知
+  - 服务优先级
+rules:
+  - 保修期内不收费，保外需转收费服务订单。
+  - 设备与合同必须匹配，避免误用保修。
+painPoints:
+  - 保修范围未核对，免费处理了保外故障。
+  - 故障描述过于笼统，工程师到场后无法准备备件。
+objects:
+  - tcode:IW51
+  - table:VIQMEL
+  - table:EQUI
+  - cds:I_Equipment
+snippets: []
+crossModule:
+  - module: fi
+    relation: cost
+    note: 保修成本需要归集与结算。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

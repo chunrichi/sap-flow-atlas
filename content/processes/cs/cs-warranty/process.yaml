@@ -1,0 +1,52 @@
+id: cs-warranty
+type: process
+title:
+  zh: 保修索赔与服务
+  en: Warranty Claim and Service
+module: cs
+flow: service-to-cash
+stage: execute
+summary:
+  zh: 客户在保修期内报修时的保修通知、服务工单、确认与开票链路。
+  en: The warranty notification, service order, confirmation and billing chain when a customer reports a fault during warranty.
+variant: optional
+trigger:
+  zh: 产品在保修期内出现故障、客户提出保修索赔时才执行；保外服务按收费服务订单处理。
+  en: Only when a product fails within warranty and the customer files a claim; out-of-warranty service uses chargeable service orders.
+steps:
+  - cs-iw51-warranty-notification
+  - cs-iw31-service-order
+  - cs-iw41-service-confirmation
+  - cs-vf01-service-billing
+edges:
+  - from: cs-iw51-warranty-notification
+    to: cs-iw31-service-order
+    kind: handoff
+    label:
+      zh: 转服务工单
+      en: Create service order
+  - from: cs-iw31-service-order
+    to: cs-iw41-service-confirmation
+    kind: sequence
+    label:
+      zh: 现场确认
+      en: Confirm service
+  - from: cs-iw41-service-confirmation
+    to: cs-vf01-service-billing
+    kind: sequence
+    label:
+      zh: 保修结算
+      en: Settle warranty
+roles:
+  - 客服
+  - 服务工程师
+  - 保修专员
+outcomes:
+  - 保修通知
+  - 保修工单
+  - 保修成本
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,39 @@
+id: hr-su01-lock-user
+type: step
+title:
+  zh: 停用系统用户
+  en: Deactivate System User
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-offboarding
+flows:
+  - hire-to-retire
+tcode: SU01
+summary:
+  zh: 在离职当日锁定用户并移除角色，保留审计日志。
+  en: Locks the user on the last working day, removes roles and keeps the audit log.
+inputs:
+  - 用户
+  - 离职日期
+outputs:
+  - 账号锁定
+  - 角色移除
+rules:
+  - 离职当日必须锁定账号。
+  - 保留审计日志，不能直接删除用户。
+painPoints:
+  - 账号未及时锁定，存在数据安全风险。
+  - 直接删除用户导致审计轨迹丢失。
+objects:
+  - tcode:SU01
+  - table:USR02
+  - table:AGR_USERS
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

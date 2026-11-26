@@ -1,0 +1,19 @@
+id: enhancement:ME_PROCESS_REQ_CUST
+type: enhancement
+technicalName: ME_PROCESS_REQ_CUST
+title:
+  zh: 采购申请 BAdI
+  en: Purchase Requisition BAdI
+module: mm
+subtype: badi
+summary:
+  zh: 采购申请保存与审批时的 BAdI，可做字段校验、默认值与审批增强。
+  en: BAdI during purchase requisition save and release for field checks, defaults and approvals.
+relations:
+  - target: tcode:ME51N
+    kind: enhances
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

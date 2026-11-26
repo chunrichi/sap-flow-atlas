@@ -1,0 +1,20 @@
+id: tcode:CJ02
+type: tcode
+technicalName: CJ02
+title:
+  zh: 修改项目
+  en: Change Project
+module: ps
+summary:
+  zh: 修改项目定义、WBS、状态与锁定标志，用于项目收尾。
+  en: Changes project definition, WBS, status and lock indicators for project close.
+relations:
+  - target: table:PROJ
+    kind: writes
+  - target: table:PRPS
+    kind: writes
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

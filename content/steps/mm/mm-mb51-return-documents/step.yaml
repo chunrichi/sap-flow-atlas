@@ -1,0 +1,43 @@
+id: mm-mb51-return-documents
+type: step
+title:
+  zh: 查询退货凭证
+  en: Query Return Documents
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-vendor-returns
+flows:
+  - procure-to-pay
+tcode: MB51
+summary:
+  zh: 按供应商、物料与期间查询退货相关物料凭证并汇总数量。
+  en: Queries return-related material documents by vendor, material and period and summarizes quantities.
+inputs:
+  - 供应商
+  - 物料
+  - 期间
+outputs:
+  - 退货凭证清单
+  - 数量汇总
+rules:
+  - 查询需包含 161 与后续冲销凭证。
+  - 按采购订单筛选可定位供应商借项。
+painPoints:
+  - 退货凭证未关联采购订单，供应商对账困难。
+  - 期间选择不当会漏掉跨月退货。
+objects:
+  - tcode:MB51
+  - table:MSEG
+  - table:EKBE
+snippets: []
+crossModule:
+  - module: fi
+    relation: reconciliation
+    note: 退货凭证是供应商借项与对账依据。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,21 @@
+id: cds:I_BusinessPartner
+type: cds
+technicalName: I_BusinessPartner
+title:
+  zh: 业务伙伴接口视图
+  en: Business Partner Interface View
+module: fi
+viewType: interface
+summary:
+  zh: 客户与供应商统一业务伙伴的接口视图，供 FI、SD 与 API 复用。
+  en: Interface view for unified customer and vendor business partners reused by FI, SD and APIs.
+relations:
+  - target: table:KNA1
+    kind: reads
+  - target: table:LFA1
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

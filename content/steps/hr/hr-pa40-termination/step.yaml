@@ -1,0 +1,43 @@
+id: hr-pa40-termination
+type: step
+title:
+  zh: 执行员工离职
+  en: Execute Employee Termination
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-offboarding
+flows:
+  - hire-to-retire
+tcode: PA40
+summary:
+  zh: 通过人事事件记录离职，确定最后工作日与离职原因。
+  en: Records termination through a personnel action and sets the last working day and reason.
+inputs:
+  - 员工
+  - 离职日期
+  - 离职原因
+outputs:
+  - 离职事件
+  - 离职状态
+rules:
+  - 离职日期必须与最后工作日一致。
+  - 未结薪酬、年假与借款需在离职前处理。
+painPoints:
+  - 离职日期与最后工作日不一致，薪酬多算或少算。
+  - 离职原因未记录，后续分析缺少依据。
+objects:
+  - tcode:PA40
+  - table:PA0000
+  - table:PA0001
+snippets: []
+crossModule:
+  - module: co
+    relation: cost
+    note: 离职影响薪酬成本与组织成本归集。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

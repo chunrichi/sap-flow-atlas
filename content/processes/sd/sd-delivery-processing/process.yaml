@@ -1,0 +1,48 @@
+id: sd-delivery-processing
+type: process
+title:
+  zh: 交货与发货处理
+  en: Delivery and Shipping Processing
+module: sd
+flow: order-to-cash
+stage: fulfillment
+summary:
+  zh: 从交货到期清单、创建交货、拣配包装到发货状态确认的 SD 履约链路。
+  en: The SD fulfillment chain from delivery due list and delivery creation to picking, packing and shipping status.
+steps:
+  - sd-vl06o-delivery-due-list
+  - sd-vl01n-create-delivery
+  - sd-vl02n-pick-pack
+  - sd-vl03n-display-delivery
+edges:
+  - from: sd-vl06o-delivery-due-list
+    to: sd-vl01n-create-delivery
+    kind: sequence
+    label:
+      zh: 批量创建交货
+      en: Create deliveries in bulk
+  - from: sd-vl01n-create-delivery
+    to: sd-vl02n-pick-pack
+    kind: sequence
+    label:
+      zh: 拣配与包装
+      en: Pick and pack
+  - from: sd-vl02n-pick-pack
+    to: sd-vl03n-display-delivery
+    kind: sequence
+    label:
+      zh: 确认发货状态
+      en: Confirm shipping status
+roles:
+  - 销售内勤
+  - 仓库管理员
+  - 物流协调员
+outcomes:
+  - 交货单
+  - 拣配状态
+  - 发货准备
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

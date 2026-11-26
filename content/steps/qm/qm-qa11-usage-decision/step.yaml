@@ -9,6 +9,8 @@ modules:
 processes:
   - qm-inspection
   - qm-notification
+  - qm-inspection-result
+  - qm-lot-rejection
 flows:
   - plan-to-produce
 tcode: QA11

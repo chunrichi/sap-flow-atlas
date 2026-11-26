@@ -1,0 +1,39 @@
+id: mm-mb03-return-document
+type: step
+title:
+  zh: 查看退货物料凭证
+  en: Review Return Material Document
+primaryModule: mm
+modules:
+  - mm
+processes:
+  - mm-vendor-returns
+flows:
+  - procure-to-pay
+tcode: MB03
+summary:
+  zh: 查看退货凭证的物料、数量、移动类型与库存结果。
+  en: Reviews material, quantity, movement type and stock result of the return document.
+inputs:
+  - 物料凭证号
+  - 年度
+outputs:
+  - 退货物料凭证
+  - 库存状态
+rules:
+  - 退货凭证需与原收货凭证建立前后关系。
+  - 冲销退货要使用原凭证冲销，不能重复过账 161。
+painPoints:
+  - 退货与冲销混淆会导致库存重复增加。
+  - 只看凭证行项目容易忽略批次与特殊库存。
+objects:
+  - tcode:MB03
+  - table:MKPF
+  - table:MSEG
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

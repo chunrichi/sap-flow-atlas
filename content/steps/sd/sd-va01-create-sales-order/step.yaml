@@ -41,6 +41,8 @@ objects:
   - enhancement:MV45AFZZ
   - cds:I_SalesOrder
   - odata:API_SALES_ORDER_SRV
+  - bapi:BAPI_SALESORDER_CHANGE
+  - fiori:F1873
 snippets:
   - abap-bapi-create-sales-order
   - abap-user-exit-save-document

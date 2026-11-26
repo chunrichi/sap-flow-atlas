@@ -32,6 +32,8 @@ objects:
   - table:TADIR
   - table:TRDIR
   - table:DD02L
+  - class:CL_SALV_TABLE
+  - function:REUSE_ALV_GRID_DISPLAY
 snippets: []
 crossModule: []
 status: draft

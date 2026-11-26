@@ -44,6 +44,7 @@ objects:
   - enhancement:ME_PROCESS_PO_CUST
   - cds:I_PurchaseOrder
   - odata:API_PURCHASEORDER_PROCESS_SRV
+  - bapi:BAPI_PO_CHANGE
 snippets: []
 crossModule:
   - module: fi

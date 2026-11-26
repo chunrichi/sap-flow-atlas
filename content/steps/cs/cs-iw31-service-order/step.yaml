@@ -10,6 +10,8 @@ processes:
   - cs-service-order
   - cs-notification
   - cs-contract
+  - cs-warranty
+  - cs-installation
 flows:
   - service-to-cash
 tcode: IW31

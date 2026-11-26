@@ -1,0 +1,44 @@
+id: qm-qa03-display-inspection-lot
+type: step
+title:
+  zh: 显示检验批
+  en: Display Inspection Lot
+primaryModule: qm
+modules:
+  - qm
+processes:
+  - qm-inspection-result
+flows:
+  - plan-to-produce
+tcode: QA03
+summary:
+  zh: 查看检验批的检验结果、使用决策与库存过账。
+  en: Displays inspection results, usage decision and stock postings of an inspection lot.
+inputs:
+  - 检验批号
+outputs:
+  - 检验结果
+  - 使用决策
+  - 库存过账
+rules:
+  - 检验结果与使用决策必须一致。
+  - 拒收批次需后续库存处置，不能只做决策。
+painPoints:
+  - 只看决策状态，未看结果明细就关闭检验批。
+  - 库存过账失败，检验批状态与库存不一致。
+objects:
+  - tcode:QA03
+  - table:QALS
+  - table:QAMR
+  - table:QAMV
+  - table:QAVE
+snippets: []
+crossModule:
+  - module: mm
+    relation: stock
+    note: 使用决策影响库存可用性与后续发货。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

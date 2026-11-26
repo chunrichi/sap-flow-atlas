@@ -8,6 +8,7 @@ modules:
   - pm
 processes:
   - pm-maintenance-order
+  - pm-breakdown
 flows:
   - maintain-to-availability
 tcode: IW32

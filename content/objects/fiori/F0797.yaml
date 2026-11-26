@@ -1,0 +1,21 @@
+id: fiori:F0797
+type: fiori
+technicalName: F0797
+title:
+  zh: 管理开票凭证
+  en: Manage Billing Documents
+module: sd
+appId: F0797
+summary:
+  zh: 面向开票员的 Fiori 应用，集中处理到期、冻结与已开票凭证。
+  en: Fiori app for billing clerks to process due, blocked and posted billing documents.
+relations:
+  - target: cds:I_BillingDocument
+    kind: basedOn
+  - target: tcode:VF03
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

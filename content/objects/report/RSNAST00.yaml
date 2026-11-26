@@ -1,0 +1,20 @@
+id: report:RSNAST00
+type: report
+technicalName: RSNAST00
+title:
+  zh: 输出控制后台报表
+  en: Output Control Report
+module: sd
+summary:
+  zh: 批量触发消息输出（打印、邮件、EDI），常用于发票与订单确认。
+  en: Triggers message output in batch, including print, email and EDI for invoices and order confirmations.
+relations:
+  - target: table:VBRK
+    kind: reads
+  - target: tcode:VF01
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

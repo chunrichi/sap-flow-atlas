@@ -8,6 +8,7 @@ modules:
   - co
 processes:
   - co-cost-center
+  - co-cost-allocation
 flows:
   - record-to-report
 tcode: KSU5

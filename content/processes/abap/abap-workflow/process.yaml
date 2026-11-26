@@ -1,0 +1,45 @@
+id: abap-workflow
+type: process
+title:
+  zh: 工作流与审批
+  en: Workflow and Approval
+module: abap
+flow: develop-to-deploy
+stage: implement
+summary:
+  zh: 定义工作流模板、绑定业务事件并在收件箱处理审批待办。
+  en: Defines workflow templates, links business events and processes approval work items in the inbox.
+variant: optional
+trigger:
+  zh: 审批、升级或跨系统通知需要自动流转时才执行；纯报表与增强不经过。
+  en: Only when approvals, escalations or cross-system notifications need automated routing; pure reports and enhancements do not use it.
+steps:
+  - abap-swdd-workflow
+  - abap-swe2-event-linkage
+  - abap-sbwp-workflow-inbox
+edges:
+  - from: abap-swdd-workflow
+    to: abap-swe2-event-linkage
+    kind: sequence
+    label:
+      zh: 绑定事件
+      en: Link event
+  - from: abap-swe2-event-linkage
+    to: abap-sbwp-workflow-inbox
+    kind: sequence
+    label:
+      zh: 生成待办
+      en: Create work item
+roles:
+  - ABAP 开发
+  - 业务顾问
+  - 流程负责人
+outcomes:
+  - 工作流模板
+  - 事件绑定
+  - 待办任务
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

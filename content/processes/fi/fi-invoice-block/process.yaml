@@ -1,0 +1,45 @@
+id: fi-invoice-block
+type: process
+title:
+  zh: 发票冻结与释放
+  en: Invoice Block and Release
+module: fi
+flow: procure-to-pay
+stage: invoice
+summary:
+  zh: 处理价格、数量或税差导致的发票冻结：查看冻结原因、复核并释放。
+  en: 'Handles invoices blocked by price, quantity or tax differences: review the block, verify and release.'
+variant: exception
+trigger:
+  zh: 发票校验发现价格、数量或税差被冻结，需要人工复核释放时才进入；无差异发票自动过账。
+  en: Only when invoice verification blocks an invoice for price, quantity or tax differences and manual release is needed; matching invoices post automatically.
+steps:
+  - mm-miro-verify-invoice
+  - fi-mir6-invoice-overview
+  - fi-mrbr-release-blocked-invoice
+edges:
+  - from: mm-miro-verify-invoice
+    to: fi-mir6-invoice-overview
+    kind: sequence
+    label:
+      zh: 查看冻结发票
+      en: Review blocked invoices
+  - from: fi-mir6-invoice-overview
+    to: fi-mrbr-release-blocked-invoice
+    kind: sequence
+    label:
+      zh: 复核并释放
+      en: Verify and release
+roles:
+  - 应付会计
+  - 采购员
+  - 财务经理
+outcomes:
+  - 冻结发票清单
+  - 释放凭证
+  - 付款计划
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -9,6 +9,7 @@ modules:
 processes:
   - ps-project-execution
   - ps-settlement
+  - ps-project-close
 flows:
   - project-to-profit
 tcode: CJ88

@@ -1,0 +1,48 @@
+id: co-cost-allocation
+type: process
+title:
+  zh: 成本中心分摊与分配
+  en: Cost Center Allocation and Distribution
+module: co
+flow: record-to-report
+stage: closing
+summary:
+  zh: 月末按分配循环把成本中心费用分摊或分配到接收方，并核对成本中心报表。
+  en: At month end, assesses or distributes cost center costs to receivers by cycle and reviews cost center reports.
+steps:
+  - co-ks01-cost-center
+  - co-ksu5-cost-allocation
+  - co-ksv5-cost-distribution
+  - co-ksb1-cost-report
+edges:
+  - from: co-ks01-cost-center
+    to: co-ksu5-cost-allocation
+    kind: sequence
+    label:
+      zh: 维护发送方/接收方
+      en: Maintain sender and receiver
+  - from: co-ksu5-cost-allocation
+    to: co-ksv5-cost-distribution
+    kind: sequence
+    label:
+      zh: 评估后分配
+      en: Assess then distribute
+  - from: co-ksv5-cost-distribution
+    to: co-ksb1-cost-report
+    kind: sequence
+    label:
+      zh: 核对报表
+      en: Review report
+roles:
+  - 成本会计
+  - 财务经理
+  - 业务部门
+outcomes:
+  - 评估/分配结果
+  - 成本中心报表
+  - 差异分析
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

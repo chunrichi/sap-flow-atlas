@@ -1,0 +1,19 @@
+id: table:FEBEP
+type: table
+technicalName: FEBEP
+title:
+  zh: 银行对账单行项目
+  en: Bank Statement Line Item
+module: fi
+tableClass: transparent
+summary:
+  zh: 保存对账单行项目金额、业务代码与清账状态。
+  en: Holds statement line amounts, business codes and clearing status.
+relations:
+  - target: tcode:FEBAN
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

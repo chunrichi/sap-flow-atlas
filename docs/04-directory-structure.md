@@ -84,7 +84,7 @@ sap-map-dsh/
 │  │  ├─ cds/I_SalesOrder.yaml
 │  │  ├─ cds/I_PurchaseOrder.yaml
 │  │  ├─ odata/API_SALES_ORDER_SRV.yaml
-│  │  └─ …                            # 示例共 280 个对象，此处只列代表项
+│  │  └─ …                            # 示例共 365 个对象，此处只列代表项
 │  ├─ snippets/                       # 代码与代码元数据同目录
 │  │  ├─ abap/bapi-create-sales-order.yaml
 │  │  ├─ abap/bapi-create-sales-order.abap

@@ -1,0 +1,20 @@
+id: tcode:SM36
+type: tcode
+technicalName: SM36
+title:
+  zh: 定义后台作业
+  en: Define Background Job
+module: abap
+summary:
+  zh: 定义后台作业的步骤、开始条件与调度周期。
+  en: Defines background job steps, start conditions and scheduling periods.
+relations:
+  - target: table:TBTCO
+    kind: writes
+  - target: job:Z_MRP_NIGHTLY
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

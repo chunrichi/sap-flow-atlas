@@ -1,0 +1,45 @@
+id: cs-ie01-create-equipment
+type: step
+title:
+  zh: 创建设备主数据
+  en: Create Equipment Master Data
+primaryModule: cs
+modules:
+  - cs
+processes:
+  - cs-installation
+flows:
+  - service-to-cash
+tcode: IE01
+summary:
+  zh: 创建客户现场设备主数据，关联功能位置、序列号与合作伙伴。
+  en: Creates customer site equipment master data linked to functional location, serial number and partners.
+inputs:
+  - 客户
+  - 设备型号
+  - 序列号
+  - 功能位置
+outputs:
+  - 设备主数据
+  - 保修信息
+rules:
+  - 序列号必须唯一。
+  - 设备必须关联功能位置与合作伙伴，否则服务通知无法定位。
+painPoints:
+  - 同一设备重复创建，导致历史工单分散。
+  - 功能位置缺失，现场服务找不到安装点。
+objects:
+  - tcode:IE01
+  - table:EQUI
+  - table:ILOA
+  - table:IHPA
+snippets: []
+crossModule:
+  - module: pm
+    relation: master-data
+    note: 设备主数据供维护与校准共用。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

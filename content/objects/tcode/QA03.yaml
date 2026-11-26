@@ -1,0 +1,22 @@
+id: tcode:QA03
+type: tcode
+technicalName: QA03
+title:
+  zh: 显示检验批
+  en: Display Inspection Lot
+module: qm
+summary:
+  zh: 查看检验批的检验结果、使用决策与库存过账。
+  en: Displays inspection results, usage decision and stock postings of an inspection lot.
+relations:
+  - target: table:QALS
+    kind: reads
+  - target: table:QAMR
+    kind: reads
+  - target: table:QAMV
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

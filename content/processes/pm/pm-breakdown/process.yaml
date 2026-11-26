@@ -1,0 +1,52 @@
+id: pm-breakdown
+type: process
+title:
+  zh: 设备故障抢修
+  en: Breakdown Maintenance
+module: pm
+flow: maintain-to-availability
+stage: notify
+summary:
+  zh: 设备突发故障时的通知、抢修工单、排程与确认链路。
+  en: The notification, repair order, scheduling and confirmation chain for sudden equipment breakdowns.
+variant: exception
+trigger:
+  zh: 设备突发故障、停机或安全事件时才进入；计划性维护按预防性维护计划执行。
+  en: Only for sudden equipment failures, downtime or safety events; planned work follows the preventive maintenance plan.
+steps:
+  - pm-iw21-maintenance-notification
+  - pm-iw31-maintenance-order
+  - pm-iw32-plan-schedule
+  - pm-iw41-confirm-order
+edges:
+  - from: pm-iw21-maintenance-notification
+    to: pm-iw31-maintenance-order
+    kind: handoff
+    label:
+      zh: 转抢修工单
+      en: Create repair order
+  - from: pm-iw31-maintenance-order
+    to: pm-iw32-plan-schedule
+    kind: sequence
+    label:
+      zh: 排程与派工
+      en: Schedule and dispatch
+  - from: pm-iw32-plan-schedule
+    to: pm-iw41-confirm-order
+    kind: sequence
+    label:
+      zh: 完工确认
+      en: Confirm completion
+roles:
+  - 设备工程师
+  - 维修班组
+  - 生产主管
+outcomes:
+  - 故障通知
+  - 抢修工单
+  - 停机记录
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

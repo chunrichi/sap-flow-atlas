@@ -1,0 +1,43 @@
+id: abap-iwfnd-maintain-service
+type: step
+title:
+  zh: 注册 OData 服务
+  en: Register OData Service
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-odata-service
+flows:
+  - develop-to-deploy
+tcode: /IWFND/MAINT_SERVICE
+summary:
+  zh: 在 Gateway 中注册并激活 OData 服务，绑定系统别名与版本。
+  en: Registers and activates the OData service in the Gateway and binds system alias and version.
+inputs:
+  - 服务名
+  - 系统别名
+  - 版本
+outputs:
+  - 已注册服务
+  - 激活状态
+rules:
+  - 服务必须先激活再测试。
+  - 生产与测试使用不同系统别名，避免误连。
+painPoints:
+  - 服务未激活就测试，返回 404。
+  - 系统别名指向错误后台，读到测试数据。
+objects:
+  - tcode:/IWFND/MAINT_SERVICE
+  - odata:API_SALES_ORDER_SRV
+  - cds:I_SalesOrder
+snippets: []
+crossModule:
+  - module: sd
+    relation: integration
+    note: OData 服务把销售订单能力开放给外部。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

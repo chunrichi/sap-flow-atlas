@@ -1,0 +1,39 @@
+id: abap-su01-assign-role
+type: step
+title:
+  zh: 分配用户角色
+  en: Assign User Roles
+primaryModule: abap
+modules:
+  - abap
+processes:
+  - abap-authorization
+flows:
+  - develop-to-deploy
+tcode: SU01
+summary:
+  zh: 给测试用户分配角色并验证权限。
+  en: Assigns roles to test users and verifies access.
+inputs:
+  - 用户
+  - 角色
+  - 有效期
+outputs:
+  - 用户角色分配
+rules:
+  - 测试用户不能用于生产。
+  - 角色分配需审批并设置有效期。
+painPoints:
+  - 测试用户带生产权限，存在安全风险。
+  - 角色过期未续，业务中断。
+objects:
+  - tcode:SU01
+  - table:AGR_USERS
+  - table:USR02
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

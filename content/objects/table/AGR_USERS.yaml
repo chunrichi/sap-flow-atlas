@@ -1,0 +1,19 @@
+id: table:AGR_USERS
+type: table
+technicalName: AGR_USERS
+title:
+  zh: 角色用户分配
+  en: Role User Assignment
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存用户与角色的分配关系及有效期。
+  en: Stores user-to-role assignments and validity periods.
+relations:
+  - target: tcode:PFCG
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

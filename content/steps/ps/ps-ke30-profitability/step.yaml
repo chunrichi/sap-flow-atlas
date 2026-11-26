@@ -8,6 +8,7 @@ modules:
   - ps
 processes:
   - ps-settlement
+  - ps-project-close
 flows:
   - project-to-profit
 tcode: KE30

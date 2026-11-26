@@ -9,6 +9,8 @@ modules:
 processes:
   - pm-maintenance-order
   - pm-preventive
+  - pm-breakdown
+  - pm-calibration
 flows:
   - maintain-to-availability
 tcode: IW31
@@ -31,6 +33,7 @@ objects:
   - table:AUFK
   - table:AFIH
   - table:EQUI
+  - enhancement:WORKORDER_UPDATE
 snippets:
   - abap-pm-order-equipment
 crossModule: []

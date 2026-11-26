@@ -1,0 +1,47 @@
+id: sd-vl06o-delivery-due-list
+type: step
+title:
+  zh: 处理交货到期清单
+  en: Process Delivery Due List
+primaryModule: sd
+modules:
+  - sd
+processes:
+  - sd-delivery-processing
+flows:
+  - order-to-cash
+tcode: VL06O
+summary:
+  zh: 按交货日期、装运点与路线筛选待交货订单，确定批量创建交货的优先级。
+  en: Filters orders due for delivery by date, shipping point and route to prioritize bulk delivery creation.
+inputs:
+  - 销售订单
+  - 交货日期
+  - 装运点
+  - 库存可用性
+outputs:
+  - 到期交货清单
+  - 交货优先级
+  - 异常标记
+rules:
+  - 清单只显示已释放且未完全交货的订单。
+  - 缺料或信用冻结的订单需先处理，不能直接创建交货。
+painPoints:
+  - 到期清单与订单交期不一致，通常来自手工改期或 ATP 未刷新。
+  - 跨工厂/跨装运点的订单容易漏在清单外。
+objects:
+  - tcode:VL06O
+  - table:LIKP
+  - table:VBFA
+  - table:VBUP
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+optional: true
+condition:
+  zh: 只在需要批量筛选到期交货时执行；单笔交货可直接创建。
+  en: Only when a batch of due deliveries must be filtered; single deliveries can be created directly.

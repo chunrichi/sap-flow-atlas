@@ -1,0 +1,48 @@
+id: abap-odata-service
+type: process
+title:
+  zh: OData 服务开发与注册
+  en: OData Service Development and Registration
+module: abap
+flow: develop-to-deploy
+stage: integrate
+summary:
+  zh: 从 CDS/SEGW 建模、服务注册到 Gateway 测试与 ATC 检查的 OData 交付链路。
+  en: The OData delivery chain from CDS/SEGW modeling and service registration to Gateway testing and ATC checks.
+steps:
+  - abap-segw-odata-service
+  - abap-iwfnd-maintain-service
+  - abap-iwfnd-gw-client
+  - abap-atc-check
+edges:
+  - from: abap-segw-odata-service
+    to: abap-iwfnd-maintain-service
+    kind: sequence
+    label:
+      zh: 注册服务
+      en: Register service
+  - from: abap-iwfnd-maintain-service
+    to: abap-iwfnd-gw-client
+    kind: sequence
+    label:
+      zh: 测试服务
+      en: Test service
+  - from: abap-iwfnd-gw-client
+    to: abap-atc-check
+    kind: sequence
+    label:
+      zh: 质量检查
+      en: Quality check
+roles:
+  - ABAP 开发
+  - 集成顾问
+  - 测试
+outcomes:
+  - OData 服务
+  - 服务注册
+  - 接口测试
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

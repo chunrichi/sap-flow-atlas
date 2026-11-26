@@ -1,0 +1,21 @@
+id: fiori:F1873
+type: fiori
+technicalName: F1873
+title:
+  zh: 管理销售订单
+  en: Manage Sales Orders
+module: sd
+appId: F1873
+summary:
+  zh: 面向销售内勤的 Fiori 应用，按状态与交期处理销售订单。
+  en: Fiori app for sales admins to process sales orders by status and delivery date.
+relations:
+  - target: cds:I_SalesOrder
+    kind: basedOn
+  - target: tcode:VA01
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

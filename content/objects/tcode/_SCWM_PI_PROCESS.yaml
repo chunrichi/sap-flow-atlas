@@ -1,0 +1,22 @@
+type: tcode
+module: ewm
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'
+id: tcode:/SCWM/PI_PROCESS
+technicalName: /SCWM/PI_PROCESS
+title:
+  zh: 处理盘点差异
+  en: Process Physical Inventory Differences
+summary:
+  zh: 复核并过账 EWM 盘点差异，调整库存。
+  en: Reviews and posts EWM physical inventory differences to adjust stock.
+relations:
+  - target: table:/SCWM/QUAN
+    kind: writes
+  - target: table:/SCWM/ORDIM_C
+    kind: writes
+  - target: process:ewm-physical-inventory
+    kind: usedBy

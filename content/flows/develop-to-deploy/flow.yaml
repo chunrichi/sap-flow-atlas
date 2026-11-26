@@ -46,6 +46,10 @@ processes:
   - abap-testing
   - abap-transport
   - abap-migration
+  - abap-odata-service
+  - abap-workflow
+  - abap-background-job
+  - abap-authorization
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:

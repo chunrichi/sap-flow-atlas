@@ -1,0 +1,42 @@
+id: fi-mrbr-release-blocked-invoice
+type: step
+title:
+  zh: 释放冻结发票
+  en: Release Blocked Invoice
+primaryModule: fi
+modules:
+  - fi
+processes:
+  - fi-invoice-block
+flows:
+  - procure-to-pay
+tcode: MRBR
+summary:
+  zh: 复核价格、数量与税差后释放冻结发票，使其进入付款流程。
+  en: Releases blocked invoices into payment processing after verifying price, quantity and tax differences.
+inputs:
+  - 发票号
+  - 年度
+  - 冻结原因
+  - 调整后的金额
+outputs:
+  - 释放凭证
+  - 付款建议
+rules:
+  - 释放前必须核对采购订单、收货与发票三者数量。
+  - 释放后发票进入付款运行，不能随意再次冻结。
+painPoints:
+  - 只释放不调整差异，会把错误金额带入付款。
+  - 释放权限过于集中，缺少复核留痕。
+objects:
+  - tcode:MRBR
+  - table:RBKP
+  - table:RSEG
+  - table:BSIK
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

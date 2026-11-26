@@ -1,0 +1,42 @@
+id: hr-pa40-transfer-employee
+type: step
+title:
+  zh: 执行员工转岗
+  en: Execute Employee Transfer
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-organizational-change
+flows:
+  - hire-to-retire
+tcode: PA40
+summary:
+  zh: 通过人事事件记录转岗，更新组织、岗位与生效日期。
+  en: Records a transfer through a personnel action, updating organization, position and effective date.
+inputs:
+  - 员工
+  - 生效日期
+  - 新组织
+  - 新岗位
+outputs:
+  - 人事事件
+  - 组织分配
+rules:
+  - 生效日期不能早于入职日期。
+  - 转岗需审批，跨公司代码还涉及薪酬与权限。
+painPoints:
+  - 只改组织分配，未记录人事事件，历史追溯缺失。
+  - 生效日期选错，导致薪酬按旧岗位发放。
+objects:
+  - tcode:PA40
+  - table:PA0000
+  - table:PA0001
+  - table:T001P
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -9,6 +9,7 @@ modules:
 processes:
   - ewm-outbound
   - ewm-wave
+  - ewm-replenishment
 flows:
   - order-to-cash
 tcode: /SCWM/PRDO

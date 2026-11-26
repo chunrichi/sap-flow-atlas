@@ -1,0 +1,59 @@
+id: pm-calibration
+type: process
+title:
+  zh: 测量设备校准
+  en: Measuring Equipment Calibration
+module: pm
+flow: maintain-to-availability
+stage: plan
+summary:
+  zh: 按法规或质量体系要求制定校准计划、创建校准工单并记录测量凭证。
+  en: Creates calibration plans, calibration orders and measurement documents per regulatory or quality requirements.
+variant: optional
+trigger:
+  zh: 测量设备或仪表按法规、质量体系要求需要定期校准时才执行；一般设备维护不经过。
+  en: Only when measuring equipment requires periodic calibration by regulation or quality system; general maintenance does not use it.
+steps:
+  - pm-ip01-maintenance-plan
+  - pm-ip10-schedule-plan
+  - pm-iw31-maintenance-order
+  - pm-ik11-measurement-document
+  - pm-ik13-display-measurement-document
+edges:
+  - from: pm-ip01-maintenance-plan
+    to: pm-ip10-schedule-plan
+    kind: sequence
+    label:
+      zh: 排定校准周期
+      en: Schedule calibration
+  - from: pm-ip10-schedule-plan
+    to: pm-iw31-maintenance-order
+    kind: sequence
+    label:
+      zh: 生成校准工单
+      en: Create calibration order
+  - from: pm-iw31-maintenance-order
+    to: pm-ik11-measurement-document
+    kind: sequence
+    label:
+      zh: 记录读数
+      en: Record readings
+  - from: pm-ik11-measurement-document
+    to: pm-ik13-display-measurement-document
+    kind: sequence
+    label:
+      zh: 查看趋势
+      en: Review trend
+roles:
+  - 设备工程师
+  - 计量员
+  - 质量经理
+outcomes:
+  - 校准计划
+  - 校准工单
+  - 测量凭证
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

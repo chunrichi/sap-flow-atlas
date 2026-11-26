@@ -1,0 +1,40 @@
+id: ewm-pi-create-document
+type: step
+title:
+  zh: 创建盘点凭证
+  en: Create Physical Inventory Document
+primaryModule: ewm
+modules:
+  - ewm
+processes:
+  - ewm-physical-inventory
+flows:
+  - procure-to-pay
+tcode: /SCWM/PI_CREATE
+summary:
+  zh: 按库位、物料或批次创建 EWM 盘点凭证，冻结盘点期间的库存变动。
+  en: Creates an EWM physical inventory document by bin, material or batch and freezes stock changes during counting.
+inputs:
+  - 仓库
+  - 库位
+  - 物料
+  - 盘点日期
+outputs:
+  - 盘点凭证
+  - 待盘清单
+rules:
+  - 盘点期间库存变动需记录，避免重复盘点。
+  - 批次与库存类型必须明确。
+painPoints:
+  - 盘点范围过大导致停机时间过长。
+  - 未冻结库存变动会造成盘点结果失真。
+objects:
+  - tcode:/SCWM/PI_CREATE
+  - table:/SCWM/QUAN
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

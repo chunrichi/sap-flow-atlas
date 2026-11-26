@@ -1,0 +1,19 @@
+id: odata:API_BUSINESS_PARTNER
+type: odata
+technicalName: API_BUSINESS_PARTNER
+title:
+  zh: 业务伙伴 OData 服务
+  en: Business Partner OData Service
+module: fi
+serviceVersion: v2
+summary:
+  zh: 客户与供应商主数据的 OData 服务，支持按角色读取与维护。
+  en: OData service for customer and vendor master data with role-based read and maintenance.
+relations:
+  - target: cds:I_BusinessPartner
+    kind: basedOn
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

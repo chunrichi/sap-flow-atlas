@@ -1,0 +1,40 @@
+id: pm-ik13-display-measurement-document
+type: step
+title:
+  zh: 显示测量凭证
+  en: Display Measurement Document
+primaryModule: pm
+modules:
+  - pm
+processes:
+  - pm-calibration
+flows:
+  - maintain-to-availability
+tcode: IK13
+summary:
+  zh: 查看测量点的历史读数、趋势与超限告警。
+  en: Displays measurement history, trends and limit warnings for measuring points.
+inputs:
+  - 测量点
+  - 期间
+outputs:
+  - 历史读数
+  - 趋势
+  - 超限记录
+rules:
+  - 只读查看，不修改读数。
+  - 超限记录需与校准工单关联。
+painPoints:
+  - 只看单次读数，忽略趋势。
+  - 超限记录未关联工单，无法追溯处理。
+objects:
+  - tcode:IK13
+  - table:IMRG
+  - table:EQUI
+snippets: []
+crossModule: []
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,22 @@
+id: tcode:MB03
+type: tcode
+technicalName: MB03
+title:
+  zh: 显示物料凭证
+  en: Display Material Document
+module: mm
+summary:
+  zh: 查看物料凭证抬头与行项目，并支持冲销或后续处理。
+  en: Displays material document header and items, with reversal and follow-up actions.
+relations:
+  - target: table:MKPF
+    kind: reads
+  - target: table:MSEG
+    kind: reads
+  - target: tcode:MB51
+    kind: related
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

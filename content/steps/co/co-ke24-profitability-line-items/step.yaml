@@ -1,0 +1,44 @@
+id: co-ke24-profitability-line-items
+type: step
+title:
+  zh: 查看获利段行项目
+  en: Review Profitability Line Items
+primaryModule: co
+modules:
+  - co
+processes:
+  - co-profitability-analysis
+flows:
+  - record-to-report
+tcode: KE24
+summary:
+  zh: 查看 CO-PA 行项目明细，下钻到凭证、客户、产品与获利段。
+  en: Displays CO-PA line items and drills down to documents, customers, products and profitability segments.
+inputs:
+  - 期间
+  - 客户
+  - 产品
+  - 获利段
+outputs:
+  - 获利段行项目
+  - 凭证明细
+rules:
+  - 行项目需与 FI 总账对账。
+  - 获利段派生依赖特征配置，缺失特征会导致归集错误。
+painPoints:
+  - 获利段特征未维护，收入归到默认段。
+  - 行项目金额与总账不一致，通常来自冲销或汇率差异。
+objects:
+  - tcode:KE24
+  - table:CEPC
+  - table:COEP
+snippets: []
+crossModule:
+  - module: fi
+    relation: reconciliation
+    note: 获利分析行项目需要与总账对账。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,19 @@
+id: table:AGR_1251
+type: table
+technicalName: AGR_1251
+title:
+  zh: 角色权限值
+  en: Role Authorization Values
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存角色中各权限对象允许的字段值。
+  en: Stores allowed field values per authorization object in roles.
+relations:
+  - target: tcode:PFCG
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

@@ -1,0 +1,41 @@
+id: mm-goods-receipt
+type: process
+title:
+  zh: 收货与物料凭证处理
+  en: Goods Receipt and Material Document
+module: mm
+flow: procure-to-pay
+stage: receipt
+summary:
+  zh: 从采购订单收货过账到物料凭证查看与查询的 MM 收货闭环。
+  en: The MM goods receipt loop from posting against a purchase order to reviewing and querying material documents.
+steps:
+  - mm-migo-post-goods-receipt
+  - mm-mb03-display-material-document
+  - mm-mb51-material-documents
+edges:
+  - from: mm-migo-post-goods-receipt
+    to: mm-mb03-display-material-document
+    kind: sequence
+    label:
+      zh: 查看物料凭证
+      en: Review material document
+  - from: mm-mb03-display-material-document
+    to: mm-mb51-material-documents
+    kind: sequence
+    label:
+      zh: 批量查询
+      en: Query documents
+roles:
+  - 仓库管理员
+  - 采购员
+  - 质检员
+outcomes:
+  - 物料凭证
+  - 库存增加
+  - 收货差异
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

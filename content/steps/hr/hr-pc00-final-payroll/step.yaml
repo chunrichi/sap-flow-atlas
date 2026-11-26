@@ -1,0 +1,42 @@
+id: hr-pc00-final-payroll
+type: step
+title:
+  zh: 运行离职薪酬
+  en: Run Final Payroll
+primaryModule: hr
+modules:
+  - hr
+processes:
+  - hr-offboarding
+flows:
+  - hire-to-retire
+tcode: PC00_M99_CALC
+summary:
+  zh: 对离职员工单独运行薪酬核算并复核结果。
+  en: Runs payroll for departing employees separately and reviews the results.
+inputs:
+  - 薪酬期间
+  - 员工范围
+outputs:
+  - 薪酬结果
+  - 过账凭证
+rules:
+  - 离职员工建议单独运行，避免影响在职员工。
+  - 结果需人工复核后再过账。
+painPoints:
+  - 把离职员工混在普通薪酬运行中，差异难定位。
+  - 未复核直接过账，少发/多发难以追回。
+objects:
+  - tcode:PC00_M99_CALC
+  - table:PA0008
+  - table:PA0009
+snippets: []
+crossModule:
+  - module: co
+    relation: cost
+    note: 末次薪酬过账进入成本中心。
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

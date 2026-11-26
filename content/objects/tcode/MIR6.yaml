@@ -1,0 +1,20 @@
+id: tcode:MIR6
+type: tcode
+technicalName: MIR6
+title:
+  zh: 发票总览
+  en: Invoice Overview
+module: fi
+summary:
+  zh: 按供应商、公司代码与冻结原因查看发票校验状态。
+  en: Displays invoice verification status by vendor, company code and blocking reason.
+relations:
+  - target: table:RBKP
+    kind: reads
+  - target: table:RSEG
+    kind: reads
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

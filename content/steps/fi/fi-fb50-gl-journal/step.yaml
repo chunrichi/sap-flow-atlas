@@ -8,6 +8,7 @@ modules:
   - fi
 processes:
   - fi-general-ledger
+  - fi-bank-reconciliation
 flows:
   - record-to-report
 tcode: FB50

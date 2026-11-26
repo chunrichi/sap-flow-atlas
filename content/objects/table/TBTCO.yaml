@@ -1,0 +1,19 @@
+id: table:TBTCO
+type: table
+technicalName: TBTCO
+title:
+  zh: 后台作业抬头
+  en: Background Job Header
+module: abap
+tableClass: transparent
+summary:
+  zh: 保存后台作业定义、状态、调度与运行信息。
+  en: Stores background job definitions, status, scheduling and run information.
+relations:
+  - target: tcode:SM37
+    kind: readBy
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

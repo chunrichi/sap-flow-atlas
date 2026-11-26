@@ -38,6 +38,8 @@ processes:
   - pm-preventive
   - pm-notification
   - co-order-settlement
+  - pm-breakdown
+  - pm-calibration
 status: reviewed
 sapVersion: S/4HANA 2023
 sources:

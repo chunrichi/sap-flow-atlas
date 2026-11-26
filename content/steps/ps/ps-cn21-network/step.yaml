@@ -8,6 +8,7 @@ modules:
   - ps
 processes:
   - ps-setup
+  - ps-resource-planning
 flows:
   - project-to-profit
 tcode: CN21

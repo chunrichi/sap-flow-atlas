@@ -1,0 +1,19 @@
+id: odata:API_PRODUCT_SRV
+type: odata
+technicalName: API_PRODUCT_SRV
+title:
+  zh: 产品 OData 服务
+  en: Product OData Service
+module: mm
+serviceVersion: v2
+summary:
+  zh: 产品主数据的 OData 服务，支持按工厂与销售组织读取。
+  en: OData service for product master data, filtered by plant and sales organization.
+relations:
+  - target: cds:I_Product
+    kind: basedOn
+status: draft
+sapVersion: S/4HANA 2023
+sources:
+  - sap-help-s4hana
+updatedAt: '2026-11-26'

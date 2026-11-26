@@ -9,6 +9,7 @@ modules:
 processes:
   - mm-inventory-management
   - mm-production-supply
+  - mm-goods-receipt
 flows:
   - procure-to-pay
   - plan-to-produce
