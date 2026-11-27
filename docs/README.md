@@ -15,6 +15,7 @@
 11. [`11-flexible-workbench-and-benchmarks.md`](11-flexible-workbench-and-benchmarks.md) — 非 SAP 开源对标、多镜头工作台、流程带与详情坞方案；
 12. [`12-content-map.md`](12-content-map.md) — 12 模块 × 10 价值流 × 85 流程 × 238 步骤 × 365 对象的覆盖图，以及可选/例外流程清单；
 13. [`13-process-catalog.md`](13-process-catalog.md) — 按模块展开每个流程的步骤、输入输出、规则与对象，可选/例外用虚线块标出；
-14. [`adr/0001-canonical-graph-and-view-layouts.md`](adr/0001-canonical-graph-and-view-layouts.md) — 核心架构决策。
+14. [`14-archify-review.md`](14-archify-review.md) — Archify 代码诊断、优化项、前后指标与剩余热点；同目录含[架构图](architecture/sap-flow-atlas.architecture.html)与[离线诊断报告](architecture/sap-flow-atlas.code-analysis.html)；
+15. [`adr/0001-canonical-graph-and-view-layouts.md`](adr/0001-canonical-graph-and-view-layouts.md) — 核心架构决策。
 
 文档中的「目标结构」与「当前已落地」会明确区分：`content/`、`src/`、`scripts/`、`tests/`、`.github/workflows/` 均已创建；具体差异见 04 的第 8 节。

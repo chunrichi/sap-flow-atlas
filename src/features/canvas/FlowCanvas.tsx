@@ -4,23 +4,26 @@ import {
   Background,
   BackgroundVariant,
   Controls,
-  MarkerType,
   MiniMap,
   Panel,
-  Position,
   ReactFlow,
   ReactFlowProvider,
   useReactFlow,
-  type Edge,
   type Node,
 } from "@xyflow/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Map as MapIcon } from "lucide-react";
-import { content, objectsById, processesById, sceneRoute, scenesById, stepsById } from "@/content/data";
+import { content } from "@/content/data";
 import type { ContentScene, SceneNode } from "@/content/schemas";
-import { hasFacetFilters, objectMatchesFilters, processMatchesFilters, stepMatchesFilters, type FilterState } from "@/lib/workspace";
+import type { FilterState } from "@/lib/workspace";
 import { edgeTypes } from "./edges";
-import { edgeColor } from "./edgeStyle";
+import {
+  buildCanvasEdges,
+  buildCanvasNodes,
+  resolveActivation,
+  type CanvasBindings,
+  type CanvasFocus,
+} from "./graph";
 import { LodContext, zoomTier, type LodLevel } from "./lod";
 import { Legend } from "./SceneChrome";
 import { nodeTypes, type AtlasNodeData } from "./nodes";
@@ -39,13 +42,13 @@ function CanvasInner({ scene, filters, dockOpen, dockWidth }: { scene: ContentSc
   const [lod, setLod] = useState<LodLevel>(1);
   const minimapOpen = useUIStore((state) => state.minimapOpen);
   const setMinimapOpen = useUIStore((state) => state.setMinimapOpen);
-  const selectedObjectId = new URLSearchParams(location.search).get("object");
+  const params = useMemo(() => new URLSearchParams(location.search), [location.search]);
+  const selectedObjectId = params.get("object");
+  const selectedStepId = params.get("step");
   const relatedSteps = useMemo(
     () => (selectedObjectId ? new Set(content.objectUsage[selectedObjectId] ?? []) : null),
     [selectedObjectId],
   );
-  const filterActive = hasFacetFilters(filters);
-  const selectedStepId = new URLSearchParams(location.search).get("step");
 
   const setQuery = useCallback(
     (key: "step" | "object", value: string) => {
@@ -77,41 +80,14 @@ function CanvasInner({ scene, filters, dockOpen, dockWidth }: { scene: ContentSc
   const activate = useCallback(
     (sceneNode: SceneNode) => {
       useUIStore.getState().clearHover();
-      const ref = sceneNode.ref;
-      if (sceneNode.kind === "portal") {
-        const target = sceneNode.target;
-        if (!target) return;
-        const targetScene = scenesById.get(target.scene);
-        const base = targetScene ? sceneRoute(targetScene) : "/";
-        const params = new URLSearchParams();
-        if (target.step) params.set("step", target.step);
-        if (target.object) params.set("object", target.object);
-        if (params.toString()) params.set("tab", "overview");
-        const query = params.toString();
-        navigate(`${base}${query ? `?${query}` : ""}`);
+      const action = resolveActivation(sceneNode);
+      if (!action) return;
+      if (action.kind === "query") {
+        setQuery(action.key, action.value);
         return;
       }
-      if (!ref) return;
-      if (sceneNode.kind === "object") {
-        setQuery("object", ref);
-        return;
-      }
-      if (ref.startsWith("module:")) {
-        navigateWithTransition(`/m/${refValue(ref)}`);
-        return;
-      }
-      if (ref.startsWith("process:")) {
-        const process = processesById.get(refValue(ref));
-        if (process) navigateWithTransition(`/m/${process.module}/p/${process.id}`);
-        return;
-      }
-      if (ref.startsWith("step:")) {
-        setQuery("step", refValue(ref));
-        return;
-      }
-      if (ref.startsWith("flow:")) {
-        navigate(`/f/${refValue(ref)}`);
-      }
+      if (action.transition) navigateWithTransition(action.to);
+      else navigate(action.to);
     },
     [navigate, navigateWithTransition, setQuery],
   );
@@ -140,95 +116,16 @@ function CanvasInner({ scene, filters, dockOpen, dockWidth }: { scene: ContentSc
     [],
   );
 
-  const nodes = useMemo<Node[]>(() => {
-    const groups: Node[] = scene.groups.map((group) => ({
-      id: group.id,
-      type: "group",
-      position: { x: group.position[0], y: group.position[1] },
-      style: { width: group.size[0], height: group.size[1] },
-      data: { group } as unknown as Record<string, unknown>,
-      draggable: false,
-      selectable: false,
-      zIndex: 0,
-    }));
-    let stepIndex = 0;
-    const contentNodes: Node[] = scene.nodes.map((sceneNode) => {
-      const index = sceneNode.kind === "step" ? stepIndex++ : undefined;
-      const stepId = sceneNode.kind === "step" ? refValue(sceneNode.ref) : undefined;
-      const processId = sceneNode.kind === "process" ? refValue(sceneNode.ref) : undefined;
-      const objectRef = sceneNode.kind === "object" ? sceneNode.ref ?? "" : "";
-      const step = stepId ? stepsById.get(stepId) : undefined;
-      const process = processId ? processesById.get(processId) : undefined;
-      const object = objectRef ? objectsById.get(objectRef) : undefined;
-      const filterMatch = step
-        ? stepMatchesFilters(step, filters)
-        : process
-          ? processMatchesFilters(process, filters)
-          : object
-            ? objectMatchesFilters(object, filters)
-            : true;
-      const hidden = filterActive && filters.isolate && !filterMatch;
-      const isFocusable = sceneNode.kind === "step" || sceneNode.kind === "object";
-      const objectFocusRelated = !selectedObjectId
-        ? true
-        : stepId
-          ? Boolean(relatedSteps?.has(stepId))
-          : objectRef === selectedObjectId;
-      const selected =
-        (sceneNode.kind === "object" && sceneNode.ref === selectedObjectId) ||
-        (Boolean(selectedStepId) && stepId === selectedStepId);
-      const related =
-        (filterActive && filterMatch && isFocusable) ||
-        (Boolean(selectedObjectId) && isFocusable && objectFocusRelated);
-      const dimmed =
-        (filterActive && !filterMatch) ||
-        (Boolean(selectedObjectId) && isFocusable && !objectFocusRelated && !selected);
-      const data: AtlasNodeData = {
-        sceneNode,
-        scene,
-        related,
-        selected,
-        dimmed,
-        index,
-        onActivate: () => activate(sceneNode),
-        onHover: hoverFor(sceneNode),
-        onHoverFocus: focusHover(sceneNode),
-        onLeave: () => useUIStore.getState().scheduleClose(),
-      };
-      return {
-        id: sceneNode.id,
-        type: sceneNode.kind,
-        position: { x: sceneNode.position[0], y: sceneNode.position[1] },
-        style: { width: sceneNode.size[0], height: sceneNode.size[1] },
-        data: data as unknown as Record<string, unknown>,
-        draggable: false,
-        selectable: sceneNode.kind !== "note",
-        hidden,
-        zIndex: sceneNode.emphasis === "primary" ? 3 : 2,
-        sourcePosition: Position.Right,
-        targetPosition: Position.Left,
-      };
-    });
-    return [...groups, ...contentNodes];
-  }, [activate, filterActive, filters, focusHover, hoverFor, relatedSteps, scene, selectedObjectId, selectedStepId]);
-
-  const edges = useMemo<Edge[]>(() => {
-    const hiddenIds = new Set(nodes.filter((node) => node.hidden).map((node) => node.id));
-    return scene.edges.map((sceneEdge) => ({
-      id: sceneEdge.id,
-      source: sceneEdge.from,
-      target: sceneEdge.to,
-      type: "atlas",
-      data: { sceneEdge, scene } as unknown as Record<string, unknown>,
-      hidden: hiddenIds.has(sceneEdge.from) || hiddenIds.has(sceneEdge.to),
-      markerEnd: {
-        type: MarkerType.ArrowClosed,
-        width: 13,
-        height: 13,
-        color: edgeColor(sceneEdge.kind),
-      },
-    }));
-  }, [nodes, scene]);
+  const focus = useMemo<CanvasFocus>(
+    () => ({ selectedObjectId, selectedStepId, relatedStepIds: relatedSteps }),
+    [relatedSteps, selectedObjectId, selectedStepId],
+  );
+  const bind = useMemo<CanvasBindings>(
+    () => ({ activate, hover: hoverFor, hoverFocus: focusHover, leave: () => useUIStore.getState().scheduleClose() }),
+    [activate, focusHover, hoverFor],
+  );
+  const nodes = useMemo(() => buildCanvasNodes(scene, filters, focus, bind), [bind, filters, focus, scene]);
+  const edges = useMemo(() => buildCanvasEdges(scene, nodes), [nodes, scene]);
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

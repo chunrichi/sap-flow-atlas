@@ -26,6 +26,7 @@ import {
   type ContentTerm,
   type Occurrence,
 } from "../src/content/schemas";
+import { validateContent } from "./content-validation";
 
 const ROOT = process.cwd();
 const CONTENT_DIR = path.join(ROOT, "content");
@@ -68,13 +69,6 @@ function moduleOrder(id: string): number {
 
 function sceneOrder(scene: ContentScene): number {
   return { universe: 0, module: 1, process: 2, flow: 3 }[scene.level];
-}
-
-function annotationRange(value: string | number): [number, number] {
-  const parts = String(value).split("-").map((part) => Number(part));
-  const start = parts[0] ?? 0;
-  const end = parts.length > 1 ? (parts[1] ?? start) : start;
-  return [start, end];
 }
 
 async function main() {
@@ -141,210 +135,10 @@ async function main() {
   snippets.sort((a, b) => a.id.localeCompare(b.id));
   scenes.sort((a, b) => sceneOrder(a) - sceneOrder(b) || a.id.localeCompare(b.id));
 
-  const modulesById = new Map(modules.map((item) => [item.id, item]));
-  const flowsById = new Map(flows.map((item) => [item.id, item]));
-  const processesById = new Map(processes.map((item) => [item.id, item]));
   const stepsById = new Map(steps.map((item) => [item.id, item]));
-  const objectsById = new Map(objects.map((item) => [item.id, item]));
-  const snippetsById = new Map(snippets.map((item) => [item.id, item]));
-  const scenesById = new Map(scenes.map((item) => [item.id, item]));
-  const sourcesById = new Map(sources.map((item) => [item.id, item]));
-  const crosslinksById = new Map(crosslinks.map((item) => [item.id, item]));
-  const termsById = new Map(terms.map((item) => [item.id, item]));
-
-  const claimed = new Map<string, string>();
-  const claim = (id: string, where: string) => {
-    const previous = claimed.get(id);
-    if (previous) errors.push(`ID 重复: ${id}（${previous} 与 ${where}）`);
-    else claimed.set(id, where);
-  };
-
-  modules.forEach((item) => claim(item.id, `module ${item.id}`));
-  flows.forEach((item) => claim(item.id, `flow ${item.id}`));
-  processes.forEach((item) => claim(item.id, `process ${item.id}`));
-  steps.forEach((item) => claim(item.id, `step ${item.id}`));
-  objects.forEach((item) => claim(item.id, `object ${item.id}`));
-  snippets.forEach((item) => claim(item.id, `snippet ${item.id}`));
-  scenes.forEach((item) => claim(item.id, `scene ${item.id}`));
-  sources.forEach((item) => claim(item.id, `source ${item.id}`));
-  crosslinks.forEach((item) => claim(item.id, `crosslink ${item.id}`));
-  terms.forEach((item) => claim(item.id, `term ${item.id}`));
-
-  const registry: Record<string, Map<string, unknown>> = {
-    module: modulesById,
-    flow: flowsById,
-    process: processesById,
-    step: stepsById,
-    snippet: snippetsById,
-    scene: scenesById,
-    source: sourcesById,
-    crosslink: crosslinksById,
-    term: termsById,
-  };
-
-  function resolve(ref: string, where: string): boolean {
-    if (objectsById.has(ref)) return true;
-    const divider = ref.indexOf(":");
-    if (divider === -1) {
-      errors.push(`${where}: 引用缺少命名空间 ${ref}`);
-      return false;
-    }
-    const kind = ref.slice(0, divider);
-    const id = ref.slice(divider + 1);
-    const table = registry[kind];
-    if (!table) {
-      errors.push(`${where}: 未知引用类型 ${ref}`);
-      return false;
-    }
-    if (!table.has(id)) {
-      errors.push(`${where}: 找不到 ${ref}`);
-      return false;
-    }
-    return true;
-  }
-
-  const checkSources = (ids: string[] | undefined, where: string) => {
-    for (const id of ids ?? []) resolve(`source:${id}`, where);
-  };
-
-  for (const item of modules) {
-    for (const flow of item.keyFlows) resolve(`flow:${flow}`, `module ${item.id}`);
-    checkSources(item.sources, `module ${item.id}`);
-  }
-  for (const flow of flows) {
-    for (const mod of flow.modules) resolve(`module:${mod}`, `flow ${flow.id}`);
-    for (const proc of flow.processes) resolve(`process:${proc}`, `flow ${flow.id}`);
-    for (const stage of flow.stages) resolve(`module:${stage.primaryModule}`, `flow ${flow.id} stage ${stage.id}`);
-    checkSources(flow.sources, `flow ${flow.id}`);
-    if (flow.modules.length < 2) warnings.push(`flow ${flow.id}: 端到端流程只涉及 ${flow.modules.length} 个模块`);
-  }
-  for (const proc of processes) {
-    resolve(`module:${proc.module}`, `process ${proc.id}`);
-    resolve(`flow:${proc.flow}`, `process ${proc.id}`);
-    if (proc.variant !== "core" && !proc.trigger) {
-      errors.push(`process ${proc.id}: ${proc.variant} 流程必须写 trigger（何时进入该路径）`);
-    }
-    if (proc.variant === "core" && proc.trigger) {
-      warnings.push(`process ${proc.id}: 核心流程无需 trigger`);
-    }
-    const ownerFlow = flowsById.get(proc.flow);
-    if (ownerFlow) {
-      if (!ownerFlow.processes.includes(proc.id)) {
-        errors.push(`process ${proc.id}: 所属 flow ${proc.flow} 的 processes 未包含该流程`);
-      }
-      if (!ownerFlow.stages.some((stage) => stage.id === proc.stage)) {
-        errors.push(`process ${proc.id}: stage ${proc.stage} 不属于 flow ${proc.flow}`);
-      }
-    }
-    for (const stepId of proc.steps) {
-      if (!resolve(`step:${stepId}`, `process ${proc.id}`)) continue;
-      const step = stepsById.get(stepId);
-      if (step && !step.processes.includes(proc.id)) {
-        errors.push(`process ${proc.id}: step ${stepId} 的 processes 未声明该流程（双向不一致）`);
-      }
-    }
-    for (const edge of proc.edges) {
-      if (!proc.steps.includes(edge.from)) errors.push(`process ${proc.id}: 边起点 ${edge.from} 不在 steps 中`);
-      if (!proc.steps.includes(edge.to)) errors.push(`process ${proc.id}: 边终点 ${edge.to} 不在 steps 中`);
-    }
-    checkSources(proc.sources, `process ${proc.id}`);
-  }
-  for (const step of steps) {
-    if (step.optional && !step.condition) {
-      errors.push(`step ${step.id}: optional 步骤必须写 condition（触发条件）`);
-    }
-    if (!step.optional && step.condition) {
-      warnings.push(`step ${step.id}: 非可选步骤写了 condition，可能漏标 optional`);
-    }
-    for (const mod of step.modules) resolve(`module:${mod}`, `step ${step.id}`);
-    for (const procId of step.processes) {
-      if (!resolve(`process:${procId}`, `step ${step.id}`)) continue;
-      const proc = processesById.get(procId);
-      if (proc && !proc.steps.includes(step.id)) {
-        errors.push(`step ${step.id}: process ${procId} 未声明该步骤（双向不一致）`);
-      }
-    }
-    for (const flowId of step.flows) resolve(`flow:${flowId}`, `step ${step.id}`);
-    for (const objectId of step.objects) resolve(objectId, `step ${step.id}`);
-    for (const snippetId of step.snippets) resolve(`snippet:${snippetId}`, `step ${step.id}`);
-    checkSources(step.sources, `step ${step.id}`);
-  }
-  for (const object of objects) {
-    const [type, name] = object.id.split(":");
-    if (type !== object.type) errors.push(`object ${object.id}: ID 前缀与 type 不一致`);
-    if (name !== object.technicalName) errors.push(`object ${object.id}: technicalName 不一致`);
-    resolve(`module:${object.module}`, `object ${object.id}`);
-    for (const relation of object.relations) resolve(relation.target, `object ${object.id}`);
-    checkSources(object.sources, `object ${object.id}`);
-  }
-  for (const snippet of snippets) {
-    for (const objectId of snippet.objects) resolve(objectId, `snippet ${snippet.id}`);
-    for (const annotation of snippet.annotations) {
-      const [start, end] = annotationRange(annotation.lines);
-      if (start < 1 || end < start || end > snippet.lineCount) {
-        errors.push(`snippet ${snippet.id}: 注解范围 ${annotation.lines} 超出 ${snippet.lineCount} 行`);
-      }
-    }
-    checkSources(snippet.sources, `snippet ${snippet.id}`);
-  }
-  for (const scene of scenes) {
-    if (scene.module) resolve(`module:${scene.module}`, `scene ${scene.id}`);
-    if (scene.process) resolve(`process:${scene.process}`, `scene ${scene.id}`);
-    if (scene.flow) resolve(`flow:${scene.flow}`, `scene ${scene.id}`);
-    const nodeIds = new Set<string>();
-    for (const node of scene.nodes) {
-      if (nodeIds.has(node.id)) errors.push(`scene ${scene.id}: 节点 ID 重复 ${node.id}`);
-      nodeIds.add(node.id);
-      if (node.ref) resolve(node.ref, `scene ${scene.id} node ${node.id}`);
-      if (node.kind === "portal") {
-        if (!node.target) errors.push(`scene ${scene.id} node ${node.id}: portal 缺少 target`);
-        else {
-          resolve(`scene:${node.target.scene}`, `scene ${scene.id} node ${node.id}`);
-          if (node.target.step) resolve(`step:${node.target.step}`, `scene ${scene.id} node ${node.id}`);
-          if (node.target.object) resolve(node.target.object, `scene ${scene.id} node ${node.id}`);
-        }
-      }
-    }
-    const groupIds = new Set<string>();
-    for (const group of scene.groups) {
-      if (groupIds.has(group.id)) errors.push(`scene ${scene.id}: 分组 ID 重复 ${group.id}`);
-      groupIds.add(group.id);
-      if (nodeIds.has(group.id)) errors.push(`scene ${scene.id}: 分组 ID 与节点冲突 ${group.id}`);
-    }
-    for (const edge of scene.edges) {
-      if (!nodeIds.has(edge.from)) errors.push(`scene ${scene.id}: 边 ${edge.id} 起点不存在 ${edge.from}`);
-      if (!nodeIds.has(edge.to)) errors.push(`scene ${scene.id}: 边 ${edge.id} 终点不存在 ${edge.to}`);
-    }
-  }
-  for (const crosslink of crosslinks) {
-    resolve(crosslink.from, `crosslink ${crosslink.id}`);
-    resolve(crosslink.to, `crosslink ${crosslink.id}`);
-    checkSources(crosslink.sources, `crosslink ${crosslink.id}`);
-  }
-  for (const term of terms) {
-    resolve(`module:${term.module}`, `term ${term.id}`);
-    for (const ref of term.related) resolve(ref, `term ${term.id}`);
-    checkSources(term.sources, `term ${term.id}`);
-  }
-  for (const source of sources) {
-    if (!source.url.startsWith("https://")) errors.push(`source ${source.id}: URL 必须为 https`);
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(source.accessedAt)) {
-      errors.push(`source ${source.id}: accessedAt 必须是 YYYY-MM-DD`);
-    }
-  }
-
-  const statusEntities: Array<{ id: string; status: string; sources: string[] }> = [
-    ...modules, ...flows, ...processes, ...steps, ...objects, ...snippets, ...crosslinks,
-  ];
-  for (const entity of statusEntities) {
-    if (entity.status === "verified") {
-      const hasOfficial = entity.sources.some((id) => sourcesById.get(id)?.kind.startsWith("official"));
-      if (!hasOfficial) warnings.push(`${entity.id}: verified 但没有 official-* 来源`);
-    }
-    if (entity.status !== "draft" && entity.sources.length === 0) {
-      warnings.push(`${entity.id}: ${entity.status} 但没有来源`);
-    }
-  }
+  const validation = validateContent({ modules, flows, processes, steps, objects, snippets, scenes, sources, crosslinks, terms });
+  errors.push(...validation.errors);
+  warnings.push(...validation.warnings);
 
   const occurrences: Record<string, Occurrence[]> = {};
   for (const scene of scenes) {

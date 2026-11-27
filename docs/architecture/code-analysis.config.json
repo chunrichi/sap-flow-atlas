@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "include": [
+    "**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"
+  ],
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/coverage/**",
+    "**/*.d.ts",
+    "**/.git/**",
+    "**/.agents/**",
+    "**/.archify/**",
+    "**/tmp/**"
+  ],
+  "typescript": {
+    "sdk": "bundled",
+    "requireProjectSdk": false
+  }
+}

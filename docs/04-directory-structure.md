@@ -26,6 +26,13 @@ sap-map-dsh/
 │  ├─ 06-content-guide.md
 │  ├─ 07-roadmap.md
 │  ├─ 08-ingestion.md
+│  ├─ 13-process-catalog.md
+│  ├─ 14-archify-review.md            # Archify 诊断与优化记录
+│  ├─ architecture/                   # 可交互架构图、离线诊断、分析配置
+│  │  ├─ sap-flow-atlas.architecture.html
+│  │  ├─ sap-flow-atlas.architecture.json   # 可编辑的图源
+│  │  ├─ sap-flow-atlas.code-analysis.html
+│  │  └─ code-analysis.config.json
 │  └─ adr/
 │     └─ 0001-canonical-graph-and-view-layouts.md
 │
@@ -401,7 +408,7 @@ jobs:
 
 ## 8. 当前实现与目标的差异
 
-- 内容管线目前是单脚本 `scripts/build-content.ts`（校验 + 派生 + 输出 `content.json`），尚未拆成 `build-graph` / `build-scenes` / `build-search`；
+- 内容管线由 `scripts/build-content.ts`（加载、派生索引、输出 `content.json`）与 `scripts/content-validation.ts`（按实体分组的 Zod/引用校验）组成；尚未拆成 `build-graph` / `build-scenes` / `build-search`；
 - Zod schema 目前集中在 `src/content/schemas.ts`，尚未拆成 `schemas/` 目录；
 - 代码高亮使用自研 ABAP tokenizer，未引入 Shiki；
 - 搜索使用 `cmdk` 内置过滤，未生成 MiniSearch 索引；

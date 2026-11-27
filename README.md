@@ -99,7 +99,10 @@ sap-map-dsh/
 | [11 多视图工作台](docs/11-flexible-workbench-and-benchmarks.md) | 非 SAP 开源对标、多镜头/流程带/详情坞方案与 P0–P2 路线 |
 | [12 流程与对象覆盖](docs/12-content-map.md) | 模块 × 价值流 × 流程 × 步骤 × 对象覆盖、可选/例外清单与下一步 |
 | [13 模块流程与对象明细](docs/13-process-catalog.md) | 按模块列出每个流程的步骤、输入输出、规则与对象；可选/例外用虚线块标出 |
+| [14 Archify 架构审查](docs/14-archify-review.md) | Archify 代码诊断、首屏拆包、复杂度优化前后指标与剩余热点 |
 | [ADR-0001](docs/adr/0001-canonical-graph-and-view-layouts.md) | 为什么「内容图 + 视图布局」而不是按模块复制数据 |
+
+> 架构交付物：[运行时与内容管线图](docs/architecture/sap-flow-atlas.architecture.html)（可交互 HTML，证据固定在提交 `7c8070e`） · [离线代码诊断](docs/architecture/sap-flow-atlas.code-analysis.html)。
 
 ## 5. 已放入的示例切片
 
@@ -163,7 +166,9 @@ pnpm preview            # 预览 dist
 - ABAP 开发地图、D2D 价值流与 Open SQL / BAPI / 用户出口示例；
 - 命令面板（`⌘K` / `Ctrl+K`）与移动端 Track / 表格 / bottom sheet；
 - `prefers-reduced-motion`、URL 深链接、`?shot=1` 截图模式；
-- Vitest 内容测试 + 工作台/Story 派生测试（21 个）+ 阶段覆盖、条件字段与 12 类对象覆盖校验 + GitHub Actions CI；
+- **首屏拆包**：FlowCanvas（React Flow）按需加载，`content` / `react` 独立缓存块；入口 chunk 1.33 MB → 202 kB，构建无 >500 kB 告警；
+- **架构可追溯**：[运行时与内容管线图](docs/architecture/sap-flow-atlas.architecture.html) 与 [Archify 代码诊断](docs/architecture/sap-flow-atlas.code-analysis.html)，结论记录在 [14 号文档](docs/14-archify-review.md)；
+- Vitest 内容测试 + 工作台/Story/画布图派生测试（27 个）+ 阶段覆盖、条件字段与 12 类对象覆盖校验 + GitHub Actions CI；
 - GitHub Pages 部署 workflow（`VITE_BASE` 自动按仓库名设置，默认由 `PAGES_ENABLED` 变量控制）。
 
 下一阶段：SAP 顾问内容复核、来源深链、代码片段补齐、GitHub Pages 发布、真实用户可用性测试与更多角色化视图；238 个步骤的规则/常见问题已补齐，可选/例外流程已建模，后续按 SAP 版本变化维护。
@@ -185,12 +190,12 @@ pnpm preview            # 预览 dist
 ```bash
 pnpm content:validate   # 12 模块 / 85 流程 / 238 步骤 / 365 对象
 pnpm content:report     # 模块与阶段覆盖、条件流程/步骤、缺口
-pnpm test               # 21 个测试：内容一致性 + 阶段覆盖 + 条件字段 + 对象类型 + 过滤/脉络/视图状态/Story
+pnpm test               # 27 个测试：内容一致性 + 阶段覆盖 + 条件字段 + 对象类型 + 过滤/脉络/视图状态/Story + 画布图构建/导航
 pnpm typecheck
 pnpm build              # dist/
 ```
 
-截图验收覆盖桌面首页、模块、Track、Map、Matrix、Table、Peek/Pin、过滤、对象索引/脉络、Compare、Story，以及 1280 / 1024 / 390 移动端；`?shot=1` 会关闭大部分动效，便于稳定对比。
+截图验收覆盖桌面首页、模块、Track、Map、Matrix、Table、Peek/Pin、过滤、对象索引/脉络、Compare、Story，以及 1280 / 1024 / 390 移动端；`?shot=1` 会关闭大部分动效，便于稳定对比。本轮优化的 7 张验收图（首页 / Process Track / Process Map / Flow Track / 对象索引 / 390 移动端 / 架构图）无 console error、失败请求或横向溢出。
 
 ## 9. 声明
 

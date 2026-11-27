@@ -4,9 +4,9 @@ import { content, flowsById, modulesById, objectTypeLabels, objectsById, process
 import type { ContentScene } from '@/content/schemas';
 import { DetailDock } from '@/components/inspector/Inspector';
 import { NavigationRail } from '@/components/navigation/NavigationRail';
-import { FlowCanvas } from '@/features/canvas/FlowCanvas';
 import { TrackView } from '@/features/views/TrackView';
 
+const FlowCanvas = lazy(() => import('@/features/canvas/FlowCanvas').then((module) => ({ default: module.FlowCanvas })));
 const MatrixView = lazy(() => import('@/features/views/MatrixView').then((module) => ({ default: module.MatrixView })));
 const TableView = lazy(() => import('@/features/views/TableView').then((module) => ({ default: module.TableView })));
 const LineageView = lazy(() => import('@/features/views/LineageView').then((module) => ({ default: module.LineageView })));

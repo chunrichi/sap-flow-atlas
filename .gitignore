@@ -23,6 +23,10 @@ raw/
 # local QA artifacts
 tmp/
 
+# local agent skills / Archify reports (installed per machine)
+.agents/
+.archify/
+
 # OS / editors
 .DS_Store
 .idea/

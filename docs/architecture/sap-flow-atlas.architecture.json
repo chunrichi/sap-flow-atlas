@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "SAP Flow Atlas · 运行时与内容管线",
+    "locale": "zh-CN",
+    "output": "docs/architecture/sap-flow-atlas.architecture.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/chunrichi/sap-flow-atlas.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "7c8070e8ca7a12ba491f60cc8bd42fd60fb4274a"
+    }
+  },
+  "layout": {
+    "mode": "auto"
+  },
+  "components": [
+    {
+      "id": "visitor",
+      "type": "external",
+      "label": "SAP 顾问 / 开发者",
+      "sublabel": "浏览器"
+    },
+    {
+      "id": "pages",
+      "type": "cloud",
+      "label": "GitHub Pages",
+      "sublabel": "静态托管",
+      "sources": [
+        {
+          "path": ".github/workflows/deploy.yml",
+          "line": 40,
+          "end_line": 49,
+          "label": "部署任务"
+        }
+      ]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "React 应用",
+      "sublabel": "HashRouter + 懒加载路由",
+      "sources": [
+        {
+          "path": "src/main.tsx",
+          "line": 1,
+          "end_line": 17,
+          "label": "入口"
+        },
+        {
+          "path": "src/App.tsx",
+          "line": 90,
+          "end_line": 122,
+          "label": "路由表"
+        }
+      ]
+    },
+    {
+      "id": "workspace",
+      "type": "frontend",
+      "label": "工作台外壳",
+      "sublabel": "四镜头 + 流程带 + 状态栏",
+      "sources": [
+        {
+          "path": "src/features/workspace/WorkspacePage.tsx",
+          "line": 30,
+          "end_line": 60,
+          "label": "工作台"
+        },
+        {
+          "path": "src/features/workspace/WorkspacePage.tsx",
+          "line": 180,
+          "end_line": 220,
+          "label": "镜头切换"
+        }
+      ]
+    },
+    {
+      "id": "canvas",
+      "type": "frontend",
+      "label": "Map 画布",
+      "sublabel": "React Flow 节点与边",
+      "sources": [
+        {
+          "path": "src/features/canvas/FlowCanvas.tsx",
+          "line": 378,
+          "end_line": 383,
+          "label": "画布入口"
+        }
+      ]
+    },
+    {
+      "id": "track",
+      "type": "frontend",
+      "label": "Track 轨道",
+      "sublabel": "流程卡 / 步骤列表",
+      "sources": [
+        {
+          "path": "src/features/views/TrackView.tsx",
+          "line": 259,
+          "end_line": 270,
+          "label": "轨道入口"
+        }
+      ]
+    },
+    {
+      "id": "inspector",
+      "type": "frontend",
+      "label": "详情坞",
+      "sublabel": "Peek / Pin + 对象与代码",
+      "sources": [
+        {
+          "path": "src/components/inspector/Inspector.tsx",
+          "line": 551,
+          "end_line": 560,
+          "label": "详情坞"
+        }
+      ]
+    },
+    {
+      "id": "contentAccess",
+      "type": "database",
+      "label": "内容访问层",
+      "sublabel": "打包后的 JSON 索引 + 派生查询",
+      "sources": [
+        {
+          "path": "src/content/data.ts",
+          "line": 1,
+          "end_line": 30,
+          "label": "索引构建"
+        }
+      ]
+    },
+    {
+      "id": "contentBuild",
+      "type": "backend",
+      "label": "内容构建",
+      "sublabel": "Zod 校验 + 双向引用检查",
+      "sources": [
+        {
+          "path": "scripts/build-content.ts",
+          "line": 80,
+          "end_line": 100,
+          "label": "构建入口"
+        }
+      ]
+    },
+    {
+      "id": "authoring",
+      "type": "database",
+      "label": "content/ 内容源",
+      "sublabel": "YAML / ABAP 片段 / 场景",
+      "sources": [
+        {
+          "path": "content/README.md",
+          "line": 1,
+          "end_line": 12,
+          "label": "内容层说明"
+        }
+      ]
+    },
+    {
+      "id": "viteBuild",
+      "type": "backend",
+      "label": "Vite 构建",
+      "sublabel": "静态资源 / 分包",
+      "sources": [
+        {
+          "path": "vite.config.ts",
+          "line": 1,
+          "end_line": 19,
+          "label": "构建配置"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "构建期（Node.js）",
+      "wraps": [
+        "authoring",
+        "contentBuild",
+        "viteBuild"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "浏览器运行时",
+      "wraps": [
+        "app",
+        "workspace",
+        "canvas",
+        "track",
+        "inspector",
+        "contentAccess"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "visitor-pages",
+      "from": "visitor",
+      "to": "pages",
+      "label": "HTTPS 访问"
+    },
+    {
+      "id": "pages-app",
+      "from": "pages",
+      "to": "app",
+      "label": "加载静态资源"
+    },
+    {
+      "id": "authoring-build",
+      "from": "authoring",
+      "to": "contentBuild",
+      "label": "读取 YAML"
+    },
+    {
+      "id": "build-content",
+      "from": "contentBuild",
+      "to": "contentAccess",
+      "label": "生成 content.json"
+    },
+    {
+      "id": "build-vite",
+      "from": "contentBuild",
+      "to": "viteBuild",
+      "label": "内容参与打包"
+    },
+    {
+      "id": "content-app",
+      "from": "contentAccess",
+      "to": "app",
+      "label": "模块 / 流程 / 步骤索引"
+    },
+    {
+      "id": "app-workspace",
+      "from": "app",
+      "to": "workspace",
+      "label": "路由到工作台"
+    },
+    {
+      "id": "workspace-canvas",
+      "from": "workspace",
+      "to": "canvas",
+      "label": "Map 镜头"
+    },
+    {
+      "id": "workspace-track",
+      "from": "workspace",
+      "to": "track",
+      "label": "Track 镜头"
+    },
+    {
+      "id": "workspace-inspector",
+      "from": "workspace",
+      "to": "inspector",
+      "label": "选中 step / object"
+    },
+    {
+      "id": "canvas-inspector",
+      "from": "canvas",
+      "to": "inspector",
+      "label": "写入 URL 选中态"
+    },
+    {
+      "id": "track-inspector",
+      "from": "track",
+      "to": "inspector",
+      "label": "写入 URL 选中态"
+    },
+    {
+      "id": "vite-pages",
+      "from": "viteBuild",
+      "to": "pages",
+      "label": "上传 dist/"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "内容层",
+      "items": [
+        "content/ 是事实层，scenes 只存布局与引用",
+        "构建时校验双向引用、条件流程与来源"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "运行时",
+      "items": [
+        "四个镜头共享 view/step/object/filter URL 状态",
+        "Process / Flow 默认 Track，Universe / Module 默认 Map"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "交付",
+      "items": [
+        "纯前端 + 预生成 JSON，无后端",
+        "GitHub Actions 仅在 PAGES_ENABLED=true 时部署"
+      ]
+    }
+  ]
+}
